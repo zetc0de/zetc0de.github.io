@@ -10,6 +10,7 @@ date: 2018-04-15 23:52
 Halo, kali ini kita akan menginstall Service Anope di OS Centos 7.
 Pertama, kita harus install Development Tools dulu dan beberapa tools yang diperlukan, 
 > yum group install "Development Tools"
+> 
 > yum install make cmake openssl openssl-devel 
 
 Kemudian, kita download source Anope nya 
@@ -24,12 +25,15 @@ Lalu jalankan perintah `./extras` dan enable-kan `m_ssl_openssl.cpp`
     <img src="https://raw.githubusercontent.com/havidzc0de/havidzc0de.github.io/master/assets/images/m_ssl_openssl.cpp.png">
 </div>
 
+
 Terus `./Config` dan install anope nya menggunkan user biasa/bukan root.
 > ./Config
+> 
 > cd build && make && make install
 
 Enter-enter sampe selesai.
 Seletah berhasil diinstall, maka directory anope sekarang ada di home directory `~/services` , lalu uncoment module `m_ssl_openssl` di `~/services/conf/modules.example.conf`
+
 > vim ~/services/conf/modules.example.conf
 
 Buat file konfigurasi Anopenya _kita pake file examplenya_
