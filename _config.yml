@@ -1,9 +1,9 @@
-title: John Smith
+title: havidzc0de
 description: My Personal Blog
 author: John Smith
-logo: /hcz-jekyll-blog/static/img/avatar.png
-github: https://github.com/codeasashu
-about: Freelance developer
+logo: /static/img/avatar.png
+github: https://github.com/havidzc0de
+about: Manusia yang beradab dibawah darah dan pedang 
 
 baseurl: "https://codeasashu.github.io/hcz-jekyll-blog"
 url: "https://codeasashu.github.io/hcz-jekyll-blog"
