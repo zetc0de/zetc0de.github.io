@@ -5,13 +5,13 @@ logo: /static/img/avatar.png
 github: https://github.com/havidzc0de
 about: Coretan Kecilku... ^_^ 
 
-baseurl: "https://codeasashu.github.io/hcz-jekyll-blog"
-url: "https://codeasashu.github.io/hcz-jekyll-blog"
+baseurl: "https://havidzc0de.github.io"
+url: "https://havidzc0de.github.io"
 
 allowsearch: true
 
-disqus_shortname: aboutashu
-google_analytics: UA-72862926-1
+disqus_shortname: havidzc0de
+google_analytics: UA-117516737-1
 
 share:
   twitter_username: \#
