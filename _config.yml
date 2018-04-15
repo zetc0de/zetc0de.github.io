@@ -8,6 +8,9 @@ about: Coretan Kecilku... ^_^
 baseurl: "https://havidzc0de.github.io"
 url: "https://havidzc0de.github.io"
 
+comments: true
+layout: default 
+
 allowsearch: true
 
 disqus_shortname: havidzc0de
