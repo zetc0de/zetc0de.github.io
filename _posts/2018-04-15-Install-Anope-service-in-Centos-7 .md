@@ -2,7 +2,7 @@
 layout: post
 title: "Install Anope service in Centos 7"
 date: 2018-04-15 23:52
-categories: Anope
+categories: anope
 ---
 <div align="center">
     <img src="http://www.anope.org/cpanel/static/logo.png">
