@@ -41,6 +41,30 @@ Buat file konfigurasi Anopenya _kita pake file examplenya_
 
 Lalu edit file konfiurasi tadi sesuai kebutuhan. Untuk contoh, bisa lihat file konfigurasi milik saya disini [services.conf](https://raw.githubusercontent.com/havidzc0de/havidzc0de.github.io/master/assets/files/services.conf), kebetulan untuk aplikasi IRC yg saya gunakan adalah Unrealircd.
 
+``Note:`` Edit juga bagian konfigurasi link `unrealircd.conf`, sesuaikan dengan konfigurasi uplink di `services.conf`:
+
+link services.mynet.org
+{
+    incoming {
+        mask 127.0.0.1;
+    };
+
+    password "changemeplease";
+
+    class servers;
+};
+
+Serverinfo juga disesuaikan :
+serverinfo
+{
+    /*
+     * The hostname that Services will be seen as, it must have no conflicts with any
+     * other server names on the rest of your IRC network. Note that it does not have
+     * to be an existing hostname, just one that isn't on your network already.
+     */
+    name = "127.0.0.1"
+
+
 Kalau sudah beres konfigurasi, jalankan dengan perintah 
 > ./services/bin/anoperc start
 
