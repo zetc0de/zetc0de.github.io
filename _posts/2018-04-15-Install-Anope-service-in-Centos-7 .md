@@ -2,6 +2,7 @@
 layout: post
 title: "Install Anope service in Centos 7"
 date: 2018-04-15 23:52
+categories: Anope
 ---
 <div align="center">
     <img src="http://www.anope.org/cpanel/static/logo.png">
@@ -56,6 +57,7 @@ link services.mynet.org
 {% endhighlight ruby %}
 
 Serverinfo juga disesuaikan :
+
 {% highlight ruby %}
 serverinfo
 {
