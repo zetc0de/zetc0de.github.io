@@ -106,7 +106,9 @@ Anda dapat melihat full file konfigurasinya [disini](https://raw.githubuserconte
 Sebelum kita jalankan Unrealircd nya, kita buka port sesuai port di konfigurasi `listening` nya:
 
 >firewall-cmd --add-port=6697/tcp --permanent
+>
 >firewall-cmd --add-port=6667/tcp --permanent
+>
 >firewall-cmd --reload
 >
 
