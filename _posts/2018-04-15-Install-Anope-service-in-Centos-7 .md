@@ -66,7 +66,8 @@ serverinfo
      */
     name = "127.0.0.1"
 
-{% endhighlight %}
+{% endhighlight ruby %}
+
 Kalau sudah beres konfigurasi, jalankan dengan perintah 
 > ./services/bin/anoperc start
 
