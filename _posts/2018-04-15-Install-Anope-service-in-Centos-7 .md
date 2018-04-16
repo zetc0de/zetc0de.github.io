@@ -42,7 +42,7 @@ Buat file konfigurasi Anopenya _kita pake file examplenya_
 Lalu edit file konfiurasi tadi sesuai kebutuhan. Untuk contoh, bisa lihat file konfigurasi milik saya disini [services.conf](https://raw.githubusercontent.com/havidzc0de/havidzc0de.github.io/master/assets/files/services.conf), kebetulan untuk aplikasi IRC yg saya gunakan adalah Unrealircd.
 
 ``Note:`` Edit juga bagian konfigurasi link `unrealircd.conf`, sesuaikan dengan konfigurasi uplink di `services.conf`:
-
+{% highlight ruby %}
 link services.mynet.org
 {
     incoming {
@@ -53,8 +53,10 @@ link services.mynet.org
 
     class servers;
 };
+{% endhighlight ruby %}
 
 Serverinfo juga disesuaikan :
+{% highlight ruby %}
 serverinfo
 {
     /*
@@ -64,7 +66,7 @@ serverinfo
      */
     name = "127.0.0.1"
 
-
+{% endhighlight %}
 Kalau sudah beres konfigurasi, jalankan dengan perintah 
 > ./services/bin/anoperc start
 
