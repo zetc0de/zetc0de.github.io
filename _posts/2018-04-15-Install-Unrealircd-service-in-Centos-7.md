@@ -40,7 +40,7 @@ Salin file example konfigurasi ke `~/unrealircd/conf/`
 >
 
 Kemudian konfigurasi file unrealircd.conf sesuai kebutuhan, aku konfig bagian-bagian dibawah ini :
-
+{% highlight ruby %}
  59 me {
  60         name "irc.random.io";
  61         info "IRC RANDOM";
@@ -96,6 +96,7 @@ Kemudian konfigurasi file unrealircd.conf sesuai kebutuhan, aku konfig bagian-ba
 402 set {
 403         kline-address "havidzc0de@gmail.com"; /* e-mail or URL shown when a use    r is banned */
 
+{% endhighlight ruby %}
 Untuk gencloak bisa menggunakan perintah ini:
 > ./unrealircd gencloak
 > 
