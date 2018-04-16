@@ -15,7 +15,7 @@ Pertama, kita harus install Development Tools dulu dan beberapa tools yang diper
 
 Kemudian, kita download source Anope nya 
 
->wget https://github.com/anope/anope/releases/download/2.0.6/anope-2.0.6-source.tar.gz
+> wget https://github.com/anope/anope/releases/download/2.0.6/anope-2.0.6-source.tar.gz
 
 Terus, kita extract dan masuk ke directory hasil extract tadi.
 > tar -zxvf anope* && cd anope*
