@@ -21,11 +21,11 @@ Apache merupakan perangkat lunak sumber terbuka dikembangkan oleh komunitas terb
 `Rencananya saya akan menginstall webapp pada subdomain blog.serverku.com`
 
 Apache2 secara default tersedia di package Centos7, jadi tinggal install menggunakan perintah:
-`yum -y install httpd`
+> yum -y install httpd
 
 Jika istallasi selesai, konfigurasi sistem anda agar menjalankan service apache2/httpd ini saat boot:
-`systemctl start httpd`
-`systemctl enable httpd`
+> systemctl start httpd
+> systemctl enable httpd
 
 <div align="center">
     <img src="https://raw.githubusercontent.com/havidzc0de/havidzc0de.github.io/master/assets/apache2/enable.png">
@@ -33,9 +33,9 @@ Jika istallasi selesai, konfigurasi sistem anda agar menjalankan service apache2
 
 Pada Centos7 saya menggunakan Firewalld, sehinggak kita harus mengatur agar membolehkan koneksi dari luar ke port 80(http) dan 443(https):
 
-`firewall-cmd --add-service=http --permanent --zone=public`
-`firewall-cmd --add-service=https --permanent --zone=public`
-`firewall-cmd --reload`
+> firewall-cmd --add-service=http --permanent --zone=public
+> firewall-cmd --add-service=https --permanent --zone=public
+> firewall-cmd --reload
 
 <div align="center">
     <img src="https://raw.githubusercontent.com/havidzc0de/havidzc0de.github.io/master/assets/apache2/firewall.png">
@@ -49,23 +49,23 @@ Sampai saat ini kita bisa akses server kita di web browser.
 
 Karena saya ingin mengakses webapp nya pada alamat blog.serverku.com, maka buat virtualhost yang mengarahkan kealamat tersebut.
 
-`mkdir -p /var/www/blog.serverku.com/public_html`
+> mkdir -p /var/www/blog.serverku.com/public_html
 
 Sekarang kita punya struktur directory untuk file kita, tapi owner nya masih root. Jika kita ingin webapp juga boleh memodifikasi, maka kita harus izinkan user apache untuk mengaksesnya:
 
-`chown -R apache:apache /var/www/blog.serverku.com/public_html`
-`chmod -R 755 /var/www`
+> chown -R apache:apache /var/www/blog.serverku.com/public_html
+> chmod -R 755 /var/www
 
 #Buat Virtualhost
 
 Untuk memulai, kita perlu mengatur directory tempat virtualhost kita akan disimpan,serta directory yang akan memberi tahu apache bahwa virtualhost siap melayani pengunjung. Directori `sites-available` akan menyimpan semua file konfigurasi virtualhost, sementara directory `sites-enable` akan menyimpan tautan simbolic ke host virtual yang ingin kita publikasikan, dalam kasus ini kita akan mempublikasikan host blog.serverku.com.
 
-`mkdir /etc/httpd/sites-available`
-`mkdir /etc/httpd/sites-enabled`
+> mkdir /etc/httpd/sites-available
+> mkdir /etc/httpd/sites-enabled
 
 Sekarang kita beritahu ke Apache bahwa file-file konfigurasi virtualhost ada didalam directory `site-enabled`:
 
-`nano /etc/httpd/conf/httpd.conf`
+> nano /etc/httpd/conf/httpd.conf
 
 Dan berikan baris perintah berikut pada baris terakhir:
 `IncludeOptional sites-enabled/*.conf`
@@ -73,7 +73,7 @@ Dan berikan baris perintah berikut pada baris terakhir:
 #Konfigurasi Virtualhost
 
 Buat file konfigurasinya :
-`nano /etc/httpd/sites-available/blog.serverku.conf`
+> nano /etc/httpd/sites-available/blog.serverku.conf
 
 {% highlight ruby %}
 <VirtualHost *:80>
@@ -87,10 +87,10 @@ Buat file konfigurasinya :
 
 Jika sudah, sekarang aktifkan virtualhost tersebut:
 
-`ln -s /etc/httpd/sites-available/blog.serverku.conf /etc/httpd/sites-enabled/blog.serverku.conf`
+> ln -s /etc/httpd/sites-available/blog.serverku.conf /etc/httpd/sites-enabled/blog.serverku.conf
 
 Sekarang kita coba buat file html di dalam documentroot kita:
-`nano var/www/blog.serverku.com/public_html/index.html`
+> nano var/www/blog.serverku.com/public_html/index.html
 
 {% highlight ruby %}
 <!DOCTYPE html>
@@ -109,7 +109,7 @@ Sekarang kita coba buat file html di dalam documentroot kita:
 {% endhighlight ruby%}
 
 Restart apache:
-`systemctl restart httpd`
+> systemctl restart httpd
 
 
 <div align="center">
