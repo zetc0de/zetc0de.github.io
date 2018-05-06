@@ -1,19 +1,19 @@
-title: Havidzc0de
+title: zetc0de
 description: My Personal Blog
 author: Havidzc0de
 logo: /static/img/avatar.png
-github: https://github.com/havidzc0de
+github: https://github.com/zetc0de
 about: Coretan Kecilku... ^_^ 
 
-baseurl: "https://havidzc0de.github.io"
-url: "https://havidzc0de.github.io"
+baseurl: "https://zetc0de.github.io"
+url: "https://zetc0de.github.io"
 
 comments: true
 layout: default 
 
 allowsearch: true
 
-disqus_shortname: havidzc0de
+disqus_shortname: zetc0de
 google_analytics: UA-117516737-1
 
 share:
