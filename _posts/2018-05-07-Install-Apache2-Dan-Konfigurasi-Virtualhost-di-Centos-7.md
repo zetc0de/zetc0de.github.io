@@ -79,7 +79,8 @@ Sekarang kita beritahu ke Apache bahwa file-file konfigurasi virtualhost ada did
 Dan berikan baris perintah berikut pada baris terakhir:
 `IncludeOptional sites-enabled/*.conf`
 
-#Konfigurasi Virtualhost
+
+<h3><b>#Konfigurasi Virtualhost </b></h3>
 
 Buat file konfigurasinya :
 > nano /etc/httpd/sites-available/blog.serverku.conf
