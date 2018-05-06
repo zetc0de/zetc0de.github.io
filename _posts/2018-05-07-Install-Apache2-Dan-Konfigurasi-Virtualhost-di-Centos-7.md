@@ -27,11 +27,25 @@ Jika istallasi selesai, konfigurasi sistem anda agar menjalankan service apache2
 `systemctl start httpd`
 `systemctl enable httpd`
 
+<div align="center">
+    <img src="https://raw.githubusercontent.com/havidzc0de/havidzc0de.github.io/master/assets/apache2/enable.png">
+</div>
+
 Pada Centos7 saya menggunakan Firewalld, sehinggak kita harus mengatur agar membolehkan koneksi dari luar ke port 80(http) dan 443(https):
 
 `firewall-cmd --add-service=http --permanent --zone=public`
 `firewall-cmd --add-service=https --permanent --zone=public`
 `firewall-cmd --reload`
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/havidzc0de/havidzc0de.github.io/master/assets/apache2/firewall.png">
+</div>
+
+Sampai saat ini kita bisa akses server kita di web browser.
+<div align="center">
+    <img src="https://raw.githubusercontent.com/havidzc0de/havidzc0de.github.io/master/assets/apache2/akses%20ip.png">
+</div>
+
 
 Karena saya ingin mengakses webapp nya pada alamat blog.serverku.com, maka buat virtualhost yang mengarahkan kealamat tersebut.
 
@@ -97,3 +111,10 @@ Sekarang kita coba buat file html di dalam documentroot kita:
 Restart apache:
 `systemctl restart httpd`
 
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/havidzc0de/havidzc0de.github.io/master/assets/apache2/finish.png">
+</div>
+
+
+Sekian
