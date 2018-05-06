@@ -36,7 +36,9 @@ Jika istallasi selesai, konfigurasi sistem anda agar menjalankan service apache2
 Pada Centos7 saya menggunakan Firewalld, sehinggak kita harus mengatur agar membolehkan koneksi dari luar ke port 80(http) dan 443(https):
 
 > firewall-cmd --add-service=http --permanent --zone=public
+> 
 > firewall-cmd --add-service=https --permanent --zone=public
+> 
 > firewall-cmd --reload
 
 <div align="center">
@@ -58,6 +60,7 @@ Karena saya ingin mengakses webapp nya pada alamat blog.serverku.com, maka buat 
 Sekarang kita punya struktur directory untuk file kita, tapi owner nya masih root. Jika kita ingin webapp juga boleh memodifikasi, maka kita harus izinkan user apache untuk mengaksesnya:
 
 > chown -R apache:apache /var/www/blog.serverku.com/public_html
+> 
 > chmod -R 755 /var/www
 
 
@@ -66,6 +69,7 @@ Sekarang kita punya struktur directory untuk file kita, tapi owner nya masih roo
 Untuk memulai, kita perlu mengatur directory tempat virtualhost kita akan disimpan,serta directory yang akan memberi tahu apache bahwa virtualhost siap melayani pengunjung. Directori `sites-available` akan menyimpan semua file konfigurasi virtualhost, sementara directory `sites-enable` akan menyimpan tautan simbolic ke host virtual yang ingin kita publikasikan, dalam kasus ini kita akan mempublikasikan host blog.serverku.com.
 
 > mkdir /etc/httpd/sites-available
+> 
 > mkdir /etc/httpd/sites-enabled
 
 Sekarang kita beritahu ke Apache bahwa file-file konfigurasi virtualhost ada didalam directory `site-enabled`:
