@@ -8,7 +8,7 @@ categories: webserver
     <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Apache_HTTP_server_logo_%282016%29.png">
 </div>
 
-#INTRODUCTION
+<h3><b>#Introduction</b></h3>
 
 Server HTTP Apache atau Server Web/WWW Apache adalah server web yang dapat dijalankan di banyak sistem operasi (Unix, BSD, Linux, Microsoft Windows dan Novell Netware serta platform lainnya) yang berguna untuk melayani dan memfungsikan situs web. Protokol yang digunakan untuk melayani fasilitas web/www ini menggunakan HTTP.
 
@@ -16,7 +16,8 @@ Apache memiliki fitur-fitur canggih seperti pesan kesalahan yang dapat dikonfigu
 
 Apache merupakan perangkat lunak sumber terbuka dikembangkan oleh komunitas terbuka yang terdiri dari pengembang-pengembang di bawah naungan [Apache Software Foundation](https://id.wikipedia.org/wiki/Apache_Software_Foundation).
 
-#Installation 
+
+<h3><b>#Installation </b></h3>
 
 `Rencananya saya akan menginstall webapp pada subdomain blog.serverku.com`
 
@@ -31,6 +32,7 @@ Jika istallasi selesai, konfigurasi sistem anda agar menjalankan service apache2
     <img src="https://raw.githubusercontent.com/havidzc0de/havidzc0de.github.io/master/assets/apache2/enable.png">
 </div>
 
+
 Pada Centos7 saya menggunakan Firewalld, sehinggak kita harus mengatur agar membolehkan koneksi dari luar ke port 80(http) dan 443(https):
 
 > firewall-cmd --add-service=http --permanent --zone=public
@@ -40,6 +42,8 @@ Pada Centos7 saya menggunakan Firewalld, sehinggak kita harus mengatur agar memb
 <div align="center">
     <img src="https://raw.githubusercontent.com/havidzc0de/havidzc0de.github.io/master/assets/apache2/firewall.png">
 </div>
+
+
 
 Sampai saat ini kita bisa akses server kita di web browser.
 <div align="center">
@@ -56,7 +60,8 @@ Sekarang kita punya struktur directory untuk file kita, tapi owner nya masih roo
 > chown -R apache:apache /var/www/blog.serverku.com/public_html
 > chmod -R 755 /var/www
 
-#Buat Virtualhost
+
+<h3><b>#Buat Virtualhost </b></h3>
 
 Untuk memulai, kita perlu mengatur directory tempat virtualhost kita akan disimpan,serta directory yang akan memberi tahu apache bahwa virtualhost siap melayani pengunjung. Directori `sites-available` akan menyimpan semua file konfigurasi virtualhost, sementara directory `sites-enable` akan menyimpan tautan simbolic ke host virtual yang ingin kita publikasikan, dalam kasus ini kita akan mempublikasikan host blog.serverku.com.
 
