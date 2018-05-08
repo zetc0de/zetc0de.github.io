@@ -1,6 +1,6 @@
 ---
 layout: posts_by_category
-categories: OpenVPN
+categories: openvpn
 title: OpenVPN
 permalink: /category/openvpn
 ---
