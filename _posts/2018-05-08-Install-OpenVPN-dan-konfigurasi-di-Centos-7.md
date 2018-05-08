@@ -280,7 +280,7 @@ dev tun
 proto udp
 
 #Server IP and Port
-remote 65.135.62.215 3068 ##diganti dengan IP server dan Port OpenVPN anda
+remote 65.135.x.x 3068 ##diganti dengan IP server dan Port OpenVPN anda
 
 resolv-retry infinite
 nobind
@@ -313,5 +313,5 @@ chown -R lightmoon:lightmoon /home/lightmoon/
 
 <h5><b>- Download Client</b></h5>
 ```
-scp -P 4053 -i Keys/1/satu lightmoon@37.59.221.239:~/zetc0de.tar.gz .
+scp -P 4053 -i Keys/1/satu lightmoon@37.59.x.x:~/zetc0de.tar.gz .
 ```
