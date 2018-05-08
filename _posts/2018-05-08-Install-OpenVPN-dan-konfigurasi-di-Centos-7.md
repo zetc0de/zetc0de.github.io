@@ -10,9 +10,11 @@ categories: OpenVPN
 </div>
 
 ###Introduction
+
 OpenVPN adalah aplikasi perangkat lunak open-source yang mengimplementasikan teknik virtual private network [(VPN)](https://en.wikipedia.org/wiki/Virtual_private_network) untuk membuat koneksi point-to-point atau site-to-site yang aman dalam konfigurasi yang diarahkan atau dijembatani dan fasilitas akses jarak jauh. Ini menggunakan protokol keamanan khusus [9] yang memanfaatkan [SSL / TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) untuk pertukaran kunci. OpenVPN mampu melintasi [network address translators](https://en.wikipedia.org/wiki/Network_address_translator) (NAT) dan [firewall](https://en.wikipedia.org/wiki/Firewall_(computing)). OpenVPN ditulis oleh James Yonan dan diterbitkan di bawah GNU General Public License (GPL). 
 
 ###Step by step
+
 - Enable the epel-repository in CentOS.
 - Install openvpn and easy-rsa.
 - Create Vars Variables.
@@ -27,16 +29,29 @@ OpenVPN adalah aplikasi perangkat lunak open-source yang mengimplementasikan tek
 yum install epel-release
 ```
 
+<div align="center">
+    <img src="https://raw.githubusercontent.com/zetc0de/zetc0de.github.io/master/assets/images/openvpn/1.png">
+</div>
+
 ###Install openvpn and easy-rsa.
 ```
 yum -y install openvpn easy-rsa 
 ```
 
+<div align="center">
+    <img src="https://raw.githubusercontent.com/zetc0de/zetc0de.github.io/master/assets/images/openvpn/2.png">
+</div>
+
 ###Create Vars Variables
 ```
+cp -R /usr/share/easy-rsa/ /etc/openvpn/
 cd /etc/openvpn/easy-rsa/3/
 vim vars
 ```
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/zetc0de/zetc0de.github.io/master/assets/images/openvpn/3.png">
+</div>
 
 ```
 set_var EASYRSA                 "$PWD"
@@ -117,6 +132,10 @@ cp pki/ca.crt /etc/openvpn/client/
 cp pki/issued/client.crt /etc/openvpn/client/
 cp pki/private/client.key /etc/openvpn/client/
 ```
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/zetc0de/zetc0de.github.io/master/assets/images/openvpn/4.png">
+</div>
 
 ###Configure openvpn
 
@@ -200,6 +219,10 @@ firewall-cmd --permanent --direct --passthrough ipv4 -t nat -A POSTROUTING -s  1
 firewall-cmd --reload
 ```
 
+<div align="center">
+    <img src="https://raw.githubusercontent.com/zetc0de/zetc0de.github.io/master/assets/images/openvpn/5.png">
+</div>
+
 ```
 cd /lib/firewalld/services/
 vim openvpn.xml
@@ -238,6 +261,10 @@ systemctl enable openvpn@server
 ```
 systemctl start openvpn@server
 ```
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/zetc0de/zetc0de.github.io/master/assets/images/openvpn/6.png">
+</div>
 
 ###SettingUp The OpenVPN Client Application
 
