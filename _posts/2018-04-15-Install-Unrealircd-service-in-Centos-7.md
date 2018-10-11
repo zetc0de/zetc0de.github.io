@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Install Unrealircd di Centos 7"
+title: "How To Install Unrealircd In Centos 7"
 date: 2018-04-15 16:30
 categories: unrealircd
 ---

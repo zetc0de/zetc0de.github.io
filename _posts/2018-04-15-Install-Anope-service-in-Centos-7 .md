@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Install Anope service in Centos 7"
+title: "How To Install Anope Service In Centos 7"
 date: 2018-04-15 23:52
 categories: anope
 ---

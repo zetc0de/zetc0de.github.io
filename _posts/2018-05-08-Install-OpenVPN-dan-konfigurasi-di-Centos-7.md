@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Install OpenVPN dan Konfigurasi di Centos 7"
+title: "How To Install And Configure OpenVPN In Centos 7"
 date: 2018-04-15 23:52
 categories: openvpn
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Install Apache2 Dan Konfigurasi Virtualhost di Centos 7"
+title: "How To Install Apache2 With Virtualhost Configuration In Centos 7"
 date: 2018-05-07 01:30
 categories: webserver
 ---
