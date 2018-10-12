@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Create Multiple VM with one Vagrantfile" 
-date: 2018-05-25 10:35
+date: 2018-06-10 10:35
 categories: virtualization
 ---
 ![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/Vagrant.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/Vagrant.png?raw=true)
