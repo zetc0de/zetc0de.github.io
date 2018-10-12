@@ -36,7 +36,15 @@ Dengan perintah diatas, maka akan membuat vagrantfile, dengan vagrantfile terseb
 
 ![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/konf.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/konf.png?raw=true)
 
-Bisa anda lihat diatas, kita menggunakan box ubuntu/xenial64, dengan private network dan menggunakan memory sebesar 512, tinggal sesuaikan dengan kebutuhan. Jika sudah dikonfigurasi, maka jalankan vm pertama kita:
+Bisa anda lihat diatas, kita menggunakan box ubuntu/xenial64, dengan private network dan menggunakan memory sebesar 512, tinggal sesuaikan dengan kebutuhan. Ada beberapa variable yang dapat anda konfigurasikan, bebrapa diantaranya:
+
+- config.vm.box : Inisialisasi Vagrantbox
+- config.vm.hostname : Konfigurasi hostname (default hostaname adalah vagrant)
+- config.vm.network : KOnfigurasi network, anda dapat meset networknya menggunakan private_network maupun public_network)
+- config.vm.provision : Untuk kebutuhan provisioning
+
+
+Jika sudah dikonfigurasi, maka jalankan vm pertama kita:
 ```
 vagrant up
 vagrant status
