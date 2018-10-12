@@ -2,8 +2,8 @@
 layout: post
 title: "Instalasi dan Konfigurasi Dasar Vagrant" 
 date: 2018-05-25 10:35
-categories: virtualizatio
-n---
+categories: virtualization
+---
 
 Saat ini virtualisasi menjadi penunjang bagi lingkungan development software secara modern. Dalam satu laptop kita bisa memasang berbagai sistem operasi virtual yang disesuaikan dengan server kita, sehingga kita bisa memisahkan configurasi laptop kita dengan konfigurasi server. 
 
@@ -33,7 +33,7 @@ Bisa anda lihat diatas, kita menggunakan box ubuntu/xenial64, dengan private net
 vagrant up
 vagrant status
 vagrant ssh
-`` `
+```
 
 Maka anda sudah dapat menjalankan perintah-perintah Ubuntu pada VM tersebut.
  
