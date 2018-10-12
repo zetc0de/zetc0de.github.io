@@ -5,6 +5,8 @@ date: 2018-05-25 10:35
 categories: virtualization
 ---
 
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/900px-MediaWiki_Vagrant_Visualization.jpg?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/900px-MediaWiki_Vagrant_Visualization.jpg?raw=true)
+
 Saat ini virtualisasi menjadi penunjang bagi lingkungan development software secara modern. Dalam satu laptop kita bisa memasang berbagai sistem operasi virtual yang disesuaikan dengan server kita, sehingga kita bisa memisahkan configurasi laptop kita dengan konfigurasi server. 
 
 Banyak keuntungan ketika kita menggunakan vagrant,sebagai developer sofrware akan sangat memudahkan jika menggunakan vagrant sebagai development environment yang terisolasi di virtual. Untuk memasang vagrant, caranya sangat mudah. Jika anda menggunakan OS keluarga UNIX, anda dapat memasangnya menggunakan package manager. Misalkan anda menggunakan Ubuntu:
