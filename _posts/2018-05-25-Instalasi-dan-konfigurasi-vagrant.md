@@ -26,6 +26,8 @@ mkdir -p ~/Vagrant/myubuntu
 cd ~/Vagrant/myubuntu
 vagrant init ubuntu/xenial64
 ```
+![https://raw.githubusercontent.com/zetc0de/zetc0de.github.io/master/assets/images/Vagrant-01/vagrant-init.png](https://raw.githubusercontent.com/zetc0de/zetc0de.github.io/master/assets/images/Vagrant-01/vagrant-init.png)
+
 Dengan perintah diatas, maka akan membuat vagrantfile, dengan vagrantfile tersebut kita dapat mengkofigurasikan VM(Virtual mechine) sesuai kehendak kita. 
 
 Bisa anda lihat diatas, kita menggunakan box ubuntu/xenial64, dengan private network dan menggunakan memory sebesar 512, tinggal sesuaikan dengan kebutuhan. Jika sudah dikonfigurasi, maka jalankan vm pertama kita:
