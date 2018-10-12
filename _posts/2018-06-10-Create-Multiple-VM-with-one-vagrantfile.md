@@ -4,6 +4,7 @@ title: "Create Multiple VM with one Vagrantfile"
 date: 2018-05-25 10:35
 categories: virtualization
 ---
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/Vagrant.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/Vagrant.png?raw=true)
 
 Menggunakan vagrant untuk kebutuhan virtualisasi sangat membantu pekerjaan developer maupun system engineer. Dengan vagrant kita dapat membuat virtual environtment dengan mudah. 
 
@@ -52,10 +53,13 @@ vagrant up
 vagrant status
  ``` 
 
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/status.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/status.png?raw=true)
 
 Maka akan terlihat status dari 2 vm kita sedang dalam kondisi running. Kita bisa masuk kedalam vm nya dengan perintah:
 ```
 vagrant ssh vm01
 vagrant ssh vm02
 ```
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/ssh.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/ssh.png?raw=true)
+
 Tinggal sesuaikan dengan nama vm nya, maka anda kan masuk kedalam mesin virtual.
