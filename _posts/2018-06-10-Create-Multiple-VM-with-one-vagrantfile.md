@@ -63,3 +63,8 @@ vagrant ssh vm02
 ![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/ssh.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/ssh.png?raw=true)
 
 Tinggal sesuaikan dengan nama vm nya, maka anda kan masuk kedalam mesin virtual.
+
+Kita coba untuk saling melakukan `ping` antar vm kita:
+
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/ping.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/ping.png?raw=true)
+
