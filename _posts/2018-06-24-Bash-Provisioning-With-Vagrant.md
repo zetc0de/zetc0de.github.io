@@ -4,6 +4,7 @@ title: "Bash Provisioning With Vagrant"
 date: 2018-06-24 10:35
 categories: virtualization
 ---
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-03/bash.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-03/bash.png?raw=true)
 
 Sebagai DevOps, kita tidak terlepas dengan yang namanya **Provisioning**, saya tidak akan menjelaskan lebih detile makna provisioning itu sendiri, tapi disini kita akan mencoba bash provisioning pada Virtual Mechine menggunakan Vagrant. Langsung saja, siapkan 1 vm atau lebih mengguanan vagrant. 
 ```
@@ -76,6 +77,9 @@ Maka akan terlihat proses provisioning vm01 dengan script bash. Dengan provision
 
 Anda dapat melihat hasil dari provisioning tadi dengan mengakses 127.0.0.1:3000 di browser anda. 
 
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-03/result.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-03/result.png?raw=true)
+
+Terlihat apache,mysql,dan php-fpm kita sudah dalam kondisi running. :)
 
 
 
