@@ -76,6 +76,8 @@ Kemudian saatnya provisioning, gunakan perintah:
 ```
 vagrant provisioning vm01
 ```
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-03/vagrant%20prov.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-03/vagrant%20prov.png?raw=true)
+
 Maka akan terlihat proses provisioning vm01 dengan script bash. Dengan provisioning kita dimudahkan untuk mensetup banyak server dengan sekali kerja. Bayangkan jika anda diminta untuk mensetup 1000 server? Menarik bukan? :)
 
 Anda dapat melihat hasil dari provisioning tadi dengan mengakses 127.0.0.1:3000 di browser anda. 
