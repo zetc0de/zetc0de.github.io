@@ -59,6 +59,9 @@ wget https://gist.githubusercontent.com/zetc0de/b0e54218db3f77fc328218f3a20894f1
 
 systemctl restart apache2
 systemctl restart mysql 
+echo -e "-------------------------------"
+echo -e "-[ https://zetc0de.github.io ]-"
+echo -e "-------------------------------"
 ```
 Jangan lupa untuk memberi hak akses execute pada filenya :
 ```
