@@ -6,7 +6,7 @@ categories: virtualization
 ---
 ![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-03/bash.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-03/bash.png?raw=true)
 
-Sebagai DevOps, kita tidak terlepas dengan yang namanya **Provisioning**, saya tidak akan menjelaskan lebih detile makna provisioning itu sendiri, tapi disini kita akan mencoba bash provisioning pada Virtual Mechine menggunakan Vagrant. Langsung saja, siapkan 1 vm atau lebih mengguanan vagrant. 
+Sebagai DevOps, kita tidak terlepas dengan yang namanya **Provisioning**, saya tidak akan menjelaskan lebih detail makna provisioning itu sendiri, tapi disini kita akan mencoba bash provisioning pada Virtual Mechine menggunakan Vagrant. Langsung saja, siapkan 1 vm atau lebih mengguanan vagrant. 
 ```
 mkdir -p ~/Vagrant/vagrant-provbash
 cd ~/Vagrant/vagrant-provbash
