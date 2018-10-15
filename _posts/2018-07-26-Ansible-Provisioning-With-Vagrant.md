@@ -11,7 +11,7 @@ Melanjutkan belajar provisioning menggunakan Vagrant, mulailah dengan memuat vag
   config.vm.define "vm02" do |vm02|
       vm02.vm.box = "ubuntu/xenial64"
       vm02.vm.hostname = "vm02"
-      vm02.vm.network :private_network, ip: "10.3.3.11"
+      vm02.vm.network :privat_enetwork, ip: "10.3.3.11"
       vm02.vm.provider "virtualbox" do |vb|
         vb.memory = "512"
       end
@@ -29,7 +29,7 @@ Melanjutkan belajar provisioning menggunakan Vagrant, mulailah dengan memuat vag
 - vm02.vm.network : Setting network dengan ip private dan prot forwarding.
 - vm02.vm.provision : Provisioning menggunakna ansible.
 
-Download file provisioning ansible ![disini](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/files/provision.zip?raw=true), lalu extrak dan letakkan pada directory yang sama dengan vagrantfiile. Kemudian jalankan vm02 dengan perintah `vagrant up`.
+Download file provisioning ansible [disini](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/files/provision.zip?raw=true), lalu extrak dan letakkan pada directory yang sama dengan vagrantfiile. Kemudian jalankan vm02 dengan perintah `vagrant up`.
 
 ![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-04/cek%20status.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-04/cek%20status.png?raw=true)
 
