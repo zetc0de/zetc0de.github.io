@@ -4,6 +4,7 @@ title: "How to install docker in Arch Linux"
 date: 2018-09-03
 categories: virtualization
 ---
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/docker-01/docker.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/docker-01/docker.png?raw=true)
 
 ## Introduction
 
@@ -34,6 +35,7 @@ Anda dapat menginstall docker melalui repository comunity (AUR), biasanya bernam
 ```
 sudo pacman -S docker
 ```
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/docker-01/install.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/docker-01/install.png?raw=true)
 
 ### Start Docker
 Sebelum memulai docker, anda harus start service docker terlebih dahulu, dan pastikan docker dalam kondisi running:
@@ -42,8 +44,10 @@ sudo systemctl start docker
 sudo systemctl enable docker
 sudo systemctl status docker
 ```
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/docker-01/status%20docker.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/docker-01/status%20docker.png?raw=true)
 
 Jika sudah running, kita coba jalankan `docker info` dan didapatkan:
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/docker-01/docker%20info.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/docker-01/docker%20info.png?raw=true)
 
 Artinya docker hanya dapat berjalan dalam kondisi root. Untuk menjalankan docker dalam mode user biasa. maka kita harus menambahkan user tersebut kedalam docker group:
 ```
@@ -51,11 +55,12 @@ sudo su
 gpasswd -a user docker
 ```
 `Note: user diganti dengan username anda`
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/docker-01/docker%20group.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/docker-01/docker%20group.png?raw=true)
 
 Jangan lupa untuk re-login untuk apply perubahan.
 
 Maka ketika kita akses `docker info` dengan user biasa akan mendapatkan result seperti ini:
-
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/docker-01/docker%20info2.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/docker-01/docker%20info2.png?raw=true)
 
 ### Using docker on Arch Linux
 Coobalah dengan menjalankan perintah-perintah docker, anda dapat melihatnya dengan perintah:
@@ -66,6 +71,7 @@ Akan ada banyak command docker, salah satunya adalah `docker pull`, docker pull 
 ```
 docker pull ubuntu:18.04
 ```
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/docker-01/docker%20pull.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/docker-01/docker%20pull.png?raw=true)
 
 Perintah diatas akan mendownload images ubuntu dengan tag 18.04, anda dapat melihat berbagai images di [https://hub.docker.com](Docker Hub).
 
