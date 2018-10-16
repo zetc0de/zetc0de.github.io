@@ -75,5 +75,11 @@ docker pull ubuntu:18.04
 
 Perintah diatas akan mendownload images ubuntu dengan tag 18.04, anda dapat melihat berbagai images di [https://hub.docker.com](Docker Hub).
 
+Untuk melihat semua images yang kita miliki, gunakan perintah:
+```
+docker images
+```
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/docker-01/docker%20images.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/docker-01/docker%20images.png?raw=true)
+
 
 
