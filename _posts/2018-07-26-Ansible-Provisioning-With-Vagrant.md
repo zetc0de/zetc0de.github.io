@@ -38,3 +38,6 @@ Pastikan vm02 dalam kondisi running, untuk provisioning kali ini kita akan coba 
 vagrant provision vm02
 ``` 
 ![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-04/provisioning.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-04/provisioning.png?raw=true)
+
+Dari provisioning diatas kita akan mendapatkan result sebagai berikut:
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-04/result.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-04/result.png?raw=true)
