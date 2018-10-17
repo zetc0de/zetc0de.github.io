@@ -148,7 +148,7 @@ vagrant package --base zetc0de-ubuntu-vm
 - Import Box and Testing
 
 ```
-vagrant box add ubuntu-[nama]-1804 package.box
+vagrant box add ubuntu-zetc0de-1804 package.box
 
 mkdir ~/Vagrant/box-ku/
 cd  ~/Vagrant/box-ku/
