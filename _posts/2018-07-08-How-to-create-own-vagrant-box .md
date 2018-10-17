@@ -141,7 +141,7 @@ tekan 'CTRL+d' untuk exit dari terminal.
 
 Balik ke terminal komputer.
 ```
-vagrant package --base nama-ubuntu-vm
+vagrant package --base zetc0de-ubuntu-vm
 ```
 ![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/packaging.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/packaging.png?raw=true)
 
@@ -150,10 +150,10 @@ vagrant package --base nama-ubuntu-vm
 ```
 vagrant box add ubuntu-[nama]-1804 package.box
 
-mkdir ~/Vagrant/box-[nama]/
-cd  ~/Vagrant/box-[nama]/
+mkdir ~/Vagrant/box-ku/
+cd  ~/Vagrant/box-ku/
 
-vagrant init ubuntu-[nama]-1804
+vagrant init ubuntu-zetc0de-1804
 vagrant up
 ```
 Coba ssh vm tersebut.
