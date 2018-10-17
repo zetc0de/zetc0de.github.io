@@ -125,6 +125,7 @@ sudo ./VBoxLinuxAdditions.run
 ![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/guest%20addition.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/guest%20addition.png?raw=true)
 
 - Clean the Box
+
 ```
 sudo apt autoremove
 sudo apt clean
