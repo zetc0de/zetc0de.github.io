@@ -71,7 +71,7 @@ sudo su
 ### Konfigurasi key dan SSH
 
 Download vagrant key.
-
+```
 mkdir -p /home/vagrant/.ssh
 chmod 0700 /home/vagrant/.ssh
 wget --no-check-certificate \
@@ -79,7 +79,7 @@ wget --no-check-certificate \
           -O /home/vagrant/.ssh/authorized_keys
 chmod 0600 /home/vagrant/.ssh/authorized_keys
 chown -R vagrant /home/vagrant/.ssh
-
+```
 ![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/vagrant%20pub.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/vagrant%20pub.png?raw=true)
 
 - Konfigurasi ssh login dengan key.
