@@ -146,6 +146,7 @@ vagrant package --base nama-ubuntu-vm
 ![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/packaging.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/packaging.png?raw=true)
 
 - Import Box and Testing
+
 ```
 vagrant box add ubuntu-[nama]-1804 package.box
 
@@ -156,6 +157,7 @@ vagrant init ubuntu-[nama]-1804
 vagrant up
 ```
 Coba ssh vm tersebut.
+
 ```
 vagrant ssh
 ```
