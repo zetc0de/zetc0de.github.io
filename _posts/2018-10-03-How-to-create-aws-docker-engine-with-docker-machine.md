@@ -4,6 +4,7 @@ title: "How to create AWS Docker Engine with Docker Machine"
 date: 2018-10-03
 categories: virtualization,docker
 ---
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/machine.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/machine.png?raw=true)
 
 Instalasi Docker tidak akan kita bahas panjang lebar, karena cara dan langkah-langkahnya bisa berubah-ubah seiring waktu. Silahkan lihat dokumentasi di website docker.
 
@@ -23,6 +24,7 @@ Setelah instalasi selesai, pastikan kita bisa menjalankan perintah berikut di co
 docker -v
 docker-machine -v
 ```
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/install%20docker-docker-machine.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/install%20docker-docker-machine.png?raw=true)
 
 Dengan kedua aplikasi tersebut, kita sudah bisa bermain-main dengan Docker. Sebagian besar tutorial di internet mengajarkan kita untuk menjalankan docker di laptop kita sendiri. Akan tetapi, saya tidak menganjurkan Anda untuk melakukannya. Proses pembuatan image docker sangat rakus internet. Sekali membuat image, dia akan mendownload beratus-ratus megabytes. Ini tidak masalah kalau koneksi internet kita kencang dan bebas kuota.
 
@@ -37,11 +39,35 @@ Docker mendukung berbagai cloud services, diantaranya:
 
 Kali ini kita akan gunakan cloud provider AWS yang ada trialnya.
 
+Sebelum memulainya, setup credential AWS dilocal dengan cara:
+```
+mkdir ~/.aws
+vim ~/.aws/credentials
+```
+Isikan dengan variables berikut:
+```
+[default]
+aws_access_key_id = AKIAJSXHGFLJHVBRGLPQ33JANXVA
+aws_secret_access_key = TvtFYTFczdTiK4mKn3UzJHGHWJUGUF03QTVeTqnYTuRH3oAccqnI
+```
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/set%20credential.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/set%20credential.png?raw=true)
+
+**Dari manakah aws_access_key_id dan aws_sevcret_access_id?***
+
+Ikuti gambar dibawah ini:
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/menu%20security%20credentials.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/menu%20security%20credentials.png?raw=true)
+Lalu:
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/create%20security%20credentials.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/create%20security%20credentials.png?raw=true)
+
+Jika setting credential AWS sudah dilakukan, maka kita mulai create docker engine nya:
+
 ```
 docker-machine create --driver amazonec2 --amazonec2-region "us-east-1" coba-aws
 ```
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/create%20engine.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/create%20engine.png?raw=true)
 Masuk ke AWS console maka akan terlihat instance baru yang telah kita buat tadi:
 
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/created%20instance.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/created%20instance.png?raw=true)
 
 Cek apakah docker-machine kita sudah aktive atau belum:
 ```
@@ -59,6 +85,8 @@ eval $(docker-machine env coba-aws)
 ```
 Cek kembali apakah sudah aktive dengan perintah `docker-machine active`
 
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/activate%20engine.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/activate%20engine.png?raw=true)
+
 Jika telah active, kita coba menjalankan `hello-world` pada docker engine kita.
 ```
 docker run hello-world
@@ -66,5 +94,5 @@ docker run hello-world
 
 Maka ketika kita cek di sisi server akkan terlihat container hello-world sedang dalam keadaan `running`.
 
-
+![https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/container%20on%20aws%20engine.png?raw=true](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/container%20on%20aws%20engine.png?raw=true)
 
