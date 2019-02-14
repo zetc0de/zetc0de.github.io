@@ -4,7 +4,7 @@ title: "[Bug Bounty] RCE and XSS on Netpurifier Private Bug Bounty"
 date: 2019-02-14 07:00
 categories: bugbounty
 ---
-<div align="center">
+<div align="center" background="black">
     <img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/BugBounty/netpurifier/logo.png?raw=true">
 </div>
 
@@ -20,6 +20,7 @@ Disana terdapat beberapa port yang open, saya tertarik dengan port 8010. Pada sa
 <div align="center">
     <img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/BugBounty/netpurifier/2019-02-14%2009_34_57-siti@master_%20~.png?raw=true">
 </div>
+
 
 Saat saya buka trust.netpurifier.id:8010, disana terdapat form login yang setelah saya tanyakan credentialnya menggunakan user dan password public:public. Disana terdapat beberapa menu (lupa screenshot). 
 
