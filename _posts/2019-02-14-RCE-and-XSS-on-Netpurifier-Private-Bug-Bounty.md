@@ -4,7 +4,7 @@ title: "[Bug Bounty] RCE and XSS on Netpurifier Private Bug Bounty"
 date: 2019-02-14 07:00
 categories: bugbounty
 ---
-<div align="center" background="black">
+<div align="center" style="background-color:black">
     <img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/BugBounty/netpurifier/logo.png?raw=true">
 </div>
 
