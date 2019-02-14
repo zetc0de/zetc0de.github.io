@@ -68,5 +68,10 @@ RIP SS :v
 - Rewarded
 `
 
-Reference:
+### <b>Reference:</b>
 - https://medium.com/@uranium238/getting-a-rce-ctf-way-2fd612fb643f
+
+### <b>Thanks:</b>
+- Ngesec
+- Surabaya Hacker Link
+- You!
