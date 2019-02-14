@@ -62,9 +62,9 @@ RIP SS :v
 
 
 
-- 11 February Send Report
-- 12 February Valoidation
-- 13 February disclose
+- 12 February Send Report
+- 13 February Validation
+- 14 February disclose
 - Rewarded
 
 
