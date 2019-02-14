@@ -52,8 +52,9 @@ Saya masukin request ke repeater di burp, lalu saya masukin payload `cat /etc/pa
 <div align="center">
     <img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/BugBounty/netpurifier/RCE/2019-02-11%2023_29_29-siti@master_%20~_exploit.png?raw=true">
 </div>
-Lalu saya buat shell php dan eksekusi ls -lah:
+Lalu saya buat shell php dan eksekusi ls -lah, dan selebihnya saya dapat explorasi server lebih dalam:
 
+RIP SS :v 
 <div align="center">
     <img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/BugBounty/netpurifier/RCE/IMG_0167.JPG?raw=true">
 </div>
