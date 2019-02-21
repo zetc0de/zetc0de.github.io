@@ -6,7 +6,7 @@ categories: bugbounty
 ---
 
 ### <b>Prolog</b>
-Diberikan 2 alamat yang masuk dalam scope, yaitu  sub.[redacted].id dan subdomain.[redacted].id, ternyata 2 domain tersebut terdapat dalam 1 server dengan aplikasi yang serupa, jadi total ada 6 vuln yang saya temukan.
+Lagi naik KRL dari Tangerang-Jakarta, sambil main HP tiba-tiba ada email undangan private program di [Cyber Army](https://www.cyberarmy.id/),langsung cuz klik terima. Malamnya gw lihat detail programnya, disana diberikan 2 alamat yang masuk dalam scope, yaitu  sub.[redacted].id dan subdomain.[redacted].id, ternyata 2 domain tersebut terdapat dalam 1 server dengan aplikasi yang serupa, jadi total ada 6 vuln yang saya temukan.
 - 4 XSS
 - 2 RCE
 
