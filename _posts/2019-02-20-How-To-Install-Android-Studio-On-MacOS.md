@@ -24,28 +24,32 @@ Download terlebih dahulu berkas .dmg Android Studio [disini](https://developer.a
 
 Setelah selesai didownload, buka file .dmg nya untuk dimount oleh os. Akan terbuka jendela aplikasi, kamu cukup menyeret dengan drag and drop aplikasi android studionya ke Applications. 
  
-!(Install Android Studio)[]
+![Install Android Studio](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/mobiledev/installAS/1-2.png?raw=true)
 
 Sekarang Android Studio telah terpasang, namun kamu perlu memerlukan beberapa setup awal sebelum dapat menggunakan Android Studio. Buka aplikasi Android Studio dalam folder Applications. Kamu akan melihat jendela seperti berikut, jika kamu belum pernah membuat project apapun kamu bisa memilih pilihan kedua
 
-!()[]
+![](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/mobiledev/installAS/2-2.png?raw=true)
 
 Jendela Setup Wizard Android Studio akan terbuka, klik Next
 
-!()[]
+![](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/mobiledev/installAS/3-2.png?raw=true)
 
 Untuk setup awal direkomendasikan agar kamu memilih pengataturan Standard
 
-!()[]
+![](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/mobiledev/installAS/4-2.png?raw=true)
 
 Android Studio akan memverifikasi pilihan yang sudah kamu pilih. Android Studio akan membutuhkan komponen SDK yang harus di-download. Kamu bisa melihat total download seperti gambar berikut yaitu sebesar 453 MB, pastikan Mac kamu tetap terhubung ke internet
 
-!()[]
+![](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/mobiledev/installAS/5-2.png?raw=true)
 
 Android Studio akan memulai men-download komponenen SDK yang dibutuhkan
 
-!()[]
+![](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/mobiledev/installAS/Screenshot%20at%20Feb%2020%2020-27-12.png?raw=true)
 
 Jika download komponenen sudah selesai kamu bisa klik Finish
 
-!()[]
+![](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/mobiledev/installAS/Screenshot%20at%20Feb%2020%2020-30-15.png?raw=true)
+
+### References
+- [https://chromplex.com](https://chromplex.com/memasang-android-studio-pada-sistem-operasi-macos/)
+- [https://developer.android.com](https://developer.android.com/studio/index.html?hl=id)
