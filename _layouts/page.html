@@ -4,8 +4,8 @@ layout: default
 <div class="well">
     {% if page.subtitle %}
     <h4 class="home-subtitle">{{ page.subtitle }}</h4>
-    <meta name="keywords" content="#{{ page.subtitle }}">
-    <meta name="description" content="#{{ page.subtitle }}">
+    <meta name="keywords" content="{{ page.subtitle }}">
+    <meta name="description" content="{{ page.subtitle }}">
     {% endif %}
     <div>
     	{{ content }}
