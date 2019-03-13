@@ -5,7 +5,7 @@ date: 2019-03-7
 categories: mobiledev
 ---
 
-![]()
+![](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/mobiledev/activity/android.png?raw=true)
 ### Introduction
 Activity adalah komponen yang dapat dilihat oleh pengguna, sehingga mereka dapat berinteraksi dengan aplikasi.
 Bila dibandingkan dengan aplikasi web dan desktop, Activity sama seperti halaman dan form.
@@ -16,7 +16,7 @@ Activity memiliki siklus hidup (lifecycle) yang merupakan kondisi yang akan dial
 
 Ada beberapa kondisi yang akan dialami oleh Activity seperti yang tergambar pada flow chart berikut ini.
 
-![]()
+![](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/mobiledev/activity/siklus-hidup-activity.png?raw=true)
 
 Penjelasannya:
 
@@ -30,13 +30,12 @@ Penjelasannya:
 
 ### Membuat Proyek Baru
 Silahkan membuat project baru dengan nama <b>Tugas Activity</b>
-![]()
+![](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/mobiledev/activity/1.png?raw=true)
 
 Kemudian pilih jenis Activity yang akan dibuat,kita pilih Empty Activity.
-![]()
+![](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/mobiledev/activity/2.png?raw=true)
 
 Setelah itu isikan nama activitynya, saya akan isi dengan MainActivity.
-![]()
 
 Tunggu beberapa saat, project kita sedang dibuat.
 
@@ -78,7 +77,7 @@ Silahkan buka activity_main.xml, kemudian pastikan sesuai dengan code dibawah in
 </LinearLayout>
 ```
 Maka sekarang kita memiliki 2 tombol,
-![]()
+![](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/mobiledev/activity/3.png?raw=true)
 
 
 Setelah itu, silahkan buka MainActivity.java, dan pastikan sesuai dengan kode berikut:
@@ -162,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 ```
 Setelah itu silahkan coba jalankan aplikasi dari menu run->Run(App)...
-![]()
+![](https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/mobiledev/activity/2019-03-13%2007.12.49.gif?raw=true)
 
 
 ### References
