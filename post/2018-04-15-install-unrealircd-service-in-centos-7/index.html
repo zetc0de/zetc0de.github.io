@@ -98,53 +98,52 @@
 <blockquote>
 <p>cp ~/unrealircd/conf/examples/example.conf ~/unrealircd/conf/unrealircd.conf</p>
 </blockquote>
-<p>Kemudian konfigurasi file unrealircd.conf sesuai kebutuhan, aku konfig bagian-bagian dibawah ini :
-{% highlight ruby %}
-59 me {
-60         name &ldquo;irc.random.io&rdquo;;
-61         info &ldquo;IRC RANDOM&rdquo;;
-62         sid &ldquo;001&rdquo;;</p>
-<p>68 admin {
-69         &ldquo;zetc0de&rdquo;;
-70         &ldquo;zetc0de&rdquo;;
-71         &ldquo;<a href="mailto:zetc0de@gmail.com">zetc0de@gmail.com</a>&rdquo;;</p>
-<p>144 oper zetc0de {
+<p>Kemudian konfigurasi file unrealircd.conf sesuai kebutuhan, aku konfig bagian-bagian dibawah ini :</p>
+<pre><code> 59 me {
+ 60         name &quot;irc.random.io&quot;;
+ 61         info &quot;IRC RANDOM&quot;;
+ 62         sid &quot;001&quot;;
+</code></pre><pre><code> 68 admin {
+ 69         &quot;zetc0de&quot;;
+ 70         &quot;zetc0de&quot;;
+ 71         &quot;zetc0de@gmail.com&quot;;
+</code></pre><pre><code>144 oper zetc0de {
 145         class opers;
-146         mask <em>@</em>;
-147         password &ldquo;passwordkamu&rdquo;;</p>
-<p>173 /* Standard IRC port 6667 */
+146         mask *@*;
+147         password &quot;passwordkamu&quot;;
+</code></pre><pre><code>173 /* Standard IRC port 6667 */
 174 listen {
 175         ip *;
 176         port 6667;
 177 };
-178
+178 
 179 /* Standard IRC SSL/TLS port 6697 */
 180 listen {
 181         ip *;
 182         port 6697;
 183         options { ssl; };
 184 };
-185
+185 
 186 /* Special SSL/TLS servers-only port for linking */
 187 listen {
 188         ip *;
 189         port 6900; /*port untuk konekin ke service Anope*/
 190         options { ssl; serversonly; };
-191 };</p>
-<p>376 /* Network configuration */
+191 };
+</code></pre><pre><code>376 /* Network configuration */
 377 set {
-378         network-name            &ldquo;RANDOM&rdquo;;
-379         default-server          &ldquo;irc.random.io&rdquo;;
-380         services-server         &ldquo;services.random.io&rdquo;;
-381         stats-server            &ldquo;stats.random.io&rdquo;;</p>
-<p>393         cloak-keys {
-394                &ldquo;YeK47v7oa4IYH1e64y14QW6Vx6ALN4GP1p0DFlQ8CGWCe0K6jyo3cCw&rdquo;;
-395                &ldquo;3C5scCBJPDkLYSC1PID1IUjo3344K8W8p1u04Dm2X5JnP5D04JevE6OH5&rdquo;;
-396                &ldquo;dubhE01QGEOlm317i836vLme6Wcov3MI71G43iM7w2I6t12f7N&rdquo;;</p>
-<p>402 set {
-403         kline-address &ldquo;<a href="mailto:zetc0de.id@gmail.com">zetc0de.id@gmail.com</a>&rdquo;; /* e-mail or URL shown when a use    r is banned */</p>
-<p>{% endhighlight ruby %}
-Untuk gencloak bisa menggunakan perintah ini:</p>
+378         network-name            &quot;RANDOM&quot;;
+379         default-server          &quot;irc.random.io&quot;;
+380         services-server         &quot;services.random.io&quot;;
+381         stats-server            &quot;stats.random.io&quot;;
+</code></pre><pre><code>393         cloak-keys {
+394                &quot;YeK47v7oa4IYH1e64y14QW6Vx6ALN4GP1p0DFlQ8CGWCe0K6jyo3cCw&quot;;
+395                &quot;3C5scCBJPDkLYSC1PID1IUjo3344K8W8p1u04Dm2X5JnP5D04JevE6OH5&quot;;
+396                &quot;dubhE01QGEOlm317i836vLme6Wcov3MI71G43iM7w2I6t12f7N&quot;;
+</code></pre><pre><code>402 set {
+403         kline-address &quot;zetc0de.id@gmail.com&quot;; /* e-mail or URL shown when a use    r is banned */
+
+</code></pre><p>Untuk gencloak bisa menggunakan perintah ini:</p>
 <blockquote>
 <p>./unrealircd gencloak</p>
 </blockquote>
