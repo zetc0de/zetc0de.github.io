@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>IRC on zetc0de — IT Security Enthusiast</title>
-    <link>/tags/irc/</link>
+    <link>https://zetc0de.github.io/tags/irc/</link>
     <description>Recent content in IRC on zetc0de — IT Security Enthusiast</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>id-id</language>
     <copyright>Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Sun, 15 Apr 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/irc/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zetc0de.github.io/tags/irc/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>How To Install Anope Service In Centos 7</title>
-      <link>/post/2018-04-15-install-anope-service-in-centos-7-/</link>
+      <link>https://zetc0de.github.io/post/2018-04-15-install-anope-service-in-centos-7-/</link>
       <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/2018-04-15-install-anope-service-in-centos-7-/</guid>
+      <guid>https://zetc0de.github.io/post/2018-04-15-install-anope-service-in-centos-7-/</guid>
       <description>Halo, kali ini kita akan menginstall Service Anope di OS Centos 7. Pertama, kita harus install Development Tools dulu dan beberapa tools yang diperlukan,
  yum group install &amp;ldquo;Development Tools&amp;rdquo;
 yum install make cmake openssl openssl-devel
@@ -30,10 +30,10 @@ yum install make cmake openssl openssl-devel
     
     <item>
       <title>How To Install Unrealircd In Centos 7</title>
-      <link>/post/2018-04-15-install-unrealircd-service-in-centos-7/</link>
+      <link>https://zetc0de.github.io/post/2018-04-15-install-unrealircd-service-in-centos-7/</link>
       <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/2018-04-15-install-unrealircd-service-in-centos-7/</guid>
+      <guid>https://zetc0de.github.io/post/2018-04-15-install-unrealircd-service-in-centos-7/</guid>
       <description>Halo, kali ini kita akan menginstall Unrealircd di OS Centos 7. Apa itu Unrelircd ?
 UnrealIRCd adalah daemon IRC open source, awalnya berbasis pada DreamForge, dan tersedia untuk sistem operasi Unix-like dan Windows. Sejak awal pengembangan pada UnrealIRCd c. Mei 1999, banyak fitur baru yang ditambahkan dan dimodifikasi, termasuk fitur keamanan yang canggih dan perbaikan bug, dan Unrealircd menjadi server yang populer.
 Oke langsung saja,seperti biasa kita harus install Development Tools dulu dan beberapa tools yang diperlukan,</description>
