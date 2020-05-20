@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ansible on zetc0de — IT Security Enthusiast</title>
+    <link>https://zetc0de.github.io/tags/ansible/</link>
+    <description>Recent content in Ansible on zetc0de — IT Security Enthusiast</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id-id</language>
+    <copyright>Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Thu, 26 Jul 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://zetc0de.github.io/tags/ansible/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ansible Provisioning With Vagrant</title>
+      <link>https://zetc0de.github.io/post/2018-07-26-ansible-provisioning-with-vagrant/</link>
+      <pubDate>Thu, 26 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/2018-07-26-ansible-provisioning-with-vagrant/</guid>
+      <description>Melanjutkan belajar provisioning menggunakan Vagrant, mulailah dengan memuat vagrantfile:
+ config.vm.define &amp;quot;vm02&amp;quot; do |vm02| vm02.vm.box = &amp;quot;ubuntu/xenial64&amp;quot; vm02.vm.hostname = &amp;quot;vm02&amp;quot; vm02.vm.network :privat_enetwork, ip: &amp;quot;10.3.3.11&amp;quot; vm02.vm.provider &amp;quot;virtualbox&amp;quot; do |vb| vb.memory = &amp;quot;512&amp;quot; end vm02.vm.network &amp;quot;forwarded_port&amp;quot;, guest: 80, host:8002 vm02.vm.provision &amp;quot;ansible&amp;quot; do |x| x.verbose = &amp;quot;v&amp;quot; x.playbook = &amp;quot;provision/playbook.yml&amp;quot; end end Penjelasan :
+ vm02 : Nama vm kita vm02.vm.box : Menggunakan box ubuntu/xenial64 vm02.vm.hostname : Untuk setting hostname vm02.vm.network : Setting network dengan ip private dan prot forwarding.</description>
+    </item>
+    
+  </channel>
+</rss>

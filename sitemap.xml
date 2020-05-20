@@ -43,6 +43,11 @@
   </url>
   
   <url>
+    <loc>https://zetc0de.github.io/tags/aws/</loc>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://zetc0de.github.io/tags/docker/</loc>
     <lastmod>2018-10-03T00:00:00+00:00</lastmod>
   </url>
@@ -68,8 +73,23 @@
   </url>
   
   <url>
+    <loc>https://zetc0de.github.io/tags/ansible/</loc>
+    <lastmod>2018-07-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://zetc0de.github.io/post/2018-07-26-ansible-provisioning-with-vagrant/</loc>
     <lastmod>2018-07-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/tags/provisioning/</loc>
+    <lastmod>2018-07-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/tags/bash/</loc>
+    <lastmod>2018-06-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -88,13 +108,28 @@
   </url>
   
   <url>
+    <loc>https://zetc0de.github.io/tags/apache2/</loc>
+    <lastmod>2018-05-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/tags/centos-7/</loc>
+    <lastmod>2018-05-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://zetc0de.github.io/post/2018-05-07-install-apache2-dan-konfigurasi-virtualhost-di-centos-7/</loc>
     <lastmod>2018-05-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zetc0de.github.io/tags/webserver/</loc>
+    <loc>https://zetc0de.github.io/tags/web-server/</loc>
     <lastmod>2018-05-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/tags/anope/</loc>
+    <lastmod>2018-04-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -119,6 +154,11 @@
   
   <url>
     <loc>https://zetc0de.github.io/tags/openvpn/</loc>
+    <lastmod>2018-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/tags/unrealircd/</loc>
     <lastmod>2018-04-15T00:00:00+00:00</lastmod>
   </url>
   
