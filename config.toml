@@ -1,3 +1,54 @@
-baseURL = "http://example.org/"
-languageCode = "en-us"
-title = "Zet Blog"
+title = "zetc0de — IT Security Enthusiast"
+baseurl = ""
+languageCode = "id-id"
+defaultContentLanguage = "id"
+
+
+copyright = "Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved."
+theme = "npq-hugo"
+pygmentsUseClasses=true
+
+[params]
+  author = "Mas Zet"
+  description = "your description"
+  keywords = "exploit security bugbounty"
+  useAvatar = true
+  microBlogSection = "posts"
+  displayMicroBlog = true
+  displayRecent = true
+  recentMax = 5
+  mail = "zetc0de.id@gmail.com"
+  phone = "https://t.me/zetc0de"
+  formspreeID = "yourformspreeID"
+
+[menu]
+  [[menu.main]]
+    name = "home"
+    pre = "<i class=\"fas fa-home fa-sm\"></i>"
+    url = "/"
+    weight = -9 
+  [[menu.main]]
+    name = "blog"
+    pre = "<i class=\"fas fa-keyboard fa-ms\"></i>"
+    url = "/post"
+    weight = -8
+  [[menu.main]]
+    name = "tags"
+    pre = "<i class=\"fas fa-tags fa-ms\"></i>"
+    url = "/tags"
+    weight = -7 
+  [[menu.main]]
+    name = "github"
+    pre = "<i class=\"fab fa-github fa-ms\"></i>"
+    url = "https://github.com/zetc0de"
+    weight = -6 
+  [[menu.main]]
+    name = "RSS"
+    pre = "<i class=\"fas fa-rss fa-ms\"></i>"
+    url = "/index.xml"
+    weight = -4 
+  [[menu.main]]
+    name = "contact"
+    pre = "<i class=\"far fa-envelope\"></i>"
+    url = "/contact"
+    weight = -1 
