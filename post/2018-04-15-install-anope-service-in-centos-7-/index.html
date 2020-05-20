@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IT Security Enthusiast">
+    <meta name="Author" content="Mas Zet">
+    <meta name="keywords" content="Exploit | IT Security | Bug Bounty | HTB | Hacking | Pentest | Red Team">
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/syntax.css>
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>zetc0de — IT Security Enthusiast</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=https://zetc0de.github.io/><img src="https://zetc0de.github.io/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=https://zetc0de.github.io/>
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>Home</span>
+            </a>
+        
+            		
+            <a href="/post/"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>Articles</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>Tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/zetc0de"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>Github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">How To Install Anope Service In Centos 7</h1>
+    
+      
+    <nav id="TableOfContents"></nav>
+    <p><img src="/images/irc/anope/logo.png" alt="Anope"></p>
+<p>Halo, kali ini kita akan menginstall Service Anope di OS Centos 7.
+Pertama, kita harus install Development Tools dulu dan beberapa tools yang diperlukan,</p>
+<blockquote>
+<p>yum group install &ldquo;Development Tools&rdquo;</p>
+<p>yum install make cmake openssl openssl-devel</p>
+</blockquote>
+<p>Kemudian, kita download source Anope nya</p>
+<blockquote>
+<p>wget <a href="https://github.com/anope/anope/releases/download/2.0.6/anope-2.0.6-source.tar.gz">https://github.com/anope/anope/releases/download/2.0.6/anope-2.0.6-source.tar.gz</a></p>
+</blockquote>
+<p>Terus, kita extract dan masuk ke directory hasil extract tadi.</p>
+<blockquote>
+<p>tar -zxvf anope* &amp;&amp; cd anope*</p>
+</blockquote>
+<p>Lalu jalankan perintah <code>./extras</code> dan enable-kan <code>m_ssl_openssl.cpp</code></p>
+<p><img src="/images/irc/anope/m_ssl_openssl.cpp.png" alt="Open SSL"></p>
+<p>Terus <code>./Config</code> dan install anope nya menggunkan user biasa/bukan root.</p>
+<blockquote>
+<p>./Config</p>
+<p>cd build &amp;&amp; make &amp;&amp; make install</p>
+</blockquote>
+<p>Enter-enter sampe selesai.
+Seletah berhasil diinstall, maka directory anope sekarang ada di home directory <code>~/services</code> , lalu uncoment module <code>m_ssl_openssl</code> di <code>~/services/conf/modules.example.conf</code></p>
+<blockquote>
+<p>vim ~/services/conf/modules.example.conf</p>
+</blockquote>
+<p>Buat file konfigurasi Anopenya, <em>kita pake file examplenya</em></p>
+<blockquote>
+<p>cp ~/services/conf/example.conf ~/services/conf/services.conf</p>
+</blockquote>
+<p>Lalu edit file konfiurasi tadi sesuai kebutuhan. Untuk contoh, bisa lihat file konfigurasi milik saya disini <a href="/files/services.conf">services.conf</a>, kebetulan untuk aplikasi IRC yg saya gunakan adalah Unrealircd.</p>
+<p><code>Note:</code> Edit juga bagian konfigurasi link <code>unrealircd.conf</code>, sesuaikan dengan konfigurasi uplink di <code>services.conf</code>:</p>
+<pre><code>link services.mynet.org
+{
+    incoming {
+        mask 127.0.0.1;
+    };
+
+    password &quot;changemeplease&quot;;
+
+    class servers;
+};
+</code></pre><p>Serverinfo juga disesuaikan :</p>
+<pre><code class="language-serverinfo" data-lang="serverinfo">{
+    /*
+     * The hostname that Services will be seen as, it must have no conflicts with any
+     * other server names on the rest of your IRC network. Note that it does not have
+     * to be an existing hostname, just one that isn't on your network already.
+     */
+    name = &quot;127.0.0.1&quot;
+</code></pre><p>Kalau sudah beres konfigurasi, jalankan dengan perintah</p>
+<blockquote>
+<p>./services/bin/anoperc start</p>
+</blockquote>
+<p><img src="/images/irc/anope/start.png" alt="Start Anope"></p>
+<p>Sampai disini service Anope siap digunakan, sekian dan terimakasih.</p>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="https://zetc0de.github.io/post/2018-04-15-install-unrealircd-service-in-centos-7/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a href="https://zetc0de.github.io/post/2018-05-08-install-openvpn-dan-konfigurasi-di-centos-7/"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+          <div class="footer-mail">
+          <i class="far fa-envelope"></i> <a href="mailto:zetc0de.id@gmail.com">zetc0de.id@gmail.com</a> </div>
+      
+      
+      <div class="footer-phone">
+          <i class="fas fa-phone"></i> <a href="https://t.me/zetc0de" target="_blank">Telegram</a> 
+      </div>
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=https://zetc0de.github.io/js/navbutton.js></script>
+</html>

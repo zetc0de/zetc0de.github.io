@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IT Security Enthusiast">
+    <meta name="Author" content="Mas Zet">
+    <meta name="keywords" content="Exploit | IT Security | Bug Bounty | HTB | Hacking | Pentest | Red Team">
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/syntax.css>
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>zetc0de — IT Security Enthusiast</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=https://zetc0de.github.io/><img src="https://zetc0de.github.io/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=https://zetc0de.github.io/>
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>Home</span>
+            </a>
+        
+            		
+            <a href="/post/"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>Articles</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>Tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/zetc0de"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>Github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">How To Create Own Vagrant Box</h1>
+    
+      
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#install-base-os">Install Base OS</a></li>
+    <li><a href="#port-forwarding-dari-virtualbox">Port Forwarding dari Virtualbox</a></li>
+    <li><a href="#konfigurasi-dan-install-paket-yang-dibutuhkan">Konfigurasi Dan Install Paket yang dibutuhkan</a>
+      <ul>
+        <li><a href="#install-aplikasi">Install Aplikasi</a></li>
+        <li><a href="#setup-root-password">Setup Root Password</a></li>
+        <li><a href="#setup-user-vagrant">Setup user &lsquo;vagrant&rsquo;</a></li>
+        <li><a href="#konfigurasi-sudoers-user-vagrant">Konfigurasi sudoers user vagrant</a></li>
+        <li><a href="#testing-vagrant-user">Testing Vagrant user.</a></li>
+      </ul>
+    </li>
+    <li><a href="#konfigurasi-key-dan-ssh">Konfigurasi key dan SSH</a>
+      <ul>
+        <li><a href="#download-vagrant-key">Download vagrant key</a></li>
+        <li><a href="#konfigurasi-ssh-login-dengan-key">Konfigurasi ssh login dengan key.</a></li>
+        <li><a href="#update-dan-upgrade-paket">Update dan upgrade Paket</a></li>
+      </ul>
+    </li>
+    <li><a href="#installasi-guest-tools">Installasi Guest Tools</a>
+      <ul>
+        <li><a href="#install-paket-dependensi">Install Paket dependensi.</a></li>
+        <li><a href="#download-iso-virtualbox-guest-additional-ke-komputer-anda">Download ISO VirtualBox Guest Additional ke Komputer Anda</a></li>
+        <li><a href="#mount-dan-install-virtualbox-guest-additon">Mount dan Install VirtualBox guest additon</a></li>
+        <li><a href="#clean-the-box">Clean the Box</a></li>
+      </ul>
+    </li>
+    <li><a href="#packaging-box-vagrant">Packaging Box Vagrant</a></li>
+    <li><a href="#import-box-and-testing">Import Box and Testing</a></li>
+  </ul>
+</nav>
+    <p><img src="/images/vagrant05/vagrantbox.webp" alt=""></p>
+<h2 id="introduction">Introduction</h2>
+<p>Setelah beberapa kali kita mencoba menggunakan vagrant dari vagrantbox ubuntu/xenial64 yang jika kita sadari, kita menggunakan pure box dari ubuntu, alias masih kosong blong bawaan ubuntu. Mungkin kita ingin beberapa tools yg terinstall pada vm kita, seperti tools build-essential,vim,atau tools-tools keseharina kita yang tidak ada pada OS bawaan ubuntu.</p>
+<p>Untuk mengakali hal itu, kita dapan membuat vagrantbox milik kita sendiri. Dengan tool-tool kesayangan kita, kita seperti dapat membuat OS dengan tools sesuai keinginan kita sendiri.</p>
+<h2 id="install-base-os">Install Base OS</h2>
+<p>Untuk memulainya, karena kita akan menggunakan ubuntu 18.04 sebagai base box ini, maka buatlah VM dan install OS Ubuntu 18.04. Lalu masuk kedalam VM tersebut, dan buatlah user baru di vm tersebut.</p>
+<p><img src="/images/vagrant05/setuser.png" alt=""></p>
+<p>Jika sudah, login ke user tersebut dan cek versi ubuntunya:</p>
+<pre><code>cat /etc/lsb_release
+</code></pre><p><img src="/images/vagrant05/lsb-release.png" alt=""></p>
+<h2 id="port-forwarding-dari-virtualbox">Port Forwarding dari Virtualbox</h2>
+<ul>
+<li>Klik Ubuntu servernya - klik &lsquo;Settings&rsquo; button.</li>
+<li>Pada bagian &lsquo;Adapter 1&rsquo; pastikan jenis network &lsquo;NAT&rsquo;.</li>
+<li>Klik option &lsquo;Advanced&rsquo; di bawah dan klik &lsquo;Port Forwarding&rsquo;.</li>
+<li>Isikan detail Port-Forwarding :</li>
+</ul>
+<pre><code>  Name: ssh
+  Protocol: TCP
+  Host IP: kosongkan
+  Host Port: 2222
+  Guest IP: kosongkan
+  Guest Port: 22
+</code></pre><p>Klik tombol &lsquo;Ok&rsquo;, dan &lsquo;Ok&rsquo; lagi untuk save.</p>
+<p><img src="/images/vagrant05/setnat.png" alt=""></p>
+<h2 id="konfigurasi-dan-install-paket-yang-dibutuhkan">Konfigurasi Dan Install Paket yang dibutuhkan</h2>
+<p>Pada dasarnya membuat box sendiri itu karena kebutuhan kita terhadap beberapa aplikasi yang tidak ada pada box lain, atau kita ingin membuat costum box dengan aplikasi yang kita inginkan saja.</p>
+<h3 id="install-aplikasi">Install Aplikasi</h3>
+<pre><code>sudo apt update
+sudo apt install vim git unzip net-tools wget
+</code></pre><h3 id="setup-root-password">Setup Root Password</h3>
+<pre><code>sudo passwd root
+</code></pre><h3 id="setup-user-vagrant">Setup user &lsquo;vagrant&rsquo;</h3>
+<pre><code>useradd -m -s /bin/bash vagrant
+passwd vagrant
+</code></pre><p>Beri password &lsquo;vargant&rsquo;.</p>
+<h3 id="konfigurasi-sudoers-user-vagrant">Konfigurasi sudoers user vagrant</h3>
+<pre><code>sudo vim /etc/sudoers.d/vagrant
+</code></pre><p>Paste konfigurasi berikut.</p>
+<pre><code># add vagrant user
+vagrant ALL=(ALL) NOPASSWD:ALL
+</code></pre><h3 id="testing-vagrant-user">Testing Vagrant user.</h3>
+<pre><code>su - vagrant
+sudo su
+</code></pre><p><img src="/images/vagrant05/sudosu.png" alt=""></p>
+<h2 id="konfigurasi-key-dan-ssh">Konfigurasi key dan SSH</h2>
+<h3 id="download-vagrant-key">Download vagrant key</h3>
+<pre><code>mkdir -p /home/vagrant/.ssh
+chmod 0700 /home/vagrant/.ssh
+wget --no-check-certificate \
+          https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub \
+          -O /home/vagrant/.ssh/authorized_keys
+chmod 0600 /home/vagrant/.ssh/authorized_keys
+chown -R vagrant /home/vagrant/.ssh
+</code></pre><p><img src="/images/vagrant05/vagrantpub.png" alt=""></p>
+<h3 id="konfigurasi-ssh-login-dengan-key">Konfigurasi ssh login dengan key.</h3>
+<pre><code>cd /etc/ssh/
+vim sshd_config
+</code></pre><p>Ubah line seperti berikut.</p>
+<pre><code>AuthorizedKeysFile %h/.ssh/authorized_keys
+</code></pre><h3 id="update-dan-upgrade-paket">Update dan upgrade Paket</h3>
+<pre><code>sudo apt update
+sudo apt upgrade -y
+</code></pre><h2 id="installasi-guest-tools">Installasi Guest Tools</h2>
+<h3 id="install-paket-dependensi">Install Paket dependensi.</h3>
+<pre><code>export versi=$(uname -r)
+sudo apt-get install -y gcc build-essential linux-headers-$versi
+</code></pre><p><img src="/images/vagrant05/guest.png" alt=""></p>
+<h3 id="download-iso-virtualbox-guest-additional-ke-komputer-anda">Download ISO VirtualBox Guest Additional ke Komputer Anda</h3>
+<p><a href="https://download.virtualbox.org/virtualbox/5.2.18/VBoxGuestAdditions_5.2.18.iso">https://download.virtualbox.org/virtualbox/5.2.18/VBoxGuestAdditions_5.2.18.iso</a></p>
+<h3 id="mount-dan-install-virtualbox-guest-additon">Mount dan Install VirtualBox guest additon</h3>
+<p>Klik ubuntu server yang masih &lsquo;running&rsquo;, dan klik menu &lsquo;Devices&rsquo;.
+Klik &lsquo;Insert Guest Addition CD Image..&rsquo;</p>
+<p>Masuk ke ubuntu server dan mount.</p>
+<pre><code>sudo mount /dev/cdrom /mnt
+cd /mnt
+sudo ./VBoxLinuxAdditions.run
+</code></pre><p><img src="/images/vagrant05/guestad.png" alt=""></p>
+<h3 id="clean-the-box">Clean the Box</h3>
+<pre><code>sudo apt autoremove
+sudo apt clean
+
+sudo dd if=/dev/zero of=/EMPTY bs=1M
+sudo rm -f /EMPTY
+
+history -c
+tekan 'CTRL+d' untuk exit dari terminal.
+</code></pre><h2 id="packaging-box-vagrant">Packaging Box Vagrant</h2>
+<p>Balik ke terminal komputer.</p>
+<pre><code>vagrant package --base zetc0de-ubuntu-vm
+</code></pre><p><img src="/images/vagrant05/packaging.png" alt=""></p>
+<h2 id="import-box-and-testing">Import Box and Testing</h2>
+<pre><code>vagrant box add ubuntu-zetc0de-1804 package.box
+
+mkdir ~/Vagrant/box-ku/
+cd  ~/Vagrant/box-ku/
+
+vagrant init ubuntu-zetc0de-1804
+vagrant up
+</code></pre><p>Coba ssh vm tersebut.</p>
+<pre><code>vagrant ssh
+</code></pre>
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="https://zetc0de.github.io/post/2018-07-26-ansible-provisioning-with-vagrant/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a href="https://zetc0de.github.io/post/2018-09-03-how-to-install-docker-in-arch-linux/"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+          <div class="footer-mail">
+          <i class="far fa-envelope"></i> <a href="mailto:zetc0de.id@gmail.com">zetc0de.id@gmail.com</a> </div>
+      
+      
+      <div class="footer-phone">
+          <i class="fas fa-phone"></i> <a href="https://t.me/zetc0de" target="_blank">Telegram</a> 
+      </div>
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=https://zetc0de.github.io/js/navbutton.js></script>
+</html>

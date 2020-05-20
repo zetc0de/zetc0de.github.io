@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Anope on zetc0de — IT Security Enthusiast</title>
+    <link>https://zetc0de.github.io/tags/anope/</link>
+    <description>Recent content in Anope on zetc0de — IT Security Enthusiast</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id-id</language>
+    <copyright>Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Sun, 15 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://zetc0de.github.io/tags/anope/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How To Install Anope Service In Centos 7</title>
+      <link>https://zetc0de.github.io/post/2018-04-15-install-anope-service-in-centos-7-/</link>
+      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/2018-04-15-install-anope-service-in-centos-7-/</guid>
+      <description>Halo, kali ini kita akan menginstall Service Anope di OS Centos 7. Pertama, kita harus install Development Tools dulu dan beberapa tools yang diperlukan,
+ yum group install &amp;ldquo;Development Tools&amp;rdquo;
+yum install make cmake openssl openssl-devel
+ Kemudian, kita download source Anope nya
+ wget https://github.com/anope/anope/releases/download/2.0.6/anope-2.0.6-source.tar.gz
+ Terus, kita extract dan masuk ke directory hasil extract tadi.
+ tar -zxvf anope* &amp;amp;&amp;amp; cd anope*
+ Lalu jalankan perintah ./extras dan enable-kan m_ssl_openssl.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IT Security Enthusiast">
+    <meta name="Author" content="Mas Zet">
+    <meta name="keywords" content="Exploit | IT Security | Bug Bounty | HTB | Hacking | Pentest | Red Team">
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/syntax.css>
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>zetc0de — IT Security Enthusiast</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=https://zetc0de.github.io/><img src="https://zetc0de.github.io/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=https://zetc0de.github.io/>
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>Home</span>
+            </a>
+        
+            		
+            <a href="/post/"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>Articles</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>Tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/zetc0de"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>Github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">Bash Provisioning With Vagrant</h1>
+    
+      
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#vagrant-file">Vagrant File</a></li>
+    <li><a href="#provisioning-lamp-stack">Provisioning LAMP STACK</a></li>
+    <li><a href="#result">Result</a></li>
+  </ul>
+</nav>
+    <p><img src="/images/vagrant03/bash.png" alt=""></p>
+<h2 id="introduction">Introduction</h2>
+<p>Sebagai DevOps, kita tidak terlepas dengan yang namanya <strong>Provisioning</strong>, saya tidak akan menjelaskan lebih detail makna provisioning itu sendiri, tapi disini kita akan mencoba bash provisioning pada Virtual Mechine menggunakan Vagrant. Langsung saja, siapkan 1 vm atau lebih mengguanan vagrant.</p>
+<pre><code>mkdir -p ~/Vagrant/vagrant-provbash
+cd ~/Vagrant/vagrant-provbash
+</code></pre>
+<h2 id="vagrant-file">Vagrant File</h2>
+<p>Lalu buatlah sebuah vagrantfile dengan config:</p>
+<pre><code># Inisialisasi Vagrantfile configuration
+Vagrant.configure(&quot;2&quot;) do |config|
+
+  # definisikan vm01
+  config.vm.define &quot;vm01&quot; do |vm01|
+      vm01.vm.box = &quot;ubuntu/xenial64&quot;
+      vm01.vm.hostname = &quot;serverku&quot;
+      vm01.vm.network :private_network, ip: &quot;10.3.3.15&quot;
+      vm01.vm.provision &quot;shell&quot;, path: &quot;lamp.sh&quot;
+      vm01.vm.provider &quot;virtualbox&quot; do |vb|
+        vb.memory = &quot;512&quot;
+      end
+      vm01.vm.network &quot;forwarded_port&quot;, guest: 80, host:3000
+  end
+
+end
+</code></pre><p><strong>Penjelasan :</strong></p>
+<ul>
+<li>Menggunakan box ubuntu/xenial64</li>
+<li>Dengan hostname <strong>serverku</strong></li>
+<li>Mengguanakn private network dengan ip 10.3.3.15</li>
+<li>Menggunakan provision <strong>bash</strong>, ada banyak opsi untuk provision, kita akan mengguanakn bash pada case ini.</li>
+<li>Path : Tempat script bash berada.</li>
+<li>Dengan provider virtualbox, RAM 512 MB.</li>
+<li>Port fordward ke host 3000.</li>
+<li>Anda dapat menambah vm sendiri, tinggal copas config yg ada dengan nama vm yg berbeda, misal vm02,vm03,dst.</li>
+</ul>
+<h2 id="provisioning-lamp-stack">Provisioning LAMP STACK</h2>
+<p>Pada case kali ini kita akan coba provisioning LAMP STACK menggunakan bash. Buatlah file <code>lamp.sh</code> pada directory yg sama, isikan script berikut:</p>
+<pre><code>#!/bin/bash
+
+export DEBIAN_FRONTEND=&quot;noninteractive&quot;
+password=&quot;toor&quot;
+sudo su
+apt update
+debconf-set-selections &lt;&lt;&lt; &quot;mysql-server mysql-server/root_password password $password&quot;
+debconf-set-selections &lt;&lt;&lt; &quot;mysql-server mysql-server/root_password_again password $password&quot;
+apt install -y apache2 mysql-server libapache2-mod-fastcgi php7.0-fpm php7.0 
+echo &quot;&lt;?php phpinfo(); ?&gt;&quot; &gt; /var/www/html/index.php
+a2enmod actions
+
+rm /etc/apache2/sites-available/000-default.conf 
+wget https://gist.githubusercontent.com/zetc0de/b0e54218db3f77fc328218f3a20894f1/raw/73a13cd240e3630edaf57975c36737ed5f29e832/000-default.conf -O /etc/apache2/sites-available/000-default.conf ufw allow http
+
+systemctl restart apache2
+systemctl restart mysql 
+echo -e &quot;-------------------------------&quot;
+echo -e &quot;-[ https://zetc0de.github.io ]-&quot;
+echo -e &quot;-------------------------------&quot;
+</code></pre><p>Jangan lupa untuk memberi hak akses execute pada filenya :</p>
+<pre><code>chmod +x lamp.sh
+</code></pre><p>Lalu jalankan vm01 dan pastikan vm01 telah running dengan perintah:</p>
+<pre><code>vagrant up vm01
+vagrant status vm01
+</code></pre><p>Kemudian saatnya provisioning, gunakan perintah:</p>
+<pre><code>vagrant provisioning vm01
+</code></pre><p><img src="/images/vagrant03/vagrantpro.png" alt=""></p>
+<p>Maka akan terlihat proses provisioning vm01 dengan script bash. Dengan provisioning kita dimudahkan untuk mensetup banyak server dengan sekali kerja. Bayangkan jika anda diminta untuk mensetup 1000 server? Menarik bukan? :)</p>
+<h2 id="result">Result</h2>
+<p>Anda dapat melihat hasil dari provisioning tadi dengan mengakses 127.0.0.1:3000 di browser anda.</p>
+<p><img src="/images/vagrant03/result.png" alt=""></p>
+<p>Terlihat apache,mysql,dan php-fpm kita sudah dalam kondisi running. :)</p>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="https://zetc0de.github.io/post/2018-06-10-create-multiple-vm-with-one-vagrantfile/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a href="https://zetc0de.github.io/post/2018-07-26-ansible-provisioning-with-vagrant/"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+          <div class="footer-mail">
+          <i class="far fa-envelope"></i> <a href="mailto:zetc0de.id@gmail.com">zetc0de.id@gmail.com</a> </div>
+      
+      
+      <div class="footer-phone">
+          <i class="fas fa-phone"></i> <a href="https://t.me/zetc0de" target="_blank">Telegram</a> 
+      </div>
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=https://zetc0de.github.io/js/navbutton.js></script>
+</html>
