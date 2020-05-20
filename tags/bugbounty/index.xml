@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>bugbounty on zetc0de — IT Security Enthusiast</title>
+    <title>BugBounty on zetc0de — IT Security Enthusiast</title>
     <link>/tags/bugbounty/</link>
-    <description>Recent content in bugbounty on zetc0de — IT Security Enthusiast</description>
+    <description>Recent content in BugBounty on zetc0de — IT Security Enthusiast</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>id-id</language>
     <copyright>Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
@@ -13,7 +13,7 @@
     
     
     <item>
-      <title>[Bug Bounty] RCE and XSS on Private Program Cyber Army ID</title>
+      <title>[Bug Bounty] RCE and XSS On Private Program Cyber Army ID</title>
       <link>/post/2019-02-14-rce-and-xss-on-private-program-cyber-army/</link>
       <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
       

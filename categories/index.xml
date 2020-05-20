@@ -7,55 +7,9 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>id-id</language>
     <copyright>Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Wed, 03 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>virtualization</title>
-      <link>/categories/virtualization/</link>
-      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/virtualization/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>webserver</title>
-      <link>/categories/webserver/</link>
-      <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/webserver/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>anope</title>
-      <link>/categories/anope/</link>
-      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/anope/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>openvpn</title>
-      <link>/categories/openvpn/</link>
-      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/openvpn/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>unrealircd</title>
-      <link>/categories/unrealircd/</link>
-      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/unrealircd/</guid>
-      <description></description>
-    </item>
     
   </channel>
 </rss>

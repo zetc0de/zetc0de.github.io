@@ -13,7 +13,7 @@
     
     
     <item>
-      <title>[Bug Bounty] RCE and XSS on Private Program Cyber Army ID</title>
+      <title>[Bug Bounty] RCE and XSS On Private Program Cyber Army ID</title>
       <link>/post/2019-02-14-rce-and-xss-on-private-program-cyber-army/</link>
       <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
       
@@ -33,7 +33,7 @@ Terlihat disana beberapa parameter yang dikirimkan, akan tetapi disana tidak ada
     </item>
     
     <item>
-      <title>How to create AWS Docker Engine with Docker Machine</title>
+      <title>How to create AWS Docker Engine With Docker Machine</title>
       <link>/post/2018-10-03-how-to-create-aws-docker-engine-with-docker-machine/</link>
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
       
@@ -44,7 +44,7 @@ Docker Machine adalah sistem untuk mengelola docker engine. Dia bisa menginstal 
     </item>
     
     <item>
-      <title>How to install docker in Arch Linux</title>
+      <title>How To Install Docker In Arch Linux</title>
       <link>/post/2018-09-03-how-to-install-docker-in-arch-linux/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
@@ -54,7 +54,7 @@ Installasi  Enable the loop module Install docker Start and Enable Docker Using 
     </item>
     
     <item>
-      <title>How to create own vagrant box</title>
+      <title>How To Create Own Vagrant Box</title>
       <link>/post/2018-07-08-how-to-create-own-vagrant-box-/</link>
       <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
       

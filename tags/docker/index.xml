@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on zetc0de — IT Security Enthusiast</title>
+    <link>/tags/docker/</link>
+    <description>Recent content in Docker on zetc0de — IT Security Enthusiast</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id-id</language>
+    <copyright>Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Wed, 03 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to create AWS Docker Engine With Docker Machine</title>
+      <link>/post/2018-10-03-how-to-create-aws-docker-engine-with-docker-machine/</link>
+      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2018-10-03-how-to-create-aws-docker-engine-with-docker-machine/</guid>
+      <description>Instalasi Docker tidak akan kita bahas panjang lebar, karena cara dan langkah-langkahnya bisa berubah-ubah seiring waktu. Silahkan lihat dokumentasi di website docker.
+Sebaiknya instalasi dilakukan dengan koneksi internet yang mumpuni dan tidak terbatas kuota. Pada saat instalasi, kita akan mendownload image berukuran ratusan MB.
+Docker Machine adalah sistem untuk mengelola docker engine. Dia bisa menginstal engine baru di berbagai target. Saat ini dia mendukung VirtualBox, Digital Ocean, dan Amazon. Dengan Docker Machine, kita bisa membuat dan menjalankan container dengan docker client, dan hasilnya container kita berjalan di local (dengan VirtualBox) atau di cloud (dengan DigitalOcean atau Amazon).</description>
+    </item>
+    
+    <item>
+      <title>How To Install Docker In Arch Linux</title>
+      <link>/post/2018-09-03-how-to-install-docker-in-arch-linux/</link>
+      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2018-09-03-how-to-install-docker-in-arch-linux/</guid>
+      <description>Introduction Docker adalah salah satu platform yang dibangun berdasarkan teknologi container. Docker merupakan sebuah project open-source yang menyediakan platform terbuka untuk developer maupun sysadmin untuk membangun,mengemas,dan menjalankan aplikasi dimanapun sebagai sebuah wadah(container) yang ringan. Dengan sangat populernya docker, sebagian orang sering menganggap docker adalah sebutan lain dari container. (codepolitan)
+Installasi  Enable the loop module Install docker Start and Enable Docker Using docker on Arch Linux  Enable The Loop Module Cek module loop:</description>
+    </item>
+    
+  </channel>
+</rss>

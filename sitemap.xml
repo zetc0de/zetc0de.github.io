@@ -33,17 +33,12 @@
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>/tags/docker/</loc>
     <lastmod>2018-10-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/post/2018-10-03-how-to-create-aws-docker-engine-with-docker-machine/</loc>
-    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/virtualization/</loc>
     <lastmod>2018-10-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -54,6 +49,11 @@
   
   <url>
     <loc>/post/2018-07-08-how-to-create-own-vagrant-box-/</loc>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/vagrant/</loc>
     <lastmod>2018-07-30T00:00:00+00:00</lastmod>
   </url>
   
@@ -83,13 +83,8 @@
   </url>
   
   <url>
-    <loc>/categories/webserver/</loc>
+    <loc>/tags/webserver/</loc>
     <lastmod>2018-05-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/anope/</loc>
-    <lastmod>2018-04-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -108,18 +103,22 @@
   </url>
   
   <url>
-    <loc>/categories/openvpn/</loc>
+    <loc>/tags/irc/</loc>
     <lastmod>2018-04-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/unrealircd/</loc>
+    <loc>/tags/openvpn/</loc>
     <lastmod>2018-04-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/post/2018-04-15-welcome-to-my-blog/</loc>
     <lastmod>2018-04-01T09:20:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
   </url>
   
   <url>

@@ -13,11 +13,56 @@
     
     
     <item>
-      <title>bugbounty</title>
+      <title>BugBounty</title>
       <link>/tags/bugbounty/</link>
       <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/bugbounty/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>/tags/docker/</link>
+      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vagrant</title>
+      <link>/tags/vagrant/</link>
+      <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/vagrant/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Webserver</title>
+      <link>/tags/webserver/</link>
+      <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/webserver/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>IRC</title>
+      <link>/tags/irc/</link>
+      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/irc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OpenVPN</title>
+      <link>/tags/openvpn/</link>
+      <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/openvpn/</guid>
       <description></description>
     </item>
     
