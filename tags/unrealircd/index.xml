@@ -6,7 +6,7 @@
     <description>Recent content in Unrealircd on zetc0de — IT Security Enthusiast</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>id-id</language>
-    <copyright>Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <copyright>Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Sun, 15 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://zetc0de.github.io/tags/unrealircd/index.xml" rel="self" type="application/rss+xml" />
@@ -19,8 +19,8 @@
       
       <guid>https://zetc0de.github.io/post/2018-04-15-install-unrealircd-service-in-centos-7/</guid>
       <description>Halo, kali ini kita akan menginstall Unrealircd di OS Centos 7.
-UnrealIRCd adalah daemon IRC open source, awalnya berbasis pada DreamForge, dan tersedia untuk sistem operasi Unix-like dan Windows. Sejak awal pengembangan pada UnrealIRCd c. Mei 1999, banyak fitur baru yang ditambahkan dan dimodifikasi, termasuk fitur keamanan yang canggih dan perbaikan bug, dan Unrealircd menjadi server yang populer.
-Oke langsung saja,seperti biasa kita harus install Development Tools dulu dan beberapa tools yang diperlukan,</description>
+Introduction UnrealIRCd adalah daemon IRC open source, awalnya berbasis pada DreamForge, dan tersedia untuk sistem operasi Unix-like dan Windows. Sejak awal pengembangan pada UnrealIRCd c. Mei 1999, banyak fitur baru yang ditambahkan dan dimodifikasi, termasuk fitur keamanan yang canggih dan perbaikan bug, dan Unrealircd menjadi server yang populer.
+Installation Oke langsung saja,seperti biasa kita harus install Development Tools dulu dan beberapa tools yang diperlukan,</description>
     </item>
     
   </channel>

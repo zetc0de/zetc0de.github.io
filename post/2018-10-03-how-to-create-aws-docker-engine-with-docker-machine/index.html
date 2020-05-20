@@ -76,25 +76,26 @@
       
     <nav id="TableOfContents">
   <ul>
-    <li>
-      <ul>
-        <li><a href="#install-docker-machine">Install docker-machine</a></li>
-      </ul>
-    </li>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#install-docker-machine">Install docker-machine</a></li>
+    <li><a href="#using-aws-cloud-service">Using AWS Cloud Service</a></li>
+    <li><a href="#create-docker-engine">Create Docker Engine</a></li>
+    <li><a href="#testing-docker-engine">Testing Docker Engine</a></li>
   </ul>
 </nav>
-    <p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/machine.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/machine.png?raw=true"></p>
+    <p><img src="/images/docker02/machine.png" alt=""></p>
+<h2 id="introduction">Introduction</h2>
 <p>Instalasi Docker tidak akan kita bahas panjang lebar, karena cara dan langkah-langkahnya bisa berubah-ubah seiring waktu. Silahkan lihat dokumentasi di website docker.</p>
 <p>Sebaiknya instalasi dilakukan dengan koneksi internet yang mumpuni dan tidak terbatas kuota. Pada saat instalasi, kita akan mendownload image berukuran ratusan MB.</p>
 <p>Docker Machine adalah sistem untuk mengelola docker engine. Dia bisa menginstal engine baru di berbagai target. Saat ini dia mendukung VirtualBox, Digital Ocean, dan Amazon. Dengan Docker Machine, kita bisa membuat dan menjalankan container dengan docker client, dan hasilnya container kita berjalan di local (dengan VirtualBox) atau di cloud (dengan DigitalOcean atau Amazon).</p>
-<h3 id="install-docker-machine">Install docker-machine</h3>
+<h2 id="install-docker-machine">Install docker-machine</h2>
 <pre><code>curl -L https://github.com/docker/machine/releases/download/v0.13.0/docker-machine-`uname -s`-`uname -m` &gt;/tmp/docker-machine &amp;&amp; \
 chmod +x /tmp/docker-machine &amp;&amp; \
 sudo cp /tmp/docker-machine /usr/local/bin/docker-machine
 </code></pre><p>Setelah instalasi selesai, pastikan kita bisa menjalankan perintah berikut di command line.</p>
 <pre><code>docker -v
 docker-machine -v
-</code></pre><p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/install%20docker-docker-machine.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/install%20docker-docker-machine.png?raw=true"></p>
+</code></pre><p><img src="/images/docker02/install.png" alt=""></p>
 <p>Dengan kedua aplikasi tersebut, kita sudah bisa bermain-main dengan Docker. Sebagian besar tutorial di internet mengajarkan kita untuk menjalankan docker di laptop kita sendiri. Akan tetapi, saya tidak menganjurkan Anda untuk melakukannya. Proses pembuatan image docker sangat rakus internet. Sekali membuat image, dia akan mendownload beratus-ratus megabytes. Ini tidak masalah kalau koneksi internet kita kencang dan bebas kuota.</p>
 <p>Untungnya, ada solusi yang lebih quota-friendly, yaitu menggunakan layanan cloud. Dengan menjalankan Docker Machine di cloud, kita menggunakan koneksi internet server virtual kita untuk membuat image. Sedangkan kuota yang kita gunakan hanya sebatas untuk koneksi SSH ke server kita.</p>
 <p>Docker mendukung berbagai cloud services, diantaranya:</p>
@@ -104,6 +105,7 @@ docker-machine -v
 <li>Digital Ocean</li>
 <li>dan sebagainya</li>
 </ul>
+<h2 id="using-aws-cloud-service">Using AWS Cloud Service</h2>
 <p>Kali ini kita akan gunakan cloud provider AWS yang ada trialnya.</p>
 <p>Sebelum memulainya, setup credential AWS dilocal dengan cara:</p>
 <pre><code>mkdir ~/.aws
@@ -112,17 +114,17 @@ vim ~/.aws/credentials
 <pre><code>[default]
 aws_access_key_id = AKIAJSXHGFLJHVBRGLPQ33JANXVA
 aws_secret_access_key = TvtFYTFczdTiK4mKn3UzJHGHWJUGUF03QTVeTqnYTuRH3oAccqnI
-</code></pre><p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/set%20credential.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/set%20credential.png?raw=true"></p>
+</code></pre><p><img src="/images/docker02/set.png" alt=""></p>
 <p><strong>Dari manakah aws_access_key_id dan aws_sevcret_access_id?</strong>*</p>
-<p>Ikuti gambar dibawah ini:
-<img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/menu%20security%20credentials.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/menu%20security%20credentials.png?raw=true">
-Lalu:
-<img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/create%20security%20credentials.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/create%20security%20credentials.png?raw=true"></p>
+<p><img src="/images/docker02/menu.png" alt=""></p>
+<p>Lalu:</p>
+<p><img src="/images/docker02/createsec.png" alt=""></p>
+<h2 id="create-docker-engine">Create Docker Engine</h2>
 <p>Jika setting credential AWS sudah dilakukan, maka kita mulai create docker engine nya:</p>
 <pre><code>docker-machine create --driver amazonec2 --amazonec2-region &quot;us-east-1&quot; coba-aws
-</code></pre><p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/create%20engine.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/create%20engine.png?raw=true">
-Masuk ke AWS console maka akan terlihat instance baru yang telah kita buat tadi:</p>
-<p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/created%20instance.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/created%20instance.png?raw=true"></p>
+</code></pre><p><img src="/images/docker02/createengine.png" alt=""></p>
+<p>Masuk ke AWS console maka akan terlihat instance baru yang telah kita buat tadi:</p>
+<p><img src="/images/docker02/instance.png" alt=""></p>
 <p>Cek apakah docker-machine kita sudah aktive atau belum:</p>
 <pre><code>docker-machine ls
 </code></pre><p>Tandanya jika docker-machine kita aktive adalah ditandai dengan asterisk(*), atau coba cek dengan perintah:</p>
@@ -131,11 +133,12 @@ Masuk ke AWS console maka akan terlihat instance baru yang telah kita buat tadi:
 <pre><code>docker-machine env coba-aws
 eval $(docker-machine env coba-aws)
 </code></pre><p>Cek kembali apakah sudah aktive dengan perintah <code>docker-machine active</code></p>
-<p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/activate%20engine.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/activate%20engine.png?raw=true"></p>
+<p><img src="/images/docker02/activeengine.png" alt=""></p>
+<h2 id="testing-docker-engine">Testing Docker Engine</h2>
 <p>Jika telah active, kita coba menjalankan <code>hello-world</code> pada docker engine kita.</p>
 <pre><code>docker run hello-world
 </code></pre><p>Maka ketika kita cek di sisi server akkan terlihat container hello-world sedang dalam keadaan <code>running</code>.</p>
-<p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/container%20on%20aws%20engine.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Docker-machine-aws/container%20on%20aws%20engine.png?raw=true"></p>
+<p><img src="/images/docker02/container.png" alt=""></p>
 
     
     <div class="nav-next-prev">
@@ -169,7 +172,7 @@ eval $(docker-machine env coba-aws)
   </div>
 
 
-<p class="copyright meta">Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</p>
+<p class="copyright meta">Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</p>
 
 </div>
 </footer></main>

@@ -74,24 +74,41 @@
     <h1 id="title">Instalasi dan Konfigurasi Dasar Vagrant</h1>
     
       
-    <nav id="TableOfContents"></nav>
-    <p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/900px-MediaWiki_Vagrant_Visualization.jpg?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/900px-MediaWiki_Vagrant_Visualization.jpg?raw=true"></p>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#vagrant-box">Vagrant Box</a></li>
+    <li><a href="#membuat-vm-dengan-vagrant-init">Membuat VM Dengan Vagrant Init</a></li>
+    <li><a href="#menjalankan-vm">Menjalankan VM</a></li>
+    <li><a href="#masuk-console-vm-dengan-vagrant-ssh">Masuk Console VM Dengan Vagrant SSH</a></li>
+  </ul>
+</nav>
+    <p><img src="/images/vagrant01/logo.jpg" alt=""></p>
+<h2 id="introduction">Introduction</h2>
+<p>Vagrant adalah sebuah software yang menggunakan teknologi virtual machine dimana kita dapat membuat lingkungan development secara portable, konsisten dan lebih fleksible.</p>
 <p>Saat ini virtualisasi menjadi penunjang bagi lingkungan development software secara modern. Dalam satu laptop kita bisa memasang berbagai sistem operasi virtual yang disesuaikan dengan server kita, sehingga kita bisa memisahkan configurasi laptop kita dengan konfigurasi server.</p>
-<p>Banyak keuntungan ketika kita menggunakan vagrant,sebagai developer sofrware akan sangat memudahkan jika menggunakan vagrant sebagai development environment yang terisolasi di virtual. Untuk memasang vagrant, caranya sangat mudah. Jika anda menggunakan OS keluarga UNIX, anda dapat memasangnya menggunakan package manager. Misalkan anda menggunakan Ubuntu:</p>
+<p>Banyak keuntungan ketika kita menggunakan vagrant,sebagai developer sofrware akan sangat memudahkan jika menggunakan vagrant sebagai development environment yang terisolasi di virtual.</p>
+<h2 id="installation">Installation</h2>
+<p>Untuk memasang vagrant, caranya sangat mudah. Jika anda menggunakan OS keluarga UNIX, anda dapat memasangnya menggunakan package manager. Misalkan anda menggunakan Ubuntu:</p>
 <pre><code>sudo apt-get install virtualbox
 sudo apt-get install vagrant
-</code></pre><p>Ketika vagrant dalam kondisi fresh install, maka kita bekum meiliki box/image untuk kita gunakan pada vagrant. Untuk itu kita download vagrant boxnya dahulu, anda dapat melihat-lihat vagrant box <a href="https://app.vagrantup.com/boxes/search">disini</a>. Saya asumsikan anda akan mendownload box ubuntu xenial:</p>
+</code></pre>
+<h2 id="vagrant-box">Vagrant Box</h2>
+<p>Ketika vagrant dalam kondisi fresh install, maka kita bekum meiliki box/image untuk kita gunakan pada vagrant. Untuk itu kita download vagrant boxnya dahulu, anda dapat melihat-lihat vagrant box <a href="https://app.vagrantup.com/boxes/search">disini</a>. Saya asumsikan anda akan mendownload box ubuntu xenial:</p>
 <pre><code>vagrant box add ubuntu/xenial64
-</code></pre><p>Anda dapat melihat box yang anda miliki dengan perintah:
-<code>vagrant box list</code></p>
-<p><img src="https://raw.githubusercontent.com/zetc0de/zetc0de.github.io/master/assets/images/Vagrant-01/box%20list2.png" alt="https://raw.githubusercontent.com/zetc0de/zetc0de.github.io/master/assets/images/Vagrant-01/box%20list2.png"></p>
-<p>Untuk memulainya, mari kita membuat directory,silahkan buat directory ditempat yang anda suka, dan jalankan <code>vagrant init ubuntu/xenial64</code> atau dengan box yang anda inginkan:</p>
+</code></pre>
+<p>Anda dapat melihat box yang anda miliki dengan perintah : <code>vagrant box list</code></p>
+<p><img src="/images/vagrant01/boxlist.png" alt=""></p>
+<h2 id="membuat-vm-dengan-vagrant-init">Membuat VM Dengan Vagrant Init</h2>
+<p>Untuk memulainya, mari kita membuat directory,silahkan buat directory ditempat yang anda suka, dan jalankan <code>vagrant init ubuntu/xenial64</code> atau dengan box yang anda inginkan :</p>
 <pre><code>mkdir -p ~/Vagrant/myubuntu
 cd ~/Vagrant/myubuntu
 vagrant init ubuntu/xenial64
-</code></pre><p><img src="https://raw.githubusercontent.com/zetc0de/zetc0de.github.io/master/assets/images/Vagrant-01/vagrant-init.png" alt="https://raw.githubusercontent.com/zetc0de/zetc0de.github.io/master/assets/images/Vagrant-01/vagrant-init.png"></p>
+</code></pre>
+<p><img src="/images/vagrant01/vagrant-init.png" alt=""></p>
 <p>Dengan perintah diatas, maka akan membuat vagrantfile, dengan vagrantfile tersebut kita dapat mengkofigurasikan VM(Virtual mechine) sesuai kehendak kita.</p>
-<p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/konf.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/konf.png?raw=true"></p>
+<p><img src="/images/vagrant01/konf.png" alt=""></p>
 <p>Bisa anda lihat diatas, kita menggunakan box ubuntu/xenial64, dengan private network dan menggunakan memory sebesar 512, tinggal sesuaikan dengan kebutuhan. Ada beberapa variable yang dapat anda konfigurasikan, bebrapa diantaranya:</p>
 <ul>
 <li>config.vm.box : Inisialisasi Vagrantbox</li>
@@ -99,14 +116,18 @@ vagrant init ubuntu/xenial64
 <li>config.vm.network : KOnfigurasi network, anda dapat meset networknya menggunakan private_network maupun public_network)</li>
 <li>config.vm.provision : Untuk kebutuhan provisioning</li>
 </ul>
+<h2 id="menjalankan-vm">Menjalankan VM</h2>
 <p>Jika sudah dikonfigurasi, maka jalankan vm pertama kita:</p>
 <pre><code>vagrant up
 vagrant status
-</code></pre><p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/up.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/up.png?raw=true"></p>
+</code></pre>
+<p><img src="/images/vagrant01/up.png" alt=""></p>
+<h2 id="masuk-console-vm-dengan-vagrant-ssh">Masuk Console VM Dengan Vagrant SSH</h2>
 <p>Anda dapat melihat vm kita dalam kondisi running, artinya kita sudah menjalankan vm tersebut. Untuk mengaksesnya menggunakan:</p>
 <pre><code>vagrant ssh
-</code></pre><p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/ssh.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/ssh.png?raw=true">
-Maka anda sudah dapat menjalankan perintah-perintah Ubuntu pada VM tersebut.</p>
+</code></pre>
+<p><img src="/images/vagrant01/ssh.png" alt=""></p>
+<p>Maka anda sudah dapat menjalankan perintah-perintah Ubuntu pada VM tersebut.</p>
 
     
     <div class="nav-next-prev">
@@ -140,7 +161,7 @@ Maka anda sudah dapat menjalankan perintah-perintah Ubuntu pada VM tersebut.</p>
   </div>
 
 
-<p class="copyright meta">Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</p>
+<p class="copyright meta">Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</p>
 
 </div>
 </footer></main>

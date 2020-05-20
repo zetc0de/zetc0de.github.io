@@ -6,7 +6,7 @@
     <description>Recent content in Bash on zetc0de — IT Security Enthusiast</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>id-id</language>
-    <copyright>Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <copyright>Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Sun, 24 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://zetc0de.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
@@ -18,9 +18,9 @@
       <pubDate>Sun, 24 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://zetc0de.github.io/post/2018-06-24-bash-provisioning-with-vagrant/</guid>
-      <description>Sebagai DevOps, kita tidak terlepas dengan yang namanya Provisioning, saya tidak akan menjelaskan lebih detail makna provisioning itu sendiri, tapi disini kita akan mencoba bash provisioning pada Virtual Mechine menggunakan Vagrant. Langsung saja, siapkan 1 vm atau lebih mengguanan vagrant.
-mkdir -p ~/Vagrant/vagrant-provbash cd ~/Vagrant/vagrant-provbash Lalu buatlah sebuah vagrantfile dengan config:
-# Inisialisasi Vagrantfile configuration Vagrant.configure(&amp;quot;2&amp;quot;) do |config| # definisikan vm01 config.vm.define &amp;quot;vm01&amp;quot; do |vm01| vm01.vm.box = &amp;quot;ubuntu/xenial64&amp;quot; vm01.vm.hostname = &amp;quot;serverku&amp;quot; vm01.</description>
+      <description>Introduction Sebagai DevOps, kita tidak terlepas dengan yang namanya Provisioning, saya tidak akan menjelaskan lebih detail makna provisioning itu sendiri, tapi disini kita akan mencoba bash provisioning pada Virtual Mechine menggunakan Vagrant. Langsung saja, siapkan 1 vm atau lebih mengguanan vagrant.
+mkdir -p ~/Vagrant/vagrant-provbash cd ~/Vagrant/vagrant-provbash  Vagrant File Lalu buatlah sebuah vagrantfile dengan config:
+# Inisialisasi Vagrantfile configuration Vagrant.configure(&amp;quot;2&amp;quot;) do |config| # definisikan vm01 config.vm.define &amp;quot;vm01&amp;quot; do |vm01| vm01.vm.box = &amp;quot;ubuntu/xenial64&amp;quot; vm01.</description>
     </item>
     
   </channel>

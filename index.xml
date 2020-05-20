@@ -6,7 +6,7 @@
     <description>Recent content on zetc0de — IT Security Enthusiast</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>id-id</language>
-    <copyright>Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <copyright>Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Thu, 14 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://zetc0de.github.io/index.xml" rel="self" type="application/rss+xml" />
@@ -18,18 +18,21 @@
       <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://zetc0de.github.io/post/2019-02-14-rce-and-xss-on-private-program-cyber-army/</guid>
-      <description>Prolog Lagi naik KRL dari Tangerang-Jakarta, sambil main HP tiba-tiba ada email undangan private program di Cyber Army,langsung cuz klik terima. Malamnya gw lihat detail programnya, disana diberikan 2 alamat yang masuk dalam scope, yaitu sub.[redacted].id dan subdomain.[redacted].id, ternyata 2 domain tersebut terdapat dalam 1 server dengan aplikasi yang serupa, jadi total ada 6 vuln yang saya temukan.
- 4 XSS 2 RCE  Reconnaissance Pada tahap reconnaissance,saya menggunakan nmap dengan perintah nmap sub.</description>
+      <description>Reconnaissance Pada tahap reconnaissance,saya menggunakan nmap dengan perintah nmap sub.[redacted].id
+Disana terdapat beberapa port yang open, saya tertarik dengan port 8010. Pada saat tulisan ini dibuat saya coba scan lagi ternyata sudah filtered.
+Saat saya buka sub.[redacted].id:8010, disana terdapat form login yang diketahui credentialnya menggunakan user dan password public:public. Disana terdapat beberapa menu (lupa screenshot).
+XSS via POST Request Untuk celah XSS ini berdampak pada 2 fungsi/menu:
+ Menu dblist Menu dnsbse  Saya tertarik dengan fungsi search yg ada di menu dnsbse, disana ada form search yang merequest google search engine.</description>
     </item>
     
     <item>
-      <title>[Bug Bounty] Antihack.me CSRF File Upload Vulnerability</title>
+      <title>[Bug Bounty] Antihack.me CSRF And Arbitrary File Upload</title>
       <link>https://zetc0de.github.io/post/2019-01-09-antihack.me-csrf-file-upload-vulnerability/</link>
       <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>https://zetc0de.github.io/post/2019-01-09-antihack.me-csrf-file-upload-vulnerability/</guid>
-      <description>CSFR #1 On Profile Image File Upload Antihack.me merupakan sebuah website Bug Bounty Platform asal singapura. Setelah mendaftarkan user baru dan login ke aplikasi, kita dapat mengatur profile kita sebagai bug hunter, termasuk juga setting avatar/photo profile. Tertarik dengan fitur upload imagenya, kita coba intercept request upload image tersebut.
-Terlihat disana beberapa parameter yang dikirimkan, akan tetapi disana tidak ada csrf protection, artinya siapapun dapat mengakses fitur upload ini, sekalipun dia tidak memepunyai akses ke akun manapun.</description>
+      <description>Introduction Antihack.me merupakan sebuah website Bug Bounty Platform asal singapura. Setelah mendaftarkan user baru dan berhasil login ke aplikasi, disana terdapat banyak fitur seperti platform-platform bug bounty lainnya, seperti fitur list program, submit report, dan lain sebagainya, termasuk juga dapat mengatur profile kita sebagai bug hunter.
+CSRF Vulnerability Cross-site Request Forgery (CSRF) atau bisa disebut dengan one-click attack adalah sebuah serangan yang menggunakan injeksi script baik itu berupa kode javascript, link, atau gambar dengan memanfaatkan token autentikasi.</description>
     </item>
     
     <item>
@@ -38,7 +41,7 @@ Terlihat disana beberapa parameter yang dikirimkan, akan tetapi disana tidak ada
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://zetc0de.github.io/post/2018-10-03-how-to-create-aws-docker-engine-with-docker-machine/</guid>
-      <description>Instalasi Docker tidak akan kita bahas panjang lebar, karena cara dan langkah-langkahnya bisa berubah-ubah seiring waktu. Silahkan lihat dokumentasi di website docker.
+      <description>Introduction Instalasi Docker tidak akan kita bahas panjang lebar, karena cara dan langkah-langkahnya bisa berubah-ubah seiring waktu. Silahkan lihat dokumentasi di website docker.
 Sebaiknya instalasi dilakukan dengan koneksi internet yang mumpuni dan tidak terbatas kuota. Pada saat instalasi, kita akan mendownload image berukuran ratusan MB.
 Docker Machine adalah sistem untuk mengelola docker engine. Dia bisa menginstal engine baru di berbagai target. Saat ini dia mendukung VirtualBox, Digital Ocean, dan Amazon. Dengan Docker Machine, kita bisa membuat dan menjalankan container dengan docker client, dan hasilnya container kita berjalan di local (dengan VirtualBox) atau di cloud (dengan DigitalOcean atau Amazon).</description>
     </item>
@@ -50,7 +53,7 @@ Docker Machine adalah sistem untuk mengelola docker engine. Dia bisa menginstal 
       
       <guid>https://zetc0de.github.io/post/2018-09-03-how-to-install-docker-in-arch-linux/</guid>
       <description>Introduction Docker adalah salah satu platform yang dibangun berdasarkan teknologi container. Docker merupakan sebuah project open-source yang menyediakan platform terbuka untuk developer maupun sysadmin untuk membangun,mengemas,dan menjalankan aplikasi dimanapun sebagai sebuah wadah(container) yang ringan. Dengan sangat populernya docker, sebagian orang sering menganggap docker adalah sebutan lain dari container. (codepolitan)
-Installasi  Enable the loop module Install docker Start and Enable Docker Using docker on Arch Linux  Enable The Loop Module Cek module loop:</description>
+Instalasi Dikarenakan saya menggunakan OS Arch Linux, maka disini saya akan menyajikan langkah-langkah ketika ingin menginstall docker di OS Arch Linux, anda dapat menyesuaikan dengan OS masing-masing.</description>
     </item>
     
     <item>
@@ -59,7 +62,7 @@ Installasi  Enable the loop module Install docker Start and Enable Docker Using 
       <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://zetc0de.github.io/post/2018-07-08-how-to-create-own-vagrant-box-/</guid>
-      <description>Setelah beberapa kali kita mencoba menggunakan vagrant dari vagrantbox ubuntu/xenial64 yang jika kita sadari, kita menggunakan pure box dari ubuntu, alias masih kosong blong bawaan ubuntu. Mungkin kita ingin beberapa tools yg terinstall pada vm kita, seperti tools build-essential,vim,atau tools-tools keseharina kita yang tidak ada pada OS bawaan ubuntu.
+      <description>Introduction Setelah beberapa kali kita mencoba menggunakan vagrant dari vagrantbox ubuntu/xenial64 yang jika kita sadari, kita menggunakan pure box dari ubuntu, alias masih kosong blong bawaan ubuntu. Mungkin kita ingin beberapa tools yg terinstall pada vm kita, seperti tools build-essential,vim,atau tools-tools keseharina kita yang tidak ada pada OS bawaan ubuntu.
 Untuk mengakali hal itu, kita dapan membuat vagrantbox milik kita sendiri. Dengan tool-tool kesayangan kita, kita seperti dapat membuat OS dengan tools sesuai keinginan kita sendiri.</description>
     </item>
     
@@ -69,9 +72,10 @@ Untuk mengakali hal itu, kita dapan membuat vagrantbox milik kita sendiri. Denga
       <pubDate>Thu, 26 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://zetc0de.github.io/post/2018-07-26-ansible-provisioning-with-vagrant/</guid>
-      <description>Melanjutkan belajar provisioning menggunakan Vagrant, mulailah dengan memuat vagrantfile:
- config.vm.define &amp;quot;vm02&amp;quot; do |vm02| vm02.vm.box = &amp;quot;ubuntu/xenial64&amp;quot; vm02.vm.hostname = &amp;quot;vm02&amp;quot; vm02.vm.network :privat_enetwork, ip: &amp;quot;10.3.3.11&amp;quot; vm02.vm.provider &amp;quot;virtualbox&amp;quot; do |vb| vb.memory = &amp;quot;512&amp;quot; end vm02.vm.network &amp;quot;forwarded_port&amp;quot;, guest: 80, host:8002 vm02.vm.provision &amp;quot;ansible&amp;quot; do |x| x.verbose = &amp;quot;v&amp;quot; x.playbook = &amp;quot;provision/playbook.yml&amp;quot; end end Penjelasan :
- vm02 : Nama vm kita vm02.vm.box : Menggunakan box ubuntu/xenial64 vm02.vm.hostname : Untuk setting hostname vm02.vm.network : Setting network dengan ip private dan prot forwarding.</description>
+      <description>Introduction Setelah sebelumnya kita belajar bagaimana melakukan Bash Provisioning Dengan Vagrant, sekarang kita akan melanjutkan belajar provisioning menggunakan ansible.
+Ansible adalah sebuah provisioning tool yang dikembangkan oleh RedHat. Dimana kamu dapat mencatat setiap proses deployment ataupun konfigurasi yang biasa dilakukan berulang - ulang terhadap beberapa server.
+Create Vagrantfile Mulailah dengan memuat vagrantfile:
+ config.vm.define &amp;quot;vm02&amp;quot; do |vm02| vm02.vm.box = &amp;quot;ubuntu/xenial64&amp;quot; vm02.vm.hostname = &amp;quot;vm02&amp;quot; vm02.vm.network :privat_enetwork, ip: &amp;quot;10.3.3.11&amp;quot; vm02.vm.provider &amp;quot;virtualbox&amp;quot; do |vb| vb.</description>
     </item>
     
     <item>
@@ -80,9 +84,9 @@ Untuk mengakali hal itu, kita dapan membuat vagrantbox milik kita sendiri. Denga
       <pubDate>Sun, 24 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://zetc0de.github.io/post/2018-06-24-bash-provisioning-with-vagrant/</guid>
-      <description>Sebagai DevOps, kita tidak terlepas dengan yang namanya Provisioning, saya tidak akan menjelaskan lebih detail makna provisioning itu sendiri, tapi disini kita akan mencoba bash provisioning pada Virtual Mechine menggunakan Vagrant. Langsung saja, siapkan 1 vm atau lebih mengguanan vagrant.
-mkdir -p ~/Vagrant/vagrant-provbash cd ~/Vagrant/vagrant-provbash Lalu buatlah sebuah vagrantfile dengan config:
-# Inisialisasi Vagrantfile configuration Vagrant.configure(&amp;quot;2&amp;quot;) do |config| # definisikan vm01 config.vm.define &amp;quot;vm01&amp;quot; do |vm01| vm01.vm.box = &amp;quot;ubuntu/xenial64&amp;quot; vm01.vm.hostname = &amp;quot;serverku&amp;quot; vm01.</description>
+      <description>Introduction Sebagai DevOps, kita tidak terlepas dengan yang namanya Provisioning, saya tidak akan menjelaskan lebih detail makna provisioning itu sendiri, tapi disini kita akan mencoba bash provisioning pada Virtual Mechine menggunakan Vagrant. Langsung saja, siapkan 1 vm atau lebih mengguanan vagrant.
+mkdir -p ~/Vagrant/vagrant-provbash cd ~/Vagrant/vagrant-provbash  Vagrant File Lalu buatlah sebuah vagrantfile dengan config:
+# Inisialisasi Vagrantfile configuration Vagrant.configure(&amp;quot;2&amp;quot;) do |config| # definisikan vm01 config.vm.define &amp;quot;vm01&amp;quot; do |vm01| vm01.vm.box = &amp;quot;ubuntu/xenial64&amp;quot; vm01.</description>
     </item>
     
     <item>
@@ -91,10 +95,9 @@ mkdir -p ~/Vagrant/vagrant-provbash cd ~/Vagrant/vagrant-provbash Lalu buatlah s
       <pubDate>Sun, 10 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://zetc0de.github.io/post/2018-06-10-create-multiple-vm-with-one-vagrantfile/</guid>
-      <description>Menggunakan vagrant untuk kebutuhan virtualisasi sangat membantu pekerjaan developer maupun system engineer. Dengan vagrant kita dapat membuat virtual environtment dengan mudah.
+      <description>Introduction Menggunakan vagrant untuk kebutuhan virtualisasi sangat membantu pekerjaan developer maupun system engineer. Dengan vagrant kita dapat membuat virtual environtment dengan mudah.
 Masalahnya, terkadang kita membutuhakan lebih dari satu VM untuk kebutuhan testing maupun untuk kebutuhan yang lain, dengan vagrant kita dapat membuat multipele VM hanya dengan sekali inisialisasi vagrantfile.
-Pada kesempatan kali ini kita akan membuat 2 vm menggunakan 1 vagrantfile. Untuk memulainya, buatlah sebuah direktory untuk vagrantfile kita:
-mkdir ~/Vagrant/multiple-vm cd Vagrant/multiplr-vm Lalu buatlah sebuah Vagrantfile menggunakan text editor kesayangan anda:</description>
+Membuat 2 VM Dengan 1 Vagrantfile Pada kesempatan kali ini kita akan membuat 2 vm menggunakan 1 vagrantfile. Untuk memulainya, buatlah sebuah direktory untuk vagrantfile kita:</description>
     </item>
     
     <item>
@@ -103,8 +106,9 @@ mkdir ~/Vagrant/multiple-vm cd Vagrant/multiplr-vm Lalu buatlah sebuah Vagrantfi
       <pubDate>Fri, 25 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://zetc0de.github.io/post/2018-05-25-instalasi-dan-konfigurasi-vagrant/</guid>
-      <description>Saat ini virtualisasi menjadi penunjang bagi lingkungan development software secara modern. Dalam satu laptop kita bisa memasang berbagai sistem operasi virtual yang disesuaikan dengan server kita, sehingga kita bisa memisahkan configurasi laptop kita dengan konfigurasi server.
-Banyak keuntungan ketika kita menggunakan vagrant,sebagai developer sofrware akan sangat memudahkan jika menggunakan vagrant sebagai development environment yang terisolasi di virtual. Untuk memasang vagrant, caranya sangat mudah. Jika anda menggunakan OS keluarga UNIX, anda dapat memasangnya menggunakan package manager.</description>
+      <description>Introduction Vagrant adalah sebuah software yang menggunakan teknologi virtual machine dimana kita dapat membuat lingkungan development secara portable, konsisten dan lebih fleksible.
+Saat ini virtualisasi menjadi penunjang bagi lingkungan development software secara modern. Dalam satu laptop kita bisa memasang berbagai sistem operasi virtual yang disesuaikan dengan server kita, sehingga kita bisa memisahkan configurasi laptop kita dengan konfigurasi server.
+Banyak keuntungan ketika kita menggunakan vagrant,sebagai developer sofrware akan sangat memudahkan jika menggunakan vagrant sebagai development environment yang terisolasi di virtual.</description>
     </item>
     
     <item>
@@ -113,7 +117,7 @@ Banyak keuntungan ketika kita menggunakan vagrant,sebagai developer sofrware aka
       <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://zetc0de.github.io/post/2018-05-07-install-apache2-dan-konfigurasi-virtualhost-di-centos-7/</guid>
-      <description>Server HTTP Apache atau Server Web/WWW Apache adalah server web yang dapat dijalankan di banyak sistem operasi (Unix, BSD, Linux, Microsoft Windows dan Novell Netware serta platform lainnya) yang berguna untuk melayani dan memfungsikan situs web. Protokol yang digunakan untuk melayani fasilitas web/www ini menggunakan HTTP.
+      <description>Introduction Server HTTP Apache atau Server Web/WWW Apache adalah server web yang dapat dijalankan di banyak sistem operasi (Unix, BSD, Linux, Microsoft Windows dan Novell Netware serta platform lainnya) yang berguna untuk melayani dan memfungsikan situs web. Protokol yang digunakan untuk melayani fasilitas web/www ini menggunakan HTTP.
 Apache memiliki fitur-fitur canggih seperti pesan kesalahan yang dapat dikonfigur, autentikasi berbasis basis data dan lain-lain. Apache juga didukung oleh sejumlah antarmuka pengguna berbasis grafik (GUI) yang memungkinkan penanganan server menjadi mudah.</description>
     </item>
     
@@ -123,8 +127,7 @@ Apache memiliki fitur-fitur canggih seperti pesan kesalahan yang dapat dikonfigu
       <pubDate>Sun, 15 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>https://zetc0de.github.io/post/2018-05-08-install-openvpn-dan-konfigurasi-di-centos-7/</guid>
-      <description>OpenVPN adalah aplikasi perangkat lunak open-source yang mengimplementasikan teknik virtual private network (VPN) untuk membuat koneksi point-to-point atau site-to-site yang aman dalam konfigurasi yang diarahkan atau dijembatani dan fasilitas akses jarak jauh. Ini menggunakan protokol keamanan khusus [9] yang memanfaatkan SSL / TLS untuk pertukaran kunci. OpenVPN mampu melintasi network address translators (NAT) dan firewall. OpenVPN ditulis oleh James Yonan dan diterbitkan di bawah GNU General Public License (GPL).
- Enable the epel-repository in CentOS.</description>
+      <description>Introduction OpenVPN adalah aplikasi perangkat lunak open-source yang mengimplementasikan teknik virtual private network (VPN) untuk membuat koneksi point-to-point atau site-to-site yang aman dalam konfigurasi yang diarahkan atau dijembatani dan fasilitas akses jarak jauh. Ini menggunakan protokol keamanan khusus [9] yang memanfaatkan SSL / TLS untuk pertukaran kunci. OpenVPN mampu melintasi network address translators (NAT) dan firewall. OpenVPN ditulis oleh James Yonan dan diterbitkan di bawah GNU General Public License (GPL).</description>
     </item>
     
     <item>
@@ -150,8 +153,8 @@ yum install make cmake openssl openssl-devel
       
       <guid>https://zetc0de.github.io/post/2018-04-15-install-unrealircd-service-in-centos-7/</guid>
       <description>Halo, kali ini kita akan menginstall Unrealircd di OS Centos 7.
-UnrealIRCd adalah daemon IRC open source, awalnya berbasis pada DreamForge, dan tersedia untuk sistem operasi Unix-like dan Windows. Sejak awal pengembangan pada UnrealIRCd c. Mei 1999, banyak fitur baru yang ditambahkan dan dimodifikasi, termasuk fitur keamanan yang canggih dan perbaikan bug, dan Unrealircd menjadi server yang populer.
-Oke langsung saja,seperti biasa kita harus install Development Tools dulu dan beberapa tools yang diperlukan,</description>
+Introduction UnrealIRCd adalah daemon IRC open source, awalnya berbasis pada DreamForge, dan tersedia untuk sistem operasi Unix-like dan Windows. Sejak awal pengembangan pada UnrealIRCd c. Mei 1999, banyak fitur baru yang ditambahkan dan dimodifikasi, termasuk fitur keamanan yang canggih dan perbaikan bug, dan Unrealircd menjadi server yang populer.
+Installation Oke langsung saja,seperti biasa kita harus install Development Tools dulu dan beberapa tools yang diperlukan,</description>
     </item>
     
     <item>
@@ -160,8 +163,11 @@ Oke langsung saja,seperti biasa kita harus install Development Tools dulu dan be
       <pubDate>Sun, 01 Apr 2018 09:20:00 +0000</pubDate>
       
       <guid>https://zetc0de.github.io/post/2018-04-15-welcome-to-my-blog/</guid>
-      <description>Welcome to my blog!
-Blog ini akan aku isi catatan-catatan kecilku selama belajar IT. Ini juga post pertamaku :)</description>
+      <description>Welcome to My Blog!
+Blog ini akan aku isi dengan catatan-catatan kecil selama belajar IT. Mungkin akan berisi tentang tutorial, tips maupun trik dalam dunia hacking, enjoy it!
+ Berkata al-&amp;lsquo;Allamah ahli fiqih abad ini-al-Imam Muhammad bin Shalih al-&amp;lsquo;Utsaimin rahimahullah:
+&amp;quot;Jika seorang penanya bertanya, apakah lupa itu mempunyai obat atau penyembuh?  Maka kami katakan:
+&amp;quot;Ya, lupa itu ada obatnya-dengan karunia dari Allah-yakni dengan mencatat. Oleh karena itu Allah memberi nikmat pada para hamba-Nya dengan hal itu (mencatat).</description>
     </item>
     
     <item>

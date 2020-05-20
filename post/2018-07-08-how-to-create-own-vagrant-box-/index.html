@@ -76,67 +76,84 @@
       
     <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#install-base-os">Install Base OS</a></li>
+    <li><a href="#port-forwarding-dari-virtualbox">Port Forwarding dari Virtualbox</a></li>
+    <li><a href="#konfigurasi-dan-install-paket-yang-dibutuhkan">Konfigurasi Dan Install Paket yang dibutuhkan</a>
       <ul>
-        <li><a href="#port-forwarding-dari-virtualbox">Port Forwarding dari Virtualbox</a></li>
-        <li><a href="#konfigurasi-key-dan-ssh">Konfigurasi key dan SSH</a></li>
-        <li><a href="#installasi-guest-tools">Installasi Guest Tools</a></li>
-        <li><a href="#pastikan-masuk-ke-tidak-ada-error-dan-bisa-masuk-ke-server-dengan-perintah-tersebut">Pastikan masuk ke tidak ada error dan bisa masuk ke server dengan perintah tersebut.</a></li>
+        <li><a href="#install-aplikasi">Install Aplikasi</a></li>
+        <li><a href="#setup-root-password">Setup Root Password</a></li>
+        <li><a href="#setup-user-vagrant">Setup user &lsquo;vagrant&rsquo;</a></li>
+        <li><a href="#konfigurasi-sudoers-user-vagrant">Konfigurasi sudoers user vagrant</a></li>
+        <li><a href="#testing-vagrant-user">Testing Vagrant user.</a></li>
       </ul>
     </li>
+    <li><a href="#konfigurasi-key-dan-ssh">Konfigurasi key dan SSH</a>
+      <ul>
+        <li><a href="#download-vagrant-key">Download vagrant key</a></li>
+        <li><a href="#konfigurasi-ssh-login-dengan-key">Konfigurasi ssh login dengan key.</a></li>
+        <li><a href="#update-dan-upgrade-paket">Update dan upgrade Paket</a></li>
+      </ul>
+    </li>
+    <li><a href="#installasi-guest-tools">Installasi Guest Tools</a>
+      <ul>
+        <li><a href="#install-paket-dependensi">Install Paket dependensi.</a></li>
+        <li><a href="#download-iso-virtualbox-guest-additional-ke-komputer-anda">Download ISO VirtualBox Guest Additional ke Komputer Anda</a></li>
+        <li><a href="#mount-dan-install-virtualbox-guest-additon">Mount dan Install VirtualBox guest additon</a></li>
+        <li><a href="#clean-the-box">Clean the Box</a></li>
+      </ul>
+    </li>
+    <li><a href="#packaging-box-vagrant">Packaging Box Vagrant</a></li>
+    <li><a href="#import-box-and-testing">Import Box and Testing</a></li>
   </ul>
 </nav>
-    <p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/vagrantbox.webp?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/vagrantbox.webp?raw=true"></p>
+    <p><img src="/images/vagrant05/vagrantbox.webp" alt=""></p>
+<h2 id="introduction">Introduction</h2>
 <p>Setelah beberapa kali kita mencoba menggunakan vagrant dari vagrantbox ubuntu/xenial64 yang jika kita sadari, kita menggunakan pure box dari ubuntu, alias masih kosong blong bawaan ubuntu. Mungkin kita ingin beberapa tools yg terinstall pada vm kita, seperti tools build-essential,vim,atau tools-tools keseharina kita yang tidak ada pada OS bawaan ubuntu.</p>
 <p>Untuk mengakali hal itu, kita dapan membuat vagrantbox milik kita sendiri. Dengan tool-tool kesayangan kita, kita seperti dapat membuat OS dengan tools sesuai keinginan kita sendiri.</p>
-<p>Untuk memulainya,buatlah VM dengan OS Ubuntu 18.04 lalu masuk kedalam Virtual Mechine, dan buatlah user baru di vm tersebut.
-<img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/setuser.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/setuser.png?raw=true">
-Jika sudah, login ke user tersebut dan cek versi ubuntunya:</p>
+<h2 id="install-base-os">Install Base OS</h2>
+<p>Untuk memulainya, karena kita akan menggunakan ubuntu 18.04 sebagai base box ini, maka buatlah VM dan install OS Ubuntu 18.04. Lalu masuk kedalam VM tersebut, dan buatlah user baru di vm tersebut.</p>
+<p><img src="/images/vagrant05/setuser.png" alt=""></p>
+<p>Jika sudah, login ke user tersebut dan cek versi ubuntunya:</p>
 <pre><code>cat /etc/lsb_release
-</code></pre><p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/lsb-release.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/lsb-release.png?raw=true"></p>
-<h3 id="port-forwarding-dari-virtualbox">Port Forwarding dari Virtualbox</h3>
-<p>Klik Ubuntu servernya - klik &lsquo;Settings&rsquo; button.
-Pada bagian &lsquo;Adapter 1&rsquo; pastikan jenis network &lsquo;NAT&rsquo;.
-Klik option &lsquo;Advanced&rsquo; di bawah dan klik &lsquo;Port Forwarding&rsquo;.
-Isikan detail Port-Forwarding:
-Name: ssh
-Protocol: TCP
-Host IP: kosongkan
-Host Port: 2222
-Guest IP: kosongkan
-Guest Port: 22
-Klik tombol &lsquo;Ok&rsquo;, dan &lsquo;Ok&rsquo; lagi untuk save.</p>
-<p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/set%20nat.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/set%20nat.png?raw=true"></p>
+</code></pre><p><img src="/images/vagrant05/lsb-release.png" alt=""></p>
+<h2 id="port-forwarding-dari-virtualbox">Port Forwarding dari Virtualbox</h2>
 <ul>
-<li>Install Paket yang dibutuhkan</li>
+<li>Klik Ubuntu servernya - klik &lsquo;Settings&rsquo; button.</li>
+<li>Pada bagian &lsquo;Adapter 1&rsquo; pastikan jenis network &lsquo;NAT&rsquo;.</li>
+<li>Klik option &lsquo;Advanced&rsquo; di bawah dan klik &lsquo;Port Forwarding&rsquo;.</li>
+<li>Isikan detail Port-Forwarding :</li>
 </ul>
-<p>Nyalankan ubuntu servernya.
-Install paket-paket yang dibutuhkan</p>
+<pre><code>  Name: ssh
+  Protocol: TCP
+  Host IP: kosongkan
+  Host Port: 2222
+  Guest IP: kosongkan
+  Guest Port: 22
+</code></pre><p>Klik tombol &lsquo;Ok&rsquo;, dan &lsquo;Ok&rsquo; lagi untuk save.</p>
+<p><img src="/images/vagrant05/setnat.png" alt=""></p>
+<h2 id="konfigurasi-dan-install-paket-yang-dibutuhkan">Konfigurasi Dan Install Paket yang dibutuhkan</h2>
+<p>Pada dasarnya membuat box sendiri itu karena kebutuhan kita terhadap beberapa aplikasi yang tidak ada pada box lain, atau kita ingin membuat costum box dengan aplikasi yang kita inginkan saja.</p>
+<h3 id="install-aplikasi">Install Aplikasi</h3>
 <pre><code>sudo apt update
 sudo apt install vim git unzip net-tools wget
-</code></pre><ul>
-<li>Setup Root Password</li>
-</ul>
+</code></pre><h3 id="setup-root-password">Setup Root Password</h3>
 <pre><code>sudo passwd root
-</code></pre><ul>
-<li>Setup user &lsquo;vagrant&rsquo;</li>
-</ul>
+</code></pre><h3 id="setup-user-vagrant">Setup user &lsquo;vagrant&rsquo;</h3>
 <pre><code>useradd -m -s /bin/bash vagrant
 passwd vagrant
 </code></pre><p>Beri password &lsquo;vargant&rsquo;.</p>
-<ul>
-<li>Konfigurasi sudoers vagrant user</li>
-</ul>
+<h3 id="konfigurasi-sudoers-user-vagrant">Konfigurasi sudoers user vagrant</h3>
 <pre><code>sudo vim /etc/sudoers.d/vagrant
 </code></pre><p>Paste konfigurasi berikut.</p>
 <pre><code># add vagrant user
 vagrant ALL=(ALL) NOPASSWD:ALL
-</code></pre><p>Testing Vagrant user.</p>
+</code></pre><h3 id="testing-vagrant-user">Testing Vagrant user.</h3>
 <pre><code>su - vagrant
 sudo su
-</code></pre><p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/sudo%20su.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/sudo%20su.png?raw=true"></p>
-<h3 id="konfigurasi-key-dan-ssh">Konfigurasi key dan SSH</h3>
-<p>Download vagrant key.</p>
+</code></pre><p><img src="/images/vagrant05/sudosu.png" alt=""></p>
+<h2 id="konfigurasi-key-dan-ssh">Konfigurasi key dan SSH</h2>
+<h3 id="download-vagrant-key">Download vagrant key</h3>
 <pre><code>mkdir -p /home/vagrant/.ssh
 chmod 0700 /home/vagrant/.ssh
 wget --no-check-certificate \
@@ -144,43 +161,31 @@ wget --no-check-certificate \
           -O /home/vagrant/.ssh/authorized_keys
 chmod 0600 /home/vagrant/.ssh/authorized_keys
 chown -R vagrant /home/vagrant/.ssh
-</code></pre><p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/vagrant%20pub.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/vagrant%20pub.png?raw=true"></p>
-<ul>
-<li>Konfigurasi ssh login dengan key.</li>
-</ul>
+</code></pre><p><img src="/images/vagrant05/vagrantpub.png" alt=""></p>
+<h3 id="konfigurasi-ssh-login-dengan-key">Konfigurasi ssh login dengan key.</h3>
 <pre><code>cd /etc/ssh/
 vim sshd_config
 </code></pre><p>Ubah line seperti berikut.</p>
 <pre><code>AuthorizedKeysFile %h/.ssh/authorized_keys
-</code></pre><ul>
-<li>Update dan upgrade Paket</li>
-</ul>
+</code></pre><h3 id="update-dan-upgrade-paket">Update dan upgrade Paket</h3>
 <pre><code>sudo apt update
 sudo apt upgrade -y
-</code></pre><h3 id="installasi-guest-tools">Installasi Guest Tools</h3>
-<ul>
-<li>Install Paket dependensi.</li>
-</ul>
+</code></pre><h2 id="installasi-guest-tools">Installasi Guest Tools</h2>
+<h3 id="install-paket-dependensi">Install Paket dependensi.</h3>
 <pre><code>export versi=$(uname -r)
 sudo apt-get install -y gcc build-essential linux-headers-$versi
-</code></pre><p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/install%20guest.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/install%20guest.png?raw=true"></p>
-<ul>
-<li>Download ISO VirtualBox Guest Additional ke Komputer Anda</li>
-</ul>
+</code></pre><p><img src="/images/vagrant05/guest.png" alt=""></p>
+<h3 id="download-iso-virtualbox-guest-additional-ke-komputer-anda">Download ISO VirtualBox Guest Additional ke Komputer Anda</h3>
 <p><a href="https://download.virtualbox.org/virtualbox/5.2.18/VBoxGuestAdditions_5.2.18.iso">https://download.virtualbox.org/virtualbox/5.2.18/VBoxGuestAdditions_5.2.18.iso</a></p>
-<ul>
-<li>Mount dan Install VirtualBox guest additon</li>
-</ul>
+<h3 id="mount-dan-install-virtualbox-guest-additon">Mount dan Install VirtualBox guest additon</h3>
 <p>Klik ubuntu server yang masih &lsquo;running&rsquo;, dan klik menu &lsquo;Devices&rsquo;.
 Klik &lsquo;Insert Guest Addition CD Image..&rsquo;</p>
 <p>Masuk ke ubuntu server dan mount.</p>
 <pre><code>sudo mount /dev/cdrom /mnt
 cd /mnt
 sudo ./VBoxLinuxAdditions.run
-</code></pre><p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/guest%20addition.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/guest%20addition.png?raw=true"></p>
-<ul>
-<li>Clean the Box</li>
-</ul>
+</code></pre><p><img src="/images/vagrant05/guestad.png" alt=""></p>
+<h3 id="clean-the-box">Clean the Box</h3>
 <pre><code>sudo apt autoremove
 sudo apt clean
 
@@ -189,15 +194,11 @@ sudo rm -f /EMPTY
 
 history -c
 tekan 'CTRL+d' untuk exit dari terminal.
-</code></pre><ul>
-<li>Packaging Box Vagrant</li>
-</ul>
+</code></pre><h2 id="packaging-box-vagrant">Packaging Box Vagrant</h2>
 <p>Balik ke terminal komputer.</p>
 <pre><code>vagrant package --base zetc0de-ubuntu-vm
-</code></pre><p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/packaging.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/vagrant-05/packaging.png?raw=true"></p>
-<ul>
-<li>Import Box and Testing</li>
-</ul>
+</code></pre><p><img src="/images/vagrant05/packaging.png" alt=""></p>
+<h2 id="import-box-and-testing">Import Box and Testing</h2>
 <pre><code>vagrant box add ubuntu-zetc0de-1804 package.box
 
 mkdir ~/Vagrant/box-ku/
@@ -207,8 +208,7 @@ vagrant init ubuntu-zetc0de-1804
 vagrant up
 </code></pre><p>Coba ssh vm tersebut.</p>
 <pre><code>vagrant ssh
-</code></pre><h3 id="pastikan-masuk-ke-tidak-ada-error-dan-bisa-masuk-ke-server-dengan-perintah-tersebut">Pastikan masuk ke tidak ada error dan bisa masuk ke server dengan perintah tersebut.</h3>
-
+</code></pre>
     
     <div class="nav-next-prev">
         <div class="nav-prev">
@@ -241,7 +241,7 @@ vagrant up
   </div>
 
 
-<p class="copyright meta">Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</p>
+<p class="copyright meta">Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</p>
 
 </div>
 </footer></main>

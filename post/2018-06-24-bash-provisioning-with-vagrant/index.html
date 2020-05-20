@@ -74,12 +74,22 @@
     <h1 id="title">Bash Provisioning With Vagrant</h1>
     
       
-    <nav id="TableOfContents"></nav>
-    <p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-03/bash.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-03/bash.png?raw=true"></p>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#vagrant-file">Vagrant File</a></li>
+    <li><a href="#provisioning-lamp-stack">Provisioning LAMP STACK</a></li>
+    <li><a href="#result">Result</a></li>
+  </ul>
+</nav>
+    <p><img src="/images/vagrant03/bash.png" alt=""></p>
+<h2 id="introduction">Introduction</h2>
 <p>Sebagai DevOps, kita tidak terlepas dengan yang namanya <strong>Provisioning</strong>, saya tidak akan menjelaskan lebih detail makna provisioning itu sendiri, tapi disini kita akan mencoba bash provisioning pada Virtual Mechine menggunakan Vagrant. Langsung saja, siapkan 1 vm atau lebih mengguanan vagrant.</p>
 <pre><code>mkdir -p ~/Vagrant/vagrant-provbash
 cd ~/Vagrant/vagrant-provbash
-</code></pre><p>Lalu buatlah sebuah vagrantfile dengan config:</p>
+</code></pre>
+<h2 id="vagrant-file">Vagrant File</h2>
+<p>Lalu buatlah sebuah vagrantfile dengan config:</p>
 <pre><code># Inisialisasi Vagrantfile configuration
 Vagrant.configure(&quot;2&quot;) do |config|
 
@@ -107,6 +117,7 @@ end
 <li>Port fordward ke host 3000.</li>
 <li>Anda dapat menambah vm sendiri, tinggal copas config yg ada dengan nama vm yg berbeda, misal vm02,vm03,dst.</li>
 </ul>
+<h2 id="provisioning-lamp-stack">Provisioning LAMP STACK</h2>
 <p>Pada case kali ini kita akan coba provisioning LAMP STACK menggunakan bash. Buatlah file <code>lamp.sh</code> pada directory yg sama, isikan script berikut:</p>
 <pre><code>#!/bin/bash
 
@@ -135,10 +146,11 @@ echo -e &quot;-------------------------------&quot;
 vagrant status vm01
 </code></pre><p>Kemudian saatnya provisioning, gunakan perintah:</p>
 <pre><code>vagrant provisioning vm01
-</code></pre><p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-03/vagrant%20prov.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-03/vagrant%20prov.png?raw=true"></p>
+</code></pre><p><img src="/images/vagrant03/vagrantpro.png" alt=""></p>
 <p>Maka akan terlihat proses provisioning vm01 dengan script bash. Dengan provisioning kita dimudahkan untuk mensetup banyak server dengan sekali kerja. Bayangkan jika anda diminta untuk mensetup 1000 server? Menarik bukan? :)</p>
+<h2 id="result">Result</h2>
 <p>Anda dapat melihat hasil dari provisioning tadi dengan mengakses 127.0.0.1:3000 di browser anda.</p>
-<p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-03/result.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-03/result.png?raw=true"></p>
+<p><img src="/images/vagrant03/result.png" alt=""></p>
 <p>Terlihat apache,mysql,dan php-fpm kita sudah dalam kondisi running. :)</p>
 
     
@@ -173,7 +185,7 @@ vagrant status vm01
   </div>
 
 
-<p class="copyright meta">Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</p>
+<p class="copyright meta">Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</p>
 
 </div>
 </footer></main>

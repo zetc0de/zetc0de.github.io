@@ -74,10 +74,19 @@
     <h1 id="title">Create Multiple VM with one Vagrantfile</h1>
     
       
-    <nav id="TableOfContents"></nav>
-    <p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/Vagrant.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/Vagrant.png?raw=true"></p>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#membuat-2-vm-dengan-1-vagrantfile">Membuat 2 VM Dengan 1 Vagrantfile</a></li>
+    <li><a href="#menjalankan-vm">Menjalankan VM</a></li>
+    <li><a href="#testing-network-antar-vm">Testing Network Antar VM</a></li>
+  </ul>
+</nav>
+    <p><img src="/images/vagrant02/Vagrant.png" alt=""></p>
+<h2 id="introduction">Introduction</h2>
 <p>Menggunakan vagrant untuk kebutuhan virtualisasi sangat membantu pekerjaan developer maupun system engineer. Dengan vagrant kita dapat membuat virtual environtment dengan mudah.</p>
 <p>Masalahnya, terkadang kita membutuhakan lebih dari satu VM untuk kebutuhan testing maupun untuk kebutuhan yang lain, dengan vagrant kita dapat membuat multipele VM hanya dengan sekali inisialisasi vagrantfile.</p>
+<h2 id="membuat-2-vm-dengan-1-vagrantfile">Membuat 2 VM Dengan 1 Vagrantfile</h2>
 <p>Pada kesempatan kali ini kita akan membuat 2 vm menggunakan 1 vagrantfile. Untuk memulainya, buatlah sebuah direktory untuk vagrantfile kita:</p>
 <pre><code>mkdir ~/Vagrant/multiple-vm
 cd Vagrant/multiplr-vm
@@ -111,17 +120,19 @@ end
 <li>Menggunakan private network dengan ip 10.3.3.10 untuk vm01 dan ip 10.3.3.11 untuk vm02.</li>
 <li>Sama-sama menggunakan RAM 512 mb.</li>
 </ul>
+<h2 id="menjalankan-vm">Menjalankan VM</h2>
 <p>Setelah itu save dengan nama Vagrantfile, lalu jalankan dengan perintah:</p>
 <pre><code>vagrant up
 vagrant status
-</code></pre><p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/status.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/status.png?raw=true"></p>
+</code></pre><p><img src="/images/vagrant02/status.png" alt=""></p>
 <p>Maka akan terlihat status dari 2 vm kita sedang dalam kondisi running. Kita bisa masuk kedalam vm nya dengan perintah:</p>
 <pre><code>vagrant ssh vm01
 vagrant ssh vm02
-</code></pre><p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/ssh.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/ssh.png?raw=true"></p>
+</code></pre><p><img src="/images/vagrant02/ssh.png" alt=""></p>
+<h2 id="testing-network-antar-vm">Testing Network Antar VM</h2>
 <p>Tinggal sesuaikan dengan nama vm nya, maka anda kan masuk kedalam mesin virtual.</p>
 <p>Kita coba untuk saling melakukan <code>ping</code> antar vm kita:</p>
-<p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/ping.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/ping.png?raw=true"></p>
+<p><img src="/images/vagrant02/ping.png" alt=""></p>
 
     
     <div class="nav-next-prev">
@@ -155,7 +166,7 @@ vagrant ssh vm02
   </div>
 
 
-<p class="copyright meta">Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</p>
+<p class="copyright meta">Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</p>
 
 </div>
 </footer></main>
