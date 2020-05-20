@@ -18,6 +18,11 @@
   </url>
   
   <url>
+    <loc>https://zetc0de.github.io/tags/rce/</loc>
+    <lastmod>2019-02-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://zetc0de.github.io/tags/</loc>
     <lastmod>2019-02-14T00:00:00+00:00</lastmod>
   </url>
@@ -29,6 +34,11 @@
   
   <url>
     <loc>https://zetc0de.github.io/post/2019-01-09-antihack.me-csrf-file-upload-vulnerability/</loc>
+    <lastmod>2019-01-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/tags/csrf/</loc>
     <lastmod>2019-01-09T00:00:00+00:00</lastmod>
   </url>
   

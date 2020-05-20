@@ -22,6 +22,24 @@
     </item>
     
     <item>
+      <title>RCE</title>
+      <link>https://zetc0de.github.io/tags/rce/</link>
+      <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://zetc0de.github.io/tags/rce/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CSRF</title>
+      <link>https://zetc0de.github.io/tags/csrf/</link>
+      <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://zetc0de.github.io/tags/csrf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Docker</title>
       <link>https://zetc0de.github.io/tags/docker/</link>
       <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
