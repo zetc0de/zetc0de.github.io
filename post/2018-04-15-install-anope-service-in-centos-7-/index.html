@@ -75,7 +75,7 @@
     
       
     <nav id="TableOfContents"></nav>
-    <p><img src="/img/images/irc/anope/logo.png" alt="Anope"></p>
+    <p><img src="/images/irc/anope/logo.png" alt="Anope"></p>
 <p>Halo, kali ini kita akan menginstall Service Anope di OS Centos 7.
 Pertama, kita harus install Development Tools dulu dan beberapa tools yang diperlukan,</p>
 <blockquote>
@@ -91,7 +91,7 @@ Pertama, kita harus install Development Tools dulu dan beberapa tools yang diper
 <p>tar -zxvf anope* &amp;&amp; cd anope*</p>
 </blockquote>
 <p>Lalu jalankan perintah <code>./extras</code> dan enable-kan <code>m_ssl_openssl.cpp</code></p>
-<p><img src="/img/images/irc/anope/m_ssl_openssl.cpp.png" alt="Open SSL"></p>
+<p><img src="/images/irc/anope/m_ssl_openssl.cpp.png" alt="Open SSL"></p>
 <p>Terus <code>./Config</code> dan install anope nya menggunkan user biasa/bukan root.</p>
 <blockquote>
 <p>./Config</p>
@@ -106,7 +106,7 @@ Seletah berhasil diinstall, maka directory anope sekarang ada di home directory 
 <blockquote>
 <p>cp ~/services/conf/example.conf ~/services/conf/services.conf</p>
 </blockquote>
-<p>Lalu edit file konfiurasi tadi sesuai kebutuhan. Untuk contoh, bisa lihat file konfigurasi milik saya disini <a href="https://raw.githubusercontent.com/havidzc0de/havidzc0de.github.io/master/assets/files/services.conf">services.conf</a>, kebetulan untuk aplikasi IRC yg saya gunakan adalah Unrealircd.</p>
+<p>Lalu edit file konfiurasi tadi sesuai kebutuhan. Untuk contoh, bisa lihat file konfigurasi milik saya disini <a href="/files/services.conf">services.conf</a>, kebetulan untuk aplikasi IRC yg saya gunakan adalah Unrealircd.</p>
 <p><code>Note:</code> Edit juga bagian konfigurasi link <code>unrealircd.conf</code>, sesuaikan dengan konfigurasi uplink di <code>services.conf</code>:</p>
 <pre><code>link services.mynet.org
 {
@@ -130,7 +130,7 @@ Seletah berhasil diinstall, maka directory anope sekarang ada di home directory 
 <blockquote>
 <p>./services/bin/anoperc start</p>
 </blockquote>
-<p><img src="/img/images/irc/anope/start.png" alt="Start Anope"></p>
+<p><img src="/images/irc/anope/start.png" alt="Start Anope"></p>
 <p>Sampai disini service Anope siap digunakan, sekian dan terimakasih.</p>
 
     
