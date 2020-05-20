@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="your description">
+    <meta name="Author" content="Mas Zet">
+    <meta name="keywords" content="exploit security bugbounty">
+    <link rel="stylesheet" href=css/syntax.css>
+    <link rel="stylesheet" href=css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>zetc0de — IT Security Enthusiast</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=><img src="avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=>
+        
+            zetc0de — IT Security Enthusiast
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>home</span>
+            </a>
+        
+            		
+            <a href="/post"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>blog</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/zetc0de"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+            		
+            <a href="/contact"
+                
+            >
+                <i class="far fa-envelope"></i>
+                <span>contact</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">How To Install And Configure OpenVPN In Centos 7</h1>
+    
+      
+    <nav id="TableOfContents"></nav>
+    <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>OpenVPN adalah aplikasi perangkat lunak open-source yang mengimplementasikan teknik virtual private network <a href="https://en.wikipedia.org/wiki/Virtual_private_network">(VPN)</a> untuk membuat koneksi point-to-point atau site-to-site yang aman dalam konfigurasi yang diarahkan atau dijembatani dan fasilitas akses jarak jauh. Ini menggunakan protokol keamanan khusus [9] yang memanfaatkan <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">SSL / TLS</a> untuk pertukaran kunci. OpenVPN mampu melintasi <a href="https://en.wikipedia.org/wiki/Network_address_translator">network address translators</a> (NAT) dan <a href="https://en.wikipedia.org/wiki/Firewall_(computing)">firewall</a>. OpenVPN ditulis oleh James Yonan dan diterbitkan di bawah GNU General Public License (GPL).</p>
+<!-- raw HTML omitted -->
+<ul>
+<li>Enable the epel-repository in CentOS.</li>
+<li>Install openvpn and easy-rsa.</li>
+<li>Create Vars Variables.</li>
+<li>Configure easy-rsa.</li>
+<li>Configure OpenVPN.</li>
+<li>Configure Firewalld and Enable Port Forwarding.</li>
+<li>Start openVPN Server.</li>
+<li>Setting up the OpenVPN client application.</li>
+</ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>set_var EASYRSA                 &quot;$PWD&quot;
+set_var EASYRSA_PKI             &quot;$EASYRSA/pki&quot;
+set_var EASYRSA_DN              &quot;cn_only&quot;
+set_var EASYRSA_REQ_COUNTRY     &quot;FR&quot;
+set_var EASYRSA_REQ_PROVINCE    &quot;Paris&quot;
+set_var EASYRSA_REQ_CITY        &quot;Paris&quot;
+set_var EASYRSA_REQ_ORG         &quot;CLIENT1 CERTIFICATE AUTHORITY&quot;
+set_var EASYRSA_REQ_EMAIL       &quot;zetc0de@random.io&quot;
+set_var EASYRSA_REQ_OU          &quot;zetc0de EASY CA&quot;
+set_var EASYRSA_KEY_SIZE        2048
+set_var EASYRSA_ALGO            rsa
+set_var EASYRSA_CA_EXPIRE       7500
+set_var EASYRSA_CERT_EXPIRE     365
+set_var EASYRSA_NS_SUPPORT      &quot;no&quot;
+set_var EASYRSA_NS_COMMENT      &quot;zetc0de CERTIFICATE AUTHORITY&quot;
+set_var EASYRSA_EXT_DIR         &quot;$EASYRSA/x509-types&quot;
+set_var EASYRSA_SSL_CONF        &quot;$EASYRSA/openssl-1.0.cnf&quot;
+set_var EASYRSA_DIGEST          &quot;sha256&quot;
+</code></pre><pre><code>chmod +x vars
+</code></pre><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>cp pki/ca.crt /etc/openvpn/server/
+cp pki/issued/zetc0de-openvpn.crt /etc/openvpn/server/
+cp pki/private/zetc0de-openvpn.key /etc/openvpn/server/
+</code></pre><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>#change with your port
+port 4095
+
+#You can use udp or tcp
+proto udp
+
+# &quot;dev tun&quot; will create a routed IP tunnel.
+dev tun
+
+#Certificate Configuration
+
+#ca certificate
+ca /etc/openvpn/server/ca.crt
+
+#Server Certificate
+cert /etc/openvpn/server/zetc0de-openvpn.crt
+
+#Server Key and keep this is secret
+key /etc/openvpn/server/zetc0de-openvpn.key
+
+#See the size a dh key in /etc/openvpn/keys/
+dh /etc/openvpn/server/dh.pem
+
+crl-verify /etc/openvpn/server/crl.pem
+
+#Internal IP will get when already connect
+server 192.168.200.0 255.255.255.0
+
+#this line will redirect all traffic through our OpenVPN
+push &quot;redirect-gateway def1&quot;
+
+#Provide DNS servers to the client, you can use goolge DNS
+push &quot;dhcp-option DNS 84.200.69.80&quot;
+push &quot;dhcp-option DNS 84.200.70.40&quot;
+
+#Enable multiple client to connect with same key
+duplicate-cn
+
+keepalive 20 60
+persist-key
+persist-tun
+compress lzo
+daemon
+
+cipher AES-256-CBC
+
+tls-version-min 1.2
+auth SHA512
+tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA384:TLS-DHE-RSA-WITH-AES-256-CBC-SHA256:TLS-DHE-RSA-WITH-AES-128-GCM-SHA256:TLS-DHE-RSA-WITH-AES-128-CBC-SHA256
+auth-nocache
+
+user nobody
+group nobody
+
+#enable log
+log-append /var/log/openvpn.log
+
+#Log Level
+verb 3
+</code></pre><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>cd /lib/firewalld/services/
+vim openvpn.xml
+</code></pre><pre><code>Change Default Port
+</code></pre><!-- raw HTML omitted -->
+<pre><code>net.ipv4.ip_forward = 1
+</code></pre><!-- raw HTML omitted -->
+<pre><code>SELINUX=disabled
+</code></pre><pre><code>sysctl -p
+systemctl restart openvpn@server
+systemctl enable openvpn@server
+</code></pre><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>client
+dev tun
+proto udp
+
+#Server IP and Port
+remote 65.135.x.x 3068 ##diganti dengan IP server dan Port OpenVPN anda
+
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+mute-replay-warnings
+ca ca.crt
+cert client.crt
+key client.key
+remote-cert-tls server
+compress lzo
+
+verb 3
+cipher AES-256-CBC
+auth SHA512
+auth-nocache
+tls-version-min 1.2
+tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA384:TLS-DHE-RSA-WITH-AES-256-CBC-SHA256:TLS-DHE-RSA-WITH-AES-128-GCM-SHA256:TLS-DHE-RSA-WITH-AES-128-CBC-SHA256
+</code></pre><pre><code>cd /etc/openvpn/
+tar -czf zetc0de.tar.gz client/*
+</code></pre><pre><code>mv zetc0de.tar.gz /home/lightmoon/
+chown -R lightmoon:lightmoon /home/lightmoon/
+</code></pre><!-- raw HTML omitted -->
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="/post/2018-04-15-install-anope-service-in-centos-7-/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a href="/post/2018-05-07-install-apache2-dan-konfigurasi-virtualhost-di-centos-7/"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+          <div class="footer-mail">
+          <i class="far fa-envelope"></i> <a href="mailto:zetc0de.id@gmail.com">zetc0de.id@gmail.com</a> </div>
+      
+      
+      <div class="footer-phone">
+          <i class="fas fa-phone"></i> https://t.me/zetc0de 
+      </div>
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=js/navbutton.js></script>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="your description">
+    <meta name="Author" content="Mas Zet">
+    <meta name="keywords" content="exploit security bugbounty">
+    <link rel="stylesheet" href=css/syntax.css>
+    <link rel="stylesheet" href=css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>zetc0de — IT Security Enthusiast</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=><img src="avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=>
+        
+            zetc0de — IT Security Enthusiast
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>home</span>
+            </a>
+        
+            		
+            <a href="/post"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>blog</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/zetc0de"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+            		
+            <a href="/contact"
+                
+            >
+                <i class="far fa-envelope"></i>
+                <span>contact</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">How To Install Unrealircd In Centos 7</h1>
+    
+      
+    <nav id="TableOfContents"></nav>
+    <!-- raw HTML omitted -->
+<p>Halo, kali ini kita akan menginstall Unrealircd di OS Centos 7. <strong>Apa itu Unrelircd</strong> ?</p>
+<p><strong>UnrealIRCd</strong> adalah daemon IRC open source, awalnya berbasis pada DreamForge, dan tersedia untuk sistem operasi Unix-like dan Windows. Sejak awal pengembangan pada UnrealIRCd c. Mei 1999, banyak fitur baru yang ditambahkan dan dimodifikasi, termasuk fitur keamanan yang canggih dan perbaikan bug, dan Unrealircd menjadi server yang populer.</p>
+<p>Oke langsung saja,seperti biasa kita harus install Development Tools dulu dan beberapa tools yang diperlukan,</p>
+<blockquote>
+<p>yum group install &ldquo;Development Tools&rdquo;</p>
+<p>yum install make cmake openssl openssl-devel</p>
+</blockquote>
+<p>Lalu kita download source Unreal dan mengekstraknya:</p>
+<blockquote>
+<p>wget <a href="https://www.unrealircd.org/unrealircd4/unrealircd-4.0.17.tar.gz">https://www.unrealircd.org/unrealircd4/unrealircd-4.0.17.tar.gz</a></p>
+<p>tar -zxvf unreal*</p>
+<p>cd unreaal*</p>
+</blockquote>
+<p>Lalu kita install Unreal dengan perintah berikut:</p>
+<blockquote>
+<p>./Config &amp;&amp; make &amp;&amp; make install</p>
+</blockquote>
+<p>Press Enter-enter saja sampai selesai, nanti hasil installasi akan terletak di home directory.</p>
+<p>Salin file example konfigurasi ke <code>~/unrealircd/conf/</code></p>
+<blockquote>
+<p>cp ~/unrealircd/conf/examples/example.conf ~/unrealircd/conf/unrealircd.conf</p>
+</blockquote>
+<p>Kemudian konfigurasi file unrealircd.conf sesuai kebutuhan, aku konfig bagian-bagian dibawah ini :
+{% highlight ruby %}
+59 me {
+60         name &ldquo;irc.random.io&rdquo;;
+61         info &ldquo;IRC RANDOM&rdquo;;
+62         sid &ldquo;001&rdquo;;</p>
+<p>68 admin {
+69         &ldquo;havidzc0de&rdquo;;
+70         &ldquo;havidzc0de&rdquo;;
+71         &ldquo;<a href="mailto:havidzc0de@gmail.com">havidzc0de@gmail.com</a>&rdquo;;</p>
+<p>144 oper havidzc0de {
+145         class opers;
+146         mask <em>@</em>;
+147         password &ldquo;passwordkamu&rdquo;;</p>
+<p>173 /* Standard IRC port 6667 */
+174 listen {
+175         ip *;
+176         port 6667;
+177 };
+178
+179 /* Standard IRC SSL/TLS port 6697 */
+180 listen {
+181         ip *;
+182         port 6697;
+183         options { ssl; };
+184 };
+185
+186 /* Special SSL/TLS servers-only port for linking */
+187 listen {
+188         ip *;
+189         port 6900; /*port untuk konekin ke service Anope*/
+190         options { ssl; serversonly; };
+191 };</p>
+<p>376 /* Network configuration */
+377 set {
+378         network-name            &ldquo;RANDOM&rdquo;;
+379         default-server          &ldquo;irc.random.io&rdquo;;
+380         services-server         &ldquo;services.random.io&rdquo;;
+381         stats-server            &ldquo;stats.random.io&rdquo;;</p>
+<p>393         cloak-keys {
+394                &ldquo;YeK47v7oa4IYH1e64y14QW6Vx6ALN4GP1p0DFlQ8CGWCe0K6jyo3cCw&rdquo;;
+395                &ldquo;3C5scCBJPDkLYSC1PID1IUjo3344K8W8p1u04Dm2X5JnP5D04JevE6OH5&rdquo;;
+396                &ldquo;dubhE01QGEOlm317i836vLme6Wcov3MI71G43iM7w2I6t12f7N&rdquo;;</p>
+<p>402 set {
+403         kline-address &ldquo;<a href="mailto:havidzc0de@gmail.com">havidzc0de@gmail.com</a>&rdquo;; /* e-mail or URL shown when a use    r is banned */</p>
+<p>{% endhighlight ruby %}
+Untuk gencloak bisa menggunakan perintah ini:</p>
+<blockquote>
+<p>./unrealircd gencloak</p>
+</blockquote>
+<p>Anda dapat melihat full file konfigurasinya <a href="https://raw.githubusercontent.com/havidzc0de/havidzc0de.github.io/master/assets/files/unrealircd.conf">disini</a></p>
+<p>Sebelum kita jalankan Unrealircd nya, kita buka port sesuai port di konfigurasi <code>listening</code> nya:</p>
+<blockquote>
+<p>firewall-cmd &ndash;add-port=6697/tcp &ndash;permanent</p>
+<p>firewall-cmd &ndash;add-port=6667/tcp &ndash;permanent</p>
+<p>firewall-cmd &ndash;reload</p>
+</blockquote>
+<p>Lalu kita start</p>
+<blockquote>
+<p>./unrealircd start</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<p>~Sekian</p>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="/post/2018-04-15-welcome-to-my-blog/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a href="/post/2018-04-15-install-anope-service-in-centos-7-/"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+          <div class="footer-mail">
+          <i class="far fa-envelope"></i> <a href="mailto:zetc0de.id@gmail.com">zetc0de.id@gmail.com</a> </div>
+      
+      
+      <div class="footer-phone">
+          <i class="fas fa-phone"></i> https://t.me/zetc0de 
+      </div>
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=js/navbutton.js></script>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="your description">
+    <meta name="Author" content="Mas Zet">
+    <meta name="keywords" content="exploit security bugbounty">
+    <link rel="stylesheet" href=css/syntax.css>
+    <link rel="stylesheet" href=css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>zetc0de — IT Security Enthusiast</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=><img src="avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=>
+        
+            zetc0de — IT Security Enthusiast
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>home</span>
+            </a>
+        
+            		
+            <a href="/post"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>blog</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/zetc0de"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+            		
+            <a href="/contact"
+                
+            >
+                <i class="far fa-envelope"></i>
+                <span>contact</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">How To Install Anope Service In Centos 7</h1>
+    
+      
+    <nav id="TableOfContents"></nav>
+    <!-- raw HTML omitted -->
+<p>Halo, kali ini kita akan menginstall Service Anope di OS Centos 7.
+Pertama, kita harus install Development Tools dulu dan beberapa tools yang diperlukan,</p>
+<blockquote>
+<p>yum group install &ldquo;Development Tools&rdquo;</p>
+<p>yum install make cmake openssl openssl-devel</p>
+</blockquote>
+<p>Kemudian, kita download source Anope nya</p>
+<blockquote>
+<p>wget <a href="https://github.com/anope/anope/releases/download/2.0.6/anope-2.0.6-source.tar.gz">https://github.com/anope/anope/releases/download/2.0.6/anope-2.0.6-source.tar.gz</a></p>
+</blockquote>
+<p>Terus, kita extract dan masuk ke directory hasil extract tadi.</p>
+<blockquote>
+<p>tar -zxvf anope* &amp;&amp; cd anope*</p>
+</blockquote>
+<p>Lalu jalankan perintah <code>./extras</code> dan enable-kan <code>m_ssl_openssl.cpp</code></p>
+<!-- raw HTML omitted -->
+<p>Terus <code>./Config</code> dan install anope nya menggunkan user biasa/bukan root.</p>
+<blockquote>
+<p>./Config</p>
+<p>cd build &amp;&amp; make &amp;&amp; make install</p>
+</blockquote>
+<p>Enter-enter sampe selesai.
+Seletah berhasil diinstall, maka directory anope sekarang ada di home directory <code>~/services</code> , lalu uncoment module <code>m_ssl_openssl</code> di <code>~/services/conf/modules.example.conf</code></p>
+<blockquote>
+<p>vim ~/services/conf/modules.example.conf</p>
+</blockquote>
+<p>Buat file konfigurasi Anopenya <em>kita pake file examplenya</em></p>
+<blockquote>
+<p>cp ~/services/conf/example.conf ~/services/conf/services.conf</p>
+</blockquote>
+<p>Lalu edit file konfiurasi tadi sesuai kebutuhan. Untuk contoh, bisa lihat file konfigurasi milik saya disini <a href="https://raw.githubusercontent.com/havidzc0de/havidzc0de.github.io/master/assets/files/services.conf">services.conf</a>, kebetulan untuk aplikasi IRC yg saya gunakan adalah Unrealircd.</p>
+<p><code>Note:</code> Edit juga bagian konfigurasi link <code>unrealircd.conf</code>, sesuaikan dengan konfigurasi uplink di <code>services.conf</code>:
+{% highlight ruby %}
+link services.mynet.org
+{
+incoming {
+mask 127.0.0.1;
+};</p>
+<pre><code>password &quot;changemeplease&quot;;
+
+class servers;
+</code></pre>
+<p>};
+{% endhighlight ruby %}</p>
+<p>Serverinfo juga disesuaikan :</p>
+<p>{% highlight ruby %}
+serverinfo
+{
+/*
+* The hostname that Services will be seen as, it must have no conflicts with any
+* other server names on the rest of your IRC network. Note that it does not have
+* to be an existing hostname, just one that isn&rsquo;t on your network already.
+*/
+name = &ldquo;127.0.0.1&rdquo;</p>
+<p>{% endhighlight ruby %}</p>
+<p>Kalau sudah beres konfigurasi, jalankan dengan perintah</p>
+<blockquote>
+<p>./services/bin/anoperc start</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<p>Sampai disini service Anope siap digunakan, sekian dan terimakasih.</p>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="/post/2018-04-15-install-unrealircd-service-in-centos-7/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a href="/post/2018-05-08-install-openvpn-dan-konfigurasi-di-centos-7/"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+          <div class="footer-mail">
+          <i class="far fa-envelope"></i> <a href="mailto:zetc0de.id@gmail.com">zetc0de.id@gmail.com</a> </div>
+      
+      
+      <div class="footer-phone">
+          <i class="fas fa-phone"></i> https://t.me/zetc0de 
+      </div>
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=js/navbutton.js></script>
+</html>

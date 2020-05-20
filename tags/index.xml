@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on zetc0de — IT Security Enthusiast</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on zetc0de — IT Security Enthusiast</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id-id</language>
+    <copyright>Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Thu, 14 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>bugbounty</title>
+      <link>/tags/bugbounty/</link>
+      <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/bugbounty/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

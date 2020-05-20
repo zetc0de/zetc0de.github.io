@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/post/2019-02-14-rce-and-xss-on-private-program-cyber-army/</loc>
+    <lastmod>2019-02-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/bugbounty/</loc>
+    <lastmod>2019-02-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2019-02-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2019-02-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2019-02-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2019-01-09-antihack.me-csrf-file-upload-vulnerability/</loc>
+    <lastmod>2019-01-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2018-10-03-how-to-create-aws-docker-engine-with-docker-machine/</loc>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/virtualization/</loc>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2018-09-03-how-to-install-docker-in-arch-linux/</loc>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2018-07-08-how-to-create-own-vagrant-box-/</loc>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2018-07-26-ansible-provisioning-with-vagrant/</loc>
+    <lastmod>2018-07-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2018-06-24-bash-provisioning-with-vagrant/</loc>
+    <lastmod>2018-06-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2018-06-10-create-multiple-vm-with-one-vagrantfile/</loc>
+    <lastmod>2018-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2018-05-25-instalasi-dan-konfigurasi-vagrant/</loc>
+    <lastmod>2018-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2018-05-07-install-apache2-dan-konfigurasi-virtualhost-di-centos-7/</loc>
+    <lastmod>2018-05-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/webserver/</loc>
+    <lastmod>2018-05-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/anope/</loc>
+    <lastmod>2018-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2018-05-08-install-openvpn-dan-konfigurasi-di-centos-7/</loc>
+    <lastmod>2018-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2018-04-15-install-anope-service-in-centos-7-/</loc>
+    <lastmod>2018-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2018-04-15-install-unrealircd-service-in-centos-7/</loc>
+    <lastmod>2018-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/openvpn/</loc>
+    <lastmod>2018-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/unrealircd/</loc>
+    <lastmod>2018-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2018-04-15-welcome-to-my-blog/</loc>
+    <lastmod>2018-04-01T09:20:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/contact/</loc>
+  </url>
+  
+</urlset>

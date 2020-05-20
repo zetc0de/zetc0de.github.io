@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="your description">
+    <meta name="Author" content="Mas Zet">
+    <meta name="keywords" content="exploit security bugbounty">
+    <link rel="stylesheet" href=css/syntax.css>
+    <link rel="stylesheet" href=css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>zetc0de — IT Security Enthusiast</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=><img src="avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=>
+        
+            zetc0de — IT Security Enthusiast
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>home</span>
+            </a>
+        
+            		
+            <a href="/post"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>blog</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/zetc0de"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+            		
+            <a href="/contact"
+                
+            >
+                <i class="far fa-envelope"></i>
+                <span>contact</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">How To Install Apache2 With Virtualhost Configuration In Centos 7</h1>
+    
+      
+    <nav id="TableOfContents"></nav>
+    <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Server HTTP Apache atau Server Web/WWW Apache adalah server web yang dapat dijalankan di banyak sistem operasi (Unix, BSD, Linux, Microsoft Windows dan Novell Netware serta platform lainnya) yang berguna untuk melayani dan memfungsikan situs web. Protokol yang digunakan untuk melayani fasilitas web/www ini menggunakan HTTP.</p>
+<p>Apache memiliki fitur-fitur canggih seperti pesan kesalahan yang dapat dikonfigur, autentikasi berbasis basis data dan lain-lain. Apache juga didukung oleh sejumlah antarmuka pengguna berbasis grafik (GUI) yang memungkinkan penanganan server menjadi mudah.</p>
+<p>Apache merupakan perangkat lunak sumber terbuka dikembangkan oleh komunitas terbuka yang terdiri dari pengembang-pengembang di bawah naungan <a href="https://id.wikipedia.org/wiki/Apache_Software_Foundation">Apache Software Foundation</a>.</p>
+<!-- raw HTML omitted -->
+<p><code>Rencananya saya akan menginstall webapp pada subdomain blog.serverku.com</code></p>
+<p>Apache2 secara default tersedia di package Centos7, jadi tinggal install menggunakan perintah:</p>
+<blockquote>
+<p>yum -y install httpd</p>
+</blockquote>
+<p>Jika istallasi selesai, konfigurasi sistem anda agar menjalankan service apache2/httpd ini saat boot:</p>
+<blockquote>
+<p>systemctl start httpd
+systemctl enable httpd</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<p>Pada Centos7 saya menggunakan Firewalld, sehinggak kita harus mengatur agar membolehkan koneksi dari luar ke port 80(http) dan 443(https):</p>
+<blockquote>
+<p>firewall-cmd &ndash;add-service=http &ndash;permanent &ndash;zone=public</p>
+<p>firewall-cmd &ndash;add-service=https &ndash;permanent &ndash;zone=public</p>
+<p>firewall-cmd &ndash;reload</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<p>Sampai saat ini kita bisa akses server kita di web browser.</p>
+<!-- raw HTML omitted -->
+<p>Karena saya ingin mengakses webapp nya pada alamat blog.serverku.com, maka buat virtualhost yang mengarahkan kealamat tersebut.</p>
+<blockquote>
+<p>mkdir -p /var/www/blog.serverku.com/public_html</p>
+</blockquote>
+<p>Sekarang kita punya struktur directory untuk file kita, tapi owner nya masih root. Jika kita ingin webapp juga boleh memodifikasi, maka kita harus izinkan user apache untuk mengaksesnya:</p>
+<blockquote>
+<p>chown -R apache:apache /var/www/blog.serverku.com/public_html</p>
+<p>chmod -R 755 /var/www</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<p>Untuk memulai, kita perlu mengatur directory tempat virtualhost kita akan disimpan,serta directory yang akan memberi tahu apache bahwa virtualhost siap melayani pengunjung. Directori <code>sites-available</code> akan menyimpan semua file konfigurasi virtualhost, sementara directory <code>sites-enable</code> akan menyimpan tautan simbolic ke host virtual yang ingin kita publikasikan, dalam kasus ini kita akan mempublikasikan host blog.serverku.com.</p>
+<blockquote>
+<p>mkdir /etc/httpd/sites-available</p>
+<p>mkdir /etc/httpd/sites-enabled</p>
+</blockquote>
+<p>Sekarang kita beritahu ke Apache bahwa file-file konfigurasi virtualhost ada didalam directory <code>site-enabled</code>:</p>
+<blockquote>
+<p>nano /etc/httpd/conf/httpd.conf</p>
+</blockquote>
+<p>Dan berikan baris perintah berikut pada baris terakhir:
+<code>IncludeOptional sites-enabled/*.conf</code></p>
+<!-- raw HTML omitted -->
+<p>Buat file konfigurasinya :</p>
+<blockquote>
+<p>nano /etc/httpd/sites-available/blog.serverku.conf</p>
+</blockquote>
+<p>{% highlight ruby %}
+&lt;VirtualHost *:80&gt;
+ServerAdmin <a href="mailto:havidzc0de@gmail.com">havidzc0de@gmail.com</a>
+DocumentRoot /var/www/blog.serverku.com/public_html
+ServerName <a href="http://www.serverku.com">www.serverku.com</a>
+ErrorLog /var/log/httpd/blog.serverku.com_error.log
+CustomLog /var/log/httpd/blog.serverku.com_requests.log combine
+<!-- raw HTML omitted -->
+{% endhighlight ruby%}</p>
+<p>Jika sudah, sekarang aktifkan virtualhost tersebut:</p>
+<blockquote>
+<p>ln -s /etc/httpd/sites-available/blog.serverku.conf /etc/httpd/sites-enabled/blog.serverku.conf</p>
+</blockquote>
+<p>Sekarang kita coba buat file html di dalam documentroot kita:</p>
+<blockquote>
+<p>nano var/www/blog.serverku.com/public_html/index.html</p>
+</blockquote>
+<p>{% highlight ruby %}</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Restart apache:</p>
+<blockquote>
+<p>systemctl restart httpd</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<p>Sekian</p>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="/post/2018-05-08-install-openvpn-dan-konfigurasi-di-centos-7/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a href="/post/2018-05-25-instalasi-dan-konfigurasi-vagrant/"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+          <div class="footer-mail">
+          <i class="far fa-envelope"></i> <a href="mailto:zetc0de.id@gmail.com">zetc0de.id@gmail.com</a> </div>
+      
+      
+      <div class="footer-phone">
+          <i class="fas fa-phone"></i> https://t.me/zetc0de 
+      </div>
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=js/navbutton.js></script>
+</html>

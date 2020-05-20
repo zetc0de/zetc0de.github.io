@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="your description">
+    <meta name="Author" content="Mas Zet">
+    <meta name="keywords" content="exploit security bugbounty">
+    <link rel="stylesheet" href=css/syntax.css>
+    <link rel="stylesheet" href=css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>zetc0de — IT Security Enthusiast</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=><img src="avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=>
+        
+            zetc0de — IT Security Enthusiast
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>home</span>
+            </a>
+        
+            		
+            <a href="/post"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>blog</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/zetc0de"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+            		
+            <a href="/contact"
+                
+            >
+                <i class="far fa-envelope"></i>
+                <span>contact</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">Create Multiple VM with one Vagrantfile</h1>
+    
+      
+    <nav id="TableOfContents"></nav>
+    <p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/Vagrant.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/Vagrant.png?raw=true"></p>
+<p>Menggunakan vagrant untuk kebutuhan virtualisasi sangat membantu pekerjaan developer maupun system engineer. Dengan vagrant kita dapat membuat virtual environtment dengan mudah.</p>
+<p>Masalahnya, terkadang kita membutuhakan lebih dari satu VM untuk kebutuhan testing maupun untuk kebutuhan yang lain, dengan vagrant kita dapat membuat multipele VM hanya dengan sekali inisialisasi vagrantfile.</p>
+<p>Pada kesempatan kali ini kita akan membuat 2 vm menggunakan 1 vagrantfile. Untuk memulainya, buatlah sebuah direktory untuk vagrantfile kita:</p>
+<pre><code>mkdir ~/Vagrant/multiple-vm
+cd Vagrant/multiplr-vm
+</code></pre><p>Lalu buatlah sebuah Vagrantfile menggunakan text editor kesayangan anda:</p>
+<pre><code># Inisialisasi Vagrantfile configuration
+Vagrant.configure(&quot;2&quot;) do |config|
+
+  # definisikan vm01
+  config.vm.define &quot;vm01&quot; do |vm01|
+      vm01.vm.box = &quot;ubuntu/xenial64&quot;
+      vm01.vm.hostname = &quot;vm01&quot;
+      vm01.vm.network :private_network, ip: &quot;10.3.3.10&quot;
+  end
+
+  # definisikan vm02
+  config.vm.define &quot;vm02&quot; do |vm02|
+      vm02.vm.box = &quot;ubuntu/xenial64&quot;
+      vm02.vm.hostname = &quot;vm02&quot;
+      vm02.vm.network :private_network, ip: &quot;10.3.3.11&quot;
+      vm02.vm.provider &quot;virtualbox&quot; do |vb|
+        vb.memory = &quot;512&quot;
+      end
+  end
+
+end
+</code></pre><p>Penjelasan konfigurasi diatas:</p>
+<ul>
+<li>Kita deinisikan vm pertama dengan nama vm01, dan vm kedua dengan nama vm02.</li>
+<li>Kita sama-sama menggunakan box ubuntu/xenial64</li>
+<li>Menggunakan hostname vm01 untuk vm pertama dan vm02 untuk vm kedua.</li>
+<li>Menggunakan private network dengan ip 10.3.3.10 untuk vm01 dan ip 10.3.3.11 untuk vm02.</li>
+<li>Sama-sama menggunakan RAM 512 mb.</li>
+</ul>
+<p>Setelah itu save dengan nama Vagrantfile, lalu jalankan dengan perintah:</p>
+<pre><code>vagrant up
+vagrant status
+</code></pre><p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/status.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/status.png?raw=true"></p>
+<p>Maka akan terlihat status dari 2 vm kita sedang dalam kondisi running. Kita bisa masuk kedalam vm nya dengan perintah:</p>
+<pre><code>vagrant ssh vm01
+vagrant ssh vm02
+</code></pre><p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/ssh.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/ssh.png?raw=true"></p>
+<p>Tinggal sesuaikan dengan nama vm nya, maka anda kan masuk kedalam mesin virtual.</p>
+<p>Kita coba untuk saling melakukan <code>ping</code> antar vm kita:</p>
+<p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/ping.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-02/ping.png?raw=true"></p>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="/post/2018-05-25-instalasi-dan-konfigurasi-vagrant/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a href="/post/2018-06-24-bash-provisioning-with-vagrant/"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+          <div class="footer-mail">
+          <i class="far fa-envelope"></i> <a href="mailto:zetc0de.id@gmail.com">zetc0de.id@gmail.com</a> </div>
+      
+      
+      <div class="footer-phone">
+          <i class="fas fa-phone"></i> https://t.me/zetc0de 
+      </div>
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=js/navbutton.js></script>
+</html>

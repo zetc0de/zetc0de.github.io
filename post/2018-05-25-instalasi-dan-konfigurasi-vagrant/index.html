@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="your description">
+    <meta name="Author" content="Mas Zet">
+    <meta name="keywords" content="exploit security bugbounty">
+    <link rel="stylesheet" href=css/syntax.css>
+    <link rel="stylesheet" href=css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>zetc0de — IT Security Enthusiast</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=><img src="avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=>
+        
+            zetc0de — IT Security Enthusiast
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>home</span>
+            </a>
+        
+            		
+            <a href="/post"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>blog</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>tags</span>
+            </a>
+        
+            		
+            <a href="https://github.com/zetc0de"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+            		
+            <a href="/contact"
+                
+            >
+                <i class="far fa-envelope"></i>
+                <span>contact</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">Instalasi dan Konfigurasi Dasar Vagrant</h1>
+    
+      
+    <nav id="TableOfContents"></nav>
+    <p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/900px-MediaWiki_Vagrant_Visualization.jpg?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/900px-MediaWiki_Vagrant_Visualization.jpg?raw=true"></p>
+<p>Saat ini virtualisasi menjadi penunjang bagi lingkungan development software secara modern. Dalam satu laptop kita bisa memasang berbagai sistem operasi virtual yang disesuaikan dengan server kita, sehingga kita bisa memisahkan configurasi laptop kita dengan konfigurasi server.</p>
+<p>Banyak keuntungan ketika kita menggunakan vagrant,sebagai developer sofrware akan sangat memudahkan jika menggunakan vagrant sebagai development environment yang terisolasi di virtual. Untuk memasang vagrant, caranya sangat mudah. Jika anda menggunakan OS keluarga UNIX, anda dapat memasangnya menggunakan package manager. Misalkan anda menggunakan Ubuntu:</p>
+<pre><code>sudo apt-get install virtualbox
+sudo apt-get install vagrant
+</code></pre><p>Ketika vagrant dalam kondisi fresh install, maka kita bekum meiliki box/image untuk kita gunakan pada vagrant. Untuk itu kita download vagrant boxnya dahulu, anda dapat melihat-lihat vagrant box <a href="https://app.vagrantup.com/boxes/search">disini</a>. Saya asumsikan anda akan mendownload box ubuntu xenial:</p>
+<pre><code>vagrant box add ubuntu/xenial64
+</code></pre><p>Anda dapat melihat box yang anda miliki dengan perintah:
+<code>vagrant box list</code></p>
+<p><img src="https://raw.githubusercontent.com/zetc0de/zetc0de.github.io/master/assets/images/Vagrant-01/box%20list2.png" alt="https://raw.githubusercontent.com/zetc0de/zetc0de.github.io/master/assets/images/Vagrant-01/box%20list2.png"></p>
+<p>Untuk memulainya, mari kita membuat directory,silahkan buat directory ditempat yang anda suka, dan jalankan <code>vagrant init ubuntu/xenial64</code> atau dengan box yang anda inginkan:</p>
+<pre><code>mkdir -p ~/Vagrant/myubuntu
+cd ~/Vagrant/myubuntu
+vagrant init ubuntu/xenial64
+</code></pre><p><img src="https://raw.githubusercontent.com/zetc0de/zetc0de.github.io/master/assets/images/Vagrant-01/vagrant-init.png" alt="https://raw.githubusercontent.com/zetc0de/zetc0de.github.io/master/assets/images/Vagrant-01/vagrant-init.png"></p>
+<p>Dengan perintah diatas, maka akan membuat vagrantfile, dengan vagrantfile tersebut kita dapat mengkofigurasikan VM(Virtual mechine) sesuai kehendak kita.</p>
+<p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/konf.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/konf.png?raw=true"></p>
+<p>Bisa anda lihat diatas, kita menggunakan box ubuntu/xenial64, dengan private network dan menggunakan memory sebesar 512, tinggal sesuaikan dengan kebutuhan. Ada beberapa variable yang dapat anda konfigurasikan, bebrapa diantaranya:</p>
+<ul>
+<li>config.vm.box : Inisialisasi Vagrantbox</li>
+<li>config.vm.hostname : Konfigurasi hostname (default hostaname adalah vagrant)</li>
+<li>config.vm.network : KOnfigurasi network, anda dapat meset networknya menggunakan private_network maupun public_network)</li>
+<li>config.vm.provision : Untuk kebutuhan provisioning</li>
+</ul>
+<p>Jika sudah dikonfigurasi, maka jalankan vm pertama kita:</p>
+<pre><code>vagrant up
+vagrant status
+</code></pre><p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/up.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/up.png?raw=true"></p>
+<p>Anda dapat melihat vm kita dalam kondisi running, artinya kita sudah menjalankan vm tersebut. Untuk mengaksesnya menggunakan:</p>
+<pre><code>vagrant ssh
+</code></pre><p><img src="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/ssh.png?raw=true" alt="https://github.com/zetc0de/zetc0de.github.io/blob/master/assets/images/Vagrant-01/ssh.png?raw=true">
+Maka anda sudah dapat menjalankan perintah-perintah Ubuntu pada VM tersebut.</p>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="/post/2018-05-07-install-apache2-dan-konfigurasi-virtualhost-di-centos-7/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">top</i></a>
+        <div class="nav-next">
+            
+                <a href="/post/2018-06-10-create-multiple-vm-with-one-vagrantfile/"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+          <div class="footer-mail">
+          <i class="far fa-envelope"></i> <a href="mailto:zetc0de.id@gmail.com">zetc0de.id@gmail.com</a> </div>
+      
+      
+      <div class="footer-phone">
+          <i class="fas fa-phone"></i> https://t.me/zetc0de 
+      </div>
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=js/navbutton.js></script>
+</html>

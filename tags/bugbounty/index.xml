@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bugbounty on zetc0de — IT Security Enthusiast</title>
+    <link>/tags/bugbounty/</link>
+    <description>Recent content in bugbounty on zetc0de — IT Security Enthusiast</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id-id</language>
+    <copyright>Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Thu, 14 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/bugbounty/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[Bug Bounty] RCE and XSS on Private Program Cyber Army ID</title>
+      <link>/post/2019-02-14-rce-and-xss-on-private-program-cyber-army/</link>
+      <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019-02-14-rce-and-xss-on-private-program-cyber-army/</guid>
+      <description>Prolog Lagi naik KRL dari Tangerang-Jakarta, sambil main HP tiba-tiba ada email undangan private program di Cyber Army,langsung cuz klik terima. Malamnya gw lihat detail programnya, disana diberikan 2 alamat yang masuk dalam scope, yaitu sub.[redacted].id dan subdomain.[redacted].id, ternyata 2 domain tersebut terdapat dalam 1 server dengan aplikasi yang serupa, jadi total ada 6 vuln yang saya temukan.
+ 4 XSS 2 RCE  Reconnaissance Pada tahap reconnaissance,saya menggunakan nmap dengan perintah nmap sub.</description>
+    </item>
+    
+    <item>
+      <title>[Bug Bounty] Antihack.me CSRF File Upload Vulnerability</title>
+      <link>/post/2019-01-09-antihack.me-csrf-file-upload-vulnerability/</link>
+      <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019-01-09-antihack.me-csrf-file-upload-vulnerability/</guid>
+      <description>CSFR #1 On Profile Image File Upload Antihack.me merupakan sebuah website Bug Bounty Platform asal singapura. Setelah mendaftarkan user baru dan login ke aplikasi, kita dapat mengatur profile kita sebagai bug hunter, termasuk juga setting avatar/photo profile. Tertarik dengan fitur upload imagenya, kita coba intercept request upload image tersebut.
+Terlihat disana beberapa parameter yang dikirimkan, akan tetapi disana tidak ada csrf protection, artinya siapapun dapat mengakses fitur upload ini, sekalipun dia tidak memepunyai akses ke akun manapun.</description>
+    </item>
+    
+  </channel>
+</rss>
