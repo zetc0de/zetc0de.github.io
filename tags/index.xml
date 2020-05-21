@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>id-id</language>
     <copyright>Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Thu, 14 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 02 Jun 2019 11:04:47 +0700</lastBuildDate>
     
 	<atom:link href="https://zetc0de.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,9 +15,18 @@
     <item>
       <title>Bug Bounty</title>
       <link>https://zetc0de.github.io/tags/bug-bounty/</link>
-      <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 02 Jun 2019 11:04:47 +0700</pubDate>
       
       <guid>https://zetc0de.github.io/tags/bug-bounty/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>IDOR</title>
+      <link>https://zetc0de.github.io/tags/idor/</link>
+      <pubDate>Sun, 02 Jun 2019 11:04:47 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/tags/idor/</guid>
       <description></description>
     </item>
     
