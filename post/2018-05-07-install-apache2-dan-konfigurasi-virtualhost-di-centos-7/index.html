@@ -82,7 +82,7 @@
     <li><a href="#konfigurasi-virtualhost">Konfigurasi Virtualhost</a></li>
   </ul>
 </nav>
-    <p><img src="/images/apache2/logo.png" alt="Apache Logo"></p>
+    <p><img src="/images/centos7/apache2/logo.png" alt="Apache Logo"></p>
 <h2 id="introduction">Introduction</h2>
 <p>Server HTTP Apache atau Server Web/WWW Apache adalah server web yang dapat dijalankan di banyak sistem operasi (Unix, BSD, Linux, Microsoft Windows dan Novell Netware serta platform lainnya) yang berguna untuk melayani dan memfungsikan situs web. Protokol yang digunakan untuk melayani fasilitas web/www ini menggunakan HTTP.</p>
 <p>Apache memiliki fitur-fitur canggih seperti pesan kesalahan yang dapat dikonfigur, autentikasi berbasis basis data dan lain-lain. Apache juga didukung oleh sejumlah antarmuka pengguna berbasis grafik (GUI) yang memungkinkan penanganan server menjadi mudah.</p>
@@ -98,16 +98,16 @@
 <p>systemctl start httpd
 systemctl enable httpd</p>
 </blockquote>
-<p><img src="/images/apache2/enable.png" alt="Apache Enable"></p>
+<p><img src="/images/centos7/apache2/enable.png" alt="Apache Enable"></p>
 <p>Pada Centos7 saya menggunakan Firewalld, sehinggak kita harus mengatur agar membolehkan koneksi dari luar ke port 80(http) dan 443(https):</p>
 <blockquote>
 <p>firewall-cmd &ndash;add-service=http &ndash;permanent &ndash;zone=public</p>
 <p>firewall-cmd &ndash;add-service=https &ndash;permanent &ndash;zone=public</p>
 <p>firewall-cmd &ndash;reload</p>
 </blockquote>
-<p><img src="/images/apache2/firewall.png" alt="Firewall"></p>
+<p><img src="/images/centos7/apache2/firewall.png" alt="Firewall"></p>
 <p>Sampai saat ini kita bisa akses server kita di web browser.</p>
-<p><img src="/images/apache2/aksesip.png" alt="Akses"></p>
+<p><img src="/images/centos7/apache2/aksesip.png" alt="Akses"></p>
 <p>Karena saya ingin mengakses webapp nya pada alamat blog.serverku.com, maka buat virtualhost yang mengarahkan kealamat tersebut.</p>
 <blockquote>
 <p>mkdir -p /var/www/blog.serverku.com/public_html</p>
@@ -166,7 +166,7 @@ systemctl enable httpd</p>
 <blockquote>
 <p>systemctl restart httpd</p>
 </blockquote>
-<p><img src="/images/apache2/finish.png" alt="Finish"></p>
+<p><img src="/images/centos7/apache2/finish.png" alt="Finish"></p>
 <p>Sekian</p>
 
     
@@ -176,7 +176,7 @@ systemctl enable httpd</p>
                 <a href="https://zetc0de.github.io/post/2018-05-08-install-openvpn-dan-konfigurasi-di-centos-7/"><i class="fas fa-chevron-left"></i></a>
             
         </div>
-        <a class="nav-top" href="#">top</i></a>
+        <a class="nav-top" href="#">Top</i></a>
         <div class="nav-next">
             
                 <a href="https://zetc0de.github.io/post/2018-05-25-instalasi-dan-konfigurasi-vagrant/"><i class="fas fa-chevron-right"></i></a>

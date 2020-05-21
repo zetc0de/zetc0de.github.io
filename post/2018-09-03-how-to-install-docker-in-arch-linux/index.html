@@ -87,7 +87,7 @@
     <li><a href="#testing-docker-on-arch-linux">Testing docker on Arch Linux</a></li>
   </ul>
 </nav>
-    <p><img src="/images/docker01/docker.png" alt=""></p>
+    <p><img src="/images/docker/docker01/docker.png" alt=""></p>
 <h2 id="introduction">Introduction</h2>
 <p>Docker adalah salah satu platform yang dibangun berdasarkan teknologi container. Docker merupakan sebuah project open-source yang menyediakan platform terbuka untuk developer maupun sysadmin untuk membangun,mengemas,dan menjalankan aplikasi dimanapun sebagai sebuah wadah(container) yang ringan. Dengan sangat populernya docker, sebagian orang sering menganggap docker adalah sebutan lain dari container. (codepolitan)</p>
 <h2 id="instalasi">Instalasi</h2>
@@ -103,33 +103,33 @@ modprobe loop
 <h3 id="install-docker">Install docker</h3>
 <p>Anda dapat menginstall docker melalui repository comunity (AUR), biasanya bernama <code>docker-git</code>, tapi disini saya akan install melalui repository arch:</p>
 <pre><code>sudo pacman -S docker
-</code></pre><p><img src="/images/docker01/install.png" alt=""></p>
+</code></pre><p><img src="/images/docker/docker01/install.png" alt=""></p>
 <h2 id="start-docker">Start Docker</h2>
 <p>Sebelum memulai docker, anda harus start service docker terlebih dahulu, dan pastikan docker dalam kondisi running:</p>
 <pre><code>sudo systemctl start docker
 sudo systemctl enable docker
 sudo systemctl status docker
-</code></pre><p><img src="/images/docker01/status.png" alt=""></p>
+</code></pre><p><img src="/images/docker/docker01/status.png" alt=""></p>
 <p>Jika sudah running, kita coba jalankan <code>docker info</code> dan didapatkan:</p>
-<p><img src="/images/docker01/info.png" alt=""></p>
+<p><img src="/images/docker/docker01/info.png" alt=""></p>
 <p>Artinya docker hanya dapat berjalan dalam kondisi root. Untuk menjalankan docker dalam mode user biasa. maka kita harus menambahkan user tersebut kedalam docker group:</p>
 <pre><code>sudo su
 gpasswd -a user docker
 </code></pre><p><code>Note: user diganti dengan username anda</code></p>
-<p><img src="/images/docker01/group.png" alt=""></p>
+<p><img src="/images/docker/docker01/group.png" alt=""></p>
 <p>Jangan lupa untuk re-login untuk apply perubahan.</p>
 <p>Maka ketika kita akses <code>docker info</code> dengan user biasa akan mendapatkan result seperti ini:</p>
-<p><img src="/images/docker01/info2.png" alt=""></p>
+<p><img src="/images/docker/docker01/info2.png" alt=""></p>
 <h2 id="testing-docker-on-arch-linux">Testing docker on Arch Linux</h2>
 <p>Coobalah dengan menjalankan perintah-perintah docker, anda dapat melihatnya dengan perintah:</p>
 <pre><code>docker -h
 </code></pre><p>Akan ada banyak command docker, salah satunya adalah <code>docker pull</code>, docker pull digunakan untuk mendownload docker images dari registry ke client:</p>
 <pre><code>docker pull ubuntu:18.04
-</code></pre><p><img src="/images/docker01/pull.png" alt=""></p>
+</code></pre><p><img src="/images/docker/docker01/pull.png" alt=""></p>
 <p>Perintah diatas akan mendownload images ubuntu dengan tag 18.04, anda dapat melihat berbagai images di <a href="https://hub.docker.com">Docker Hub</a>.</p>
 <p>Untuk melihat semua images yang kita miliki, gunakan perintah:</p>
 <pre><code>docker images
-</code></pre><p><img src="/images/docker01/images.png" alt=""></p>
+</code></pre><p><img src="/images/docker/docker01/images.png" alt=""></p>
 
     
     <div class="nav-next-prev">
@@ -138,7 +138,7 @@ gpasswd -a user docker
                 <a href="https://zetc0de.github.io/post/2018-07-08-how-to-create-own-vagrant-box-/"><i class="fas fa-chevron-left"></i></a>
             
         </div>
-        <a class="nav-top" href="#">top</i></a>
+        <a class="nav-top" href="#">Top</i></a>
         <div class="nav-next">
             
                 <a href="https://zetc0de.github.io/post/2018-10-03-how-to-create-aws-docker-engine-with-docker-machine/"><i class="fas fa-chevron-right"></i></a>

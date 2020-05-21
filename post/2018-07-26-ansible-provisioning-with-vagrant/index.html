@@ -81,7 +81,7 @@
     <li><a href="#provisioning">Provisioning</a></li>
   </ul>
 </nav>
-    <p><img src="/images/vagrant04/ansible.png" alt=""></p>
+    <p><img src="/images/vagrant/vagrant04/ansible.png" alt=""></p>
 <h2 id="introduction">Introduction</h2>
 <p>Setelah sebelumnya kita belajar bagaimana melakukan <a href="http://localhost:1313/post/2018-06-24-bash-provisioning-with-vagrant/">Bash Provisioning Dengan Vagrant</a>, sekarang kita akan melanjutkan belajar provisioning menggunakan ansible.</p>
 <p>Ansible adalah sebuah provisioning tool yang dikembangkan oleh RedHat. Dimana kamu dapat mencatat setiap proses deployment ataupun konfigurasi yang biasa dilakukan berulang - ulang terhadap beberapa server.</p>
@@ -109,14 +109,14 @@
 <li>vm02.vm.provision : Provisioning menggunakna ansible.</li>
 </ul>
 <p>Download file provisioning ansible <a href="/files/provision.zip">disini</a>, lalu extrak dan letakkan pada directory yang sama dengan vagrantfiile, kemudian jalankan vm02 dengan perintah <code>vagrant up</code>.</p>
-<p><img src="/images/vagrant04/cek.png" alt=""></p>
+<p><img src="/images/vagrant/vagrant04/cek.png" alt=""></p>
 <h2 id="provisioning">Provisioning</h2>
 <p>Pastikan vm02 dalam kondisi running, untuk provisioning kali ini kita akan coba install webserver apache dan build web dengan jinja2, silahkan oprek ansiblenya dan disesuaikan dengan kebutuhan. Untuk membuktikan hasil proovisioningnya, editlah variable nama pada file <code>provision/roles/apache/vars/main.yml</code> dengan nama anda. Untuk menjalankan provisioningnya gunakan perintah:</p>
 <pre><code>vagrant provision vm02
 </code></pre>
-<p><img src="/images/vagrant04/provisioning.png" alt=""></p>
+<p><img src="/images/vagrant/vagrant04/provisioning.png" alt=""></p>
 <p>Dari provisioning diatas kita akan mendapatkan result sebagai berikut:</p>
-<p><img src="/images/vagrant04/result.png" alt=""></p>
+<p><img src="/images/vagrant/vagrant04/result.png" alt=""></p>
 
     
     <div class="nav-next-prev">
@@ -125,7 +125,7 @@
                 <a href="https://zetc0de.github.io/post/2018-06-24-bash-provisioning-with-vagrant/"><i class="fas fa-chevron-left"></i></a>
             
         </div>
-        <a class="nav-top" href="#">top</i></a>
+        <a class="nav-top" href="#">Top</i></a>
         <div class="nav-next">
             
                 <a href="https://zetc0de.github.io/post/2018-07-08-how-to-create-own-vagrant-box-/"><i class="fas fa-chevron-right"></i></a>

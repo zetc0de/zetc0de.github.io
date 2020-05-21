@@ -107,7 +107,7 @@
     </li>
   </ul>
 </nav>
-    <p><img src="/images/openvpn/logo.png" alt="OpenVPN Logo"></p>
+    <p><img src="/images/centos7/openvpn/logo.png" alt="OpenVPN Logo"></p>
 <h2 id="introduction">Introduction</h2>
 <p>OpenVPN adalah aplikasi perangkat lunak open-source yang mengimplementasikan teknik virtual private network <a href="https://en.wikipedia.org/wiki/Virtual_private_network">(VPN)</a> untuk membuat koneksi point-to-point atau site-to-site yang aman dalam konfigurasi yang diarahkan atau dijembatani dan fasilitas akses jarak jauh. Ini menggunakan protokol keamanan khusus [9] yang memanfaatkan <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">SSL / TLS</a> untuk pertukaran kunci. OpenVPN mampu melintasi <a href="https://en.wikipedia.org/wiki/Network_address_translator">network address translators</a> (NAT) dan <a href="https://en.wikipedia.org/wiki/Firewall_(computing)">firewall</a>. OpenVPN ditulis oleh James Yonan dan diterbitkan di bawah GNU General Public License (GPL).</p>
 <h2 id="installation-step">Installation Step</h2>
@@ -124,17 +124,17 @@
 <h3 id="enable-the-epel-repository-in-centos">Enable the epel-repository in CentOS</h3>
 <pre><code>yum install epel-release
 </code></pre>
-<p><img src="/images/openvpn/1.png" alt=""></p>
+<p><img src="/images/centos7/openvpn/1.png" alt=""></p>
 <h3 id="install-openvpn-and-easy-rsa">Install openvpn and easy-rsa</h3>
 <pre><code>yum -y install openvpn easy-rsa 
 </code></pre>
-<p><img src="/images/openvpn/2.png" alt=""></p>
+<p><img src="/images/centos7/openvpn/2.png" alt=""></p>
 <h3 id="create-vars-variables">Create Vars Variables</h3>
 <pre><code>cp -R /usr/share/easy-rsa/ /etc/openvpn/
 cd /etc/openvpn/easy-rsa/3/
 vim vars
 </code></pre>
-<p><img src="/images/openvpn/3.png" alt=""></p>
+<p><img src="/images/centos7/openvpn/3.png" alt=""></p>
 <pre><code>set_var EASYRSA                 &quot;$PWD&quot;
 set_var EASYRSA_PKI             &quot;$EASYRSA/pki&quot;
 set_var EASYRSA_DN              &quot;cn_only&quot;
@@ -190,7 +190,7 @@ cp pki/crl.pem /etc/openvpn/server/
 cp pki/issued/client.crt /etc/openvpn/client/
 cp pki/private/client.key /etc/openvpn/client/
 </code></pre>
-<p><img src="/images/openvpn/4.png" alt=""></p>
+<p><img src="/images/centos7/openvpn/4.png" alt=""></p>
 <h2 id="configure-openvpn">Configure openvpn</h2>
 <h3 id="server-config">Server Config</h3>
 <pre><code>cd /etc/openvpn/
@@ -264,7 +264,7 @@ DEV=$(ip route get 8.8.8.8 | awk 'NR==1 {print $(NF-2)}')
 firewall-cmd --permanent --direct --passthrough ipv4 -t nat -A POSTROUTING -s  192.168.200.0/24 -o $DEV -j MASQUERADE
 firewall-cmd --reload
 </code></pre>
-<p><img src="/images/openvpn/5.png" alt=""></p>
+<p><img src="/images/centos7/openvpn/5.png" alt=""></p>
 <pre><code>cd /lib/firewalld/services/
 vim openvpn.xml
 </code></pre>
@@ -283,7 +283,7 @@ systemctl enable openvpn@server
 <h3 id="start-openvpn-server">Start openVPN Server</h3>
 <pre><code>systemctl start openvpn@server
 </code></pre>
-<p><img src="/images/openvpn/6.png" alt=""></p>
+<p><img src="/images/centos7/openvpn/6.png" alt=""></p>
 <h2 id="settingup-the-openvpn-client-application">SettingUp The OpenVPN Client Application</h2>
 <h3 id="client-configuraition">Client Configuraition</h3>
 <pre><code>cd /etc/openvpn/client/
@@ -332,7 +332,7 @@ chown -R lightmoon:lightmoon /home/lightmoon/
                 <a href="https://zetc0de.github.io/post/2018-04-15-install-anope-service-in-centos-7-/"><i class="fas fa-chevron-left"></i></a>
             
         </div>
-        <a class="nav-top" href="#">top</i></a>
+        <a class="nav-top" href="#">Top</i></a>
         <div class="nav-next">
             
                 <a href="https://zetc0de.github.io/post/2018-05-07-install-apache2-dan-konfigurasi-virtualhost-di-centos-7/"><i class="fas fa-chevron-right"></i></a>

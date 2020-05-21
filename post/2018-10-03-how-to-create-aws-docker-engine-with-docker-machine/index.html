@@ -83,7 +83,7 @@
     <li><a href="#testing-docker-engine">Testing Docker Engine</a></li>
   </ul>
 </nav>
-    <p><img src="/images/docker02/machine.png" alt=""></p>
+    <p><img src="/images/docker/docker02/machine.png" alt=""></p>
 <h2 id="introduction">Introduction</h2>
 <p>Instalasi Docker tidak akan kita bahas panjang lebar, karena cara dan langkah-langkahnya bisa berubah-ubah seiring waktu. Silahkan lihat dokumentasi di website docker.</p>
 <p>Sebaiknya instalasi dilakukan dengan koneksi internet yang mumpuni dan tidak terbatas kuota. Pada saat instalasi, kita akan mendownload image berukuran ratusan MB.</p>
@@ -95,7 +95,7 @@ sudo cp /tmp/docker-machine /usr/local/bin/docker-machine
 </code></pre><p>Setelah instalasi selesai, pastikan kita bisa menjalankan perintah berikut di command line.</p>
 <pre><code>docker -v
 docker-machine -v
-</code></pre><p><img src="/images/docker02/install.png" alt=""></p>
+</code></pre><p><img src="/images/docker/docker02/install.png" alt=""></p>
 <p>Dengan kedua aplikasi tersebut, kita sudah bisa bermain-main dengan Docker. Sebagian besar tutorial di internet mengajarkan kita untuk menjalankan docker di laptop kita sendiri. Akan tetapi, saya tidak menganjurkan Anda untuk melakukannya. Proses pembuatan image docker sangat rakus internet. Sekali membuat image, dia akan mendownload beratus-ratus megabytes. Ini tidak masalah kalau koneksi internet kita kencang dan bebas kuota.</p>
 <p>Untungnya, ada solusi yang lebih quota-friendly, yaitu menggunakan layanan cloud. Dengan menjalankan Docker Machine di cloud, kita menggunakan koneksi internet server virtual kita untuk membuat image. Sedangkan kuota yang kita gunakan hanya sebatas untuk koneksi SSH ke server kita.</p>
 <p>Docker mendukung berbagai cloud services, diantaranya:</p>
@@ -114,17 +114,17 @@ vim ~/.aws/credentials
 <pre><code>[default]
 aws_access_key_id = AKIAJSXHGFLJHVBRGLPQ33JANXVA
 aws_secret_access_key = TvtFYTFczdTiK4mKn3UzJHGHWJUGUF03QTVeTqnYTuRH3oAccqnI
-</code></pre><p><img src="/images/docker02/set.png" alt=""></p>
+</code></pre><p><img src="/images/docker/docker02/set.png" alt=""></p>
 <p><strong>Dari manakah aws_access_key_id dan aws_sevcret_access_id?</strong>*</p>
-<p><img src="/images/docker02/menu.png" alt=""></p>
+<p><img src="/images/docker/docker02/menu.png" alt=""></p>
 <p>Lalu:</p>
-<p><img src="/images/docker02/createsec.png" alt=""></p>
+<p><img src="/images/docker/docker02/createsec.png" alt=""></p>
 <h2 id="create-docker-engine">Create Docker Engine</h2>
 <p>Jika setting credential AWS sudah dilakukan, maka kita mulai create docker engine nya:</p>
 <pre><code>docker-machine create --driver amazonec2 --amazonec2-region &quot;us-east-1&quot; coba-aws
-</code></pre><p><img src="/images/docker02/createengine.png" alt=""></p>
+</code></pre><p><img src="/images/docker/docker02/createengine.png" alt=""></p>
 <p>Masuk ke AWS console maka akan terlihat instance baru yang telah kita buat tadi:</p>
-<p><img src="/images/docker02/instance.png" alt=""></p>
+<p><img src="/images/docker/docker02/instance.png" alt=""></p>
 <p>Cek apakah docker-machine kita sudah aktive atau belum:</p>
 <pre><code>docker-machine ls
 </code></pre><p>Tandanya jika docker-machine kita aktive adalah ditandai dengan asterisk(*), atau coba cek dengan perintah:</p>
@@ -133,12 +133,12 @@ aws_secret_access_key = TvtFYTFczdTiK4mKn3UzJHGHWJUGUF03QTVeTqnYTuRH3oAccqnI
 <pre><code>docker-machine env coba-aws
 eval $(docker-machine env coba-aws)
 </code></pre><p>Cek kembali apakah sudah aktive dengan perintah <code>docker-machine active</code></p>
-<p><img src="/images/docker02/activeengine.png" alt=""></p>
+<p><img src="/images/docker/docker02/activeengine.png" alt=""></p>
 <h2 id="testing-docker-engine">Testing Docker Engine</h2>
 <p>Jika telah active, kita coba menjalankan <code>hello-world</code> pada docker engine kita.</p>
 <pre><code>docker run hello-world
 </code></pre><p>Maka ketika kita cek di sisi server akkan terlihat container hello-world sedang dalam keadaan <code>running</code>.</p>
-<p><img src="/images/docker02/container.png" alt=""></p>
+<p><img src="/images/docker/docker02/container.png" alt=""></p>
 
     
     <div class="nav-next-prev">
@@ -147,7 +147,7 @@ eval $(docker-machine env coba-aws)
                 <a href="https://zetc0de.github.io/post/2018-09-03-how-to-install-docker-in-arch-linux/"><i class="fas fa-chevron-left"></i></a>
             
         </div>
-        <a class="nav-top" href="#">top</i></a>
+        <a class="nav-top" href="#">Top</i></a>
         <div class="nav-next">
             
                 <a href="https://zetc0de.github.io/post/2019-01-09-antihack.me-csrf-file-upload-vulnerability/"><i class="fas fa-chevron-right"></i></a>

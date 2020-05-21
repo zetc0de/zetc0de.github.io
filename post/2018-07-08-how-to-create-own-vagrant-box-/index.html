@@ -107,16 +107,16 @@
     <li><a href="#import-box-and-testing">Import Box and Testing</a></li>
   </ul>
 </nav>
-    <p><img src="/images/vagrant05/vagrantbox.webp" alt=""></p>
+    <p><img src="/images/vagrant/vagrant05/vagrantbox.webp" alt=""></p>
 <h2 id="introduction">Introduction</h2>
 <p>Setelah beberapa kali kita mencoba menggunakan vagrant dari vagrantbox ubuntu/xenial64 yang jika kita sadari, kita menggunakan pure box dari ubuntu, alias masih kosong blong bawaan ubuntu. Mungkin kita ingin beberapa tools yg terinstall pada vm kita, seperti tools build-essential,vim,atau tools-tools keseharina kita yang tidak ada pada OS bawaan ubuntu.</p>
 <p>Untuk mengakali hal itu, kita dapan membuat vagrantbox milik kita sendiri. Dengan tool-tool kesayangan kita, kita seperti dapat membuat OS dengan tools sesuai keinginan kita sendiri.</p>
 <h2 id="install-base-os">Install Base OS</h2>
 <p>Untuk memulainya, karena kita akan menggunakan ubuntu 18.04 sebagai base box ini, maka buatlah VM dan install OS Ubuntu 18.04. Lalu masuk kedalam VM tersebut, dan buatlah user baru di vm tersebut.</p>
-<p><img src="/images/vagrant05/setuser.png" alt=""></p>
+<p><img src="/images/vagrant/vagrant05/setuser.png" alt=""></p>
 <p>Jika sudah, login ke user tersebut dan cek versi ubuntunya:</p>
 <pre><code>cat /etc/lsb_release
-</code></pre><p><img src="/images/vagrant05/lsb-release.png" alt=""></p>
+</code></pre><p><img src="/images/vagrant/vagrant05/lsb-release.png" alt=""></p>
 <h2 id="port-forwarding-dari-virtualbox">Port Forwarding dari Virtualbox</h2>
 <ul>
 <li>Klik Ubuntu servernya - klik &lsquo;Settings&rsquo; button.</li>
@@ -131,7 +131,7 @@
   Guest IP: kosongkan
   Guest Port: 22
 </code></pre><p>Klik tombol &lsquo;Ok&rsquo;, dan &lsquo;Ok&rsquo; lagi untuk save.</p>
-<p><img src="/images/vagrant05/setnat.png" alt=""></p>
+<p><img src="/images/vagrant/vagrant05/setnat.png" alt=""></p>
 <h2 id="konfigurasi-dan-install-paket-yang-dibutuhkan">Konfigurasi Dan Install Paket yang dibutuhkan</h2>
 <p>Pada dasarnya membuat box sendiri itu karena kebutuhan kita terhadap beberapa aplikasi yang tidak ada pada box lain, atau kita ingin membuat costum box dengan aplikasi yang kita inginkan saja.</p>
 <h3 id="install-aplikasi">Install Aplikasi</h3>
@@ -151,7 +151,7 @@ vagrant ALL=(ALL) NOPASSWD:ALL
 </code></pre><h3 id="testing-vagrant-user">Testing Vagrant user.</h3>
 <pre><code>su - vagrant
 sudo su
-</code></pre><p><img src="/images/vagrant05/sudosu.png" alt=""></p>
+</code></pre><p><img src="/images/vagrant/vagrant05/sudosu.png" alt=""></p>
 <h2 id="konfigurasi-key-dan-ssh">Konfigurasi key dan SSH</h2>
 <h3 id="download-vagrant-key">Download vagrant key</h3>
 <pre><code>mkdir -p /home/vagrant/.ssh
@@ -161,7 +161,7 @@ wget --no-check-certificate \
           -O /home/vagrant/.ssh/authorized_keys
 chmod 0600 /home/vagrant/.ssh/authorized_keys
 chown -R vagrant /home/vagrant/.ssh
-</code></pre><p><img src="/images/vagrant05/vagrantpub.png" alt=""></p>
+</code></pre><p><img src="/images/vagrant/vagrant05/vagrantpub.png" alt=""></p>
 <h3 id="konfigurasi-ssh-login-dengan-key">Konfigurasi ssh login dengan key.</h3>
 <pre><code>cd /etc/ssh/
 vim sshd_config
@@ -174,7 +174,7 @@ sudo apt upgrade -y
 <h3 id="install-paket-dependensi">Install Paket dependensi.</h3>
 <pre><code>export versi=$(uname -r)
 sudo apt-get install -y gcc build-essential linux-headers-$versi
-</code></pre><p><img src="/images/vagrant05/guest.png" alt=""></p>
+</code></pre><p><img src="/images/vagrant/vagrant05/guest.png" alt=""></p>
 <h3 id="download-iso-virtualbox-guest-additional-ke-komputer-anda">Download ISO VirtualBox Guest Additional ke Komputer Anda</h3>
 <p><a href="https://download.virtualbox.org/virtualbox/5.2.18/VBoxGuestAdditions_5.2.18.iso">https://download.virtualbox.org/virtualbox/5.2.18/VBoxGuestAdditions_5.2.18.iso</a></p>
 <h3 id="mount-dan-install-virtualbox-guest-additon">Mount dan Install VirtualBox guest additon</h3>
@@ -184,7 +184,7 @@ Klik &lsquo;Insert Guest Addition CD Image..&rsquo;</p>
 <pre><code>sudo mount /dev/cdrom /mnt
 cd /mnt
 sudo ./VBoxLinuxAdditions.run
-</code></pre><p><img src="/images/vagrant05/guestad.png" alt=""></p>
+</code></pre><p><img src="/images/vagrant/vagrant05/guestad.png" alt=""></p>
 <h3 id="clean-the-box">Clean the Box</h3>
 <pre><code>sudo apt autoremove
 sudo apt clean
@@ -197,7 +197,7 @@ tekan 'CTRL+d' untuk exit dari terminal.
 </code></pre><h2 id="packaging-box-vagrant">Packaging Box Vagrant</h2>
 <p>Balik ke terminal komputer.</p>
 <pre><code>vagrant package --base zetc0de-ubuntu-vm
-</code></pre><p><img src="/images/vagrant05/packaging.png" alt=""></p>
+</code></pre><p><img src="/images/vagrant/vagrant05/packaging.png" alt=""></p>
 <h2 id="import-box-and-testing">Import Box and Testing</h2>
 <pre><code>vagrant box add ubuntu-zetc0de-1804 package.box
 
@@ -216,7 +216,7 @@ vagrant up
                 <a href="https://zetc0de.github.io/post/2018-07-26-ansible-provisioning-with-vagrant/"><i class="fas fa-chevron-left"></i></a>
             
         </div>
-        <a class="nav-top" href="#">top</i></a>
+        <a class="nav-top" href="#">Top</i></a>
         <div class="nav-next">
             
                 <a href="https://zetc0de.github.io/post/2018-09-03-how-to-install-docker-in-arch-linux/"><i class="fas fa-chevron-right"></i></a>

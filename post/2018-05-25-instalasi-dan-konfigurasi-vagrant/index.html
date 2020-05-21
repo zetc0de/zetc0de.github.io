@@ -84,7 +84,7 @@
     <li><a href="#masuk-console-vm-dengan-vagrant-ssh">Masuk Console VM Dengan Vagrant SSH</a></li>
   </ul>
 </nav>
-    <p><img src="/images/vagrant01/logo.jpg" alt=""></p>
+    <p><img src="/images/vagrant/vagrant01/logo.jpg" alt=""></p>
 <h2 id="introduction">Introduction</h2>
 <p>Vagrant adalah sebuah software yang menggunakan teknologi virtual machine dimana kita dapat membuat lingkungan development secara portable, konsisten dan lebih fleksible.</p>
 <p>Saat ini virtualisasi menjadi penunjang bagi lingkungan development software secara modern. Dalam satu laptop kita bisa memasang berbagai sistem operasi virtual yang disesuaikan dengan server kita, sehingga kita bisa memisahkan configurasi laptop kita dengan konfigurasi server.</p>
@@ -99,16 +99,16 @@ sudo apt-get install vagrant
 <pre><code>vagrant box add ubuntu/xenial64
 </code></pre>
 <p>Anda dapat melihat box yang anda miliki dengan perintah : <code>vagrant box list</code></p>
-<p><img src="/images/vagrant01/boxlist.png" alt=""></p>
+<p><img src="/images/vagrant/vagrant01/boxlist.png" alt=""></p>
 <h2 id="membuat-vm-dengan-vagrant-init">Membuat VM Dengan Vagrant Init</h2>
 <p>Untuk memulainya, mari kita membuat directory,silahkan buat directory ditempat yang anda suka, dan jalankan <code>vagrant init ubuntu/xenial64</code> atau dengan box yang anda inginkan :</p>
 <pre><code>mkdir -p ~/Vagrant/myubuntu
 cd ~/Vagrant/myubuntu
 vagrant init ubuntu/xenial64
 </code></pre>
-<p><img src="/images/vagrant01/vagrant-init.png" alt=""></p>
+<p><img src="/images/vagrant/vagrant01/vagrant-init.png" alt=""></p>
 <p>Dengan perintah diatas, maka akan membuat vagrantfile, dengan vagrantfile tersebut kita dapat mengkofigurasikan VM(Virtual mechine) sesuai kehendak kita.</p>
-<p><img src="/images/vagrant01/konf.png" alt=""></p>
+<p><img src="/images/vagrant/vagrant01/konf.png" alt=""></p>
 <p>Bisa anda lihat diatas, kita menggunakan box ubuntu/xenial64, dengan private network dan menggunakan memory sebesar 512, tinggal sesuaikan dengan kebutuhan. Ada beberapa variable yang dapat anda konfigurasikan, bebrapa diantaranya:</p>
 <ul>
 <li>config.vm.box : Inisialisasi Vagrantbox</li>
@@ -121,12 +121,12 @@ vagrant init ubuntu/xenial64
 <pre><code>vagrant up
 vagrant status
 </code></pre>
-<p><img src="/images/vagrant01/up.png" alt=""></p>
+<p><img src="/images/vagrant/vagrant01/up.png" alt=""></p>
 <h2 id="masuk-console-vm-dengan-vagrant-ssh">Masuk Console VM Dengan Vagrant SSH</h2>
 <p>Anda dapat melihat vm kita dalam kondisi running, artinya kita sudah menjalankan vm tersebut. Untuk mengaksesnya menggunakan:</p>
 <pre><code>vagrant ssh
 </code></pre>
-<p><img src="/images/vagrant01/ssh.png" alt=""></p>
+<p><img src="/images/vagrant/vagrant01/ssh.png" alt=""></p>
 <p>Maka anda sudah dapat menjalankan perintah-perintah Ubuntu pada VM tersebut.</p>
 
     
@@ -136,7 +136,7 @@ vagrant status
                 <a href="https://zetc0de.github.io/post/2018-05-07-install-apache2-dan-konfigurasi-virtualhost-di-centos-7/"><i class="fas fa-chevron-left"></i></a>
             
         </div>
-        <a class="nav-top" href="#">top</i></a>
+        <a class="nav-top" href="#">Top</i></a>
         <div class="nav-next">
             
                 <a href="https://zetc0de.github.io/post/2018-06-10-create-multiple-vm-with-one-vagrantfile/"><i class="fas fa-chevron-right"></i></a>
