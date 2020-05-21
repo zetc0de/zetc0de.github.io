@@ -3,32 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://zetc0de.github.io/post/multiple-idor-in-doku/</loc>
-    <lastmod>2019-06-02T11:04:47+07:00</lastmod>
+    <loc>https://zetc0de.github.io/post/multiple-xss-in-doku/</loc>
+    <lastmod>2019-06-10T12:34:48+07:00</lastmod>
   </url>
   
   <url>
     <loc>https://zetc0de.github.io/tags/bug-bounty/</loc>
-    <lastmod>2019-06-02T11:04:47+07:00</lastmod>
+    <lastmod>2019-06-10T12:34:48+07:00</lastmod>
   </url>
   
   <url>
     <loc>https://zetc0de.github.io/tags/idor/</loc>
-    <lastmod>2019-06-02T11:04:47+07:00</lastmod>
+    <lastmod>2019-06-10T12:34:48+07:00</lastmod>
   </url>
   
   <url>
     <loc>https://zetc0de.github.io/post/</loc>
-    <lastmod>2019-06-02T11:04:47+07:00</lastmod>
+    <lastmod>2019-06-10T12:34:48+07:00</lastmod>
   </url>
   
   <url>
     <loc>https://zetc0de.github.io/tags/</loc>
-    <lastmod>2019-06-02T11:04:47+07:00</lastmod>
+    <lastmod>2019-06-10T12:34:48+07:00</lastmod>
   </url>
   
   <url>
     <loc>https://zetc0de.github.io/</loc>
+    <lastmod>2019-06-10T12:34:48+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/post/multiple-idor-in-doku/</loc>
     <lastmod>2019-06-02T11:04:47+07:00</lastmod>
   </url>
   

@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>id-id</language>
     <copyright>Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Sun, 02 Jun 2019 11:04:47 +0700</lastBuildDate>
+    <lastBuildDate>Mon, 10 Jun 2019 12:34:48 +0700</lastBuildDate>
     
 	<atom:link href="https://zetc0de.github.io/tags/bug-bounty/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[Bug Bounty] Multiple Reflected XSS in DOKU Staging</title>
+      <link>https://zetc0de.github.io/post/multiple-xss-in-doku/</link>
+      <pubDate>Mon, 10 Jun 2019 12:34:48 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/multiple-xss-in-doku/</guid>
+      <description>About DOKU DOKU Wallet adalah sebuah layanan dompet elektronik (Wallet) yang dikeluarkan oleh PT. Nusa Satu Inti Artha yang dilengkapi dengan fitur penghubung ke kartu kredit dan uang elektronik/cash wallet. DOKU adalah penyedia layanan pembayaran elektronik dan manajemen resiko pertama di Indonesia.
+Reflected XSS Reflected XSS adalah dimana script yang diinjeksi akan ditampilkan pada web, melalui pesan error, hasil pencarian, atau dari request input (GET/POST). Reflected XSS juga biasa disebut dengan Non-Persistent XSS.</description>
+    </item>
     
     <item>
       <title>[Bug Bounty] Multiple IDOR in DOKU</title>

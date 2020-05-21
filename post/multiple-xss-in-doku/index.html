@@ -71,51 +71,78 @@
             <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
             <div class="content">
     
-    <h1 id="title">[Bug Bounty] Multiple IDOR in DOKU</h1>
+    <h1 id="title">[Bug Bounty] Multiple Reflected XSS in DOKU Staging</h1>
     
       
     <nav id="TableOfContents">
   <ul>
     <li><a href="#about-doku">About DOKU</a></li>
-    <li><a href="#idor-vulnerability">IDOR Vulnerability</a></li>
-    <li><a href="#idor-pada-doku-merchantdokucom">IDOR Pada DOKU (merchant.doku.com)</a>
+    <li><a href="#reflected-xss">Reflected XSS</a></li>
+    <li><a href="#reflected-xss-pada-doku-stagingdokucom">Reflected XSS Pada DOKU (staging.doku.com)</a>
       <ul>
-        <li><a href="#idor-pada-fitur-add-bank">IDOR Pada Fitur Add Bank</a></li>
-        <li><a href="#idor-pada-fitur-add-contact">IDOR Pada Fitur Add Contact</a></li>
-        <li><a href="#idor-pada-fitur-transaction-report">IDOR Pada Fitur Transaction Report</a></li>
-        <li><a href="#idor-pada-fitur-update-store-profile">IDOR Pada Fitur Update Store Profile</a></li>
+        <li><a href="#bni-billpayment-simulator">BNI Billpayment Simulator</a></li>
+        <li><a href="#bni-simulator">BNI Simulator</a></li>
+        <li><a href="#bri-simulator">BRI Simulator</a></li>
+        <li><a href="#cimb-simulator">CIMB Simulator</a></li>
+        <li><a href="#danamon-simulator">Danamon Simulator</a></li>
+        <li><a href="#mandiri-simulator">Mandiri Simulator</a></li>
+        <li><a href="#bca-simulator">BCA Simulator</a></li>
+        <li><a href="#sinarmas-simulator">Sinarmas Simulator</a></li>
       </ul>
     </li>
   </ul>
 </nav>
     <h2 id="about-doku">About DOKU</h2>
 <p>DOKU Wallet adalah sebuah layanan dompet elektronik (Wallet) yang dikeluarkan oleh PT. Nusa Satu Inti Artha yang dilengkapi dengan fitur penghubung ke kartu kredit dan uang elektronik/cash wallet. DOKU adalah penyedia layanan pembayaran elektronik dan manajemen resiko pertama di Indonesia.</p>
-<h2 id="idor-vulnerability">IDOR Vulnerability</h2>
-<p>Insecure Direct Object Reference terjadi saat aplikasi menyediakan akses langsung ke objek berdasarkan masukan yang diberikan pengguna. Hal ini memngkinkan hacker untuk mem-bypass autentifikasi standar dan mengakses catatan database maupun sumber daya lain.</p>
-<p>Insecure Direct Object References memungkinkan penyerang untuk memotong otorisasi dan mengakses sumber daya secara langsung dengan memodifikasi nilai parameter yang digunakan untuk mengarahkan langsung ke objek. Sumber daya semacam itu bisa menjadi entri database milik pengguna lain, file dalam sistem, dan banyak lagi. Hal ini disebabkan oleh fakta bahwa aplikasi tersebut memasukkan input yang dipasok pengguna dan menggunakannya untuk mengambil objek tanpa melakukan pengecekan otorisasi yang memadai. <a href="https://www.linuxsec.org/2018/01/memahami-dan-menemukan-kerentanan.html">Source</a></p>
-<h2 id="idor-pada-doku-merchantdokucom">IDOR Pada DOKU (merchant.doku.com)</h2>
-<h3 id="idor-pada-fitur-add-bank">IDOR Pada Fitur Add Bank</h3>
+<h2 id="reflected-xss">Reflected XSS</h2>
+<p>Reflected XSS adalah dimana script yang diinjeksi akan ditampilkan pada web, melalui pesan error, hasil pencarian, atau dari request input (GET/POST). Reflected XSS juga biasa disebut dengan Non-Persistent XSS.</p>
+<h2 id="reflected-xss-pada-doku-stagingdokucom">Reflected XSS Pada DOKU (staging.doku.com)</h2>
+<h3 id="bni-billpayment-simulator">BNI Billpayment Simulator</h3>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/H5IcWSrBiuk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/3KObPj8tcms" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-<h3 id="idor-pada-fitur-add-contact">IDOR Pada Fitur Add Contact</h3>
+<h3 id="bni-simulator">BNI Simulator</h3>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/wxbO-vsDbPk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/4t2yg0oMprM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-<h3 id="idor-pada-fitur-transaction-report">IDOR Pada Fitur Transaction Report</h3>
+<h3 id="bri-simulator">BRI Simulator</h3>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/vAF_N9Nwc20" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/TNcdfGC3mlw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-<h3 id="idor-pada-fitur-update-store-profile">IDOR Pada Fitur Update Store Profile</h3>
+<h3 id="cimb-simulator">CIMB Simulator</h3>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/pnfkxA4MlZw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/AJ5ji_jTFCw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h3 id="danamon-simulator">Danamon Simulator</h3>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/B7kfDo9Zkts" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h3 id="mandiri-simulator">Mandiri Simulator</h3>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/ffrLP4sXyl8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h3 id="bca-simulator">BCA Simulator</h3>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/0VnXw_Bjv-8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h3 id="sinarmas-simulator">Sinarmas Simulator</h3>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/AlavYUregNI" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
 
@@ -123,13 +150,13 @@
     <div class="nav-next-prev">
         <div class="nav-prev">
             
-                <a href="https://zetc0de.github.io/post/2019-02-14-rce-and-xss-on-private-program-cyber-army/"><i class="fas fa-chevron-left"></i></a>
+                <a href="https://zetc0de.github.io/post/multiple-idor-in-doku/"><i class="fas fa-chevron-left"></i></a>
             
         </div>
         <a class="nav-top" href="#">top</i></a>
         <div class="nav-next">
             
-                <a href="https://zetc0de.github.io/post/multiple-xss-in-doku/"><i class="fas fa-chevron-right"></i></a>
+                <a class="grayed-out" href="javascript:void()"><i class="fas fa-chevron-right"></i></a>
             
         </div>
     </div>
