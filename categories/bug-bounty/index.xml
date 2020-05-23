@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bug Bounty on IT Security Enthusiast</title>
+    <link>https://zetc0de.github.io/categories/bug-bounty/</link>
+    <description>Recent content in Bug Bounty on IT Security Enthusiast</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id-id</language>
+    <copyright>Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Mon, 10 Jun 2019 12:34:48 +0700</lastBuildDate>
+    
+	<atom:link href="https://zetc0de.github.io/categories/bug-bounty/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Multiple Reflected XSS in DOKU Staging</title>
+      <link>https://zetc0de.github.io/post/multiple-xss-in-doku/</link>
+      <pubDate>Mon, 10 Jun 2019 12:34:48 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/multiple-xss-in-doku/</guid>
+      <description>About DOKU DOKU Wallet adalah sebuah layanan dompet elektronik (Wallet) yang dikeluarkan oleh PT. Nusa Satu Inti Artha yang dilengkapi dengan fitur penghubung ke kartu kredit dan uang elektronik/cash wallet. DOKU adalah penyedia layanan pembayaran elektronik dan manajemen resiko pertama di Indonesia.
+Reflected XSS Reflected XSS adalah dimana script yang diinjeksi akan ditampilkan pada web, melalui pesan error, hasil pencarian, atau dari request input (GET/POST). Reflected XSS juga biasa disebut dengan Non-Persistent XSS.</description>
+    </item>
+    
+    <item>
+      <title>Multiple IDOR in DOKU</title>
+      <link>https://zetc0de.github.io/post/multiple-idor-in-doku/</link>
+      <pubDate>Sun, 02 Jun 2019 11:04:47 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/multiple-idor-in-doku/</guid>
+      <description>About DOKU DOKU Wallet adalah sebuah layanan dompet elektronik (Wallet) yang dikeluarkan oleh PT. Nusa Satu Inti Artha yang dilengkapi dengan fitur penghubung ke kartu kredit dan uang elektronik/cash wallet. DOKU adalah penyedia layanan pembayaran elektronik dan manajemen resiko pertama di Indonesia.
+IDOR Vulnerability Insecure Direct Object Reference terjadi saat aplikasi menyediakan akses langsung ke objek berdasarkan masukan yang diberikan pengguna. Hal ini memngkinkan hacker untuk mem-bypass autentifikasi standar dan mengakses catatan database maupun sumber daya lain.</description>
+    </item>
+    
+    <item>
+      <title>RCE and XSS On Private Program Cyber Army ID</title>
+      <link>https://zetc0de.github.io/post/2019-02-14-rce-and-xss-on-private-program-cyber-army/</link>
+      <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/2019-02-14-rce-and-xss-on-private-program-cyber-army/</guid>
+      <description>Reconnaissance Pada tahap reconnaissance,saya menggunakan nmap dengan perintah nmap sub.[redacted].id
+Disana terdapat beberapa port yang open, saya tertarik dengan port 8010. Pada saat tulisan ini dibuat saya coba scan lagi ternyata sudah filtered.
+Saat saya buka sub.[redacted].id:8010, disana terdapat form login yang diketahui credentialnya menggunakan user dan password public:public. Disana terdapat beberapa menu (lupa screenshot).
+XSS via POST Request Untuk celah XSS ini berdampak pada 2 fungsi/menu:
+ Menu dblist Menu dnsbse  Saya tertarik dengan fungsi search yg ada di menu dnsbse, disana ada form search yang merequest google search engine.</description>
+    </item>
+    
+    <item>
+      <title>Antihack.me CSRF And Arbitrary File Upload</title>
+      <link>https://zetc0de.github.io/post/2019-01-09-antihack.me-csrf-file-upload-vulnerability/</link>
+      <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/2019-01-09-antihack.me-csrf-file-upload-vulnerability/</guid>
+      <description>Introduction Antihack.me merupakan sebuah website Bug Bounty Platform asal singapura. Setelah mendaftarkan user baru dan berhasil login ke aplikasi, disana terdapat banyak fitur seperti platform-platform bug bounty lainnya, seperti fitur list program, submit report, dan lain sebagainya, termasuk juga dapat mengatur profile kita sebagai bug hunter.
+CSRF Vulnerability Cross-site Request Forgery (CSRF) atau bisa disebut dengan one-click attack adalah sebuah serangan yang menggunakan injeksi script baik itu berupa kode javascript, link, atau gambar dengan memanfaatkan token autentikasi.</description>
+    </item>
+    
+  </channel>
+</rss>

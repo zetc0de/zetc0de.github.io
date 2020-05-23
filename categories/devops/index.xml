@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DevOps on IT Security Enthusiast</title>
+    <link>https://zetc0de.github.io/categories/devops/</link>
+    <description>Recent content in DevOps on IT Security Enthusiast</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id-id</language>
+    <copyright>Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Wed, 03 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://zetc0de.github.io/categories/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How To Create AWS Docker Engine With Docker Machine</title>
+      <link>https://zetc0de.github.io/post/2018-10-03-how-to-create-aws-docker-engine-with-docker-machine/</link>
+      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/2018-10-03-how-to-create-aws-docker-engine-with-docker-machine/</guid>
+      <description>Introduction Instalasi Docker tidak akan kita bahas panjang lebar, karena cara dan langkah-langkahnya bisa berubah-ubah seiring waktu. Silahkan lihat dokumentasi di website docker.
+Sebaiknya instalasi dilakukan dengan koneksi internet yang mumpuni dan tidak terbatas kuota. Pada saat instalasi, kita akan mendownload image berukuran ratusan MB.
+Docker Machine adalah sistem untuk mengelola docker engine. Dia bisa menginstal engine baru di berbagai target. Saat ini dia mendukung VirtualBox, Digital Ocean, dan Amazon. Dengan Docker Machine, kita bisa membuat dan menjalankan container dengan docker client, dan hasilnya container kita berjalan di local (dengan VirtualBox) atau di cloud (dengan DigitalOcean atau Amazon).</description>
+    </item>
+    
+    <item>
+      <title>How To Install Docker In Arch Linux</title>
+      <link>https://zetc0de.github.io/post/2018-09-03-how-to-install-docker-in-arch-linux/</link>
+      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/2018-09-03-how-to-install-docker-in-arch-linux/</guid>
+      <description>Introduction Docker adalah salah satu platform yang dibangun berdasarkan teknologi container. Docker merupakan sebuah project open-source yang menyediakan platform terbuka untuk developer maupun sysadmin untuk membangun,mengemas,dan menjalankan aplikasi dimanapun sebagai sebuah wadah(container) yang ringan. Dengan sangat populernya docker, sebagian orang sering menganggap docker adalah sebutan lain dari container. (codepolitan)
+Instalasi Dikarenakan saya menggunakan OS Arch Linux, maka disini saya akan menyajikan langkah-langkah ketika ingin menginstall docker di OS Arch Linux, anda dapat menyesuaikan dengan OS masing-masing.</description>
+    </item>
+    
+    <item>
+      <title>How To Create Own Vagrant Box</title>
+      <link>https://zetc0de.github.io/post/2018-07-08-how-to-create-own-vagrant-box-/</link>
+      <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/2018-07-08-how-to-create-own-vagrant-box-/</guid>
+      <description>Introduction Setelah beberapa kali kita mencoba menggunakan vagrant dari vagrantbox ubuntu/xenial64 yang jika kita sadari, kita menggunakan pure box dari ubuntu, alias masih kosong blong bawaan ubuntu. Mungkin kita ingin beberapa tools yg terinstall pada vm kita, seperti tools build-essential,vim,atau tools-tools keseharina kita yang tidak ada pada OS bawaan ubuntu.
+Untuk mengakali hal itu, kita dapan membuat vagrantbox milik kita sendiri. Dengan tool-tool kesayangan kita, kita seperti dapat membuat OS dengan tools sesuai keinginan kita sendiri.</description>
+    </item>
+    
+    <item>
+      <title>Ansible Provisioning With Vagrant</title>
+      <link>https://zetc0de.github.io/post/2018-07-26-ansible-provisioning-with-vagrant/</link>
+      <pubDate>Thu, 26 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/2018-07-26-ansible-provisioning-with-vagrant/</guid>
+      <description>Introduction Setelah sebelumnya kita belajar bagaimana melakukan Bash Provisioning Dengan Vagrant, sekarang kita akan melanjutkan belajar provisioning menggunakan ansible.
+Ansible adalah sebuah provisioning tool yang dikembangkan oleh RedHat. Dimana kamu dapat mencatat setiap proses deployment ataupun konfigurasi yang biasa dilakukan berulang - ulang terhadap beberapa server.
+Create Vagrantfile Mulailah dengan memuat vagrantfile:
+ config.vm.define &amp;quot;vm02&amp;quot; do |vm02| vm02.vm.box = &amp;quot;ubuntu/xenial64&amp;quot; vm02.vm.hostname = &amp;quot;vm02&amp;quot; vm02.vm.network :privat_enetwork, ip: &amp;quot;10.3.3.11&amp;quot; vm02.vm.provider &amp;quot;virtualbox&amp;quot; do |vb| vb.</description>
+    </item>
+    
+    <item>
+      <title>Bash Provisioning With Vagrant</title>
+      <link>https://zetc0de.github.io/post/2018-06-24-bash-provisioning-with-vagrant/</link>
+      <pubDate>Sun, 24 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/2018-06-24-bash-provisioning-with-vagrant/</guid>
+      <description>Introduction Sebagai DevOps, kita tidak terlepas dengan yang namanya Provisioning, saya tidak akan menjelaskan lebih detail makna provisioning itu sendiri, tapi disini kita akan mencoba bash provisioning pada Virtual Mechine menggunakan Vagrant. Langsung saja, siapkan 1 vm atau lebih mengguanan vagrant.
+mkdir -p ~/Vagrant/vagrant-provbash cd ~/Vagrant/vagrant-provbash  Vagrant File Lalu buatlah sebuah vagrantfile dengan config:
+# Inisialisasi Vagrantfile configuration Vagrant.configure(&amp;quot;2&amp;quot;) do |config| # definisikan vm01 config.vm.define &amp;quot;vm01&amp;quot; do |vm01| vm01.vm.box = &amp;quot;ubuntu/xenial64&amp;quot; vm01.</description>
+    </item>
+    
+    <item>
+      <title>Create Multiple VM with one Vagrantfile</title>
+      <link>https://zetc0de.github.io/post/2018-06-10-create-multiple-vm-with-one-vagrantfile/</link>
+      <pubDate>Sun, 10 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/2018-06-10-create-multiple-vm-with-one-vagrantfile/</guid>
+      <description>Introduction Menggunakan vagrant untuk kebutuhan virtualisasi sangat membantu pekerjaan developer maupun system engineer. Dengan vagrant kita dapat membuat virtual environtment dengan mudah.
+Masalahnya, terkadang kita membutuhakan lebih dari satu VM untuk kebutuhan testing maupun untuk kebutuhan yang lain, dengan vagrant kita dapat membuat multipele VM hanya dengan sekali inisialisasi vagrantfile.
+Membuat 2 VM Dengan 1 Vagrantfile Pada kesempatan kali ini kita akan membuat 2 vm menggunakan 1 vagrantfile. Untuk memulainya, buatlah sebuah direktory untuk vagrantfile kita:</description>
+    </item>
+    
+    <item>
+      <title>Instalasi dan Konfigurasi Dasar Vagrant</title>
+      <link>https://zetc0de.github.io/post/2018-05-25-instalasi-dan-konfigurasi-vagrant/</link>
+      <pubDate>Fri, 25 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/2018-05-25-instalasi-dan-konfigurasi-vagrant/</guid>
+      <description>Introduction Vagrant adalah sebuah software yang menggunakan teknologi virtual machine dimana kita dapat membuat lingkungan development secara portable, konsisten dan lebih fleksible.
+Saat ini virtualisasi menjadi penunjang bagi lingkungan development software secara modern. Dalam satu laptop kita bisa memasang berbagai sistem operasi virtual yang disesuaikan dengan server kita, sehingga kita bisa memisahkan configurasi laptop kita dengan konfigurasi server.
+Banyak keuntungan ketika kita menggunakan vagrant,sebagai developer sofrware akan sangat memudahkan jika menggunakan vagrant sebagai development environment yang terisolasi di virtual.</description>
+    </item>
+    
+  </channel>
+</rss>

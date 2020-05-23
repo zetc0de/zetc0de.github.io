@@ -13,15 +13,6 @@
     
     
     <item>
-      <title>Bug Bounty</title>
-      <link>https://zetc0de.github.io/tags/bug-bounty/</link>
-      <pubDate>Mon, 10 Jun 2019 12:34:48 +0700</pubDate>
-      
-      <guid>https://zetc0de.github.io/tags/bug-bounty/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>XSS</title>
       <link>https://zetc0de.github.io/tags/xss/</link>
       <pubDate>Mon, 10 Jun 2019 12:34:48 +0700</pubDate>
@@ -45,6 +36,15 @@
       <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://zetc0de.github.io/tags/rce/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Arbitrary File Upload</title>
+      <link>https://zetc0de.github.io/tags/arbitrary-file-upload/</link>
+      <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://zetc0de.github.io/tags/arbitrary-file-upload/</guid>
       <description></description>
     </item>
     

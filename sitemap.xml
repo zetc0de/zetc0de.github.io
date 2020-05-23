@@ -13,12 +13,17 @@
   </url>
   
   <url>
-    <loc>https://zetc0de.github.io/post/multiple-xss-in-doku/</loc>
+    <loc>https://zetc0de.github.io/categories/bug-bounty/</loc>
     <lastmod>2019-06-10T12:34:48+07:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zetc0de.github.io/tags/bug-bounty/</loc>
+    <loc>https://zetc0de.github.io/categories/</loc>
+    <lastmod>2019-06-10T12:34:48+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/post/multiple-xss-in-doku/</loc>
     <lastmod>2019-06-10T12:34:48+07:00</lastmod>
   </url>
   
@@ -38,18 +43,13 @@
   </url>
   
   <url>
-    <loc>https://zetc0de.github.io/post/multiple-idor-in-doku/</loc>
-    <lastmod>2019-06-02T11:04:47+07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://zetc0de.github.io/tags/idor/</loc>
     <lastmod>2019-06-02T11:04:47+07:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zetc0de.github.io/post/2019-02-14-rce-and-xss-on-private-program-cyber-army/</loc>
-    <lastmod>2019-02-14T00:00:00+00:00</lastmod>
+    <loc>https://zetc0de.github.io/post/multiple-idor-in-doku/</loc>
+    <lastmod>2019-06-02T11:04:47+07:00</lastmod>
   </url>
   
   <url>
@@ -58,7 +58,17 @@
   </url>
   
   <url>
+    <loc>https://zetc0de.github.io/post/2019-02-14-rce-and-xss-on-private-program-cyber-army/</loc>
+    <lastmod>2019-02-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://zetc0de.github.io/post/2019-01-09-antihack.me-csrf-file-upload-vulnerability/</loc>
+    <lastmod>2019-01-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/tags/arbitrary-file-upload/</loc>
     <lastmod>2019-01-09T00:00:00+00:00</lastmod>
   </url>
   
@@ -69,6 +79,11 @@
   
   <url>
     <loc>https://zetc0de.github.io/tags/aws/</loc>
+    <lastmod>2018-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/categories/devops/</loc>
     <lastmod>2018-10-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -148,6 +163,11 @@
   </url>
   
   <url>
+    <loc>https://zetc0de.github.io/categories/linux-administrator/</loc>
+    <lastmod>2018-05-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://zetc0de.github.io/tags/web-server/</loc>
     <lastmod>2018-05-07T00:00:00+00:00</lastmod>
   </url>
@@ -190,10 +210,6 @@
   <url>
     <loc>https://zetc0de.github.io/post/2018-04-15-welcome-to-my-blog/</loc>
     <lastmod>2018-04-01T09:20:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zetc0de.github.io/categories/</loc>
   </url>
   
   <url>

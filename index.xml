@@ -22,7 +22,7 @@
     </item>
     
     <item>
-      <title>[Bug Bounty] Multiple Reflected XSS in DOKU Staging</title>
+      <title>Multiple Reflected XSS in DOKU Staging</title>
       <link>https://zetc0de.github.io/post/multiple-xss-in-doku/</link>
       <pubDate>Mon, 10 Jun 2019 12:34:48 +0700</pubDate>
       
@@ -32,7 +32,7 @@ Reflected XSS Reflected XSS adalah dimana script yang diinjeksi akan ditampilkan
     </item>
     
     <item>
-      <title>[Bug Bounty] Multiple IDOR in DOKU</title>
+      <title>Multiple IDOR in DOKU</title>
       <link>https://zetc0de.github.io/post/multiple-idor-in-doku/</link>
       <pubDate>Sun, 02 Jun 2019 11:04:47 +0700</pubDate>
       
@@ -42,7 +42,7 @@ IDOR Vulnerability Insecure Direct Object Reference terjadi saat aplikasi menyed
     </item>
     
     <item>
-      <title>[Bug Bounty] RCE and XSS On Private Program Cyber Army ID</title>
+      <title>RCE and XSS On Private Program Cyber Army ID</title>
       <link>https://zetc0de.github.io/post/2019-02-14-rce-and-xss-on-private-program-cyber-army/</link>
       <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
       
@@ -55,7 +55,7 @@ XSS via POST Request Untuk celah XSS ini berdampak pada 2 fungsi/menu:
     </item>
     
     <item>
-      <title>[Bug Bounty] Antihack.me CSRF And Arbitrary File Upload</title>
+      <title>Antihack.me CSRF And Arbitrary File Upload</title>
       <link>https://zetc0de.github.io/post/2019-01-09-antihack.me-csrf-file-upload-vulnerability/</link>
       <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
       

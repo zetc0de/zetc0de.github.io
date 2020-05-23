@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Arbitrary File Upload on IT Security Enthusiast</title>
+    <link>https://zetc0de.github.io/tags/arbitrary-file-upload/</link>
+    <description>Recent content in Arbitrary File Upload on IT Security Enthusiast</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id-id</language>
+    <copyright>Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Wed, 09 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://zetc0de.github.io/tags/arbitrary-file-upload/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Antihack.me CSRF And Arbitrary File Upload</title>
+      <link>https://zetc0de.github.io/post/2019-01-09-antihack.me-csrf-file-upload-vulnerability/</link>
+      <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/2019-01-09-antihack.me-csrf-file-upload-vulnerability/</guid>
+      <description>Introduction Antihack.me merupakan sebuah website Bug Bounty Platform asal singapura. Setelah mendaftarkan user baru dan berhasil login ke aplikasi, disana terdapat banyak fitur seperti platform-platform bug bounty lainnya, seperti fitur list program, submit report, dan lain sebagainya, termasuk juga dapat mengatur profile kita sebagai bug hunter.
+CSRF Vulnerability Cross-site Request Forgery (CSRF) atau bisa disebut dengan one-click attack adalah sebuah serangan yang menggunakan injeksi script baik itu berupa kode javascript, link, atau gambar dengan memanfaatkan token autentikasi.</description>
+    </item>
+    
+  </channel>
+</rss>
