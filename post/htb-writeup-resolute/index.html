@@ -136,7 +136,7 @@
 <p>dari hasil scanning nmap sebelumnya, kita mendapati informasi sebagai berikut :</p>
 <p><img src="/images/htb/resolute/2.png" alt=""></p>
 <h3 id="users-enumeration">Users Enumeration</h3>
-<p>Setelah menggunakan beberapa tools diatas, kita dapat login sebagai anonymous user namun tidak mendapatkan akses yang berarti.  Kemudian kita coba menggunakan tool rpcclient (default port 139) dan berhasil mendapatkan informasi users yang ada pada mesin target. Namun kita juga bisa menggunakan tool enum4linux untuk mendapatkan informasi lebih cepat.</p>
+<p>Setelah menggunakan beberapa tools diatas, kita dapat login sebagai anonymous user namun tidak mendapatkan akses yang berarti.  Kemudian kita coba menggunakan tool rpcclient (default port 139) dan berhasil mendapatkan informasi users yang ada pada mesin target, untuk mendapatkan informasi yang lebih cepat kita bisa menggunakan tool enum4linux, berikut hasil dari rpcclient:</p>
 <p><img src="/images/htb/resolute/3.png" alt=""></p>
 <p>Menggunakan rpcclient kita dapat melakukan query secara manual terhadap setiap user yang ada, jika kita mengejar waktu maka menggunakan tools ini tidak disarankan. Kemudian didapatkan infromasi yang menarik pada user marko dengan rid 0x457 :</p>
 <p><img src="/images/htb/resolute/4.png" alt=""></p>
