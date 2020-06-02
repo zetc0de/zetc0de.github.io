@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      <meta name="description" content="HTB Writeup - Resolute"><meta name="Author" content="Mas Zet | ">
+    <meta name="keywords" content="Exploit | IT Security | Bug Bounty | HTB | Hacking | Pentest | Red Team">
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/syntax.css>
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>zetc0de | HTB Writeup - Resolute</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=https://zetc0de.github.io/><img src="https://zetc0de.github.io/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=https://zetc0de.github.io/>
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>Home</span>
+            </a>
+        
+            		
+            <a href="/post/"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>Articles</span>
+            </a>
+        
+            		
+            <a href="/categories/"
+                
+            >
+                <i class="fas fa-keyboard fa-list"></i>
+                <span>Categories</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>Tags</span>
+            </a>
+        
+            		
+            <a href="/labs"
+                
+            >
+                <i class="fas fa-server fa-ms"></i>
+                <span>Labs</span>
+            </a>
+        
+            		
+            <a href="https://github.com/zetc0de"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>Github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">HTB Writeup - Resolute</h1>
+    
+      
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#scanning--enumeration">Scanning &amp; Enumeration</a>
+      <ul>
+        <li><a href="#port-scanning">Port scanning</a></li>
+        <li><a href="#port-smb-445--139">Port SMB (445 &amp; 139)</a></li>
+        <li><a href="#users-enumeration">Users Enumeration</a></li>
+        <li><a href="#bruteforce-users">Bruteforce Users</a></li>
+      </ul>
+    </li>
+    <li><a href="#gaining-access">Gaining Access</a></li>
+    <li><a href="#initial-shell--get-usertxt">Initial Shell &amp; Get User.txt</a></li>
+    <li><a href="#privilege-escalation">Privilege Escalation</a>
+      <ul>
+        <li><a href="#building-dll">Building DLL</a></li>
+        <li><a href="#abuse-dns-with-dnscmd">Abuse DNS with dnscmd</a></li>
+        <li><a href="#getting-code-execution-with-ntsystem">Getting Code Execution With NT\SYSTEM</a></li>
+        <li><a href="#flag-roottxt">Flag Root.txt</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    <p><img src="/images/htb/resolute/resolute.png" alt=""></p>
+<h2 id="overview">Overview</h2>
+<p>Mesin ini dibuat oleh egre55 , sistem operasi yang digunakan adalah Windows dengan level kesulitan Medium dan memiliki point sebesar 30 point. Mesin ini direlease pada tanggal 07 Desember 2019 dan retired pada tanggal</p>
+<h2 id="scanning--enumeration">Scanning &amp; Enumeration</h2>
+<h3 id="port-scanning">Port scanning</h3>
+<p>Pertama kita akan memulainya dengan melakukan scanning terhadap target menggunakan nmap, dari hasil scanning kita mendapatkan informasi berupa port ataupun service yang berjalan dan dapat diakses dari external network.</p>
+<p>nmap -sV -sC -oA nmap/resolute 10.10.10.169 -vv</p>
+<p><img src="/images/htb/resolute/1.png" alt=""></p>
+<h3 id="port-smb-445--139">Port SMB (445 &amp; 139)</h3>
+<p>Nmap memberikan informasi bahwa port 445 dan 139 yang digunakan service SMB terbuka, sehingga kita dapat melakukan enumerasi lebih jauh terhadap service ini. Ada beberapa tools yang dapat digunakan untuk enumerasi service SMB, diantaranya adalah:
+⁃   Nmap
+⁃   Nmblookup
+⁃   Nbtscan
+⁃   SMBMap
+⁃   Smbclient
+⁃   Rpcclient
+⁃   Enum4linux</p>
+<p>dari hasil scanning nmap sebelumnya, kita mendapati informasi sebagai berikut :</p>
+<p><img src="/images/htb/resolute/2.png" alt=""></p>
+<h3 id="users-enumeration">Users Enumeration</h3>
+<p>Setelah menggunakan beberapa tools diatas, kita dapat login sebagai anonymous user namun tidak mendapatkan akses yang berarti.  Kemudian kita coba menggunakan tool rpcclient (default port 139) dan berhasil mendapatkan informasi users yang ada pada mesin target. Namun kita juga bisa menggunakan tool enum4linux untuk mendapatkan informasi lebih cepat.</p>
+<p><img src="/images/htb/resolute/3.png" alt=""></p>
+<p>Menggunakan rpcclient kita dapat melakukan query secara manual terhadap setiap user yang ada, jika kita mengejar waktu maka menggunakan tools ini tidak disarankan. Kemudian didapatkan infromasi yang menarik pada user marko dengan rid 0x457 :</p>
+<p><img src="/images/htb/resolute/4.png" alt=""></p>
+<h3 id="bruteforce-users">Bruteforce Users</h3>
+<p>Kita memiliki informasi bahwa user marko diset dengan password Welcome123!, kemudian dilakukan percobaan login dengan credential marko:Welcome123! namun tidak mendapatkan hasil yang kita harapkan. Dengan memanfaatkan userlist yang kita dapatkan dari rpcclient, kita melakukan percobaan bruteforce dengan password Welcome123! terhadap userlist yang kita miliki, dan didapati credential yang valid  yaitu melaine:Welcome123!</p>
+<p><img src="/images/htb/resolute/5.png" alt=""></p>
+<h2 id="gaining-access">Gaining Access</h2>
+<h2 id="initial-shell--get-usertxt">Initial Shell &amp; Get User.txt</h2>
+<p>Setelah mendapatkan valid credential, kita berusaha mendapatkan akses shell dengan memanfaatkan port 5985 menggunakan tools Evil-WinRM</p>
+<p><img src="/images/htb/resolute/6.png" alt=""></p>
+<p>User Flag : 0c3be45fcfe249796ccbee8d3a978540</p>
+<h2 id="privilege-escalation">Privilege Escalation</h2>
+<p>Setelah melakukan enumerasi yg cukup melelahkan pada sistem target, didapatkan hidden folder dan file pada sistem target yang memuat informasi credential user yaitu ryan:Serv3r4Admin4cc123!</p>
+<p><img src="/images/htb/resolute/7.png" alt=""></p>
+<p>Setelah mendapatkan credential dari user ryan, kemudian dilakukan pengecekan privilege yang dimiliki oleh user ryan, dan diapati bahwa user ryan tidak memiliki privilege yang menarik, namun user ryan adalah member dari group DnsAdmins.</p>
+<p><img src="/images/htb/resolute/8.png" alt=""></p>
+<p>Jika user adalah membership dari group DNSAdmins, maka kita dapat abuse membership ini untuk privilege escalation menjadi Administrator. Dengan memanfaatkan layanan DNS pada target, kita akan mencoba menginjeksi DLL lalu mendapatkan code execution dengan privilege SYSTEM.</p>
+<h3 id="building-dll">Building DLL</h3>
+<p>Seperti yang kita sebut sebelumnya, kita akan menginjeksi proses dns.exe dengan malicious DLL yang kita siapkan, untuk membuktikan cara ini berkerja atau tidak kita buat DLL untuk melakukan reverse shell ke mesin kita.</p>
+<p><img src="/images/htb/resolute/9.png" alt=""></p>
+<h3 id="abuse-dns-with-dnscmd">Abuse DNS with dnscmd</h3>
+<p>Sekarang kita memiliki DLL untuk reverse shell, lalu kita setting agar target (Resolute.megabank.local) melakukan pointing ke DLL milik kita menggunakan dnscmd, make sure bahwa target benar-benar sudah pointing ke DLL milik kita.</p>
+<p><img src="/images/htb/resolute/10.png" alt=""></p>
+<p><img src="/images/htb/resolute/11.png" alt=""></p>
+<p>kenapa DLL kita dipointing secara remote smb ke mesin kita? kita memilih ini, karena windows secara default mendukung path UNC dan samba share dalam kebanyakan kasus.</p>
+<h3 id="getting-code-execution-with-ntsystem">Getting Code Execution With NT\SYSTEM</h3>
+<p>Sekarang waktunya melakukan restart DNS Service, maka DLL milik kita secara otomatis akan di-load oleh  proses dns.exe dan reverse shell akan dikirimkan ke listener kita.</p>
+<p><img src="/images/htb/resolute/12.png" alt=""></p>
+<h3 id="flag-roottxt">Flag Root.txt</h3>
+<p>Setelah tahapan restart service sudah dilakukan, tunggu beberapa saat dan kitapun akan mendapatkan akses shell dengan user sebagai NT AUTHORITY\SYSTEM</p>
+<p><img src="/images/htb/resolute/13.png" alt=""></p>
+<p>Root Flag : e1d94876a506850d0c20edb5405e619c</p>
+<p>Terimakasih, Kalo di rasa tulisan ini bermanfaat, silahkan Share. Semoga kebermanfaatan ini terus berlanjut!</p>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="https://zetc0de.github.io/post/multiple-xss-in-doku/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">Top</i></a>
+        <div class="nav-next">
+            
+                <a class="grayed-out" href="javascript:void()"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+          <div class="footer-mail">
+          <i class="far fa-envelope"></i> <a href="mailto:zetc0de.id@gmail.com">zetc0de.id@gmail.com</a> </div>
+      
+      
+      <div class="footer-phone">
+          <i class="fas fa-phone"></i> <a href="https://t.me/zetc0de" target="_blank">Telegram</a> 
+      </div>
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=https://zetc0de.github.io/js/navbutton.js></script>
+</html>

@@ -13,6 +13,17 @@
     
     
     <item>
+      <title>HTB Writeup - Resolute</title>
+      <link>https://zetc0de.github.io/post/htb-writeup-resolute/</link>
+      <pubDate>Tue, 02 Jun 2020 11:30:31 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/htb-writeup-resolute/</guid>
+      <description>Overview Mesin ini dibuat oleh egre55 , sistem operasi yang digunakan adalah Windows dengan level kesulitan Medium dan memiliki point sebesar 30 point. Mesin ini direlease pada tanggal 07 Desember 2019 dan retired pada tanggal
+Scanning &amp;amp; Enumeration Port scanning Pertama kita akan memulainya dengan melakukan scanning terhadap target menggunakan nmap, dari hasil scanning kita mendapatkan informasi berupa port ataupun service yang berjalan dan dapat diakses dari external network.
+nmap -sV -sC -oA nmap/resolute 10.</description>
+    </item>
+    
+    <item>
       <title>Labs</title>
       <link>https://zetc0de.github.io/labs/</link>
       <pubDate>Fri, 22 May 2020 12:54:45 +0700</pubDate>
