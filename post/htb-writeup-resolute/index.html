@@ -124,14 +124,15 @@
 </code></pre>
 <p><img src="/images/htb/resolute/1.png" alt=""></p>
 <h3 id="port-smb-445--139">Port SMB (445 &amp; 139)</h3>
-<p>Nmap memberikan informasi bahwa port 445 dan 139 yang digunakan service SMB terbuka, sehingga kita dapat melakukan enumerasi lebih jauh terhadap service ini. Ada beberapa tools yang dapat digunakan untuk enumerasi service SMB, diantaranya adalah:
-⁃   Nmap
+<p>Nmap memberikan informasi bahwa port 445 dan 139 yang digunakan service SMB terbuka, sehingga kita dapat melakukan enumerasi lebih jauh terhadap service ini. Ada beberapa tools yang dapat digunakan untuk enumerasi service SMB, diantaranya adalah:</p>
+<pre><code>⁃   Nmap
 ⁃   Nmblookup
 ⁃   Nbtscan
 ⁃   SMBMap
 ⁃   Smbclient
 ⁃   Rpcclient
-⁃   Enum4linux</p>
+⁃   Enum4linux
+</code></pre>
 <p>dari hasil scanning nmap sebelumnya, kita mendapati informasi sebagai berikut :</p>
 <p><img src="/images/htb/resolute/2.png" alt=""></p>
 <h3 id="users-enumeration">Users Enumeration</h3>
