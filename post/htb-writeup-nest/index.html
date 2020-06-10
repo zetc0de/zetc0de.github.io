@@ -100,6 +100,7 @@
         <li><a href="#port-smb">Port SMB</a></li>
       </ul>
     </li>
+    <li><a href="#decrypt-csmith-password">Decrypt C.Smith Password</a></li>
     <li><a href="#user-flag">User Flag</a></li>
     <li><a href="#privilege-escalation">Privilege Escalation</a>
       <ul>
@@ -156,6 +157,7 @@ Thank you
 <p><img src="/images/htb/nest/5.png" alt=""></p>
 <p>Pada file <strong>Data/RU Scanner/RU_config.xml</strong> ditemukan credential user c.smith, seperti base64 bukan? namun setelah mencoba didecode dan coba login smb dengan password hasil decode ternyata failed :(</p>
 <p><img src="/images/htb/nest/6.png" alt=""></p>
+<h2 id="decrypt-csmith-password">Decrypt C.Smith Password</h2>
 <p>Setelah stuck beberapa waktu, didapatkan file <strong>Data/NotepadPlusPlus/config.xml</strong> yang memberikan informasi bahwa terdapat folder <strong>Carl</strong> didalam \<strong>HTB-NEST\Secure$\IT</strong>. Kita coba masuk folder IT/Carl/ dan ternyata bisa diakses!</p>
 <p><img src="/images/htb/nest/7.png" alt=""></p>
 <p><img src="/images/htb/nest/8.png" alt=""></p>
