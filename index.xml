@@ -13,6 +13,16 @@
     
     
     <item>
+      <title>HTB Writeup - Nest</title>
+      <link>https://zetc0de.github.io/post/htb-writeup-nest/</link>
+      <pubDate>Thu, 11 Jun 2020 02:39:53 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/htb-writeup-nest/</guid>
+      <description>Overview Mesin ini dibuat oleh VbScrub , sistem operasi yang digunakan adalah Windows dengan level kesulitan Easy dan memiliki point sebesar 20 point. Untuk menyelesaikan mesin ini anda harus memiliki skill enumeration yang bagus,dan sedikit memahami bahasa pemograman visual basic. Mesin ini direlease pada tanggal 25 Januari 2020 dan retired pada tanggal 5 Juni 2020.
+Scanning &amp;amp; Enumeration Port scanning Pertama kita akan memulainya dengan melakukan scanning terhadap target menggunakan nmap, dari hasil scanning kita mendapatkan informasi berupa port ataupun service yang berjalan dan dapat diakses dari external network.</description>
+    </item>
+    
+    <item>
       <title>HTB Writeup - Resolute</title>
       <link>https://zetc0de.github.io/post/htb-writeup-resolute/</link>
       <pubDate>Tue, 02 Jun 2020 11:30:31 +0700</pubDate>

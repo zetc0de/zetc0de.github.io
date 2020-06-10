@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      <meta name="description" content="HTB Writeup - Nest"><meta name="Author" content="Mas Zet | ">
+    <meta name="keywords" content="Exploit | IT Security | Bug Bounty | HTB | Hacking | Pentest | Red Team">
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/syntax.css>
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>zetc0de | HTB Writeup - Nest</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=https://zetc0de.github.io/><img src="https://zetc0de.github.io/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=https://zetc0de.github.io/>
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>Home</span>
+            </a>
+        
+            		
+            <a href="/post/"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>Articles</span>
+            </a>
+        
+            		
+            <a href="/categories/"
+                
+            >
+                <i class="fas fa-keyboard fa-list"></i>
+                <span>Categories</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>Tags</span>
+            </a>
+        
+            		
+            <a href="/labs"
+                
+            >
+                <i class="fas fa-server fa-ms"></i>
+                <span>Labs</span>
+            </a>
+        
+            		
+            <a href="https://github.com/zetc0de"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>Github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">HTB Writeup - Nest</h1>
+    
+      
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#scanning--enumeration">Scanning &amp; Enumeration</a>
+      <ul>
+        <li><a href="#port-scanning">Port scanning</a></li>
+        <li><a href="#port-smb">Port SMB</a></li>
+      </ul>
+    </li>
+    <li><a href="#user-flag">User Flag</a></li>
+    <li><a href="#privilege-escalation">Privilege Escalation</a>
+      <ul>
+        <li><a href="#hqk-reporting-service">HQK Reporting Service</a></li>
+        <li><a href="#abusing-hqk-reporting-service">Abusing HQK Reporting Service</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+    <p><img src="/images/htb/nest/nest.png" alt=""></p>
+<h2 id="overview">Overview</h2>
+<p>Mesin ini dibuat oleh <a href="https://www.hackthebox.eu/home/users/profile/158833">VbScrub</a> , sistem operasi yang digunakan adalah Windows dengan level kesulitan <strong>Easy</strong> dan memiliki point sebesar 20 point. Untuk menyelesaikan mesin ini anda harus memiliki skill enumeration yang bagus,dan sedikit memahami bahasa pemograman visual basic. Mesin ini direlease pada tanggal 25 Januari 2020 dan retired pada tanggal 5 Juni 2020.</p>
+<h2 id="scanning--enumeration">Scanning &amp; Enumeration</h2>
+<h3 id="port-scanning">Port scanning</h3>
+<p>Pertama kita akan memulainya dengan melakukan scanning terhadap target menggunakan nmap, dari hasil scanning kita mendapatkan informasi berupa port ataupun service yang berjalan dan dapat diakses dari external network.</p>
+<pre><code>nmap -p- 10.10.10.178 -v -Pn
+</code></pre>
+<p>dan didapatkan 2 port terbuka, yaitu:</p>
+<ul>
+<li>445 adalah port SMB</li>
+<li>4386 adalah port service HQK Reporting</li>
+</ul>
+<p><img src="/images/htb/nest/1.png" alt=""></p>
+<h3 id="port-smb">Port SMB</h3>
+<p>Nmap memberikan informasi bahwa port 445 yang digunakan service SMB terbuka, sehingga kita dapat melakukan enumerasi lebih jauh terhadap service ini. Disini kita menggunakan smbclient untuk melakukan enumerasi dan didapatkan beberapa shared folder didalamnya.</p>
+<p><img src="/images/htb/nest/2.png" alt=""></p>
+<p>Kemudian didapati bahwa folder <strong>Data</strong> memiliki akses <em>Read</em>, sehingga kita dapat membaca isi dari folder tersebut. Berikut sedikit penjelasan beberapa command smbclient yang digunakan :</p>
+<ul>
+<li>mask “” : digunakan ketika proses mget atau mput secara recursive</li>
+<li>recursive ON : mengaktifkan mode recursive</li>
+<li>prompt OFF : menonaktifkan mode prompt</li>
+<li>lcd smb : setting destinasi folder yang ada pada local</li>
+<li>mget * : mengambil seluruh file/folder yang ada</li>
+</ul>
+<p>dari file yang berhasil didapat, kita mendapatkan informasi credential <strong>TempUser:welcome2019</strong></p>
+<p><img src="/images/htb/nest/3.png" alt=""></p>
+<p><img src="/images/htb/nest/4.png" alt=""></p>
+<pre><code>We would like to extend a warm welcome to our newest member of staff, &lt;FIRSTNAME&gt; &lt;SURNAME&gt;
+
+You will find your home folder in the following location: 
+\\HTB-NEST\Users\&lt;USERNAME&gt;
+    
+If you have any issues accessing specific services or workstations, please inform the 
+IT department and use the credentials below until all systems have been set up for you.
+    
+Username: TempUser
+Password: welcome2019
+    
+    
+Thank you
+</code></pre>
+<p>Kemudian dengan credential yang kita dapatkan tadi, kita coba akses kembali shared folder Data dan mengambil file dengan credential tersebut.</p>
+<p><img src="/images/htb/nest/5.png" alt=""></p>
+<p>Pada file <strong>Data/RU Scanner/RU_config.xml</strong> ditemukan credential user c.smith, seperti base64 bukan? namun setelah mencoba didecode dan coba login smb dengan password hasil decode ternyata failed :(</p>
+<p><img src="/images/htb/nest/6.png" alt=""></p>
+<p>Setelah stuck beberapa waktu, didapatkan file <strong>Data/NotepadPlusPlus/config.xml</strong> yang memberikan informasi bahwa terdapat folder <strong>Carl</strong> didalam \<strong>HTB-NEST\Secure$\IT</strong>. Kita coba masuk folder IT/Carl/ dan ternyata bisa diakses!</p>
+<p><img src="/images/htb/nest/7.png" alt=""></p>
+<p><img src="/images/htb/nest/8.png" alt=""></p>
+<pre><code>smb: \&gt; cd IT/Carl/
+smb: \IT\Carl\&gt; mget *
+getting file \IT\Carl\Docs\ip.txt of size 56 as ip.txt (0.4 KiloBytes/sec) (average 0.4 KiloBytes/sec)
+getting file \IT\Carl\Docs\mmc.txt of size 73 as mmc.txt (0.5 KiloBytes/sec) (average 0.4 KiloBytes/sec)
+getting file \IT\Carl\VB Projects\WIP\RU\RUScanner\ConfigFile.vb of size 772 as ConfigFile.vb (6.1 KiloBytes/sec) (average 2.0 KiloBytes/sec)
+getting file \IT\Carl\VB Projects\WIP\RU\RUScanner\Module1.vb of size 279 as Module1.vb (2.0 KiloBytes/sec) (average 2.0 KiloBytes/sec)
+getting file \IT\Carl\VB Projects\WIP\RU\RUScanner\My Project\Application.Designer.vb of size 441 as Application.Designer.vb (3.4 KiloBytes/sec) (average 2.3 KiloBytes/sec)
+getting file \IT\Carl\VB Projects\WIP\RU\RUScanner\My Project\Application.myapp of size 481 as Application.myapp (3.6 KiloBytes/sec) (average 2.5 KiloBytes/sec)
+getting file \IT\Carl\VB Projects\WIP\RU\RUScanner\My Project\AssemblyInfo.vb of size 1163 as AssemblyInfo.vb (8.8 KiloBytes/sec) (average 3.3 KiloBytes/sec)
+getting file \IT\Carl\VB Projects\WIP\RU\RUScanner\My Project\Resources.Designer.vb of size 2776 as Resources.Designer.vb (21.2 KiloBytes/sec) (average 5.4 KiloBytes/sec)
+getting file \IT\Carl\VB Projects\WIP\RU\RUScanner\My Project\Resources.resx of size 5612 as Resources.resx (43.5 KiloBytes/sec) (average 9.4 KiloBytes/sec)
+getting file \IT\Carl\VB Projects\WIP\RU\RUScanner\My Project\Settings.Designer.vb of size 2989 as Settings.Designer.vb (22.5 KiloBytes/sec) (average 10.7 KiloBytes/sec)
+getting file \IT\Carl\VB Projects\WIP\RU\RUScanner\My Project\Settings.settings of size 279 as Settings.settings (2.1 KiloBytes/sec) (average 9.9 KiloBytes/sec)
+getting file \IT\Carl\VB Projects\WIP\RU\RUScanner\RU Scanner.vbproj of size 4828 as RU Scanner.vbproj (37.1 KiloBytes/sec) (average 12.1 KiloBytes/sec)
+getting file \IT\Carl\VB Projects\WIP\RU\RUScanner\RU Scanner.vbproj.user of size 143 as RU Scanner.vbproj.user (1.1 KiloBytes/sec) (average 11.3 KiloBytes/sec)
+getting file \IT\Carl\VB Projects\WIP\RU\RUScanner\SsoIntegration.vb of size 133 as SsoIntegration.vb (1.0 KiloBytes/sec) (average 10.6 KiloBytes/sec)
+getting file \IT\Carl\VB Projects\WIP\RU\RUScanner\Utils.vb of size 4888 as Utils.vb (38.8 KiloBytes/sec) (average 12.3 KiloBytes/sec)
+getting file \IT\Carl\VB Projects\WIP\RU\RUScanner.sln of size 871 as RUScanner.sln (6.8 KiloBytes/sec) (average 12.0 KiloBytes/sec)
+</code></pre><p>Setelah mendownload semua file yang ada pada folder <strong>Carl</strong>, didapatkan beberapa file yang merupakan project visual basic. File Module1.vb menunjukkan bahwa main program akan meload file RU_config.xml yang kita dapatkan tadi, termasuk didalamnya credential user c.smith. Terlihat jelas bahwa fungsi DecryptString terdapat pada class Utils, yang mana fungsi ini digunakan untuk mendecrypt password milik c.smith yang tadi sempat kita kira itu adalah base64 encoded =D</p>
+<p><img src="/images/htb/nest/9.png" alt=""></p>
+<p>Setelah membaca file Utils.vb, benar disana terdapat method DecryptString dengan parameternya termasuk key dan salt untuk proses dekripsi.</p>
+<pre><code>Imports System.Text
+Imports System.Security.Cryptography
+Public Class Utils
+
+    Public Shared Function GetLogFilePath() As String
+        Return IO.Path.Combine(Environment.CurrentDirectory, &quot;Log.txt&quot;)
+    End Function
+
+    Public Shared Function DecryptString(EncryptedString As String) As String
+        If String.IsNullOrEmpty(EncryptedString) Then
+            Return String.Empty
+        Else
+            Return Decrypt(EncryptedString, &quot;N3st22&quot;, &quot;88552299&quot;, 2, &quot;464R5DFA5DL6LE28&quot;, 256)
+        End If
+    End Function
+
+    Public Shared Function EncryptString(PlainString As String) As String
+        If String.IsNullOrEmpty(PlainString) Then
+            Return String.Empty
+        Else
+            Return Encrypt(PlainString, &quot;N3st22&quot;, &quot;88552299&quot;, 2, &quot;464R5DFA5DL6LE28&quot;, 256)
+        End If
+    End Function
+
+    Public Shared Function Encrypt(ByVal plainText As String, _
+                                   ByVal passPhrase As String, _
+                                   ByVal saltValue As String, _
+                                    ByVal passwordIterations As Integer, _
+                                   ByVal initVector As String, _
+                                   ByVal keySize As Integer) _
+                           As String
+
+        Dim initVectorBytes As Byte() = Encoding.ASCII.GetBytes(initVector)
+        Dim saltValueBytes As Byte() = Encoding.ASCII.GetBytes(saltValue)
+        Dim plainTextBytes As Byte() = Encoding.ASCII.GetBytes(plainText)
+        Dim password As New Rfc2898DeriveBytes(passPhrase, _
+                                           saltValueBytes, _
+                                           passwordIterations)
+        Dim keyBytes As Byte() = password.GetBytes(CInt(keySize / 8))
+        Dim symmetricKey As New AesCryptoServiceProvider
+        symmetricKey.Mode = CipherMode.CBC
+        Dim encryptor As ICryptoTransform = symmetricKey.CreateEncryptor(keyBytes, initVectorBytes)
+        Using memoryStream As New IO.MemoryStream()
+            Using cryptoStream As New CryptoStream(memoryStream, _
+                                            encryptor, _
+                                            CryptoStreamMode.Write)
+                cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length)
+                cryptoStream.FlushFinalBlock()
+                Dim cipherTextBytes As Byte() = memoryStream.ToArray()
+                memoryStream.Close()
+                cryptoStream.Close()
+                Return Convert.ToBase64String(cipherTextBytes)
+            End Using
+        End Using
+    End Function
+
+    Public Shared Function Decrypt(ByVal cipherText As String, _
+                                   ByVal passPhrase As String, _
+                                   ByVal saltValue As String, _
+                                    ByVal passwordIterations As Integer, _
+                                   ByVal initVector As String, _
+                                   ByVal keySize As Integer) _
+                           As String
+
+        Dim initVectorBytes As Byte()
+        initVectorBytes = Encoding.ASCII.GetBytes(initVector)
+
+        Dim saltValueBytes As Byte()
+        saltValueBytes = Encoding.ASCII.GetBytes(saltValue)
+
+        Dim cipherTextBytes As Byte()
+        cipherTextBytes = Convert.FromBase64String(cipherText)
+
+        Dim password As New Rfc2898DeriveBytes(passPhrase, _
+                                           saltValueBytes, _
+                                           passwordIterations)
+
+        Dim keyBytes As Byte()
+        keyBytes = password.GetBytes(CInt(keySize / 8))
+
+        Dim symmetricKey As New AesCryptoServiceProvider
+        symmetricKey.Mode = CipherMode.CBC
+
+        Dim decryptor As ICryptoTransform
+        decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes)
+
+        Dim memoryStream As IO.MemoryStream
+        memoryStream = New IO.MemoryStream(cipherTextBytes)
+
+        Dim cryptoStream As CryptoStream
+        cryptoStream = New CryptoStream(memoryStream, _
+                                        decryptor, _
+                                        CryptoStreamMode.Read)
+
+        Dim plainTextBytes As Byte()
+        ReDim plainTextBytes(cipherTextBytes.Length)
+
+        Dim decryptedByteCount As Integer
+        decryptedByteCount = cryptoStream.Read(plainTextBytes, _
+                                               0, _
+                                               plainTextBytes.Length)
+
+        memoryStream.Close()
+        cryptoStream.Close()
+
+        Dim plainText As String
+        plainText = Encoding.ASCII.GetString(plainTextBytes, _
+                                            0, _
+                                            decryptedByteCount)
+
+        Return plainText
+    End Function
+
+End Class
+</code></pre><p>Karena saya tidak memiliki compiler VB, saya menggunakan compiler online di <a href="https://dotnetfiddle.net">dotnetfiddle</a> , karena saya belum pernah melakukan scripting menggunakan VB, saya melihat beberapa basic tutorial seperti membuat variable, kemudian membuat sedikit baris program untuk memanggil method DecryptString untuk mendekripsi password milik c.smith, dan didapatkan passwordnya adalah <strong>xRxRxPANCAK3SxRxRx</strong></p>
+<p><img src="/images/htb/nest/10.png" alt=""></p>
+<h2 id="user-flag">User Flag</h2>
+<p>Setelah mendapatkan credential c.smith, kita coba masuk service smb lagi dan mendapatkan beberapa file termasuk file flag user.txt</p>
+<p><img src="/images/htb/nest/11.png" alt=""></p>
+<p><img src="/images/htb/nest/12.png" alt=""></p>
+<h2 id="privilege-escalation">Privilege Escalation</h2>
+<h3 id="hqk-reporting-service">HQK Reporting Service</h3>
+<p>Setelah mendownload file dari user c.smith, disana terdepat beberapa file diantaranya file exe, file txt kosong, dan file xml. File <strong>HQK Reporting/HQK_Config_Backup.xml</strong> memperlihatkan config service yang sebelumnya telah kita temukan dengan nmap pada port 4386.</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;ServiceSettings xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
+  &lt;Port&gt;4386&lt;/Port&gt;
+  &lt;QueryDirectory&gt;C:\Program Files\HQK\ALL QUERIES&lt;/QueryDirectory&gt;
+&lt;/ServiceSettings&gt;
+</code></pre>
+<p><img src="/images/htb/nest/13.png" alt=""></p>
+<h3 id="abusing-hqk-reporting-service">Abusing HQK Reporting Service</h3>
+<p>Ada beberapa command yang dapat kita gunakan disana, salah satu command nya adalah DEBUG, debug mode akan memberikan command tambahan untuk network troubleshoting dan masalah konfigurasi, akan tetapi membutuhkan password yang kita sendiri tidak tahu password yang mana. Pada file ‘Debug Mode Password.txt’ tidak berisi apa-apa, kita coba pakai password c.smith pun invalid :(</p>
+<p><img src="/images/htb/nest/14.png" alt=""></p>
+<p>Curiga dengan file kosong tadi, kita coba check menggunakan command allinfo pada smbclient, command allinfo akan memberikan seluruh informasi tentang file atau folder, lalu didapatkan informasi bahwa file  ‘Debug Mode Password.txt’ memiliki data stream sebesar 15 bytes, kita coba download data stream tersebut menggunakan perintah get dan didaptkan password debugnya adalah WBQ201953D8w</p>
+<p><img src="/images/htb/nest/15.png" alt=""></p>
+<p><img src="/images/htb/nest/16.png" alt=""></p>
+<p>Kita coba menggunakan service port 4386 lagi dan mengaktifkan DEBUG mode, maka available commands akan bertambah command SERVICE, SESSION, SHOWQUERY. Kita menggunakan perintah SETDIR untuk merubah posisi directory, dan perintah SHOWQUERY dengan parameter array output dari perintah LIST untuk melihat isi dari file.</p>
+<p><img src="/images/htb/nest/17.png" alt=""></p>
+<p>Menggunakan SETDIR untuk merubah posisi directory, lalu didapatkan folder LDAP yang berisi file exe dan file config. Disana terdapat credential Administrator yang passwordnya diencrypt seperti password c.smith, lalu kita coba menggunakan script decrypt yang kita pake untuk decrypt password c.smith tadi, namun ternyata gagal :(</p>
+<p><img src="/images/htb/nest/18.png" alt=""></p>
+<pre><code>Domain=nest.local
+Port=389
+BaseOu=OU=WBQ Users,OU=Production,DC=nest,DC=local
+User=Administrator
+Password=yyEq0Uvvhq2uQOcWG8peLoeRQehqip/fKdeG/kjEVb4=
+</code></pre>
+<p>Note :
+Pada tahap Previlege Escalation ini, saya tidak dapat melanjutkan karena keterbatasan ilmu yang saya miliki, oleh karena itu tulisan ini saya sajikan hanya sebatas apa yang saya alami saat mengerjakan mesin ini.</p>
+<p>Terimakasih telah membaca, jika dirasa tulisan ini bermanfaat, silahkan Share. Semoga kebermanfaatan ini terus berlanjut!</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://www.samba.org/samba/docs/current/man-html/smbclient.1.html">smbclient</a></li>
+<li><a href="https://superuser.com/questions/1520250/read-alternate-data-streams-over-smb-with-linux">Read alternate data streams over SMB with Linux</a></li>
+</ul>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="https://zetc0de.github.io/post/htb-writeup-resolute/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">Top</i></a>
+        <div class="nav-next">
+            
+                <a class="grayed-out" href="javascript:void()"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+          <div class="footer-mail">
+          <i class="far fa-envelope"></i> <a href="mailto:zetc0de.id@gmail.com">zetc0de.id@gmail.com</a> </div>
+      
+      
+      <div class="footer-phone">
+          <i class="fas fa-phone"></i> <a href="https://t.me/zetc0de" target="_blank">Telegram</a> 
+      </div>
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=https://zetc0de.github.io/js/navbutton.js></script>
+</html>
