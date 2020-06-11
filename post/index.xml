@@ -7,18 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>id-id</language>
     <copyright>Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Thu, 11 Jun 2020 12:50:13 +0700</lastBuildDate>
+    <lastBuildDate>Thu, 11 Jun 2020 13:13:23 +0700</lastBuildDate>
     
 	<atom:link href="https://zetc0de.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Security Guideline for Android Manifest File</title>
-      <link>https://zetc0de.github.io/post/security-guideline-for-android-manifest-file/</link>
-      <pubDate>Thu, 11 Jun 2020 12:50:13 +0700</pubDate>
+      <title>Android WebView Vulnerabilities</title>
+      <link>https://zetc0de.github.io/post/android-webview-vulnerabilities/</link>
+      <pubDate>Thu, 11 Jun 2020 13:13:23 +0700</pubDate>
       
-      <guid>https://zetc0de.github.io/post/security-guideline-for-android-manifest-file/</guid>
-      <description>Overview File Manifest memainkan peran penting untuk setiap aplikasi android. Dalam file ini developer android menentukan izin yang diperlukan aplikasi, tindakan yang dapat dilakukan aplikasi dan aktivitas umum lainnya. Dari sudut pandang keamanan, file manifest biasanya merupakan hal pertama yang akan diperiksa oleh pentester. Oleh karena itu daftar berikut dapat digunakan baik oleh developer dan penguji penetrasi untuk memastikan bahwa file Manifest tidak mengandung kesalahan konfigurasi yang dapat dimanfaatkan oleh penyerang.</description>
+      <guid>https://zetc0de.github.io/post/android-webview-vulnerabilities/</guid>
+      <description>Overview WebViews digunakan dalam aplikasi android untuk memuat konten dan halaman HTML dalam aplikasi. Tujuan artikel ini adalah untuk memeriksa hal-hal yang akan membuat WebView kurang aman. Baik developer dan penguji penetrasi dapat menggunakan artikel ini sebagai referensi saat melakukan tes penetrasi.
+Loading Clear-Text Content Jika WebView memuat konten clear-text dari Internet, maka akan mudah untuk dilakukan berbagai bentuk serangan seperti MiTM.
+myWebView.loadUrl(&amp;quot;http://www.zetlab.pw/webview&amp;quot;);  SSL Error Handling Kode di bawah ini menginstruksikan client WebView untuk melanjutkan request ketika terjadi kesalahan SSL.</description>
     </item>
     
     <item>
@@ -39,6 +41,15 @@ Scanning &amp;amp; Enumeration Port scanning Pertama kita akan memulainya dengan
       <guid>https://zetc0de.github.io/post/htb-writeup-resolute/</guid>
       <description>Overview Mesin ini dibuat oleh egre55 , sistem operasi yang digunakan adalah Windows dengan level kesulitan Medium dan memiliki point sebesar 30 point. Mesin ini direlease pada tanggal 07 Desember 2019 dan retired pada tanggal 30 Mei 2020.
 Scanning &amp;amp; Enumeration Port scanning Pertama kita akan memulainya dengan melakukan scanning terhadap target menggunakan nmap, dari hasil scanning kita mendapatkan informasi berupa port ataupun service yang berjalan dan dapat diakses dari external network.</description>
+    </item>
+    
+    <item>
+      <title>Security Guideline for Android Manifest File</title>
+      <link>https://zetc0de.github.io/post/security-guideline-for-android-manifest-file/</link>
+      <pubDate>Tue, 11 Feb 2020 12:50:13 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/security-guideline-for-android-manifest-file/</guid>
+      <description>Overview File Manifest memainkan peran penting untuk setiap aplikasi android. Dalam file ini developer android menentukan izin yang diperlukan aplikasi, tindakan yang dapat dilakukan aplikasi dan aktivitas umum lainnya. Dari sudut pandang keamanan, file manifest biasanya merupakan hal pertama yang akan diperiksa oleh pentester. Oleh karena itu daftar berikut dapat digunakan baik oleh developer dan penguji penetrasi untuk memastikan bahwa file Manifest tidak mengandung kesalahan konfigurasi yang dapat dimanfaatkan oleh penyerang.</description>
     </item>
     
     <item>

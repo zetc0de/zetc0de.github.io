@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      <meta name="description" content="Android WebView Vulnerabilities"><meta name="Author" content="Mas Zet | ">
+    <meta name="keywords" content="Exploit | IT Security | Bug Bounty | HTB | Hacking | Pentest | Red Team">
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/syntax.css>
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>zetc0de | Android WebView Vulnerabilities</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=https://zetc0de.github.io/><img src="https://zetc0de.github.io/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=https://zetc0de.github.io/>
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>Home</span>
+            </a>
+        
+            		
+            <a href="/post/"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>Articles</span>
+            </a>
+        
+            		
+            <a href="/categories/"
+                
+            >
+                <i class="fas fa-keyboard fa-list"></i>
+                <span>Categories</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>Tags</span>
+            </a>
+        
+            		
+            <a href="/labs"
+                
+            >
+                <i class="fas fa-server fa-ms"></i>
+                <span>Labs</span>
+            </a>
+        
+            		
+            <a href="https://github.com/zetc0de"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>Github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">Android WebView Vulnerabilities</h1>
+    
+      
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#loading-clear-text-content">Loading Clear-Text Content</a></li>
+    <li><a href="#ssl-error-handling">SSL Error Handling</a></li>
+    <li><a href="#javascript-enabled">Javascript Enabled</a></li>
+    <li><a href="#accessing-localremote-resource">Accessing Local/Remote Resource</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+    <h2 id="overview">Overview</h2>
+<p>WebViews digunakan dalam aplikasi android untuk memuat konten dan halaman HTML dalam aplikasi. Tujuan artikel ini adalah untuk memeriksa hal-hal yang akan membuat WebView kurang aman. Baik developer dan penguji penetrasi dapat menggunakan artikel ini sebagai referensi saat melakukan tes penetrasi.</p>
+<h2 id="loading-clear-text-content">Loading Clear-Text Content</h2>
+<p>Jika WebView memuat konten clear-text dari Internet, maka akan mudah untuk dilakukan berbagai bentuk serangan seperti MiTM.</p>
+<pre><code>myWebView.loadUrl(&quot;http://www.zetlab.pw/webview&quot;);
+</code></pre>
+<h2 id="ssl-error-handling">SSL Error Handling</h2>
+<p>Kode di bawah ini menginstruksikan client WebView untuk melanjutkan request ketika terjadi kesalahan SSL. Ini berarti bahwa aplikasi ini rentan terhadap serangan MiTM karena dapat memungkinkan penyerang membaca atau memodifikasi konten yang ditampilkan kepada pengguna karena sertifikat apa pun akan diterima oleh aplikasi.</p>
+<pre><code>@Override
+public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error)
+{
+handler.proceed();
+}
+</code></pre>
+<h2 id="javascript-enabled">Javascript Enabled</h2>
+<p>Mengizinkan konten JavaScript dieksekusi dalam aplikasi melalui WebView mungkin memberi peluang bagi penyerang untuk mengeksekusi kode JavaScript sewenang-wenang untuk melakukan tindakan jahat. Pengaturan ini memungkinkan WebView untuk mengeksekusi kode JavaScript.</p>
+<pre><code>WebSettings webSettings = myWebView.getSettings();
+webSettings.setJavaScriptEnabled(true);
+</code></pre>
+<p>Fungsi JavascriptInterface  menjembatani antara kode JavaScript dan kode Java asli. Ini berarti bahwa kode JavaScript dapat mengakses dan menginject objek Java dan kode Java untuk dipanggil oleh JavaScript kembali. Tergantung pada permission aplikasi, ini dapat memungkinkan penyerang berinteraksi dengan fungsionalitas perangkat (baca SMS, rekaman mikrofon, dll.)</p>
+<pre><code>setContentView(webView);
+...
+class JsObject {
+private String sensitiveInformation;
+...
+public String toString() { return sensitiveInformation; }}
+webView.addJavascriptInterface(new JsObject(), &quot;injectedObject&quot;);
+webView.loadData(&quot;&quot;, &quot;text/html&quot;, null);
+webView.loadUrl(&quot;http://www.zetlab.pw&quot;);
+</code></pre>
+<h2 id="accessing-localremote-resource">Accessing Local/Remote Resource</h2>
+<p>Jika WebView digunakan untuk mengakses konten dari local atau URL, maka penyerang dapat membuat file html berbahaya yang dapat diinject ke dalam aplikasi target melalui <strong>file:scheme</strong> atau menggunakan parameter URL di activity.</p>
+<pre><code>public class MyBrowser extends Activity {
+@override
+public void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.main);
+ 
+WebView webView = (WebView) findViewById(R.id.webview);
+ 
+// turn on javascript
+WebSettings settings = webView.getSettings();
+settings.setJavaScriptEnabled(true);
+ 
+String turl = getIntent().getStringExtra(&quot;URL&quot;);
+webView.loadUrl(turl);
+}
+}
+</code></pre>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://pentestlab.blog/2017/02/12/android-webview-vulnerabilities/">Android WebView Vulnerabilities</a></li>
+</ul>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="https://zetc0de.github.io/post/htb-writeup-nest/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">Top</i></a>
+        <div class="nav-next">
+            
+                <a class="grayed-out" href="javascript:void()"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+          <div class="footer-mail">
+          <i class="far fa-envelope"></i> <a href="mailto:zetc0de.id@gmail.com">zetc0de.id@gmail.com</a> </div>
+      
+      
+      <div class="footer-phone">
+          <i class="fas fa-phone"></i> <a href="https://t.me/zetc0de" target="_blank">Telegram</a> 
+      </div>
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=https://zetc0de.github.io/js/navbutton.js></script>
+</html>

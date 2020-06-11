@@ -13,12 +13,14 @@
     
     
     <item>
-      <title>Security Guideline for Android Manifest File</title>
-      <link>https://zetc0de.github.io/post/security-guideline-for-android-manifest-file/</link>
-      <pubDate>Thu, 11 Jun 2020 12:50:13 +0700</pubDate>
+      <title>Android WebView Vulnerabilities</title>
+      <link>https://zetc0de.github.io/post/android-webview-vulnerabilities/</link>
+      <pubDate>Thu, 11 Jun 2020 13:13:23 +0700</pubDate>
       
-      <guid>https://zetc0de.github.io/post/security-guideline-for-android-manifest-file/</guid>
-      <description>Overview File Manifest memainkan peran penting untuk setiap aplikasi android. Dalam file ini developer android menentukan izin yang diperlukan aplikasi, tindakan yang dapat dilakukan aplikasi dan aktivitas umum lainnya. Dari sudut pandang keamanan, file manifest biasanya merupakan hal pertama yang akan diperiksa oleh pentester. Oleh karena itu daftar berikut dapat digunakan baik oleh developer dan penguji penetrasi untuk memastikan bahwa file Manifest tidak mengandung kesalahan konfigurasi yang dapat dimanfaatkan oleh penyerang.</description>
+      <guid>https://zetc0de.github.io/post/android-webview-vulnerabilities/</guid>
+      <description>Overview WebViews digunakan dalam aplikasi android untuk memuat konten dan halaman HTML dalam aplikasi. Tujuan artikel ini adalah untuk memeriksa hal-hal yang akan membuat WebView kurang aman. Baik developer dan penguji penetrasi dapat menggunakan artikel ini sebagai referensi saat melakukan tes penetrasi.
+Loading Clear-Text Content Jika WebView memuat konten clear-text dari Internet, maka akan mudah untuk dilakukan berbagai bentuk serangan seperti MiTM.
+myWebView.loadUrl(&amp;quot;http://www.zetlab.pw/webview&amp;quot;);  SSL Error Handling Kode di bawah ini menginstruksikan client WebView untuk melanjutkan request ketika terjadi kesalahan SSL.</description>
     </item>
     
     <item>
@@ -48,6 +50,15 @@ Scanning &amp;amp; Enumeration Port scanning Pertama kita akan memulainya dengan
       
       <guid>https://zetc0de.github.io/labs/</guid>
       <description> bWAPP Juice Shop DVWA Nowasp XVWA SSTI LKWA Bricks  Note: - Educational purposes! - No Deface, go to h3ll L4m3r! - Any problem? contact me! </description>
+    </item>
+    
+    <item>
+      <title>Security Guideline for Android Manifest File</title>
+      <link>https://zetc0de.github.io/post/security-guideline-for-android-manifest-file/</link>
+      <pubDate>Tue, 11 Feb 2020 12:50:13 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/security-guideline-for-android-manifest-file/</guid>
+      <description>Overview File Manifest memainkan peran penting untuk setiap aplikasi android. Dalam file ini developer android menentukan izin yang diperlukan aplikasi, tindakan yang dapat dilakukan aplikasi dan aktivitas umum lainnya. Dari sudut pandang keamanan, file manifest biasanya merupakan hal pertama yang akan diperiksa oleh pentester. Oleh karena itu daftar berikut dapat digunakan baik oleh developer dan penguji penetrasi untuk memastikan bahwa file Manifest tidak mengandung kesalahan konfigurasi yang dapat dimanfaatkan oleh penyerang.</description>
     </item>
     
     <item>
