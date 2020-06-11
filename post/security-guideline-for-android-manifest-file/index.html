@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      <meta name="description" content="Security Guideline for Android Manifest File"><meta name="Author" content="Mas Zet | ">
+    <meta name="keywords" content="Exploit | IT Security | Bug Bounty | HTB | Hacking | Pentest | Red Team">
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/syntax.css>
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>zetc0de | Security Guideline for Android Manifest File</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=https://zetc0de.github.io/><img src="https://zetc0de.github.io/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=https://zetc0de.github.io/>
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>Home</span>
+            </a>
+        
+            		
+            <a href="/post/"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>Articles</span>
+            </a>
+        
+            		
+            <a href="/categories/"
+                
+            >
+                <i class="fas fa-keyboard fa-list"></i>
+                <span>Categories</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>Tags</span>
+            </a>
+        
+            		
+            <a href="/labs"
+                
+            >
+                <i class="fas fa-server fa-ms"></i>
+                <span>Labs</span>
+            </a>
+        
+            		
+            <a href="https://github.com/zetc0de"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>Github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">Security Guideline for Android Manifest File</h1>
+    
+      
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#debug-mode">Debug Mode</a></li>
+    <li><a href="#backup-flag">BackUp Flag</a></li>
+    <li><a href="#external-storage">External Storage</a></li>
+    <li><a href="#permissions">Permissions</a></li>
+    <li><a href="#application-component">Application component</a></li>
+    <li><a href="#intents">Intents</a></li>
+    <li><a href="#kesimpulan">Kesimpulan</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+    <h2 id="overview">Overview</h2>
+<p>File Manifest memainkan peran penting untuk setiap aplikasi android. Dalam file ini developer android menentukan izin yang diperlukan aplikasi, tindakan yang dapat dilakukan aplikasi dan aktivitas umum lainnya. Dari sudut pandang keamanan, file manifest biasanya merupakan hal pertama yang akan diperiksa oleh pentester. Oleh karena itu daftar berikut dapat digunakan baik oleh developer dan penguji penetrasi untuk memastikan bahwa file Manifest tidak mengandung kesalahan konfigurasi yang dapat dimanfaatkan oleh penyerang.</p>
+<h2 id="debug-mode">Debug Mode</h2>
+<p>Tag debug mendefinisikan apakah aplikasi dapat di-debug atau tidak. Jika aplikasi tersebut dapat di-debug maka dapat memberikan banyak informasi kepada penyerang. Aplikasi android yang tidak dalam status production diharapkan memiliki atribut ini, disetel ke true untuk membantu developer, namun sebelum rilis aplikasi, tag ini harus disetel ke false.</p>
+<pre><code>&lt;application
+android:debuggable=&quot;false&quot;
+&lt;/application&gt;
+</code></pre>
+<h2 id="backup-flag">BackUp Flag</h2>
+<p>Pengaturan ini menentukan apakah data aplikasi dapat dibackup dan direstore oleh pengguna yang telah mengaktifkan debugging usb. Oleh karena itu aplikasi yang menangani dan menyimpan informasi sensitif seperti detail kartu, kata sandi dll harus menetapkan pengaturan ini menjadi false untuk mencegah risiko tersebut.</p>
+<pre><code>&lt;application
+android:allowBackup=&quot;false&quot;
+&lt;/application&gt;
+</code></pre>
+<h2 id="external-storage">External Storage</h2>
+<p>Aplikasi yang memiliki izin untuk menyalin data ke penyimpanan eksternal harus ditinjau untuk memastikan bahwa tidak ada informasi sensitif yang disimpan.</p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;
+</code></pre>
+<h2 id="permissions">Permissions</h2>
+<p>Atribut android:protectionLevel menentukan prosedur yang harus diikuti oleh sistem sebelum memberikan izin ke aplikasi yang memintanya. Tujuan adanya permission adalah untuk melindungi privasi user android, aplikasi android harus meminta izin kepada user untuk memberikan akses ke data user yang sensitif seperti kontak dan SMS. Ada empat nilai yang dapat digunakan dengan atribut ini:</p>
+<ul>
+<li>normal</li>
+<li>dangerous</li>
+<li>signature</li>
+<li>signatureOrSystem</li>
+</ul>
+<p>Semua izin permintaan aplikasi harus ditinjau untuk memastikan bahwa mereka tidak menimbulkan risiko keamanan.</p>
+<pre><code>&lt;permission&gt;
+android:protectionLevel=&quot;signature&quot;
+&lt;/permission&gt;
+</code></pre>
+<h2 id="application-component">Application component</h2>
+<p>Tergantung pada fungsionalitas sebuah aplikasi dapat menjalankan service, melakukan activity, menerima content dari sumber lain atau menerima intens oleh telepon atau oleh aplikasi lain. Ada empat komponen aplikasi:</p>
+<ul>
+<li>Activities</li>
+<li>Services</li>
+<li>Content Providers</li>
+<li>Broadcast Receivers</li>
+</ul>
+<p>Activities, Services, Content Providers and Broadcast Receivers semua dapat di-export. Oleh karena itu, mereka semua harus ditinjau bahwa mereka tidak melakukan tindakan sensitif apa pun dan bahwa mereka dilindungi oleh izin yang sesuai. Karena jika tidak, informasi dapat diekspos kepada pihak ketiga yang berbahaya.  Berikut menunjukkan bagaimana reciever didefinisikan dalam file manifes:</p>
+<pre><code>&lt;receiver
+android:exported=&quot;true&quot;
+android:name=&quot;string&quot;
+android:permission=&quot;string&quot;
+&lt;/receiver&gt;
+</code></pre>
+<h2 id="intents">Intents</h2>
+<p>Intens dapat digunakan untuk menjalankan sebuah acticity, untuk mengirimkan ke broadcast receiver, dan untuk berkomunikasi dengan background service. Intents message harus ditinjau untuk memastikan bahwa itu tidak mengandung informasi sensitif yang dapat diintercept.</p>
+<pre><code>&lt;intent-filter&gt;
+&lt;action android:name=&quot;string&quot; /&gt;
+&lt;category android:name=&quot;string&quot; /&gt;
+&lt;/intent-filter&gt;
+</code></pre>
+<h2 id="kesimpulan">Kesimpulan</h2>
+<p>Dengan mengikuti panduan ini, developer akan tahu cara menerapkan file Manifest dengan benar untuk menghilangkan risiko keamanan. Dari sisi lain penguji penetrasi akan tahu bagaimana melakukan review manual dari file manifest android.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://pentestlab.blog/2017/01/24/security-guidelines-for-android-manifest-files/">Security Guidelines for Android Manifest Files</a></li>
+</ul>
+
+    
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="https://zetc0de.github.io/post/htb-writeup-nest/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">Top</i></a>
+        <div class="nav-next">
+            
+                <a class="grayed-out" href="javascript:void()"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+          <div class="footer-mail">
+          <i class="far fa-envelope"></i> <a href="mailto:zetc0de.id@gmail.com">zetc0de.id@gmail.com</a> </div>
+      
+      
+      <div class="footer-phone">
+          <i class="fas fa-phone"></i> <a href="https://t.me/zetc0de" target="_blank">Telegram</a> 
+      </div>
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=https://zetc0de.github.io/js/navbutton.js></script>
+</html>
