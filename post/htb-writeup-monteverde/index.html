@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      <meta name="description" content="Htb Writeup - Monteverde"><meta name="Author" content="Mas Zet | ">
+    <meta name="keywords" content="Exploit | IT Security | Bug Bounty | HTB | Hacking | Pentest | Red Team">
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/syntax.css>
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>zetc0de | Htb Writeup - Monteverde</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=https://zetc0de.github.io/><img src="https://zetc0de.github.io/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=https://zetc0de.github.io/>
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>Home</span>
+            </a>
+        
+            		
+            <a href="/post/"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>Articles</span>
+            </a>
+        
+            		
+            <a href="/categories/"
+                
+            >
+                <i class="fas fa-keyboard fa-list"></i>
+                <span>Categories</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>Tags</span>
+            </a>
+        
+            		
+            <a href="/labs"
+                
+            >
+                <i class="fas fa-server fa-ms"></i>
+                <span>Labs</span>
+            </a>
+        
+            		
+            <a href="https://github.com/zetc0de"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>Github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">Htb Writeup - Monteverde</h1>
+    
+      
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#scanning--enumeration">Scanning &amp; Enumeration</a>
+      <ul>
+        <li><a href="#port-scanning">Port scanning</a></li>
+        <li><a href="#users-enumeration">Users Enumeration</a></li>
+        <li><a href="#bruteforce-users">Bruteforce Users</a></li>
+        <li><a href="#smb-enumeration">SMB Enumeration</a></li>
+      </ul>
+    </li>
+    <li><a href="#gaining-access">Gaining Access</a>
+      <ul>
+        <li><a href="#initial-shell--get-usertxt">Initial Shell &amp; Get User.txt</a></li>
+      </ul>
+    </li>
+    <li><a href="#privilege-escalation">Privilege Escalation</a>
+      <ul>
+        <li><a href="#extract-credentials">Extract Credentials</a></li>
+        <li><a href="#get-flag-roottxt">Get Flag Root.txt</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    <p><img src="/images/htb/montervede/montervede.png" alt=""></p>
+<h2 id="overview">Overview</h2>
+<p>Mesin ini dibuat oleh egre55 , sistem operasi yang digunakan adalah Windows dengan level kesulitan Medium dan memiliki point sebesar 30 point. Mesin ini direlease pada tanggal 11 Januari 2020 dan retired pada tanggal</p>
+<h2 id="scanning--enumeration">Scanning &amp; Enumeration</h2>
+<h3 id="port-scanning">Port scanning</h3>
+<p>Pertama kita akan memulainya dengan melakukan scanning terhadap target menggunakan nmap, dari hasil scanning kita mendapatkan informasi berupa port ataupun service yang berjalan dan dapat diakses dari external network.</p>
+<pre><code>nmap -sV -sC -oA nmap/monteverde 10.10.10.172 -vv -Pn
+</code></pre>
+<p><img src="/images/htb/montervede/1.png" alt=""></p>
+<h3 id="users-enumeration">Users Enumeration</h3>
+<p>Dari informasi yang diberikan oleh nmap, kita dapat memanfaatkan service SMB untuk melakukan enumerasi users yang ada pada sistem target menggunakan tools seperti rpcclient :</p>
+<p><img src="/images/htb/montervede/2.png" alt=""></p>
+<p>dengan menggunakan rpcclient kita mendapatkan userlist dari sistem target, yg kemudian kita simpan userlist tersebut untuk kebutuhan bruteforce service SMB. Jangan berfikir untuk langsung menggunakan wordlist lain (ex rockyou.txt) jika kita belum mencoba dari apa yang kita miliki sekarang, terkadang seorang admin/user malas untuk menggunakan complex password sehingga bisa jadi pola credentialnya seperti admin:admin.</p>
+<h3 id="bruteforce-users">Bruteforce Users</h3>
+<p>Kita akan melakukan bruteforce terhadap service SMB, disini kita menggunakan tools Hydra , namun tidak mendapatkan hasil yang kita harapkan. Lalu? coba menggunakan wordlist rockyou.txt? nope!</p>
+<p><img src="/images/htb/montervede/3.png" alt=""></p>
+<p>jika kita melihat lagi ke informasi yang diberikan oleh Nmap , sistem target memiliki service LDAP dengan port 389 yang terbuka, maka kita coba melakukan bruteforce ke service ini dan berhasil mendapatkan valid credential!</p>
+<p><img src="/images/htb/montervede/4.png" alt=""></p>
+<h3 id="smb-enumeration">SMB Enumeration</h3>
+<p>Dengan menggunakan user yang kita dapatkan tadi, kita mencoba untuk enumerasi service SMB dengan menggunakan tools smbclient dan didapatkan credential user lain di folder share <strong>users$/mhope</strong>.</p>
+<p><img src="/images/htb/montervede/5.png" alt=""></p>
+<p><img src="/images/htb/montervede/6.png" alt=""></p>
+<h2 id="gaining-access">Gaining Access</h2>
+<h3 id="initial-shell--get-usertxt">Initial Shell &amp; Get User.txt</h3>
+<p>Setelah mendapatkan credential ke dua, kita coba validasi apakah user ini bisa digunakan untuk remote shell target atau tidak?</p>
+<p><img src="/images/htb/montervede/7.png" alt=""></p>
+<p><img src="/images/htb/montervede/8.png" alt=""></p>
+<p>Ternyaata bisa untuk login dan didapatkan flag user.txt : <strong>4961976bd7d8f4eeb2ce3705e2f212f2</strong></p>
+<h2 id="privilege-escalation">Privilege Escalation</h2>
+<p>Pertama kita check user mhope termasuk member dari group apa, dan didapatkan user mhope masuk dalam group Azure Admins. Merasa tidak familiar dengan Azure, kita coba gali lagi lebih dalam apakah ada sesuatu yg bisa kita abuse.</p>
+<p><img src="/images/htb/montervede/9.png" alt=""></p>
+<p>Setelah melakukan enumerasi yang cukup melelahkan, akhirnya tertuju pada proses yang saat ini sedang berjalan. Ada beberapa proses yang cukup menarik yang berkatian dengan Active Directory.</p>
+<p><img src="/images/htb/montervede/10.png" alt=""></p>
+<p>Proses <strong>Microsoft.Identity.AadConnect.Health.AadSync.Host</strong>  dan <strong>Microsoft.Identity.Health.AadSync.MonitoringAgent.Startup</strong> adalah  proses yang berkaitan dengan Azure Active Directory (Azure AD) Connect.</p>
+<p>FYI, salah satu fitur dari Azure AD Connect ada alah Password Hash Synchronisation , adalah sign-in method yang melakukan sinkrosinasi hash password yang dimiliki user on-premise dengan yang ada di Azure AD.</p>
+<p><img src="/images/htb/montervede/11.png" alt=""></p>
+<h3 id="extract-credentials">Extract Credentials</h3>
+<p>Azure AD Connect dapat menerima data dari Active Directory yang kemudian akan diforward ke Azure AD. Proses sinkronisasi ini menggunakan fungsi Azure AD Sync yang secara default menggunakan database local bernama ADSync. Nah didalam database ini terdaoat metadata dan konfigurasi yang diencrypt. Menggunakan tools yang dibuat oleh CyberVaca, dengan sedikit memudahkan kita untuk mendapatkan credential yang ada dalam database.</p>
+<p><img src="/images/htb/montervede/12.png" alt=""></p>
+<pre><code>[+] Domain:  MEGABANK.LOCAL
+[+] Username: administrator
+[+] Password: d0m@in4dminyeah!
+</code></pre>
+<h3 id="get-flag-roottxt">Get Flag Root.txt</h3>
+<p><img src="/images/htb/montervede/13.png" alt=""></p>
+<p>Root Flag : <strong>12909612d25c8dcf6e5a07d1a804a0bc</strong></p>
+<p>Proses penyeleasaian mesin ini tidak semudah yang ada ditulisan, tulisan ini hanya menjelaskan alur yang benar setelah menempuh kegagalan-kegagalan yang tidak disebutkan. Terimakasih sudah membaca, jika dirasa tulisan ini bermanfaat, silahkan share. Semoga manfaat ini terus berlanjut!</p>
+<p>Referensi :</p>
+<ul>
+<li><a href="https://blog.xpnsec.com/azuread-connect-for-redteam/">Azure AD Connect for Red Teamers</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/active-directory/hybrid/whatis-azure-ad-connect">Azure AD Connect</a></li>
+<li><a href="https://github.com/Hackplayers/PsCabesha-tools/blob/master/Privesc/Azure-ADConnect.ps1">Azure-ADConnect.ps1</a></li>
+</ul>
+
+    
+    <div class="article-container">
+        <div id="disqus_thread"></div>
+<script>
+(function() {
+var d = document, s = d.createElement('script');
+s.src = 'https://zetc0de-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="https://zetc0de.github.io/post/htb-writeup-nest/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">Top</i></a>
+        <div class="nav-next">
+            
+                <a class="grayed-out" href="javascript:void()"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+          <div class="footer-mail">
+          <i class="far fa-envelope"></i> <a href="mailto:zetc0de.id@gmail.com">zetc0de.id@gmail.com</a> </div>
+      
+      
+      <div class="footer-phone">
+          <i class="fas fa-phone"></i> <a href="https://t.me/zetc0de" target="_blank">Telegram</a> 
+      </div>
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=https://zetc0de.github.io/js/navbutton.js></script>
+</html>

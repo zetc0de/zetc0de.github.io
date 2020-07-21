@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>id-id</language>
     <copyright>Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Sun, 07 Jun 2020 02:39:53 +0700</lastBuildDate>
+    <lastBuildDate>Thu, 11 Jun 2020 13:31:26 +0700</lastBuildDate>
     
 	<atom:link href="https://zetc0de.github.io/categories/htb/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Htb Writeup - Monteverde</title>
+      <link>https://zetc0de.github.io/post/htb-writeup-monteverde/</link>
+      <pubDate>Thu, 11 Jun 2020 13:31:26 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/htb-writeup-monteverde/</guid>
+      <description>Overview Mesin ini dibuat oleh egre55 , sistem operasi yang digunakan adalah Windows dengan level kesulitan Medium dan memiliki point sebesar 30 point. Mesin ini direlease pada tanggal 11 Januari 2020 dan retired pada tanggal
+Scanning &amp;amp; Enumeration Port scanning Pertama kita akan memulainya dengan melakukan scanning terhadap target menggunakan nmap, dari hasil scanning kita mendapatkan informasi berupa port ataupun service yang berjalan dan dapat diakses dari external network.
+nmap -sV -sC -oA nmap/monteverde 10.</description>
+    </item>
     
     <item>
       <title>HTB Writeup - Nest</title>
