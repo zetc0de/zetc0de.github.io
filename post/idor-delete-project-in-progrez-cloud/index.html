@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="google-site-verification" content="PvSzbP90TkqKzWHm9DI8lUeLC_UfuTb-MEQ9YZji18E" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      <meta name="description" content="IDOR Delete Project Pada Progrez Cloud"><meta name="Author" content="Mas Zet | ">
+    <meta name="keywords" content="Exploit | IT Security | Bug Bounty | HTB | Hacking | Pentest | Red Team">
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/syntax.css>
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>zetc0de | IDOR Delete Project Pada Progrez Cloud</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=https://zetc0de.github.io/><img src="https://zetc0de.github.io/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=https://zetc0de.github.io/>
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>Home</span>
+            </a>
+        
+            		
+            <a href="/post/"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>Articles</span>
+            </a>
+        
+            		
+            <a href="/categories/"
+                
+            >
+                <i class="fas fa-keyboard fa-list"></i>
+                <span>Categories</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>Tags</span>
+            </a>
+        
+            		
+            <a href="/labs"
+                
+            >
+                <i class="fas fa-server fa-ms"></i>
+                <span>Labs</span>
+            </a>
+        
+            		
+            <a href="https://github.com/zetc0de"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>Github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">IDOR Delete Project Pada Progrez Cloud</h1>
+    
+      
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#about-progrez-cloud">About Progrez Cloud</a></li>
+    <li><a href="#about-idor-vulnerability">About IDOR Vulnerability</a></li>
+    <li><a href="#3-jenis-privacy-project">3 Jenis Privacy Project</a></li>
+    <li><a href="#idor-delete-project">IDOR Delete Project</a></li>
+    <li><a href="#proof-of-concept">Proof Of Concept</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+    <p><img src="/images/bugbounty/progrez/intro.png" alt=""></p>
+<h2 id="about-progrez-cloud">About Progrez Cloud</h2>
+<p>Progrez Cloud adalah aplikasi untuk menegement project yang dapat diakses melalui web browser maupun mobile application , saat ini Progres Cloud memiliki beberapa fitur diantaranya :</p>
+<ul>
+<li>Manage Projects</li>
+<li>Monitoring Website</li>
+<li>Global Chat</li>
+<li>Manage Monthly Outcome</li>
+<li>Personal Blog</li>
+<li>etc</li>
+</ul>
+<p>Anda dapat mengakses Progrez Cloud pada alamat <a href="https://progrez.cloud/">https://progrez.cloud/</a> atau jika anda menggunakan smartphone android anda dapat mengunduh aplikasinya di Play Story <a href="https://play.google.com/store/apps/details?id=cloud.progrez.app">Progrez.Cloud</a></p>
+<h2 id="about-idor-vulnerability">About IDOR Vulnerability</h2>
+<p>Insecure Direct Object Reference (IDOR) terjadi saat aplikasi menyediakan akses langsung ke objek berdasarkan masukan yang diberikan pengguna. Hal ini memngkinkan hacker untuk mem-bypass autentifikasi standar dan mengakses catatan database maupun sumber daya lain.</p>
+<p>IDOR memungkinkan penyerang untuk memotong otorisasi dan mengakses sumber daya secara langsung dengan memodifikasi nilai parameter yang digunakan untuk mengarahkan langsung ke objek. Sumber daya semacam itu bisa menjadi entri database milik pengguna lain, file dalam sistem, dan banyak lagi. Hal ini disebabkan oleh fakta bahwa aplikasi tersebut memasukkan input yang dipasok pengguna dan menggunakannya untuk mengambil objek tanpa melakukan pengecekan otorisasi yang memadai.</p>
+<h2 id="3-jenis-privacy-project">3 Jenis Privacy Project</h2>
+<p>Pada dashboard Progrez terdapat menu project dimana kita dapat membuat project atau join ke project orang lain.</p>
+<p>Diketahui bahwa project memiliki 3 jenis privacy :</p>
+<ol>
+<li>Private (Team Only)</li>
+<li>Public (Open) - Anyone can join</li>
+<li>Public (Close)- Read Only</li>
+</ol>
+<p><img src="/images/bugbounty/progrez/1.png" alt=""></p>
+<p>Pada project yang memiliki privacy 1 (Private) maka orang lain tidak dapat melihat project tersebut, berbeda dengan privacy 2 dan 3, setiap project yang memiliki privacy 2 dan 3 maka setidaknya orang lain dapat melihat detail project tersebut.</p>
+<h2 id="idor-delete-project">IDOR Delete Project</h2>
+<p>Karena platform ini berjalan pada environment production maka rasanya tidak etis jika menggunakan data production sebagai bahan uji penetrasi, oleh karena itu untuk melakukan uji penetrasi ini dibutuhkan setidaknya 2 akun tester yang didapat dengan memanfaatkan fitur Signup.</p>
+<p>2 akun ini akan bertindak sebagai :</p>
+<ul>
+<li>1 akun sebagai attacker</li>
+<li>1 akun sebagai victim/target.</li>
+</ul>
+<p>Celah keamanan IDOR ini terdampak pada fitur delete project yang mengakibatkan attacker dapat menghapus setiap project yang memiliki privacy 2 dan 3.</p>
+<h2 id="proof-of-concept">Proof Of Concept</h2>
+<ol>
+<li>Pilih salah satu public project yang terdapat pada menu Join Project (Pilih project dummy yang dibuat akun victim)</li>
+<li>Ketika memilih public project, maka project id akan terlihat pada request body
+<img src="/images/bugbounty/progrez/2.png" alt=""></li>
+<li>Lakukan intercept pada proses delete project milik akun attacker</li>
+<li>Kemudian ganti project_id milik attacker dengan project_id milik victim
+<img src="/images/bugbounty/progrez/3.png" alt=""></li>
+<li>Maka secara tidak langsung project victim akan terhapus
+<img src="/images/bugbounty/progrez/4.png" alt=""></li>
+</ol>
+<h2 id="timeline">Timeline</h2>
+<ul>
+<li>11 Aug 2020 14:18 : Bug Reported</li>
+<li>11 Aug 2020 16:03 : Triaged</li>
+<li>11 Aug 2020 16:16 : Bug Fixed</li>
+<li>11 Aug 2020 16:29 : Listed On Hall Of Fame <a href="https://progrez.cloud/hall-of-fame/">(HOF)</a></li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://owasp.org/www-chapter-ghana/assets/slides/IDOR.pdf">OWASP - Insecure Direct Object Reference IDOR</a></li>
+<li><a href="https://www.linuxsec.org/2018/01/memahami-dan-menemukan-kerentanan.html">LinuxSec - Memahami dan Menemukan Kerentanan Insecure Direct Object Reference</a></li>
+</ul>
+
+    
+    <div class="article-container">
+        <div id="disqus_thread"></div>
+<script>
+(function() {
+var d = document, s = d.createElement('script');
+s.src = 'https://zetc0de-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="https://zetc0de.github.io/post/htb-writeup-monteverde/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">Top</i></a>
+        <div class="nav-next">
+            
+                <a class="grayed-out" href="javascript:void()"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+          <div class="footer-mail">
+          <i class="far fa-envelope"></i> <a href="mailto:zetc0de.id@gmail.com">zetc0de.id@gmail.com</a> </div>
+      
+      
+      <div class="footer-phone">
+          <i class="fas fa-phone"></i> <a href="https://t.me/zetc0de" target="_blank">Telegram</a> 
+      </div>
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=https://zetc0de.github.io/js/navbutton.js></script>
+</html>

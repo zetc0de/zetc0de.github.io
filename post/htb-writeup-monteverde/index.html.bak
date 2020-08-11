@@ -192,7 +192,7 @@ s.setAttribute('data-timestamp', +new Date());
         <a class="nav-top" href="#">Top</i></a>
         <div class="nav-next">
             
-                <a href="https://zetc0de.github.io/post/idor-delete-project-in-progrez-cloud/"><i class="fas fa-chevron-right"></i></a>
+                <a class="grayed-out" href="javascript:void()"><i class="fas fa-chevron-right"></i></a>
             
         </div>
     </div>

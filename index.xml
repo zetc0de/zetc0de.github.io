@@ -13,6 +13,17 @@
     
     
     <item>
+      <title>IDOR Delete Project Pada Progrez Cloud</title>
+      <link>https://zetc0de.github.io/post/idor-delete-project-in-progrez-cloud/</link>
+      <pubDate>Tue, 11 Aug 2020 16:52:45 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/idor-delete-project-in-progrez-cloud/</guid>
+      <description>About Progrez Cloud Progrez Cloud adalah aplikasi untuk menegement project yang dapat diakses melalui web browser maupun mobile application , saat ini Progres Cloud memiliki beberapa fitur diantaranya :
+ Manage Projects Monitoring Website Global Chat Manage Monthly Outcome Personal Blog etc  Anda dapat mengakses Progrez Cloud pada alamat https://progrez.cloud/ atau jika anda menggunakan smartphone android anda dapat mengunduh aplikasinya di Play Story Progrez.Cloud
+About IDOR Vulnerability Insecure Direct Object Reference (IDOR) terjadi saat aplikasi menyediakan akses langsung ke objek berdasarkan masukan yang diberikan pengguna.</description>
+    </item>
+    
+    <item>
       <title>HTB Writeup - Monteverde</title>
       <link>https://zetc0de.github.io/post/htb-writeup-monteverde/</link>
       <pubDate>Sat, 13 Jun 2020 13:31:26 +0700</pubDate>
