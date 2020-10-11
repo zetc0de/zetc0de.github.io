@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>id-id</language>
     <copyright>Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Tue, 11 Aug 2020 16:52:45 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 11 Oct 2020 14:26:00 +0700</lastBuildDate>
     
 	<atom:link href="https://zetc0de.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Powershell Download File One Liners</title>
+      <link>https://zetc0de.github.io/post/powershell-download-file-one-liners/</link>
+      <pubDate>Sun, 11 Oct 2020 14:26:00 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/powershell-download-file-one-liners/</guid>
+      <description>PowerShell (any version) (New-Object System.Net.WebClient).DownloadFile(&amp;quot;https://example.com/archive.zip&amp;quot;, &amp;quot;C:\Windows\Temp\archive.zip&amp;quot;)  PowerShell 4.0 &amp;amp; 5.0 Invoke-WebRequest &amp;quot;https://example.com/archive.zip&amp;quot; -OutFile &amp;quot;C:\Windows\Temp\archive.zip&amp;quot;  </description>
+    </item>
     
     <item>
       <title>IDOR Delete Project Pada Progrez Cloud</title>

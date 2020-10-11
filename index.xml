@@ -13,6 +13,15 @@
     
     
     <item>
+      <title>Powershell Download File One Liners</title>
+      <link>https://zetc0de.github.io/post/powershell-download-file-one-liners/</link>
+      <pubDate>Sun, 11 Oct 2020 14:26:00 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/powershell-download-file-one-liners/</guid>
+      <description>PowerShell (any version) (New-Object System.Net.WebClient).DownloadFile(&amp;quot;https://example.com/archive.zip&amp;quot;, &amp;quot;C:\Windows\Temp\archive.zip&amp;quot;)  PowerShell 4.0 &amp;amp; 5.0 Invoke-WebRequest &amp;quot;https://example.com/archive.zip&amp;quot; -OutFile &amp;quot;C:\Windows\Temp\archive.zip&amp;quot;  </description>
+    </item>
+    
+    <item>
       <title>IDOR Delete Project Pada Progrez Cloud</title>
       <link>https://zetc0de.github.io/post/idor-delete-project-in-progrez-cloud/</link>
       <pubDate>Tue, 11 Aug 2020 16:52:45 +0700</pubDate>

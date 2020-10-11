@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     
-      <meta name="description" content="Posts"><meta name="Author" content="Mas Zet | ">
+      <meta name="description" content="Powershell Download File One Liners"><meta name="Author" content="Mas Zet | ">
     <meta name="keywords" content="Exploit | IT Security | Bug Bounty | HTB | Hacking | Pentest | Red Team">
     <link rel="stylesheet" href=https://zetc0de.github.io/css/syntax.css>
     <link rel="stylesheet" href=https://zetc0de.github.io/css/style.css>
     <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
-    <title>zetc0de | Posts</title>
+    <title>zetc0de | Powershell Download File One Liners</title>
   </head><body><aside id="sidenav">
     <header>
     
@@ -88,100 +88,50 @@
 <main id="main">
             <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
             <div class="content">
-    <div class="section">
-        <dev class="section-title">Article Lists</dev>
-        
-            <div class="list-item">
-                <a class="entry-title" href="/post/2018-04-15-install-anope-service-in-centos-7-/">How To Install Anope Service In Centos 7</a>
-                
-                
-                <div class="meta">
-                
-                    <i class="far fa-calendar-alt"></i> Apr 15 2018
-                
-                <br>
-                <style>
-                    .category:hover {
-                    color: red;
-                    }
-                </style>
-                
-                        <i class="fas fa-list"></i>    
-                        Category: Linux Administrator
-                
-                
-                        <i class="fas fa-tags tags"></i>
-                        Tags: IRC, Anope, Centos 7
-                
-                </div>
-            </div>
-        
-            <div class="list-item">
-                <a class="entry-title" href="/post/2018-04-15-install-unrealircd-service-in-centos-7/">How To Install Unrealircd In Centos 7</a>
-                
-                
-                <div class="meta">
-                
-                    <i class="far fa-calendar-alt"></i> Apr 15 2018
-                
-                <br>
-                <style>
-                    .category:hover {
-                    color: red;
-                    }
-                </style>
-                
-                        <i class="fas fa-list"></i>    
-                        Category: Linux Administrator
-                
-                
-                        <i class="fas fa-tags tags"></i>
-                        Tags: IRC, Unrealircd, Centos 7
-                
-                </div>
-            </div>
-        
-            <div class="list-item">
-                <a class="entry-title" href="/post/2018-04-15-welcome-to-my-blog/">Welcome To My Blog</a>
-                
-                
-                <div class="meta">
-                
-                    <i class="far fa-calendar-alt"></i> Apr 1 2018
-                
-                <br>
-                <style>
-                    .category:hover {
-                    color: red;
-                    }
-                </style>
-                
-                
-                </div>
-            </div>
-        
+    
+    <h1 id="title">Powershell Download File One Liners</h1>
+    
+      
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#powershell-any-version">PowerShell (any version)</a></li>
+    <li><a href="#powershell-40--50">PowerShell 4.0 &amp; 5.0</a></li>
+  </ul>
+</nav>
+    <h2 id="powershell-any-version">PowerShell (any version)</h2>
+<pre><code>(New-Object System.Net.WebClient).DownloadFile(&quot;https://example.com/archive.zip&quot;, &quot;C:\Windows\Temp\archive.zip&quot;)  
+</code></pre>
+<h2 id="powershell-40--50">PowerShell 4.0 &amp; 5.0</h2>
+<pre><code>Invoke-WebRequest &quot;https://example.com/archive.zip&quot; -OutFile &quot;C:\Windows\Temp\archive.zip&quot;
+</code></pre>
+
+    
+    <div class="article-container">
+        <div id="disqus_thread"></div>
+<script>
+(function() {
+var d = document, s = d.createElement('script');
+s.src = 'https://zetc0de-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="https://zetc0de.github.io/post/idor-delete-project-in-progrez-cloud/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">Top</i></a>
+        <div class="nav-next">
+            
+                <a class="grayed-out" href="javascript:void()"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
     </div>
     
-
-<ul class="pagination">
-  
-  <li class="page-item">
-    <a class="page-link" href="/post/page/2/">
-      <i class="fas fa-chevron-left"></i>
-    </a>
-  </li>
-  
-  
-  <li class="page-item">
-    <a class="grayed-out" href="javascript:void()">
-      <i class="fas fa-chevron-right"></i>
-    </a>
-  </li>
-  
-</ul>
-
-
-
 
             </div><footer>
 <div class="footer-content">

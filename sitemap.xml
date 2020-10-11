@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://zetc0de.github.io/post/</loc>
+    <lastmod>2020-10-11T14:26:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/tags/powershell/</loc>
+    <lastmod>2020-10-11T14:26:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/post/powershell-download-file-one-liners/</loc>
+    <lastmod>2020-10-11T14:26:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/tags/</loc>
+    <lastmod>2020-10-11T14:26:00+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/tags/windows/</loc>
+    <lastmod>2020-10-11T14:26:00+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://zetc0de.github.io/categories/bug-bounty/</loc>
     <lastmod>2020-08-11T16:52:45+07:00</lastmod>
   </url>
@@ -23,27 +48,12 @@
   </url>
   
   <url>
-    <loc>https://zetc0de.github.io/post/</loc>
-    <lastmod>2020-08-11T16:52:45+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zetc0de.github.io/tags/</loc>
-    <lastmod>2020-08-11T16:52:45+07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://zetc0de.github.io/categories/htb/</loc>
     <lastmod>2020-06-13T13:31:26+07:00</lastmod>
   </url>
   
   <url>
     <loc>https://zetc0de.github.io/post/htb-writeup-monteverde/</loc>
-    <lastmod>2020-06-13T13:31:26+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zetc0de.github.io/tags/windows/</loc>
     <lastmod>2020-06-13T13:31:26+07:00</lastmod>
   </url>
   

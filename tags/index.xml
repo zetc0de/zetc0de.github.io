@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>id-id</language>
     <copyright>Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Tue, 11 Aug 2020 16:52:45 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 11 Oct 2020 14:26:00 +0700</lastBuildDate>
     
 	<atom:link href="https://zetc0de.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Powershell</title>
+      <link>https://zetc0de.github.io/tags/powershell/</link>
+      <pubDate>Sun, 11 Oct 2020 14:26:00 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/tags/powershell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>https://zetc0de.github.io/tags/windows/</link>
+      <pubDate>Sun, 11 Oct 2020 14:26:00 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/tags/windows/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>IDOR</title>
@@ -18,15 +36,6 @@
       <pubDate>Tue, 11 Aug 2020 16:52:45 +0700</pubDate>
       
       <guid>https://zetc0de.github.io/tags/idor/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Windows</title>
-      <link>https://zetc0de.github.io/tags/windows/</link>
-      <pubDate>Sat, 13 Jun 2020 13:31:26 +0700</pubDate>
-      
-      <guid>https://zetc0de.github.io/tags/windows/</guid>
       <description></description>
     </item>
     
