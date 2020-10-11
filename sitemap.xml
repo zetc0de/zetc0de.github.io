@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://zetc0de.github.io/categories/</loc>
+    <lastmod>2020-10-11T14:26:00+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://zetc0de.github.io/post/</loc>
     <lastmod>2020-10-11T14:26:00+07:00</lastmod>
   </url>
@@ -23,17 +28,17 @@
   </url>
   
   <url>
+    <loc>https://zetc0de.github.io/categories/tips/</loc>
+    <lastmod>2020-10-11T14:26:00+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://zetc0de.github.io/tags/windows/</loc>
     <lastmod>2020-10-11T14:26:00+07:00</lastmod>
   </url>
   
   <url>
     <loc>https://zetc0de.github.io/categories/bug-bounty/</loc>
-    <lastmod>2020-08-11T16:52:45+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zetc0de.github.io/categories/</loc>
     <lastmod>2020-08-11T16:52:45+07:00</lastmod>
   </url>
   
