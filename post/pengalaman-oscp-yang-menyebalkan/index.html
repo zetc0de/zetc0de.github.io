@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="google-site-verification" content="PvSzbP90TkqKzWHm9DI8lUeLC_UfuTb-MEQ9YZji18E" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      <meta name="description" content="Pengalaman OSCP yang menyebalkan!"><meta name="Author" content="Mas Zet | ">
+    <meta name="keywords" content="Exploit | IT Security | Bug Bounty | HTB | Hacking | Pentest | Red Team">
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/syntax.css>
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>zetc0de | Pengalaman OSCP yang menyebalkan!</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=https://zetc0de.github.io/><img src="https://zetc0de.github.io/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=https://zetc0de.github.io/>
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>Home</span>
+            </a>
+        
+            		
+            <a href="/post/"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>Articles</span>
+            </a>
+        
+            		
+            <a href="/categories/"
+                
+            >
+                <i class="fas fa-keyboard fa-list"></i>
+                <span>Categories</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>Tags</span>
+            </a>
+        
+            		
+            <a href="/labs"
+                
+            >
+                <i class="fas fa-server fa-ms"></i>
+                <span>Labs</span>
+            </a>
+        
+            		
+            <a href="https://github.com/zetc0de"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>Github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">Pengalaman OSCP yang menyebalkan!</h1>
+    
+      
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#pra-lab">PRA-LAB</a></li>
+    <li><a href="#lab">LAB</a>
+      <ul>
+        <li><a href="#strategi-menghadapi-pwk-lab">Strategi menghadapi PWK LAB</a></li>
+        <li><a href="#mengerjakan-execises-apakah-perlu">Mengerjakan execises, apakah perlu?</a></li>
+        <li><a href="#root-as-soon-as-possible">ROOT as soon as possible!</a></li>
+        <li><a href="#manfaatkan-forum">Manfaatkan Forum</a></li>
+        <li><a href="#scheduling-exam">Scheduling Exam</a></li>
+      </ul>
+    </li>
+    <li><a href="#exam">EXAM</a>
+      <ul>
+        <li><a href="#may-you-can-reload-your-pageplease--proctor">&ldquo;May you can reload your page,please?&rdquo; -proctor</a></li>
+        <li><a href="#nmap-nmap-nmap">Nmap, Nmap, Nmap!</a></li>
+        <li><a href="#ayam-spicy-thai-sweet-chili">Ayam Spicy Thai Sweet Chili</a></li>
+      </ul>
+    </li>
+    <li><a href="#pasca-exam">PASCA-EXAM</a>
+      <ul>
+        <li><a href="#reporting">Reporting</a></li>
+        <li><a href="#surat-cinta-dari-offsec">Surat cinta dari Offsec</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    <p><img src="/images/oscp/pwk-oscp.png" alt=""></p>
+<h2 id="overview">Overview</h2>
+<p>Kali ini saya pengen sedikit bercerita pengalaman ketika mengambil sertifikasi OSCP, yah mungkin OSCP sudah tidak asing lagi bagi para pegiat IT Security, selain karena berlaku seumur hidup, sertifikasi OSCP ini juga dipandang &lsquo;wah&rsquo; dibanyak tempat, entah itu dikancah nasional maupun internasional. Jujur saja, OSCP ini adalah salah satu target dalam perjalanan karir saya yang saya targetkan pada tahun 2020 ini, &ldquo;pokonya sebelum S.Kom saya harus punya OSCP dulu&rdquo;, begitu kira-kira celetukan saya 1 tahun lalu, hehe. Mendapatkan sertifikasi OSCP ini menjadi sebuah kebanggaan tersendiri bagi saya, karena dengan dibekali modal &ldquo;Try Harder&rdquo; kita dipaksa untuk bisa mengerjakan tantangan di lab dan untuk bisa dikatakan lulus exam apabila mendapatkan nilai minimum 70 point.</p>
+<p>Awalnya, saya sangat ragu dan bimbang untuk ambil OSCP, perasaan &ldquo;kurang siap&rdquo; dan &ldquo;takut gagal&rdquo; yang selalu menghantui, yah! overthinking ini selalu hadir disetiap kesempatan sebelum mengambil langkah besar didalam hidup. Tapi mengingat tahun 2020 ini berjalan begitu cepat dan akan segera berakhir, saya beranikan diri buat melangkah. Kebetulan sama atasan saya didukung untuk ambil OSCP, dibantu justifikasi dan proses pengajuan ke tim procurement dan finance. Oh ya, sertifikasi kali ini disponsori oleh kantor, after hamdalah, saya sangat berterimakasih kepada LinkAja yg telah mewujudkan impian saya.</p>
+<h2 id="pra-lab">PRA-LAB</h2>
+<p>Tanpa saya duga, tanggal 12 oktober justifikasi lolos proses procurement dan diminta concall sama tim finance membahas mengenai pembayaran, oh ya saya ambil package yang paling murah yaitu senilai $999 USD atau sekitar 14jt sekian jika dirupiahkan. Saya orangnya nggak enakan, udah dibayarin ambil yang package mahal,wkwk. Kaget dong, sama tim finance diproses pembayaran sekarang, artinya banyang-bayang &ldquo;Try Harder!&rdquo; sudah ada didepan mata, secepat ini kah?</p>
+<p>Tgl 18 Oktober pukul 07:02, saya mendapatkan email dari Offsec mengenai informasi module PWK dan akses VPN ke lab, perasaan senang bercampur &ldquo;nggak nyangka&rdquo; sekarang sudah bisa akses LAB PWK, dengan semangat 45 saya coba download module PWK nya, and&hellip;</p>
+<p><img src="/images/oscp/download-pwk.jpeg" alt=""></p>
+<p>Salah satu kekhawatiran saya benar-benar terjadi, akses internet disini terbilang agak sulit, walaupun terlihat sinyal 4G 4 batang tapi koneksi tidak stabil, seringkali &lsquo;njepat&rsquo; tak kenal waktu, apalagi pas hujan tiba, huft. Akhirnya saya beli 2 provider baru yang berbeda untuk saling backup, hanya Indo*at dan Ax*s yang bisa diandalkan disini, Ts*l? jangan harap. At least saya bisa melakukan ping ke 1.1.1.1 menggunakan Indo*at &amp; Ax*s, huhuhu. Akhirnya module PWK berhasil saya download dalam waktu semalam di hari kedua, dari sini saya jadi tahu koneksi agak bagus kalau malam hari, sudah terbayang hari-hari kedepan bakal begadang haha&hellip;</p>
+<h2 id="lab">LAB</h2>
+<h3 id="strategi-menghadapi-pwk-lab">Strategi menghadapi PWK LAB</h3>
+<p>Sebenarnya saya tidak punya startegi apa-apa untuk menyelesaikan course PWK ini, mungkin diluar sana ada yang memiliki strategi tersediri untuk menyelesaikannya, entah itu dengan mengerjakan exercises yang ada, atau langsung menargetkan untuk menyelesaikan mesin sekian dalam waktu tertentu. Karena module PWK sudah sukses didownload, saya putuskan untuk membaca module dan mengerjakan exercise yang ada. Setidaknya saya tidak buta arah dan ini langkah awal saya dalam menghadapi course ini.</p>
+<p>Hari begitu cepat berlalu, tak terasa sudah menginjak hari ke 10 sejak pertama kali diberi akses lab. Sejauh ini saya baru menyelesaikan setengah dari seluruh exercise, artinya saya harus menghabiskan 2/3 waktu Lab PWK saya untuk bisa mengerjakan seluruh exercise yang ada. Rasanya tidak mungkin untuk menyelesaikan seluruh exercise mengingat begitu berharganya waktu untuk mengakses lab untuk mengerjakan mesin yang belum saya sentuh sama sekali. Oh ya, jika kita berhasil menyelsaikan seluruh exercise dan setidaknya menyelesaikan 10 mesin di lab plus report, maka kita berhak mendapatkan nilai bonus sebanyak 5 point. Yah, setidaknya dapat membantu jika nilai ketika exam kurang.</p>
+<h3 id="mengerjakan-execises-apakah-perlu">Mengerjakan execises, apakah perlu?</h3>
+<p>28 Oktober 2020, saya putuskan untuk mengerjakan lab dan meninggalakan semua exercise yang tersisa, berharap 20 hari kedepan dapat maksimal dalam mengerjakan mesin-mesin yang ada di lab. Kemudian saya coba mengerjakan mesin demi mesin yang ada, begadang demi begadang saya lalui, tentunya ini tidak baik bagi kesehatan, tidak disarankan bagi kamu yang jarang olah raga mempraktikkan apa yang saya lakukan, saya ketolong sama sedikit workout dan push-up setiap habis solat, hehe.</p>
+<p>Btw, jika ditanya apakah perlu mengerjakan exercises? tentu perlu. Apalagi jika memiliki waktu akses PWK LAB yang cukup lama, 2 atau 3 bulan mungkin, mengerjakan exercise sangat disarankan apalagi bisa nambah point sebesar 5 point.</p>
+<h3 id="root-as-soon-as-possible">ROOT as soon as possible!</h3>
+<p>6 November 2020,  berbagai jenis makhluk baru saya temui selama mengerjakan mesin di lab ini, beberapa teknik baru juga saya praktikkan di lab ini, senang rasanya medapatkan ilmu baru pada petualangan ini, terhitung sejak memutuskan untuk meninggalkan exercise, sebanyak 44 mesin public dan 1 mesin di departemen IT Dev berhasil saya root. Hari ini saya putuskan untuk  menyudahi semuanya, bukannya saya merasa “sudah cukup”, tapi saya benar-benar lelah melakukan sprint menyelsaikan segitu banyak mesin dalam waktu 10 hari. Dengan kondisi internet yang seperti ini, apa yang bisa saya harapkan untuk bisa pivot ke network lain? Bayangkan saja jika sudah susah-suah dapet interactive shell, port forwading, pas coba pivoting tiba-tiba putus koneksi, sakiiiittt… harus ngulang dari awal. hehe.</p>
+<p>Ditambah lagi ternyata saya didaftarkan training AWS di tanggal 2,11,12,13,16,17,18,19 plus saya harus mengikuti UTS dari tanggal 16 sampai 20 November. Kira-kira begini…</p>
+<p><img src="/images/oscp/november.png" alt=""></p>
+<h3 id="manfaatkan-forum">Manfaatkan Forum</h3>
+<p>Oh ya, mesin sebanyak itu tidak semuanya murni saya kerjakan dengan kemampuan saya sendiri, karena disini ada forum khusus untuk diskusi dan saling bertukar pikiran sesama student, forum ini bermanfaat sekali jika kita benar-benar stuck pada saat mengerjakan. Walaupun pada saat stuck dan cuma dijawab “Try Harder!”, rasanya pengen misuh kan? Ada salah satu reply yang bagi saya ini jawaban yang bagus :</p>
+<pre><code>&quot;Try harder is a good philosophy, but it doesn't help to be stuck on the
+same place doing the same things for too long. Sometimes you just don't 
+know what you don't know and getting a little nudge in the right direction 
+is necessary.&quot;
+</code></pre>
+<p>Atau ada yang jawab dengan kata-kata motivasi seperti ini :</p>
+<pre><code>“If you know the enemy and know yourself, you need not fear the result of
+a hundred battles. If you know yourself but not the enemy, for every 
+victory gained you will also suffer a defeat. If you know neither the 
+enemy nor yourself, you will succumb in every battle.” 
+
+ ― Sun Tzu
+</code></pre>
+<p>Its oke, tidak masalah jika tidak mendapatkan <em>nudge</em> yang kita inginkan, setidaknya mendapatkan motivasi yang memicu semangat kita.</p>
+<p>Bagi saya, tidak peduli seberapa banyak mesin yang diroot, karena hal yang terpenting adalah mendapatkan <em>&lsquo;something new&rsquo;</em> dan mendapatkan pembelajaran dari setiap mesin yang dikerjakan. Jadi banyak-banyakan rooting mesin waktu lab tapi tidak memahami apa yang dilakukan adalah sama saja dengan NOL, PWK LAB bukan buat adu cepet-cepetan atau adu banyak-banyakan rooting, jangan sampe terjebak!</p>
+<h3 id="scheduling-exam">Scheduling Exam</h3>
+<p>Tanpa saya rencanakan sebelumnya, jadwal bulan ini terbilang cukup padat, hingga yang terpikir di otak saya cuma 2 : segera ambil exam atau nanti sekalian. Saya perhatikan lagi jadwal saya dan jadwal exam yang available, ada jadwal exam dihari weekend paling dekat yaitu tanggal 15 November, dan tahun depan. Terlalu lama jika ambil exam tahun depan, tapi dag-dig-dug juga kalau ambil tgl 15 ini (1 minggu lagi). Kebetulan tanggal 15 itu dimana hari saya tidak ada jadwal apa-apa, <em>“gek ndang gek uwis”</em> akhirnya saya jadwalkan exam tanggal 15 November 2020 pukul 00:00, begadang lagi?</p>
+<p>Tanggal 14,15,16 saya book kamar disebuah hotel Syariah di kota, tidak mungkin saya menghadapi exam dengan kondisi internet seperti ini bukan? Berharap dengan koneksi wifi hotel mampu membantu kebutuhan internet saya selama 2 x 24 jam, terutama 1 hari exam day. Awalnya saya sedikit bingung, jam 12 malam ini masuknya malam tanggal 15 atau tanggal 15 malam ke 16? Nah loh! Setelah konfirmasi ke pihak offsec, ternyata jam 00:00 adalah dihari yang sama, artinya tanggal 15 pukul 00:00 dan sudah stay proctored 15 menit pra-exam atau tanggal 14 pukul 11:45 di saya. Pusing? Ini jadi pembelajran bagi yang lain kalau mau schedule exam.</p>
+<p>Saya check koneksi internet hotel, pake situs speedtest terlihat speed download berada pada angka 3 Mbps. Masih khawatir? Oh jelas. Apalagi kartu Indo*at dan Ax*s saya tidak bergutik disini, padahal sudah saya suntik 100GB kuota yang bakal berkahir tidak terpakai disini, akhirnya saya keluar cari counter HP dan beli kartu perdana baru, yaitu Smart***end. Cukup bagus speedtest diatas 8 Mbps, setidaknya bisa buat backup jika terjadi apa-apa degan wifi.</p>
+<h2 id="exam">EXAM</h2>
+<h3 id="may-you-can-reload-your-pageplease--proctor">&ldquo;May you can reload your page,please?&rdquo; -proctor</h3>
+<p>Seperti yang sudah dijadwalkan, pukul 11:45 saya masuk ke proctoring system, proctor akan melakukan checking terhadap ruangan dan identitas diri, setelah melewati proses pra-exam, lantas diberikan email berupa informasi untuk kebutuhan exam, VPN config misalnya. Diberikan kesempatan untuk mencoba konek ke VPN exam, beberapa kali coba konek, selalu gagal, setelah ditroubleshoot ternyata saya tidak bisa memakai wifi untuk melakukan koneksi ke VPN exam. Duh! Akhirnya pukul 01:30 saya baru bisa konek ke VPN exam, dengan menggunakan kartu Smart***end yang saya siapkan sebelumnya, lanjut ngerjain exam? Tentu tidak. Masalah muncul lagi, tiba-tiba hujan deres (terdengar hujan dari dalam kamar) dan internet saya down sampe dibawah 1 Mbps. Tak terhitung berapa kali procotor minta reload page karena dia kehilangan desktop dan wajah saya. Ini berlangsung sampe jam 10 pagi, saya cuma bisa monitor ping ke 1.1.1.1, reload page biar bisa terhubung dengan proctor, dan reconnect VPN ke exam. Dalam hati <em>&ldquo;kok ngenes gini ya&hellip; :(&quot;</em></p>
+<h3 id="nmap-nmap-nmap">Nmap, Nmap, Nmap!</h3>
+<p>Pukul 10 pagi internet baru pulih, saya baru bisa melakukan nmap terhadap mesin-mesin yang diberikan. Senang rasanya mendapati proctor yang sabar, bahkan proctor memberi semangat dan bilang <em>“thanks for your patient”</em> ketika internet saya sudah pulih. Baru nmap, mata saya sudah ngantuk berat, 10 jam belum dapat apa-apa. <em>“Sadar diri zet, pantang tidur sebelum root!”</em>, begitu kira-kira gumam saya dalam hati, berlaku keras terhadap diri sendiri nggak papa kan?</p>
+<p>Pukul 15:00 saya baru berhasil medapatkan 1 mesin dengan 25 point dan 1 mesin lain dengan akses user biasa, stuck parah! sekalipun itu mesin level easy, jadi tidak terlihat easy sama sekali pada kondisi saya saat ini. Selain itu saya cuma bolak-balik ngecek hasil nmap dari satu mesin ke mesin lain, apakah ada yang terlewat? Saya benar-benar tidak fokus. Perasaan khawatir mulai bermunculan, dag dig dug ser buat nyiapin retake. FYI, untuk retake dikenakan biaya sebesar $150 USD atau 2jt sekian jika dirupiahkan. Kemudian saya coba pesen mekdi dengan ayam spicy thai sweet chili nya, tentu bayarnya pake LinkAja, kemudian saya izin ke proctor untuk solat dan makan, ternyata pedesnya sampe ke ubun-ubun, buat mata jadi seger.</p>
+<h3 id="ayam-spicy-thai-sweet-chili">Ayam Spicy Thai Sweet Chili</h3>
+<p>Entah kenapa setelah makan pedes tadi tiba-tiba otak saya mulai seger, <em>entah apa yang merasukimu?</em> saya mulai konsentrasi dan berhasil mendapatkan root 4 mesin dan user biasa di mesin lainnya pada pukul 22:00. Mengikuti saran bang Arifin, saya buat table mesin mana saja yang sudah saya kerjakan, seperti ini…</p>
+<p><img src="/images/oscp/exam.png" alt=""></p>
+<p>Karena saya sudah sangat oleng tak terkendali, tidak kuat menahan kantuk, point juga dirasa sudah cukup, akhirnya saya mengakhiri sesi exam, tak lupa berterimakasih pada proctor yang sudah menemani. Akhirnya saya bisa tidur dengan nyenyak.</p>
+<h2 id="pasca-exam">PASCA-EXAM</h2>
+<h3 id="reporting">Reporting</h3>
+<p>Setelah tidur cukup, sarapan dan mandi, saya mulai menyusun report dari exam yang sudah dikerjakan kemarin. Saya senyum-senyum sendiri jika mengingat jam-jam terakhir saya tertolong oleh Ayam Spicy, ternyata saran orang-orang untuk mengerjakan exam kurang lengkap, kebanyakan saranin istirahat cukup, sekarang dari saya ngasih saran pelengkap : &ldquo;Makan Enak!&quot;. Karena saya suka makanan pedas, ternyata bisa meningkatkan <em>&lsquo;mood&rsquo;</em>, setidaknya ini yang saya rasakan kemarin, hehe.</p>
+<p>Senin pukul 20 saya telah tuntas menulis report, lalu segera saya kirimkan report ke offsec dengan cara yang telah ditentukan.</p>
+<h3 id="surat-cinta-dari-offsec">Surat cinta dari Offsec</h3>
+<p>Setelah hari senin tgl 16 saya mengirimkan report ke offsec, saya yakin dan positive thinking lulus, karena walau sambil ngantuk saya ngerjain exam, saya sudah terbiasa untuk melakukan dokumentasi ketika sprint waktu lab kemarin, jadi report tersusun dengan rapih. Tak lama kemudian, tgl 17 hari selasa malam pukul 19:19 ada email masuk dari offsec yang isinya&hellip;</p>
+<p><img src="/images/oscp/passed.jpg" alt=""></p>
+<p>Alhamdulillah, LULUS. Prosesnya terbilang cepat, tgl 18 Oktober mendapatkan akses lab, tanggal 17 November sudah lulus. Pengalaman yang luar biasa jika diingat, setiap lelah terbayarkan kontan hari ini. After hamdalah, saya ucapkan terimakasih kepada rekan-rekan yang telah mendukung dan mendo’akan. Saya yakin ini baru permulaan, masih banyak yang harus saya pelajari, dan begitu banyak pelajaran yang dapat saya ambil dari pengalaman ini, dan semoga memberikan manfaat bagi teman-teman yang membacanya.</p>
+<p>Terimakasih!</p>
+
+    
+    <div class="article-container">
+        <div id="disqus_thread"></div>
+<script>
+(function() {
+var d = document, s = d.createElement('script');
+s.src = 'https://zetc0de-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="https://zetc0de.github.io/post/powershell-download-file-one-liners/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">Top</i></a>
+        <div class="nav-next">
+            
+                <a class="grayed-out" href="javascript:void()"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+          <div class="footer-mail">
+          <i class="far fa-envelope"></i> <a href="mailto:zetc0de.id@gmail.com">zetc0de.id@gmail.com</a> </div>
+      
+      
+      <div class="footer-phone">
+          <i class="fas fa-phone"></i> <a href="https://t.me/zetc0de" target="_blank">Telegram</a> 
+      </div>
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=https://zetc0de.github.io/js/navbutton.js></script>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OSCP on IT Security Enthusiast</title>
+    <link>https://zetc0de.github.io/categories/oscp/</link>
+    <description>Recent content in OSCP on IT Security Enthusiast</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id-id</language>
+    <copyright>Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 20 Nov 2020 10:10:50 +0700</lastBuildDate>
+    
+	<atom:link href="https://zetc0de.github.io/categories/oscp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Pengalaman OSCP yang menyebalkan!</title>
+      <link>https://zetc0de.github.io/post/pengalaman-oscp-yang-menyebalkan/</link>
+      <pubDate>Fri, 20 Nov 2020 10:10:50 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/pengalaman-oscp-yang-menyebalkan/</guid>
+      <description>Overview Kali ini saya pengen sedikit bercerita pengalaman ketika mengambil sertifikasi OSCP, yah mungkin OSCP sudah tidak asing lagi bagi para pegiat IT Security, selain karena berlaku seumur hidup, sertifikasi OSCP ini juga dipandang &amp;lsquo;wah&amp;rsquo; dibanyak tempat, entah itu dikancah nasional maupun internasional. Jujur saja, OSCP ini adalah salah satu target dalam perjalanan karir saya yang saya targetkan pada tahun 2020 ini, &amp;ldquo;pokonya sebelum S.Kom saya harus punya OSCP dulu&amp;rdquo;, begitu kira-kira celetukan saya 1 tahun lalu, hehe.</description>
+    </item>
+    
+    <item>
+      <title>Powershell Download File One Liners</title>
+      <link>https://zetc0de.github.io/post/powershell-download-file-one-liners/</link>
+      <pubDate>Sun, 11 Oct 2020 14:26:00 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/powershell-download-file-one-liners/</guid>
+      <description>PowerShell (any version) (New-Object System.Net.WebClient).DownloadFile(&amp;quot;https://example.com/archive.zip&amp;quot;, &amp;quot;C:\Windows\Temp\archive.zip&amp;quot;)  PowerShell 4.0 &amp;amp; 5.0 Invoke-WebRequest &amp;quot;https://example.com/archive.zip&amp;quot; -OutFile &amp;quot;C:\Windows\Temp\archive.zip&amp;quot;  </description>
+    </item>
+    
+  </channel>
+</rss>
