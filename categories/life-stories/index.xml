@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Life Stories on IT Security Enthusiast</title>
+    <link>https://zetc0de.github.io/categories/life-stories/</link>
+    <description>Recent content in Life Stories on IT Security Enthusiast</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id-id</language>
+    <copyright>Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 20 Nov 2020 10:10:50 +0700</lastBuildDate>
+    
+	<atom:link href="https://zetc0de.github.io/categories/life-stories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Pengalaman OSCP yang menyebalkan!</title>
+      <link>https://zetc0de.github.io/post/pengalaman-oscp-yang-menyebalkan/</link>
+      <pubDate>Fri, 20 Nov 2020 10:10:50 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/pengalaman-oscp-yang-menyebalkan/</guid>
+      <description>Overview Kali ini saya pengen sedikit bercerita pengalaman ketika mengambil sertifikasi OSCP, yah mungkin OSCP sudah tidak asing lagi bagi para pegiat IT Security, selain karena berlaku seumur hidup, sertifikasi OSCP ini juga dipandang &amp;lsquo;wah&amp;rsquo; dibanyak tempat, entah itu dikancah nasional maupun internasional. Jujur saja, OSCP ini adalah salah satu target dalam perjalanan karir saya yang saya targetkan pada tahun 2020 ini, &amp;ldquo;pokonya sebelum S.Kom saya harus punya OSCP dulu&amp;rdquo;, begitu kira-kira celetukan saya 1 tahun lalu.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -4,11 +4,41 @@
   
   <url>
     <loc>https://zetc0de.github.io/categories/</loc>
-    <lastmod>2020-11-20T10:10:50+07:00</lastmod>
+    <lastmod>2020-11-29T00:18:51+07:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zetc0de.github.io/categories/ceritaku/</loc>
+    <loc>https://zetc0de.github.io/post/</loc>
+    <lastmod>2020-11-29T00:18:51+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/tags/rce/</loc>
+    <lastmod>2020-11-29T00:18:51+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/tags/ssrf/</loc>
+    <lastmod>2020-11-29T00:18:51+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/tags/</loc>
+    <lastmod>2020-11-29T00:18:51+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/categories/web-pentest/</loc>
+    <lastmod>2020-11-29T00:18:51+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/post/authenticated-rce-ssrf-wondercms/</loc>
+    <lastmod>2020-11-29T00:18:51+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zetc0de.github.io/categories/life-stories/</loc>
     <lastmod>2020-11-20T10:10:50+07:00</lastmod>
   </url>
   
@@ -19,16 +49,6 @@
   
   <url>
     <loc>https://zetc0de.github.io/post/pengalaman-oscp-yang-menyebalkan/</loc>
-    <lastmod>2020-11-20T10:10:50+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zetc0de.github.io/post/</loc>
-    <lastmod>2020-11-20T10:10:50+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zetc0de.github.io/tags/</loc>
     <lastmod>2020-11-20T10:10:50+07:00</lastmod>
   </url>
   
@@ -68,7 +88,7 @@
   </url>
   
   <url>
-    <loc>https://zetc0de.github.io/categories/htb/</loc>
+    <loc>https://zetc0de.github.io/categories/htb-writeup/</loc>
     <lastmod>2020-06-13T13:31:26+07:00</lastmod>
   </url>
   
@@ -108,7 +128,7 @@
   </url>
   
   <url>
-    <loc>https://zetc0de.github.io/categories/mobile-pentesting/</loc>
+    <loc>https://zetc0de.github.io/categories/mobile-pentest/</loc>
     <lastmod>2019-09-11T13:13:23+07:00</lastmod>
   </url>
   
@@ -130,11 +150,6 @@
   <url>
     <loc>https://zetc0de.github.io/post/multiple-idor-in-doku/</loc>
     <lastmod>2019-06-02T11:04:47+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zetc0de.github.io/tags/rce/</loc>
-    <lastmod>2019-02-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>

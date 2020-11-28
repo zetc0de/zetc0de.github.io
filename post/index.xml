@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>id-id</language>
     <copyright>Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Fri, 20 Nov 2020 10:10:50 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 29 Nov 2020 00:18:51 +0700</lastBuildDate>
     
 	<atom:link href="https://zetc0de.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>WonderCMS 3.1.3 - Authenticated RCE &amp; Blind SSRF Vulnerability</title>
+      <link>https://zetc0de.github.io/post/authenticated-rce-ssrf-wondercms/</link>
+      <pubDate>Sun, 29 Nov 2020 00:18:51 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/post/authenticated-rce-ssrf-wondercms/</guid>
+      <description>Overview Halo, pada kesempatan kali ini saya akan menulis sedikit tentang vulnerability yang ditemukan pada CMS WonderCMS yang memiliki impact paling tinggi yaitu RCE (Remote Code Execution). Sebenarnya ini research kecil-kecilan untuk mengisi kegabutan weekend kali ini, yah&amp;hellip; itung-itung sambil belajar research dan belajar kontribusi kepada komunitas infosec dengan cara menulis, semoga bermanfaat buat teman-teman yang membacanya.
+Awalnyakan saya gabut, terus iseng buka exploit-db dan lihat salah satu nama exploit &amp;ldquo;WonderCMS 3.</description>
+    </item>
     
     <item>
       <title>Pengalaman OSCP yang menyebalkan!</title>

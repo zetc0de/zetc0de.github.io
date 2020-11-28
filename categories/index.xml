@@ -7,17 +7,26 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>id-id</language>
     <copyright>Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Fri, 20 Nov 2020 10:10:50 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 29 Nov 2020 00:18:51 +0700</lastBuildDate>
     
 	<atom:link href="https://zetc0de.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Ceritaku</title>
-      <link>https://zetc0de.github.io/categories/ceritaku/</link>
+      <title>Web Pentest</title>
+      <link>https://zetc0de.github.io/categories/web-pentest/</link>
+      <pubDate>Sun, 29 Nov 2020 00:18:51 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/categories/web-pentest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Life Stories</title>
+      <link>https://zetc0de.github.io/categories/life-stories/</link>
       <pubDate>Fri, 20 Nov 2020 10:10:50 +0700</pubDate>
       
-      <guid>https://zetc0de.github.io/categories/ceritaku/</guid>
+      <guid>https://zetc0de.github.io/categories/life-stories/</guid>
       <description></description>
     </item>
     
@@ -40,20 +49,20 @@
     </item>
     
     <item>
-      <title>HTB</title>
-      <link>https://zetc0de.github.io/categories/htb/</link>
+      <title>HTB Writeup</title>
+      <link>https://zetc0de.github.io/categories/htb-writeup/</link>
       <pubDate>Sat, 13 Jun 2020 13:31:26 +0700</pubDate>
       
-      <guid>https://zetc0de.github.io/categories/htb/</guid>
+      <guid>https://zetc0de.github.io/categories/htb-writeup/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Mobile Pentesting</title>
-      <link>https://zetc0de.github.io/categories/mobile-pentesting/</link>
+      <title>Mobile Pentest</title>
+      <link>https://zetc0de.github.io/categories/mobile-pentest/</link>
       <pubDate>Wed, 11 Sep 2019 13:13:23 +0700</pubDate>
       
-      <guid>https://zetc0de.github.io/categories/mobile-pentesting/</guid>
+      <guid>https://zetc0de.github.io/categories/mobile-pentest/</guid>
       <description></description>
     </item>
     

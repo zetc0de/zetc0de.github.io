@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="google-site-verification" content="PvSzbP90TkqKzWHm9DI8lUeLC_UfuTb-MEQ9YZji18E" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+      <meta name="description" content="WonderCMS 3.1.3 - Authenticated RCE &amp; Blind SSRF Vulnerability"><meta name="Author" content="Mas Zet | ">
+    <meta name="keywords" content="Exploit | IT Security | Bug Bounty | HTB | Hacking | Pentest | Red Team">
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/syntax.css>
+    <link rel="stylesheet" href=https://zetc0de.github.io/css/style.css>
+    <script src="https://kit.fontawesome.com/1b7478c139.js" crossorigin="anonymous"></script>
+    <title>zetc0de | WonderCMS 3.1.3 - Authenticated RCE &amp; Blind SSRF Vulnerability</title>
+  </head><body><aside id="sidenav">
+    <header>
+    
+        <a href=https://zetc0de.github.io/><img src="https://zetc0de.github.io/avatar.png" alt="avatar"></a>
+        
+    
+
+    <a id="branding" href=https://zetc0de.github.io/>
+        
+    </a>
+    </header>
+
+    <nav>
+        
+            		
+            <a href="/"
+                
+            >
+                <i class="fas fa-home fa-sm"></i>
+                <span>Home</span>
+            </a>
+        
+            		
+            <a href="/post/"
+                
+            >
+                <i class="fas fa-keyboard fa-ms"></i>
+                <span>Articles</span>
+            </a>
+        
+            		
+            <a href="/categories/"
+                
+            >
+                <i class="fas fa-keyboard fa-list"></i>
+                <span>Categories</span>
+            </a>
+        
+            		
+            <a href="/tags"
+                
+            >
+                <i class="fas fa-tags fa-ms"></i>
+                <span>Tags</span>
+            </a>
+        
+            		
+            <a href="/labs"
+                
+            >
+                <i class="fas fa-server fa-ms"></i>
+                <span>Labs</span>
+            </a>
+        
+            		
+            <a href="https://github.com/zetc0de"
+                
+                    target="_blank"
+                
+            >
+                <i class="fab fa-github fa-ms"></i>
+                <span>Github</span>
+            </a>
+        
+            		
+            <a href="/index.xml"
+                
+            >
+                <i class="fas fa-rss fa-ms"></i>
+                <span>RSS</span>
+            </a>
+        
+    </nav>
+</aside>
+<main id="main">
+            <a href="javascript:void(0)" id="closebtn" onclick="navToggle()"><i class="fas fa-bars fa-lg"></i></a>
+            <div class="content">
+    
+    <h1 id="title">WonderCMS 3.1.3 - Authenticated RCE &amp; Blind SSRF Vulnerability</h1>
+    
+      
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#wondercms">WonderCMS</a></li>
+    <li><a href="#authenticated-remote-code-execution">Authenticated Remote Code Execution</a>
+      <ul>
+        <li><a href="#vulnerabilituy-discovery">Vulnerabilituy Discovery</a></li>
+        <li><a href="#attack-scenario">Attack Scenario</a></li>
+        <li><a href="#exploit">Exploit</a></li>
+      </ul>
+    </li>
+    <li><a href="#blind-ssrf-vulnerability">Blind SSRF Vulnerability</a>
+      <ul>
+        <li><a href="#ssrf-vulnerability">SSRF Vulnerability</a></li>
+        <li><a href="#vulnerability-discovery">Vulnerability Discovery</a></li>
+        <li><a href="#blind-ssrf-to-rce-using-gopher-scheme">Blind SSRF to RCE using Gopher Scheme</a></li>
+        <li><a href="#generating-payload">Generating Payload</a></li>
+        <li><a href="#exploit-1">Exploit</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+    <p><img src="/images/research/wondercms/rce/wondercms.png" alt=""></p>
+<h2 id="overview">Overview</h2>
+<p>Halo, pada kesempatan kali ini saya akan menulis sedikit tentang vulnerability yang ditemukan pada CMS WonderCMS yang memiliki impact paling tinggi yaitu RCE (Remote Code Execution). Sebenarnya ini research kecil-kecilan untuk mengisi kegabutan weekend kali ini, yah&hellip; itung-itung sambil belajar research dan belajar kontribusi kepada komunitas infosec dengan cara menulis, semoga bermanfaat buat teman-teman yang membacanya.</p>
+<p>Awalnyakan saya gabut, terus iseng buka exploit-db dan lihat salah satu nama exploit &ldquo;WonderCMS 3.1.3 - &lsquo;uploadFile&rsquo; Stored Cross-Site Scripting&rdquo;, karena penasaran WonderCMS itu apa, akhirnya saya mengunjungi website WonderCMS ini. Masih penasaran, kira-kira ada &lsquo;sesuatu&rsquo; yang bisa ditemukan lagi ngga dari CMS ini, kemudian saya download dan saya install di VM ubuntu saya. Dan pada akhirnya saya menemukan possibility untuk RCE dan menemukan celah SSRF yang akan saya bahas pada postingan ini. Oh iya, karena core CMS ini cuma ada 1 file php, dan semua fitur yang tidak memerlukan autentikasi tidak ada yang menarik, maka saya fokuskan pada fitur-fitur yang memerlukan autentikasi, jadi attack vectornya adalah attacker berhasil mendapatkan credential dan bisa digunakan untuk login ke dashboard CMS.</p>
+<h2 id="wondercms">WonderCMS</h2>
+<p>WonderCMS adalah website builder yang simple dan gratis, CMS ini sangat mudah dipasang (1 step), ringan dan mudah digunakan. CMS ini termasuk salah satu CMS Open Source yang didevelop dari tahun 2008. Benar saja, ketika saya mencoba untuk install CMS ini, ternyata memang cuma berisi beberapa file untuk ditaruh di server. CMS ini berhasil saya install dengan modal web server dan php saja, tanpa memerlukan DBMS karena semua konfigurasi akan disimpan pada file bernama database.js.</p>
+<p><img src="/images/research/wondercms/rce/installed.png" alt=""></p>
+<h2 id="authenticated-remote-code-execution">Authenticated Remote Code Execution</h2>
+<h3 id="vulnerabilituy-discovery">Vulnerabilituy Discovery</h3>
+<p>Celah keamanan ini memanfaatkan fitur theme/plugin installer, sesuai namanya fitur ini digunakan untuk menginstall theme dan plugin dari repository. Fitur ini sangat mudah digunakan, sekali klik kita bisa install plugin atau tema baru.</p>
+<p><img src="/images/research/wondercms/rce/plugins.png" alt=""></p>
+<p>Pada saat klik tombol install, maka request yang tertangkap pada burpsuite seperti ini:</p>
+<p><img src="/images/research/wondercms/rce/installrequest.png" alt=""></p>
+<p>Fitur installer ini setidaknya menggunakan 2 fungsi, yaitu  <code>installUpdateThemePluginAction</code> dan <code>addCustomThemePluginRepository</code>, tapi saya akan fokus pada fungsi <code>addCustomThemePluginRepository</code> saja, mari kita sedikit membaca source codenya :</p>
+<p><img src="/images/research/wondercms/rce/installsource.png" alt=""></p>
+<p>Singkatnya, fungsi ini akan mendownload plugin dari server dan secara temporary disimpan pada direcotry <code>data/files/ZIPFromURL.zip</code>, lalu file zip tadi diekstrak ke folder <code>data/plugins/folderplugin-master/</code> kemudian direname menjadi <code>data/plugins/folderplugin/</code> seprti ini,</p>
+<p><img src="/images/research/wondercms/rce/plugindir.png" alt=""></p>
+<h3 id="attack-scenario">Attack Scenario</h3>
+<p>Karena kita bisa mengontrol plugin yang ingin diinstall, maka kita bisa mengisipkan php backdoor kedalam file zip, ditambah lagi file hasil proses ekstrak ini predictable dan dapat diakses secara langsung, jadi ketika kita install crafted plugins kita bisa akses php backdoornya pada path <code>/data/plugins/folderplugin/evil.php</code></p>
+<p>Cukup mudah bukan?</p>
+<h3 id="exploit">Exploit</h3>
+<p>Saya sedikit membuat script untuk mengautomate prosesnya sehingga mendapatkan akses shell seperti ini,</p>
+<p><img src="/images/research/wondercms/rce/getshell.png" alt=""></p>
+<h2 id="blind-ssrf-vulnerability">Blind SSRF Vulnerability</h2>
+<h3 id="ssrf-vulnerability">SSRF Vulnerability</h3>
+<p>SSRF (Server Side Request Forgery) adalah celah keamanan web dimana memungkinkan penyerang dapat membuat permintaan HTTP ke domain yang dipilih penyerang. Dalam contoh SSRF biasa, penyerang dapat melakukan koneksi ke server itu sendiri, atau ke layanan berbasis web lainnya dalam infrastruktur, atau ke sistem pihak ketiga eksternal.</p>
+<p><img src="/images/research/wondercms/ssrf/ssrf.svg" alt=""></p>
+<h3 id="vulnerability-discovery">Vulnerability Discovery</h3>
+<p>Sebenarnya celah ini terdapat pada fitur yang telah kita bahas sebelumnya, yaitu fitur theme/plugin installer. Terdapat 2 fungsi yang berperan pada fitur ini, masih ingat? disini saya akan fokuskan kepada fungsi <code>addCustomThemePluginRepository</code> yg lebih menarik untuk dibahas karena terdapat filter terhadap destinasi plugin yang ingin diinstall. Fungsi ini akan digunakan ketika kita ingin menginstall costum plugin melalui fitur ini,</p>
+<p><img src="/images/research/wondercms/ssrf/fitur.png" alt=""></p>
+<p>Ketika menggunakan fitur ini, kita harus menggunakan repository github dan gitlab sebagai destinasinya. Mari kita baca source codenya :</p>
+<p><img src="/images/research/wondercms/ssrf/source.png" alt=""></p>
+<p>disana jelas terlihat kita dilarang menggunakan destinasi plugin selain github dan gitlab, dengan menggunakan fungsi strpos untuk mengecek posisi string <code>&quot;https://github.com/&quot;</code> dan <code>&quot;https://gitlab.com/&quot;</code> pada variable $url. Pengecekan ini sangat lemah, karena dengan menggunakan fungsi strpos ini jika terdapat karakter yang dicari, maka hasilnya akan berupa angka(Integer) yang menunjukkan posisi dari karakter tersebut, tetapi jika karakter yang dicari tidak ditemukan maka nilai yang dikembalikan adalah FALSE (Boolean). Maka, untuk membypass pengecekan ini dapat menggunakan url apapun asalkan terdapat string <code>&quot;https://github.com/&quot;</code> dan <code>&quot;https://gitlab.com/&quot;</code>. Mari kita coba test dengan mengalihkan destinasi ke server milik kita :</p>
+<p><img src="/images/research/wondercms/ssrf/bypass.png" alt=""></p>
+<p>YAY! berhasil bypass filter, selanjutnya apa? karena SSRF ini bersifat Blind SSRF, karena tidak terefleksikan pada response body maka kita tidak bisa langsung mengakses internal files menggunakan scheme <code>file://</code>.</p>
+<h3 id="blind-ssrf-to-rce-using-gopher-scheme">Blind SSRF to RCE using Gopher Scheme</h3>
+<p>Untuk mendemonstrasikan impact paling tinggi yaitu RCE pada celah SSRF, maka saya akan memanfaatkan FastCGI yang secara default berjalan menggunakan socket, tapi agar dapat melakukan command execution pada konfigurasu FastCGI kita ganti menggunakan tcp connection dengan port 9000.</p>
+<p><img src="/images/research/wondercms/ssrf/fastcgi.png" alt=""></p>
+<p>Untuk berinteraksi dengan internal network, kita dapat memanfaatkan protokol gopher. Dengan menggunakan scheme <code>gopher://</code> kita bisa berinteraksi dengan spesifik IP, port, dan mengirimkan byte data.</p>
+<p>Sebenarnya tidak terbatas hanya service FastCGI saja, kita bisa memanfaatkan service lain seperti Redis,MySQL,PostgreSQL,Memcached,Zabbix, dan SMTP. Karena kita sudah menyiapkan service FastCGI sebelumnya, maka kita dapat mengirimkan payload kepada service tersebut.</p>
+<h3 id="generating-payload">Generating Payload</h3>
+<p>Untungnya, ada sebuah tool bernama Ghoperus yang dapat membantu kita untuk membuat payload, langsung buat payload untuk reverse shell :</p>
+<p><img src="/images/research/wondercms/ssrf/payload.png" alt=""></p>
+<h3 id="exploit-1">Exploit</h3>
+<p><img src="/images/research/wondercms/ssrf/exploit1.png" alt=""></p>
+<p>Sedikit mengautomate proses exploit dengan script python :</p>
+<p><img src="/images/research/wondercms/ssrf/exploit2.png" alt=""></p>
+<p>Sebenarnya SSRF ini juga berdampak pada fungsi <code>addCustomThemePluginRepository</code>, bahkan lebih mudah karena tidak ada filter terhadapat destinasi repositorynya:</p>
+<p><img src="/images/research/wondercms/ssrf/exploit3.png" alt=""></p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://portswigger.net/web-security/ssrf">https://portswigger.net/web-security/ssrf</a></li>
+<li><a href="https://book.hacktricks.xyz/pentesting-web/ssrf-server-side-request-forgery">https://book.hacktricks.xyz/pentesting-web/ssrf-server-side-request-forgery</a></li>
+<li><a href="https://github.com/tarunkant/Gopherus">https://github.com/tarunkant/Gopherus</a></li>
+<li><a href="https://spyclub.tech/2018/08/14/2018-08-14-blog-on-gopherus/">https://spyclub.tech/2018/08/14/2018-08-14-blog-on-gopherus/</a></li>
+</ul>
+
+    
+    <div class="article-container">
+        <div id="disqus_thread"></div>
+<script>
+(function() {
+var d = document, s = d.createElement('script');
+s.src = 'https://zetc0de-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    <div class="nav-next-prev">
+        <div class="nav-prev">
+            
+                <a href="https://zetc0de.github.io/post/pengalaman-oscp-yang-menyebalkan/"><i class="fas fa-chevron-left"></i></a>
+            
+        </div>
+        <a class="nav-top" href="#">Top</i></a>
+        <div class="nav-next">
+            
+                <a class="grayed-out" href="javascript:void()"><i class="fas fa-chevron-right"></i></a>
+            
+        </div>
+    </div>
+    
+
+            </div><footer>
+<div class="footer-content">
+
+  <div class="contact-info">
+      
+          <div class="footer-mail">
+          <i class="far fa-envelope"></i> <a href="mailto:zetc0de.id@gmail.com">zetc0de.id@gmail.com</a> </div>
+      
+      
+      <div class="footer-phone">
+          <i class="fas fa-phone"></i> <a href="https://t.me/zetc0de" target="_blank">Telegram</a> 
+      </div>
+      
+  </div>
+
+
+<p class="copyright meta">Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</p>
+
+</div>
+</footer></main>
+    </body>
+    <script src=https://zetc0de.github.io/js/navbutton.js></script>
+</html>

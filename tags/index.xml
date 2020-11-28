@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>id-id</language>
     <copyright>Copyright © 2020, zetc0de and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Fri, 20 Nov 2020 10:10:50 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 29 Nov 2020 00:18:51 +0700</lastBuildDate>
     
 	<atom:link href="https://zetc0de.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>RCE</title>
+      <link>https://zetc0de.github.io/tags/rce/</link>
+      <pubDate>Sun, 29 Nov 2020 00:18:51 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/tags/rce/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SSRF</title>
+      <link>https://zetc0de.github.io/tags/ssrf/</link>
+      <pubDate>Sun, 29 Nov 2020 00:18:51 +0700</pubDate>
+      
+      <guid>https://zetc0de.github.io/tags/ssrf/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>OSCP</title>
@@ -63,15 +81,6 @@
       <pubDate>Mon, 10 Jun 2019 12:34:48 +0700</pubDate>
       
       <guid>https://zetc0de.github.io/tags/xss/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>RCE</title>
-      <link>https://zetc0de.github.io/tags/rce/</link>
-      <pubDate>Thu, 14 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://zetc0de.github.io/tags/rce/</guid>
       <description></description>
     </item>
     
