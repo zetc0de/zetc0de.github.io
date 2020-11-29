@@ -129,7 +129,7 @@
 <p><img src="/images/research/wondercms/rce/plugins.png" alt=""></p>
 <p>Pada saat klik tombol install, maka request yang tertangkap pada burpsuite seperti ini:</p>
 <p><img src="/images/research/wondercms/rce/installrequest.png" alt=""></p>
-<p>Fitur installer ini setidaknya menggunakan 2 fungsi, yaitu  <code>installUpdateThemePluginAction</code> dan <code>addCustomThemePluginRepository</code>, tapi saya akan fokus pada fungsi <code>addCustomThemePluginRepository</code> saja, mari kita sedikit membaca source codenya :</p>
+<p>Fitur installer ini setidaknya menggunakan 2 fungsi, yaitu  <code>installUpdateThemePluginAction</code> dan <code>addCustomThemePluginRepository</code>, tapi saya akan fokus pada fungsi <code>installUpdateThemePluginAction</code> saja, mari kita sedikit membaca source codenya :</p>
 <p><img src="/images/research/wondercms/rce/installsource.png" alt=""></p>
 <p>Singkatnya, fungsi ini akan mendownload plugin dari server dan secara temporary disimpan pada direcotry <code>data/files/ZIPFromURL.zip</code>, lalu file zip tadi diekstrak ke folder <code>data/plugins/folderplugin-master/</code> kemudian direname menjadi <code>data/plugins/folderplugin/</code> seprti ini,</p>
 <p><img src="/images/research/wondercms/rce/plugindir.png" alt=""></p>
