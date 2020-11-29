@@ -134,7 +134,7 @@
 <p>Singkatnya, fungsi ini akan mendownload plugin dari server dan secara temporary disimpan pada direcotry <code>data/files/ZIPFromURL.zip</code>, lalu file zip tadi diekstrak ke folder <code>data/plugins/folderplugin-master/</code> kemudian direname menjadi <code>data/plugins/folderplugin/</code> seprti ini,</p>
 <p><img src="/images/research/wondercms/rce/plugindir.png" alt=""></p>
 <h3 id="attack-scenario">Attack Scenario</h3>
-<p>Karena kita bisa mengontrol plugin yang ingin diinstall, maka kita bisa mengisipkan php backdoor kedalam file zip, ditambah lagi file hasil proses ekstrak ini predictable dan dapat diakses secara langsung, jadi ketika kita install crafted plugins kita bisa akses php backdoornya pada path <code>/data/plugins/folderplugin/evil.php</code></p>
+<p>Karena kita bisa mengontrol plugin yang ingin diinstall, maka kita bisa menyisipkan php backdoor kedalam file zip, ditambah lagi file hasil proses ekstrak ini predictable dan dapat diakses secara langsung, jadi ketika kita install crafted plugins kita bisa akses php backdoornya pada path <code>/data/plugins/folderplugin/evil.php</code></p>
 <p>Cukup mudah bukan?</p>
 <h3 id="exploit">Exploit</h3>
 <p>Saya sedikit membuat script untuk mengautomate prosesnya sehingga mendapatkan akses shell seperti ini,</p>
@@ -163,7 +163,7 @@
 <p><img src="/images/research/wondercms/ssrf/exploit1.png" alt=""></p>
 <p>Sedikit mengautomate proses exploit dengan script python :</p>
 <p><img src="/images/research/wondercms/ssrf/exploit2.png" alt=""></p>
-<p>Sebenarnya SSRF ini juga berdampak pada fungsi <code>addCustomThemePluginRepository</code>, bahkan lebih mudah karena tidak ada filter terhadapat destinasi repositorynya:</p>
+<p>Sebenarnya SSRF ini juga berdampak pada fungsi <code>installUpdateThemePluginAction</code>, bahkan lebih mudah karena tidak ada filter terhadapat destinasi repositorynya:</p>
 <p><img src="/images/research/wondercms/ssrf/exploit3.png" alt=""></p>
 <h2 id="timelines">Timelines</h2>
 <ul>
