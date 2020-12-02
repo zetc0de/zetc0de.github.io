@@ -131,7 +131,7 @@
 <p><img src="/images/research/wondercms/rce/installrequest.png" alt=""></p>
 <p>Fitur installer ini setidaknya menggunakan 2 fungsi, yaitu  <code>installUpdateThemePluginAction</code> dan <code>addCustomThemePluginRepository</code>, tapi saya akan fokus pada fungsi <code>installUpdateThemePluginAction</code> saja, mari kita sedikit membaca source codenya :</p>
 <p><img src="/images/research/wondercms/rce/installsource.png" alt=""></p>
-<p>Singkatnya, fungsi ini akan mendownload plugin dari server dan secara temporary disimpan pada direcotry <code>data/files/ZIPFromURL.zip</code>, lalu file zip tadi diekstrak ke folder <code>data/plugins/folderplugin-master/</code> kemudian direname menjadi <code>data/plugins/folderplugin/</code> seprti ini,</p>
+<p>Singkatnya, fungsi ini akan mendownload plugin dari server dan secara temporary disimpan pada direcotry <code>data/files/ZIPFromURL.zip</code>, lalu file zip tadi diekstrak ke folder <code>data/plugins/folderplugin-master/</code> kemudian direname menjadi <code>data/plugins/folderplugin/</code> seperti ini,</p>
 <p><img src="/images/research/wondercms/rce/plugindir.png" alt=""></p>
 <h3 id="attack-scenario">Attack Scenario</h3>
 <p>Karena kita bisa mengontrol plugin yang ingin diinstall, maka kita bisa menyisipkan php backdoor kedalam file zip, ditambah lagi file hasil proses ekstrak ini predictable dan dapat diakses secara langsung, jadi ketika kita install crafted plugins kita bisa akses php backdoornya pada path <code>/data/plugins/folderplugin/evil.php</code></p>
@@ -139,6 +139,7 @@
 <h3 id="exploit">Exploit</h3>
 <p>Saya sedikit membuat script untuk mengautomate prosesnya sehingga mendapatkan akses shell seperti ini,</p>
 <p><img src="/images/research/wondercms/rce/getshell.png" alt=""></p>
+<p>exploit ini bisa diakses melalui <a href="https://www.exploit-db.com/exploits/49155">exploit-db</a>.</p>
 <h2 id="authenticated-blind-ssrf-vulnerability">Authenticated Blind SSRF Vulnerability</h2>
 <h3 id="ssrf-vulnerability">SSRF Vulnerability</h3>
 <p>SSRF (Server Side Request Forgery) adalah celah keamanan web dimana memungkinkan penyerang dapat membuat permintaan HTTP ke domain yang dipilih penyerang. Dalam contoh SSRF biasa, penyerang dapat melakukan koneksi ke server itu sendiri, atau ke layanan berbasis web lainnya dalam infrastruktur, atau ke sistem pihak ketiga eksternal.</p>
@@ -152,7 +153,7 @@
 <p><img src="/images/research/wondercms/ssrf/bypass.png" alt=""></p>
 <p>YAY! berhasil bypass filter, selanjutnya apa? karena SSRF ini bersifat Blind SSRF, karena tidak terefleksikan pada response body maka kita tidak bisa langsung mengakses internal files menggunakan scheme <code>file://</code>.</p>
 <h3 id="blind-ssrf-to-rce-using-gopher-scheme">Blind SSRF to RCE using Gopher Scheme</h3>
-<p>Untuk mendemonstrasikan impact paling tinggi yaitu RCE pada celah SSRF, maka saya akan memanfaatkan FastCGI yang secara default berjalan menggunakan socket, tapi agar dapat melakukan command execution pada konfigurasu FastCGI kita ganti menggunakan tcp connection dengan port 9000.</p>
+<p>Untuk mendemonstrasikan impact paling tinggi yaitu RCE pada celah SSRF, maka saya akan memanfaatkan FastCGI yang secara default berjalan menggunakan socket, tapi agar dapat melakukan command execution pada konfigurasi FastCGI kita ganti menggunakan tcp connection dengan port 9000.</p>
 <p><img src="/images/research/wondercms/ssrf/fastcgi.png" alt=""></p>
 <p>Untuk berinteraksi dengan internal network, kita dapat memanfaatkan protokol gopher. Dengan menggunakan scheme <code>gopher://</code> kita bisa berinteraksi dengan spesifik IP, port, dan mengirimkan byte data.</p>
 <p>Sebenarnya tidak terbatas hanya service FastCGI saja, kita bisa memanfaatkan service lain seperti Redis,MySQL,PostgreSQL,Memcached,Zabbix, dan SMTP. Karena kita sudah menyiapkan service FastCGI sebelumnya, maka kita dapat mengirimkan payload kepada service tersebut.</p>
@@ -163,6 +164,7 @@
 <p><img src="/images/research/wondercms/ssrf/exploit1.png" alt=""></p>
 <p>Sedikit mengautomate proses exploit dengan script python :</p>
 <p><img src="/images/research/wondercms/ssrf/exploit2.png" alt=""></p>
+<p>exploit ini bisa diakses melalui <a href="https://www.exploit-db.com/exploits/49154">exploit-db</a>.</p>
 <p>Sebenarnya SSRF ini juga berdampak pada fungsi <code>installUpdateThemePluginAction</code>, bahkan lebih mudah karena tidak ada filter terhadapat destinasi repositorynya:</p>
 <p><img src="/images/research/wondercms/ssrf/exploit3.png" alt=""></p>
 <h2 id="timelines">Timelines</h2>
