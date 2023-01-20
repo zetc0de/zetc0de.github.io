@@ -138,19 +138,10 @@
   </url>
   
   <url>
-    <loc>https://zetc0de.github.io/post/multiple-xss-in-doku/</loc>
-    <lastmod>2019-06-10T12:34:48+07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://zetc0de.github.io/tags/xss/</loc>
     <lastmod>2019-06-10T12:34:48+07:00</lastmod>
   </url>
   
-  <url>
-    <loc>https://zetc0de.github.io/post/multiple-idor-in-doku/</loc>
-    <lastmod>2019-06-02T11:04:47+07:00</lastmod>
-  </url>
   
   <url>
     <loc>https://zetc0de.github.io/post/2019-02-14-rce-and-xss-on-private-program-cyber-army/</loc>

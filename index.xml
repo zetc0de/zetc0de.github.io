@@ -110,25 +110,6 @@ myWebView.loadUrl(&amp;quot;http://www.zetlab.pw/webview&amp;quot;);  SSL Error 
       <description>Overview File Manifest memainkan peran penting untuk setiap aplikasi android. Dalam file ini developer android menentukan izin yang diperlukan aplikasi, tindakan yang dapat dilakukan aplikasi dan aktivitas umum lainnya. Dari sudut pandang keamanan, file manifest biasanya merupakan hal pertama yang akan diperiksa oleh pentester. Oleh karena itu daftar berikut dapat digunakan baik oleh developer dan penguji penetrasi untuk memastikan bahwa file Manifest tidak mengandung kesalahan konfigurasi yang dapat dimanfaatkan oleh penyerang.</description>
     </item>
     
-    <item>
-      <title>Multiple Reflected XSS in DOKU Staging</title>
-      <link>https://zetc0de.github.io/post/multiple-xss-in-doku/</link>
-      <pubDate>Mon, 10 Jun 2019 12:34:48 +0700</pubDate>
-      
-      <guid>https://zetc0de.github.io/post/multiple-xss-in-doku/</guid>
-      <description>About DOKU DOKU Wallet adalah sebuah layanan dompet elektronik (Wallet) yang dikeluarkan oleh PT. Nusa Satu Inti Artha yang dilengkapi dengan fitur penghubung ke kartu kredit dan uang elektronik/cash wallet. DOKU adalah penyedia layanan pembayaran elektronik dan manajemen resiko pertama di Indonesia.
-Reflected XSS Reflected XSS adalah dimana script yang diinjeksi akan ditampilkan pada web, melalui pesan error, hasil pencarian, atau dari request input (GET/POST). Reflected XSS juga biasa disebut dengan Non-Persistent XSS.</description>
-    </item>
-    
-    <item>
-      <title>Multiple IDOR in DOKU</title>
-      <link>https://zetc0de.github.io/post/multiple-idor-in-doku/</link>
-      <pubDate>Sun, 02 Jun 2019 11:04:47 +0700</pubDate>
-      
-      <guid>https://zetc0de.github.io/post/multiple-idor-in-doku/</guid>
-      <description>About DOKU DOKU Wallet adalah sebuah layanan dompet elektronik (Wallet) yang dikeluarkan oleh PT. Nusa Satu Inti Artha yang dilengkapi dengan fitur penghubung ke kartu kredit dan uang elektronik/cash wallet. DOKU adalah penyedia layanan pembayaran elektronik dan manajemen resiko pertama di Indonesia.
-IDOR Vulnerability Insecure Direct Object Reference terjadi saat aplikasi menyediakan akses langsung ke objek berdasarkan masukan yang diberikan pengguna. Hal ini memngkinkan hacker untuk mem-bypass autentifikasi standar dan mengakses catatan database maupun sumber daya lain.</description>
-    </item>
     
     <item>
       <title>RCE and XSS On Private Program Cyber Army ID</title>
